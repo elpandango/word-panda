@@ -1,6 +1,6 @@
-import crypto from 'node:crypto'
-import process from 'node:process'
-import mongoose from 'mongoose'
+import crypto from 'node:crypto';
+import process from 'node:process';
+import mongoose from 'mongoose';
 
 const verbFamilySchema = new mongoose.Schema(
   {
@@ -10,7 +10,7 @@ const verbFamilySchema = new mongoose.Schema(
     updatedAt: { type: String, required: true }
   },
   { collection: 'verbfamilies', versionKey: false }
-)
+);
 
 const verbEntrySchema = new mongoose.Schema(
   {
@@ -29,7 +29,7 @@ const verbEntrySchema = new mongoose.Schema(
     updatedAt: { type: String, required: true }
   },
   { collection: 'verbentries', versionKey: false }
-)
+);
 
 const verbExampleSchema = new mongoose.Schema(
   {
@@ -41,31 +41,34 @@ const verbExampleSchema = new mongoose.Schema(
     updatedAt: { type: String, required: true }
   },
   { collection: 'verbexamples', versionKey: false }
-)
+);
 
-const VerbFamilyModel = mongoose.models.VerbFamilySeed || mongoose.model('VerbFamilySeed', verbFamilySchema)
-const VerbEntryModel = mongoose.models.VerbEntrySeed || mongoose.model('VerbEntrySeed', verbEntrySchema)
-const VerbExampleModel = mongoose.models.VerbExampleSeed || mongoose.model('VerbExampleSeed', verbExampleSchema)
+const VerbFamilyModel =
+  mongoose.models.VerbFamilySeed || mongoose.model('VerbFamilySeed', verbFamilySchema);
+const VerbEntryModel =
+  mongoose.models.VerbEntrySeed || mongoose.model('VerbEntrySeed', verbEntrySchema);
+const VerbExampleModel =
+  mongoose.models.VerbExampleSeed || mongoose.model('VerbExampleSeed', verbExampleSchema);
 
 function makeId(prefix) {
-  return `${prefix}_${crypto.randomUUID()}`
+  return `${prefix}_${crypto.randomUUID()}`;
 }
 
 function now() {
-  return new Date().toISOString()
+  return new Date().toISOString();
 }
 
 function buildFamily(seed) {
-  const timestamp = now()
-  const familyId = makeId('family')
-  const baseEntryId = makeId('entry')
+  const timestamp = now();
+  const familyId = makeId('family');
+  const baseEntryId = makeId('entry');
 
   const family = {
     _id: familyId,
     baseEntryId,
     createdAt: timestamp,
     updatedAt: timestamp
-  }
+  };
 
   const baseEntry = {
     _id: baseEntryId,
@@ -81,7 +84,7 @@ function buildFamily(seed) {
     status: 'reviewed',
     createdAt: timestamp,
     updatedAt: timestamp
-  }
+  };
 
   const variants = seed.variants.map((variant) => ({
     _id: makeId('entry'),
@@ -97,9 +100,9 @@ function buildFamily(seed) {
     status: 'reviewed',
     createdAt: timestamp,
     updatedAt: timestamp
-  }))
+  }));
 
-  const examples = []
+  const examples = [];
 
   for (const example of seed.base.examples) {
     examples.push({
@@ -109,11 +112,11 @@ function buildFamily(seed) {
       translationRu: example.translationRu,
       createdAt: timestamp,
       updatedAt: timestamp
-    })
+    });
   }
 
   for (const variant of variants) {
-    const variantSeed = seed.variants.find((item) => item.word === variant.word)
+    const variantSeed = seed.variants.find((item) => item.word === variant.word);
     for (const example of variantSeed.examples) {
       examples.push({
         _id: makeId('example'),
@@ -122,11 +125,11 @@ function buildFamily(seed) {
         translationRu: example.translationRu,
         createdAt: timestamp,
         updatedAt: timestamp
-      })
+      });
     }
   }
 
-  return { family, entries: [baseEntry, ...variants], examples }
+  return { family, entries: [baseEntry, ...variants], examples };
 }
 
 const seedFamilies = [
@@ -218,64 +221,72 @@ const seedFamilies = [
       }
     ]
   }
-]
+];
 
 const main = async () => {
-  const uri = process.env.MONGODB_URI
+  const uri = process.env.MONGODB_URI;
 
   if (!uri) {
-    throw new Error('MONGODB_URI is missing. Copy .env.example to .env and set your real Atlas URI.')
+    throw new Error(
+      'MONGODB_URI is missing. Copy .env.example to .env and set your real Atlas URI.'
+    );
   }
 
-  await mongoose.connect(uri)
+  await mongoose.connect(uri);
 
-  const createdFamilies = []
-  const skippedFamilies = []
+  const createdFamilies = [];
+  const skippedFamilies = [];
 
   for (const seedFamily of seedFamilies) {
     const existingBaseEntry = await VerbEntryModel.findOne({
       role: 'base',
       word: seedFamily.base.word
-    }).lean()
+    }).lean();
 
     if (existingBaseEntry) {
       skippedFamilies.push({
         baseWord: seedFamily.base.word,
         familyId: existingBaseEntry.familyId
-      })
-      continue
+      });
+      continue;
     }
 
-    const builtFamily = buildFamily(seedFamily)
+    const builtFamily = buildFamily(seedFamily);
 
-    await VerbFamilyModel.create(builtFamily.family)
-    await VerbEntryModel.insertMany(builtFamily.entries)
-    await VerbExampleModel.insertMany(builtFamily.examples)
+    await VerbFamilyModel.create(builtFamily.family);
+    await VerbEntryModel.insertMany(builtFamily.entries);
+    await VerbExampleModel.insertMany(builtFamily.examples);
 
     createdFamilies.push({
       familyId: builtFamily.family._id,
       baseEntryId: builtFamily.family.baseEntryId,
       baseWord: builtFamily.entries[0].word,
       variantWords: builtFamily.entries.slice(1).map((entry) => entry.word)
-    })
+    });
   }
 
-  console.log(JSON.stringify({
-    ok: true,
-    database: mongoose.connection.name,
-    createdFamilies,
-    skippedFamilies
-  }, null, 2))
+  console.log(
+    JSON.stringify(
+      {
+        ok: true,
+        database: mongoose.connection.name,
+        createdFamilies,
+        skippedFamilies
+      },
+      null,
+      2
+    )
+  );
 
-  await mongoose.disconnect()
-}
+  await mongoose.disconnect();
+};
 
 main().catch(async (error) => {
-  console.error(error)
+  console.error(error);
   try {
-    await mongoose.disconnect()
+    await mongoose.disconnect();
   } catch (disconnectError) {
-    console.error('Failed to disconnect after seed error', disconnectError)
+    console.error('Failed to disconnect after seed error', disconnectError);
   }
-  process.exit(1)
-})
+  process.exit(1);
+});

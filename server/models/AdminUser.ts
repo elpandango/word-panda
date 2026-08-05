@@ -1,13 +1,13 @@
-import mongoose from 'mongoose'
-import { getModel } from '../utils/mongoose'
+import mongoose from 'mongoose';
+import { getModel } from '../utils/mongoose';
 
 export interface AdminUser {
-  _id?: string
-  email: string
-  passwordHash: string
-  role: 'admin'
-  createdAt: string
-  updatedAt: string
+  _id?: string;
+  email: string;
+  passwordHash: string;
+  role: 'admin';
+  createdAt: string;
+  updatedAt: string;
 }
 
 const adminUserSchema = new mongoose.Schema<AdminUser>(
@@ -20,6 +20,6 @@ const adminUserSchema = new mongoose.Schema<AdminUser>(
     updatedAt: { type: String, required: true }
   },
   { versionKey: false }
-)
+);
 
-export const AdminUserModel = getModel<AdminUser>('AdminUser', adminUserSchema)
+export const AdminUserModel = getModel<AdminUser>('AdminUser', adminUserSchema);

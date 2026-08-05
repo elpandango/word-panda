@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
-import { getModel } from '../utils/mongoose'
-import type { VerbFamily } from '../../shared/types/verbs'
+import mongoose from 'mongoose';
+import { getModel } from '../utils/mongoose';
+import type { VerbFamily } from '../../shared/types/verbs';
 
 const verbFamilySchema = new mongoose.Schema<VerbFamily>(
   {
@@ -10,6 +10,6 @@ const verbFamilySchema = new mongoose.Schema<VerbFamily>(
     updatedAt: { type: String, required: true }
   },
   { versionKey: false }
-)
+);
 
-export const VerbFamilyModel = getModel<VerbFamily>('VerbFamily', verbFamilySchema)
+export const VerbFamilyModel = getModel<VerbFamily>('VerbFamily', verbFamilySchema);

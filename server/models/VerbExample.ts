@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
-import { getModel } from '../utils/mongoose'
-import type { VerbExample } from '../../shared/types/verbs'
+import mongoose from 'mongoose';
+import { getModel } from '../utils/mongoose';
+import type { VerbExample } from '../../shared/types/verbs';
 
 const verbExampleSchema = new mongoose.Schema<VerbExample>(
   {
@@ -12,6 +12,6 @@ const verbExampleSchema = new mongoose.Schema<VerbExample>(
     updatedAt: { type: String, required: true }
   },
   { versionKey: false }
-)
+);
 
-export const VerbExampleModel = getModel<VerbExample>('VerbExample', verbExampleSchema)
+export const VerbExampleModel = getModel<VerbExample>('VerbExample', verbExampleSchema);

@@ -1,14 +1,14 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const readyStateLabels: Record<number, string> = {
   0: 'disconnected',
   1: 'connected',
   2: 'connecting',
   3: 'disconnecting'
-}
+};
 
 export default defineEventHandler(() => {
-  const readyState = mongoose.connection.readyState
+  const readyState = mongoose.connection.readyState;
 
   return {
     ok: true,
@@ -21,5 +21,5 @@ export default defineEventHandler(() => {
       database: mongoose.connection.name || null,
       host: mongoose.connection.host || null
     }
-  }
-})
+  };
+});

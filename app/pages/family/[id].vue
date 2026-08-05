@@ -1,47 +1,54 @@
 <script setup lang="ts">
-import type { VerbEntry, VerbExample, VerbFamily } from '../../../shared/types/verbs'
+import type { VerbEntry, VerbExample, VerbFamily } from '../../../shared/types/verbs';
 
 interface FamilyResponse {
-  familyId: string
-  found: boolean
-  family: VerbFamily | null
-  baseEntry: VerbEntry | null
-  variants: VerbEntry[]
-  examplesByEntryId: Record<string, VerbExample[]>
+  familyId: string;
+  found: boolean;
+  family: VerbFamily | null;
+  baseEntry: VerbEntry | null;
+  variants: VerbEntry[];
+  examplesByEntryId: Record<string, VerbExample[]>;
 }
 
-const route = useRoute()
-const familyId = computed(() => String(route.params.id))
+const route = useRoute();
+const familyId = computed(() => String(route.params.id));
 
-const { data, pending, error } = await useFetch<FamilyResponse>(() => `/api/families/${familyId.value}`, {
-  default: () => ({
-    familyId: familyId.value,
-    found: false,
-    family: null,
-    baseEntry: null,
-    variants: [],
-    examplesByEntryId: {}
-  }),
-  watch: [familyId]
-})
+const { data, pending, error } = await useFetch<FamilyResponse>(
+  () => `/api/families/${familyId.value}`,
+  {
+    default: () => ({
+      familyId: familyId.value,
+      found: false,
+      family: null,
+      baseEntry: null,
+      variants: [],
+      examplesByEntryId: {}
+    }),
+    watch: [familyId]
+  }
+);
 
-const family = computed(() => data.value?.family ?? null)
-const baseEntry = computed(() => data.value?.baseEntry ?? null)
-const variants = computed(() => data.value?.variants ?? [])
-const found = computed(() => data.value?.found ?? false)
+const family = computed(() => data.value?.family ?? null);
+const baseEntry = computed(() => data.value?.baseEntry ?? null);
+const variants = computed(() => data.value?.variants ?? []);
+const found = computed(() => data.value?.found ?? false);
 
 function getExamples(entryId?: string): VerbExample[] {
   if (!entryId) {
-    return []
+    return [];
   }
 
-  return data.value?.examplesByEntryId?.[entryId] ?? []
+  return data.value?.examplesByEntryId?.[entryId] ?? [];
 }
 
 useSeoMeta({
-  title: () => (baseEntry.value ? `${baseEntry.value.word} | WordPanda` : `Family ${familyId.value} | WordPanda`),
-  description: () => (baseEntry.value ? `Verb family for ${baseEntry.value.word}` : 'Verb family detail page')
-})
+  title: () =>
+    baseEntry.value
+      ? `${baseEntry.value.word} | WordPanda`
+      : `Family ${familyId.value} | WordPanda`,
+  description: () =>
+    baseEntry.value ? `Verb family for ${baseEntry.value.word}` : 'Verb family detail page'
+});
 </script>
 
 <template>
@@ -84,7 +91,11 @@ useSeoMeta({
           <p v-if="baseEntry.explanationRu" class="muted-text">{{ baseEntry.explanationRu }}</p>
 
           <ul v-if="getExamples(baseEntry._id).length" class="example-list">
-            <li v-for="example in getExamples(baseEntry._id)" :key="example._id" class="example-card">
+            <li
+              v-for="example in getExamples(baseEntry._id)"
+              :key="example._id"
+              class="example-card"
+            >
               <strong>{{ example.textDe }}</strong>
               <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
             </li>
@@ -98,9 +109,7 @@ useSeoMeta({
           <span class="badge">{{ variants.length }}</span>
         </div>
 
-        <p v-if="variants.length === 0" class="muted-text">
-          No variants stored yet.
-        </p>
+        <p v-if="variants.length === 0" class="muted-text">No variants stored yet.</p>
 
         <div v-else class="entry-grid">
           <article v-for="variant in variants" :key="variant._id" class="entry-card">
@@ -112,10 +121,17 @@ useSeoMeta({
             <p v-if="variant.translationRu">{{ variant.translationRu }}</p>
             <p v-if="variant.meaningDe" class="muted-text">{{ variant.meaningDe }}</p>
             <p v-if="variant.explanationRu" class="muted-text">{{ variant.explanationRu }}</p>
-            <p class="muted-text">Separable: {{ variant.isSeparable === null ? 'unknown' : variant.isSeparable ? 'yes' : 'no' }}</p>
+            <p class="muted-text">
+              Separable:
+              {{ variant.isSeparable === null ? 'unknown' : variant.isSeparable ? 'yes' : 'no' }}
+            </p>
 
             <ul v-if="getExamples(variant._id).length" class="example-list">
-              <li v-for="example in getExamples(variant._id)" :key="example._id" class="example-card">
+              <li
+                v-for="example in getExamples(variant._id)"
+                :key="example._id"
+                class="example-card"
+              >
                 <strong>{{ example.textDe }}</strong>
                 <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
               </li>
