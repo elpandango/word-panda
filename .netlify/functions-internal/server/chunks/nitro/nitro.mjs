@@ -4333,7 +4333,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "9bf62123-1dc7-436f-b4c2-35f4d0d1143d",
+    "buildId": "5aa40711-e2fa-4395-93f1-5a8cd0943b85",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -4363,7 +4363,7 @@ const _inlineRuntimeConfig = {
   "public": {
     "appName": "WordPanda"
   },
-  "mongodbUri": "",
+  "mongodbUri": "mongodb+srv://radchenko_eugen:123Spider.123@eugencluster.i3ssgtk.mongodb.net/word_panda",
   "authSecret": "",
   "adminEmail": "",
   "adminPasswordHash": ""

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { getModel } from '../utils/mongoose'
-import type { VerbExample } from '~/shared/types/verbs'
+import type { VerbExample } from '../../shared/types/verbs'
 
 const verbExampleSchema = new mongoose.Schema<VerbExample>(
   {
