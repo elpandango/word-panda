@@ -1,4 +1,24 @@
 <script setup lang="ts">
+import type { VerbEntry } from '../../shared/types/verbs'
+
+interface SearchResponse {
+  query: string
+  items: VerbEntry[]
+}
+
+const searchQuery = ref('')
+
+const { data, pending, error } = await useFetch<SearchResponse>('/api/search', {
+  query: computed(() => ({ q: searchQuery.value })),
+  default: () => ({ query: '', items: [] }),
+  lazy: true,
+  server: false,
+  watch: [searchQuery]
+})
+
+const items = computed(() => data.value?.items ?? [])
+const hasQuery = computed(() => searchQuery.value.trim().length > 0)
+
 useSeoMeta({
   title: 'WordPanda',
   description: 'Dictionary workspace for German verb families and prefix variants.'
@@ -6,33 +26,59 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="page-shell">
+  <main class="page-shell page-stack">
     <section class="hero-card">
-      <p class="eyebrow">Nuxt 4 Starter</p>
-      <h1>WordPanda is ready for a proper full-stack foundation.</h1>
+      <p class="eyebrow">Search</p>
+      <h1>Find a German verb family by base word or prefix variant.</h1>
       <p class="hero-copy">
-        This scaffold already includes Nuxt 4, Nitro, Pinia, PWA wiring, Mongo entry points, and server API stubs.
+        The frontend is now wired to live Mongo-backed API routes, so this search reads real data from WordPanda.
       </p>
+
+      <label class="search-block">
+        <span class="search-label">Search by word</span>
+        <input
+          v-model="searchQuery"
+          class="search-input"
+          type="search"
+          placeholder="stellen, einstellen, spüren, aufspüren..."
+        >
+      </label>
     </section>
 
-    <section class="grid-two">
-      <article class="info-card">
-        <h2>App layer</h2>
-        <ul>
-          <li>`app/pages/index.vue` and `app/pages/family/[id].vue` are in place.</li>
-          <li>`app/components/` is ready for shared UI.</li>
-          <li>`shared/types/verbs.ts` holds the domain model.</li>
-        </ul>
-      </article>
+    <section class="info-card page-stack-sm">
+      <div class="section-row">
+        <h2>Results</h2>
+        <span v-if="pending" class="muted-text">Searching...</span>
+      </div>
 
-      <article class="info-card">
-        <h2>Server layer</h2>
-        <ul>
-          <li>`server/plugins/mongodb.ts` is ready for Atlas connection.</li>
-          <li>`server/models/` contains initial mongoose models.</li>
-          <li>`server/api/` contains starter routes for auth, search and family details.</li>
-        </ul>
-      </article>
+      <p v-if="error" class="error-text">
+        Search failed. Check the dev server output for details.
+      </p>
+
+      <p v-else-if="!hasQuery" class="muted-text">
+        Type a word to query the live `/api/search` endpoint.
+      </p>
+
+      <p v-else-if="items.length === 0" class="muted-text">
+        No entries matched this query yet.
+      </p>
+
+      <ul v-else class="result-list">
+        <li v-for="item in items" :key="item._id">
+          <NuxtLink class="result-card" :to="`/family/${item.familyId}`">
+            <div>
+              <p class="result-kind">{{ item.role === 'base' ? 'Base verb' : 'Variant' }}</p>
+              <strong class="result-word">{{ item.word }}</strong>
+            </div>
+
+            <div class="result-meta">
+              <p v-if="item.translationRu">{{ item.translationRu }}</p>
+              <p v-else class="muted-text">Translation pending</p>
+              <p class="muted-text">Family: {{ item.familyId }}</p>
+            </div>
+          </NuxtLink>
+        </li>
+      </ul>
     </section>
   </main>
 </template>

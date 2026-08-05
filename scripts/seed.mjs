@@ -274,6 +274,8 @@ main().catch(async (error) => {
   console.error(error)
   try {
     await mongoose.disconnect()
-  } catch {}
+  } catch (disconnectError) {
+    console.error('Failed to disconnect after seed error', disconnectError)
+  }
   process.exit(1)
 })

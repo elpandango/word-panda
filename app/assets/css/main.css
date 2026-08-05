@@ -139,3 +139,139 @@ h1 {
     align-items: start;
   }
 }
+
+.page-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-stack-sm {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.search-block {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.search-label,
+.result-kind,
+.badge,
+.back-link {
+  font-size: 0.88rem;
+}
+
+.search-input {
+  width: 100%;
+  border: 1px solid rgba(24, 34, 29, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 1rem 1.1rem;
+  color: #18221d;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #99681b;
+  box-shadow: 0 0 0 4px rgba(153, 104, 27, 0.14);
+}
+
+.section-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.result-list,
+.example-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.result-list,
+.entry-grid,
+.example-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.result-card,
+.entry-card,
+.example-card {
+  border: 1px solid rgba(24, 34, 29, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.result-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.entry-card,
+.example-card {
+  padding: 1rem 1.1rem;
+}
+
+.entry-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.result-kind,
+.badge,
+.back-link {
+  color: #99681b;
+}
+
+.result-word {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.result-meta {
+  text-align: right;
+}
+
+.badge {
+  border-radius: 999px;
+  background: rgba(153, 104, 27, 0.12);
+  padding: 0.3rem 0.7rem;
+}
+
+.example-card strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.back-link {
+  text-decoration: none;
+}
+
+.muted-text {
+  color: #58625b;
+}
+
+.error-text {
+  color: #a33c2d;
+}
+
+@media (max-width: 800px) {
+  .section-row,
+  .result-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-meta {
+    text-align: left;
+  }
+}
