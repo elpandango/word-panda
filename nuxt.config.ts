@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     preset: 'netlify'
   },
   runtimeConfig: {
-    mongodbUri: '',
+    mongodbUri: process.env.MONGODB_URI || '',
     authSecret: '',
     adminEmail: '',
     adminPasswordHash: '',
