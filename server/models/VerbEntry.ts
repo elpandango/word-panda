@@ -4,6 +4,7 @@ import type { VerbEntry } from '../../shared/types/verbs'
 
 const verbEntrySchema = new mongoose.Schema<VerbEntry>(
   {
+    _id: { type: String, required: true },
     familyId: { type: String, required: true, index: true },
     role: { type: String, required: true },
     word: { type: String, required: true, index: true },

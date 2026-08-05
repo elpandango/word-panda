@@ -4,6 +4,7 @@ import type { VerbExample } from '../../shared/types/verbs'
 
 const verbExampleSchema = new mongoose.Schema<VerbExample>(
   {
+    _id: { type: String, required: true },
     entryId: { type: String, required: true, index: true },
     textDe: { type: String, required: true },
     translationRu: { type: String },

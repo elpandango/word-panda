@@ -10,7 +10,8 @@
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "seed": "node --env-file=.env scripts/seed.mjs"
   },
   "dependencies": {
     "@pinia/nuxt": "^1.0.1",
