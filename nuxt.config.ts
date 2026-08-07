@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     manifest: {
       name: 'WordPanda',
       short_name: 'WordPanda',
-      description: 'Shared dictionary for German verb families and prefix variants.',
+      description: 'Личная база немецких глаголов и их приставочных вариантов.',
       theme_color: '#f3efe6',
       background_color: '#f3efe6',
       display: 'standalone'

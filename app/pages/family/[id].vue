@@ -45,42 +45,40 @@ useSeoMeta({
   title: () =>
     baseEntry.value
       ? `${baseEntry.value.word} | WordPanda`
-      : `Family ${familyId.value} | WordPanda`,
+      : `Семейство ${familyId.value} | WordPanda`,
   description: () =>
-    baseEntry.value ? `Verb family for ${baseEntry.value.word}` : 'Verb family detail page'
+    baseEntry.value ? `Семейство глагола ${baseEntry.value.word}` : 'Страница семейства глагола'
 });
 </script>
 
 <template>
   <main class="page-shell page-stack">
-    <NuxtLink class="back-link" to="/">← Back to search</NuxtLink>
+    <NuxtLink class="back-link" to="/">← Назад к поиску</NuxtLink>
 
     <section v-if="pending" class="info-card">
-      <p class="muted-text">Loading family data...</p>
+      <p class="muted-text">Загружаем данные семейства...</p>
     </section>
 
     <section v-else-if="error" class="info-card">
-      <h1>Family request failed</h1>
-      <p class="error-text">Check the server output for the exact error.</p>
+      <h1>Не удалось загрузить семейство</h1>
+      <p class="error-text">Проверь вывод сервера, чтобы увидеть точную ошибку.</p>
     </section>
 
     <section v-else-if="!found || !family || !baseEntry" class="info-card">
-      <h1>Family not found</h1>
-      <p class="muted-text">The API did not find any family with id `{{ familyId }}`.</p>
+      <h1>Семейство не найдено</h1>
+      <p class="muted-text">API не нашёл семейство с id `{{ familyId }}`.</p>
     </section>
 
     <template v-else>
       <section class="hero-card">
-        <p class="eyebrow">Verb family</p>
+        <p class="eyebrow">Семейство глагола</p>
         <h1>{{ baseEntry.word }}</h1>
-        <p class="hero-copy">
-          Base entry, linked variants, and grouped examples are now loaded from `/api/families/:id`.
-        </p>
+        <p class="hero-copy">Здесь собраны базовый глагол, его варианты и связанные примеры.</p>
       </section>
 
       <section class="info-card page-stack-sm">
         <div class="section-row">
-          <h2>Base verb</h2>
+          <h2>Базовый глагол</h2>
           <span class="badge">{{ baseEntry.status }}</span>
         </div>
 
@@ -105,25 +103,25 @@ useSeoMeta({
 
       <section class="info-card page-stack-sm">
         <div class="section-row">
-          <h2>Variants</h2>
+          <h2>Варианты</h2>
           <span class="badge">{{ variants.length }}</span>
         </div>
 
-        <p v-if="variants.length === 0" class="muted-text">No variants stored yet.</p>
+        <p v-if="variants.length === 0" class="muted-text">Варианты пока не добавлены.</p>
 
         <div v-else class="entry-grid">
           <article v-for="variant in variants" :key="variant._id" class="entry-card">
             <div class="section-row">
               <p class="result-word">{{ variant.word }}</p>
-              <span class="badge">{{ variant.prefix || 'no prefix' }}</span>
+              <span class="badge">{{ variant.prefix || 'без приставки' }}</span>
             </div>
 
             <p v-if="variant.translationRu">{{ variant.translationRu }}</p>
             <p v-if="variant.meaningDe" class="muted-text">{{ variant.meaningDe }}</p>
             <p v-if="variant.explanationRu" class="muted-text">{{ variant.explanationRu }}</p>
             <p class="muted-text">
-              Separable:
-              {{ variant.isSeparable === null ? 'unknown' : variant.isSeparable ? 'yes' : 'no' }}
+              Отделяемая приставка:
+              {{ variant.isSeparable === null ? 'не указано' : variant.isSeparable ? 'да' : 'нет' }}
             </p>
 
             <ul v-if="getExamples(variant._id).length" class="example-list">
