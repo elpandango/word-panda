@@ -96,24 +96,24 @@ function handleClick(event: MouseEvent): void {
 }
 
 .app-button--primary {
-  background: #143b2c;
-  color: #fffaf2;
-  border-color: #143b2c;
+  background: var(--accent-strong);
+  color: var(--accent-contrast);
+  border-color: var(--accent-strong);
 }
 
 .app-button--primary:hover:enabled {
-  background: #1a4c39;
-  border-color: #1a4c39;
+  background: color-mix(in srgb, var(--accent-strong) 88%, white 12%);
+  border-color: color-mix(in srgb, var(--accent-strong) 88%, white 12%);
 }
 
 .app-button--ghost {
-  background: rgba(255, 255, 255, 0.72);
-  color: #143b2c;
-  border-color: rgba(24, 34, 29, 0.12);
+  background: var(--surface-elevated);
+  color: var(--accent-strong);
+  border-color: color-mix(in srgb, var(--surface-border) 100%, white 10%);
 }
 
 .app-button--ghost:hover:enabled {
-  background: rgba(153, 104, 27, 0.08);
+  background: var(--accent-soft);
 }
 
 .app-button:disabled {

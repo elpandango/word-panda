@@ -1,6 +1,9 @@
 import crypto from 'node:crypto';
 import process from 'node:process';
+import { pathToFileURL } from 'node:url';
 import mongoose from 'mongoose';
+
+import { seedFamiliesDraft } from './seed-draft-data.mjs';
 
 const verbFamilySchema = new mongoose.Schema(
   {
@@ -132,98 +135,9 @@ function buildFamily(seed) {
   return { family, entries: [baseEntry, ...variants], examples };
 }
 
-const seedFamilies = [
-  {
-    base: {
-      word: 'stellen',
-      translationRu: 'ставить, размещать',
-      meaningDe: 'etwas an einen bestimmten Platz bringen',
-      explanationRu: 'Базовый глагол для большого числа приставочных вариантов.',
-      examples: [
-        {
-          textDe: 'Ich stelle die Tasse auf den Tisch.',
-          translationRu: 'Я ставлю чашку на стол.'
-        }
-      ]
-    },
-    variants: [
-      {
-        word: 'einstellen',
-        prefix: 'ein',
-        isSeparable: true,
-        translationRu: 'настраивать; принимать на работу',
-        meaningDe: 'etwas justieren oder jemanden anstellen',
-        explanationRu: 'Часто употребляется и в техническом, и в рабочем контексте.',
-        examples: [
-          {
-            textDe: 'Kannst du bitte die Lautstärke richtig einstellen?',
-            translationRu: 'Можешь, пожалуйста, правильно настроить громкость?'
-          }
-        ]
-      },
-      {
-        word: 'feststellen',
-        prefix: 'fest',
-        isSeparable: true,
-        translationRu: 'устанавливать, констатировать',
-        meaningDe: 'etwas eindeutig erkennen oder fixieren',
-        explanationRu: 'Очень частый глагол в письменной и формальной речи.',
-        examples: [
-          {
-            textDe: 'Die Polizei stellte den Schaden sofort fest.',
-            translationRu: 'Полиция сразу установила ущерб.'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    base: {
-      word: 'spüren',
-      translationRu: 'чувствовать, ощущать',
-      meaningDe: 'etwas körperlich oder innerlich wahrnehmen',
-      explanationRu: 'Подходит для физического ощущения и внутреннего чувства.',
-      examples: [
-        {
-          textDe: 'Ich spüre den kalten Wind im Gesicht.',
-          translationRu: 'Я чувствую холодный ветер на лице.'
-        }
-      ]
-    },
-    variants: [
-      {
-        word: 'verspüren',
-        prefix: 'ver',
-        isSeparable: false,
-        translationRu: 'испытывать, ощущать',
-        meaningDe: 'ein Gefühl oder Bedürfnis empfinden',
-        explanationRu: 'Часто с Hunger, Lust, Schmerz, Angst.',
-        examples: [
-          {
-            textDe: 'Nach dem Lauf verspürte sie großen Durst.',
-            translationRu: 'После пробежки она почувствовала сильную жажду.'
-          }
-        ]
-      },
-      {
-        word: 'aufspüren',
-        prefix: 'auf',
-        isSeparable: true,
-        translationRu: 'выслеживать, обнаруживать',
-        meaningDe: 'jemanden oder etwas suchen und finden',
-        explanationRu: 'Часто про поиск следов, людей, ошибок или источников.',
-        examples: [
-          {
-            textDe: 'Die Reporter konnten die Quelle schnell aufspüren.',
-            translationRu: 'Репортеры смогли быстро выйти на источник.'
-          }
-        ]
-      }
-    ]
-  }
-];
+const seedFamilies = seedFamiliesDraft;
 
-const main = async () => {
+export const main = async () => {
   const uri = process.env.MONGODB_URI;
 
   if (!uri) {
@@ -271,7 +185,8 @@ const main = async () => {
         ok: true,
         database: mongoose.connection.name,
         createdFamilies,
-        skippedFamilies
+        skippedFamilies,
+        totalSeedFamilies: seedFamilies.length
       },
       null,
       2
@@ -281,12 +196,18 @@ const main = async () => {
   await mongoose.disconnect();
 };
 
-main().catch(async (error) => {
-  console.error(error);
-  try {
-    await mongoose.disconnect();
-  } catch (disconnectError) {
-    console.error('Failed to disconnect after seed error', disconnectError);
-  }
-  process.exit(1);
-});
+const isDirectRun = process.argv[1]
+  ? import.meta.url === pathToFileURL(process.argv[1]).href
+  : false;
+
+if (isDirectRun) {
+  main().catch(async (error) => {
+    console.error(error);
+    try {
+      await mongoose.disconnect();
+    } catch (disconnectError) {
+      console.error('Failed to disconnect after seed error', disconnectError);
+    }
+    process.exit(1);
+  });
+}
