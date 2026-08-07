@@ -71,7 +71,7 @@ function handleClick(event: MouseEvent): void {
   justify-content: center;
   gap: 9px;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: 16px;
   padding: 12px 16px;
   text-decoration: none;
   transition:

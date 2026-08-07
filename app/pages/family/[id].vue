@@ -38,6 +38,7 @@ type EntryModalMode = 'create-variant' | 'edit-base' | 'edit-variant';
 
 const route = useRoute();
 const router = useRouter();
+const lastCollectionRoute = useLastCollectionRoute();
 const familyId = computed(() => String(route.params.id));
 const isEntryModalOpen = ref(false);
 const isSubmittingEntry = ref(false);
@@ -136,6 +137,19 @@ function getVariantWordParts(variant: VerbEntry): VariantWordParts {
     stem: variant.word.slice(prefix.length),
     isSeparable: variant.isSeparable === true
   };
+}
+
+async function handleBackNavigation(): Promise<void> {
+  if (import.meta.client) {
+    const backTarget = window.history.state?.back;
+
+    if (typeof backTarget === 'string' && backTarget.startsWith('/')) {
+      await router.back();
+      return;
+    }
+  }
+
+  await router.push(lastCollectionRoute.value || '/');
 }
 
 function openCreateVariantForm(): void {
@@ -290,24 +304,26 @@ useSeoMeta({
 
 <template>
   <main class="page-shell page-stack">
-    <NuxtLink class="back-link" to="/">← Назад к поиску</NuxtLink>
+    <button class="back-link back-link--button" type="button" @click="handleBackNavigation">
+      ← Назад
+    </button>
 
-    <section v-if="pending" class="info-card">
+    <section v-if="pending" class="info-card surface-calm">
       <p class="muted-text">Загружаем данные семейства...</p>
     </section>
 
-    <section v-else-if="error" class="info-card">
+    <section v-else-if="error" class="info-card surface-calm">
       <h1>Не удалось загрузить семейство</h1>
       <p class="error-text">Проверь вывод сервера, чтобы увидеть точную ошибку.</p>
     </section>
 
-    <section v-else-if="!found || !family || !baseEntry" class="info-card">
+    <section v-else-if="!found || !family || !baseEntry" class="info-card surface-calm">
       <h1>Семейство не найдено</h1>
       <p class="muted-text">API не нашёл семейство с id `{{ familyId }}`.</p>
     </section>
 
     <template v-else>
-      <section class="hero-card">
+      <section class="hero-card surface-calm">
         <p class="eyebrow">Семейство глагола</p>
         <h1>{{ baseEntry.word }}</h1>
         <p class="hero-copy">Здесь собраны базовый глагол, его варианты и связанные примеры.</p>
@@ -319,7 +335,7 @@ useSeoMeta({
           <AppButton variant="ghost" size="sm" @click="openEditBaseForm">Редактировать</AppButton>
         </div>
 
-        <article class="entry-card">
+        <article class="entry-card surface-calm">
           <div class="entry-card__main">
             <p class="result-word">{{ baseEntry.word }}</p>
             <p v-if="baseEntry.translationRu" class="entry-card__translation">
@@ -360,7 +376,7 @@ useSeoMeta({
         <p v-if="variants.length === 0" class="muted-text">Варианты пока не добавлены.</p>
 
         <div v-else class="entry-grid">
-          <article v-for="variant in variants" :key="variant._id" class="entry-card">
+          <article v-for="variant in variants" :key="variant._id" class="entry-card surface-calm">
             <div class="entry-card__main">
               <div class="section-row">
                 <p class="result-word variant-word">

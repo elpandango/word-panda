@@ -8,6 +8,11 @@ const navigationItems = [
     icon: 'home'
   },
   {
+    label: 'Слова',
+    to: '/browse',
+    icon: 'list'
+  },
+  {
     label: 'Тренировка',
     to: '/training',
     icon: 'spark'
@@ -25,7 +30,7 @@ function isActive(path: string): boolean {
 
 <template>
   <nav class="bottom-nav" aria-label="Основная навигация">
-    <div class="bottom-nav__inner">
+    <div class="bottom-nav__inner surface-floating">
       <NuxtLink
         v-for="item in navigationItems"
         :key="item.to"
@@ -41,6 +46,50 @@ function isActive(path: string): boolean {
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="1.8"
+            />
+          </svg>
+          <svg v-else-if="item.icon === 'list'" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M8 7H19"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+            <path
+              d="M8 12H19"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+            <path
+              d="M8 17H19"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+            <path
+              d="M5 7H5.01"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.4"
+            />
+            <path
+              d="M5 12H5.01"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.4"
+            />
+            <path
+              d="M5 17H5.01"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.4"
             />
           </svg>
           <svg v-else viewBox="0 0 24 24" fill="none">
@@ -65,3 +114,76 @@ function isActive(path: string): boolean {
     </div>
   </nav>
 </template>
+
+<style scoped>
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  padding: 0 0 env(safe-area-inset-bottom, 0px);
+  pointer-events: none;
+}
+
+.bottom-nav__inner {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 8px 8px calc(env(safe-area-inset-bottom, 0px) + 8px);
+  border-top: 1px solid var(--surface-border);
+  border-radius: 0;
+  pointer-events: auto;
+}
+
+.bottom-nav__item {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.bottom-nav__item:hover {
+  color: var(--accent-strong);
+}
+
+.bottom-nav__item--active {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.bottom-nav__icon {
+  width: 23px;
+  height: 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-nav__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-nav__label {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (min-width: 801px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+</style>

@@ -254,7 +254,7 @@ function handleDelete(): void {
 </script>
 
 <template>
-  <section class="form-card page-stack-sm">
+  <section class="entry-create-form page-stack-sm">
     <div v-if="mode === 'variant' && contextWord" class="form-context">
       <span class="form-context__label">Семейство:</span>
       <strong class="form-context__value">{{ contextWord }}</strong>
@@ -273,7 +273,7 @@ function handleDelete(): void {
         <span class="form-label">Слово</span>
         <input
           v-model="form.word"
-          class="search-input"
+          class="search-input surface-field"
           :class="{ 'search-input--error': isWordInvalid }"
           type="text"
           placeholder="например, stellen"
@@ -286,7 +286,7 @@ function handleDelete(): void {
         <span class="form-label">Перевод</span>
         <input
           v-model="form.translationRu"
-          class="search-input"
+          class="search-input surface-field"
           :class="{ 'search-input--error': isTranslationInvalid }"
           type="text"
           placeholder="например, ставить"
@@ -301,7 +301,7 @@ function handleDelete(): void {
         <span class="form-label">Приставка</span>
         <input
           :value="form.prefix"
-          class="search-input"
+          class="search-input surface-field"
           type="text"
           placeholder="например, ein"
           @input="handlePrefixInput"
@@ -310,7 +310,7 @@ function handleDelete(): void {
 
       <label v-if="mode === 'variant'" class="form-field">
         <span class="form-label">Отделяемость</span>
-        <select v-model="form.isSeparable" class="search-input">
+        <select v-model="form.isSeparable" class="search-input surface-field">
           <option value="">Не указано</option>
           <option value="true">Отделяемая</option>
           <option value="false">Неотделяемая</option>
@@ -321,7 +321,7 @@ function handleDelete(): void {
         <span class="form-label">Пояснение</span>
         <textarea
           v-model="form.explanationRu"
-          class="search-input form-textarea"
+          class="search-input surface-field form-textarea"
           placeholder="Короткая заметка по смыслу или употреблению"
           rows="4"
         />
@@ -334,7 +334,7 @@ function handleDelete(): void {
           <span class="form-label">Немецкое предложение</span>
           <textarea
             v-model="form.exampleTextDe"
-            class="search-input form-textarea form-textarea--example"
+            class="search-input surface-field form-textarea form-textarea--example"
             placeholder="например, Ich stelle den Stuhl an die Wand."
             rows="3"
           />
@@ -344,7 +344,7 @@ function handleDelete(): void {
           <span class="form-label">Перевод примера</span>
           <textarea
             v-model="form.exampleTranslationRu"
-            class="search-input form-textarea form-textarea--example"
+            class="search-input surface-field form-textarea form-textarea--example"
             placeholder="например, Я ставлю стул к стене."
             rows="3"
           />
@@ -391,3 +391,107 @@ function handleDelete(): void {
     </form>
   </section>
 </template>
+
+<style scoped>
+.entry-create-form {
+  padding: 0;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-label {
+  font-family: var(--font-family-heading);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 112px;
+}
+
+.form-error {
+  margin-bottom: 0;
+}
+
+.form-actions {
+  padding-top: 4px;
+}
+
+.form-actions--stacked {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+.search-input--error {
+  border-color: #a33c2d;
+  box-shadow: 0 0 0 4px rgba(163, 60, 45, 0.12);
+}
+
+.search-input--error:focus {
+  border-color: #a33c2d;
+  box-shadow: 0 0 0 4px rgba(163, 60, 45, 0.16);
+}
+
+.form-field-error {
+  color: #a33c2d;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.form-example-block {
+  padding-top: 4px;
+}
+
+.form-example-title {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--font-family-heading);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.form-textarea--example {
+  min-height: 96px;
+}
+
+.form-context {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 8px 12px;
+  border-radius: 16px;
+  background: var(--success-soft);
+}
+
+.form-context__label {
+  color: var(--text-muted);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.form-context__value {
+  color: var(--accent-strong);
+  font-family: var(--font-family-heading);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (min-width: 641px) {
+  .form-actions--stacked {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+</style>

@@ -1,5 +1,19 @@
 <script setup lang="ts">
+const route = useRoute();
 const { activeSeason } = useSeasonTheme();
+const lastCollectionRoute = useLastCollectionRoute();
+
+watch(
+  () => route.fullPath,
+  (fullPath) => {
+    if (route.path.startsWith('/family/')) {
+      return;
+    }
+
+    lastCollectionRoute.value = fullPath;
+  },
+  { immediate: true }
+);
 </script>
 
 <template>

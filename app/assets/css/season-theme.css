@@ -1,0 +1,158 @@
+:root {
+  --page-bg-start: #f7eddc;
+  --page-bg-end: #d6e6dd;
+  --ambient-1: rgba(244, 194, 108, 0.34);
+  --ambient-2: rgba(151, 195, 214, 0.34);
+  --ambient-3: rgba(255, 245, 224, 0.62);
+  --grain-color: rgba(255, 255, 255, 0.16);
+  --calm-light: rgba(255, 253, 250, 0.78);
+  --calm-strong: rgba(255, 252, 248, 0.9);
+  --calm-edge: rgba(255, 255, 255, 0.34);
+  --calm-shadow: rgba(76, 58, 31, 0.08);
+  --glass-light: rgba(252, 252, 252, 0.42);
+  --glass-strong: rgba(252, 252, 252, 0.58);
+  --glass-edge: rgba(255, 255, 255, 0.42);
+  --glass-shadow: rgba(76, 58, 31, 0.1);
+  --floating-light: rgba(252, 252, 252, 0.5);
+  --floating-strong: rgba(252, 252, 252, 0.68);
+  --floating-edge: rgba(255, 255, 255, 0.5);
+  --floating-shadow: rgba(76, 58, 31, 0.12);
+  --surface-bg: rgba(255, 252, 247, 0.8);
+  --surface-bg-strong: rgba(255, 252, 247, 0.94);
+  --surface-elevated: rgba(255, 255, 255, 0.72);
+  --surface-border: rgba(32, 41, 34, 0.08);
+  --text-primary: #1b2520;
+  --text-muted: #5d645c;
+  --accent: #a36b28;
+  --accent-soft: rgba(163, 107, 40, 0.12);
+  --accent-focus: rgba(163, 107, 40, 0.18);
+  --accent-strong: #1f4a3b;
+  --accent-contrast: #fffaf2;
+  --success-soft: rgba(31, 74, 59, 0.09);
+  --shadow-color: rgba(76, 58, 31, 0.12);
+  --modal-backdrop: rgba(16, 24, 20, 0.48);
+}
+
+.app-shell[data-season='spring'] {
+  --page-bg-start: #f5f1e7;
+  --page-bg-end: #dbead6;
+  --ambient-1: rgba(197, 223, 173, 0.52);
+  --ambient-2: rgba(255, 227, 202, 0.42);
+  --ambient-3: rgba(250, 249, 236, 0.6);
+  --calm-light: rgba(252, 253, 249, 0.78);
+  --calm-strong: rgba(251, 253, 248, 0.9);
+  --calm-edge: rgba(255, 255, 255, 0.36);
+  --calm-shadow: rgba(70, 88, 56, 0.08);
+  --glass-light: rgba(250, 252, 247, 0.42);
+  --glass-strong: rgba(251, 253, 248, 0.58);
+  --glass-edge: rgba(255, 255, 255, 0.44);
+  --glass-shadow: rgba(70, 88, 56, 0.1);
+  --floating-light: rgba(250, 253, 248, 0.52);
+  --floating-strong: rgba(251, 253, 248, 0.68);
+  --floating-edge: rgba(255, 255, 255, 0.52);
+  --floating-shadow: rgba(70, 88, 56, 0.12);
+  --surface-bg: rgba(255, 252, 247, 0.78);
+  --surface-bg-strong: rgba(255, 252, 247, 0.92);
+  --surface-elevated: rgba(255, 255, 255, 0.74);
+  --text-primary: #1d2b23;
+  --text-muted: #5f6d61;
+  --accent: #72954f;
+  --accent-soft: rgba(114, 149, 79, 0.13);
+  --accent-focus: rgba(114, 149, 79, 0.2);
+  --accent-strong: #284734;
+  --success-soft: rgba(40, 71, 52, 0.1);
+  --shadow-color: rgba(70, 88, 56, 0.12);
+}
+
+.app-shell[data-season='summer'] {
+  --page-bg-start: #f7eddc;
+  --page-bg-end: #d6e6dd;
+  --ambient-1: rgba(244, 194, 108, 0.34);
+  --ambient-2: rgba(151, 195, 214, 0.34);
+  --ambient-3: rgba(255, 245, 224, 0.62);
+  --calm-light: rgba(255, 253, 249, 0.78);
+  --calm-strong: rgba(255, 252, 248, 0.9);
+  --calm-edge: rgba(255, 255, 255, 0.34);
+  --calm-shadow: rgba(76, 58, 31, 0.08);
+  --glass-light: rgba(252, 252, 252, 0.42);
+  --glass-strong: rgba(252, 252, 252, 0.58);
+  --glass-edge: rgba(255, 255, 255, 0.42);
+  --glass-shadow: rgba(76, 58, 31, 0.1);
+  --floating-light: rgba(252, 252, 252, 0.5);
+  --floating-strong: rgba(252, 252, 252, 0.68);
+  --floating-edge: rgba(255, 255, 255, 0.5);
+  --floating-shadow: rgba(76, 58, 31, 0.12);
+  --surface-bg: rgba(255, 252, 247, 0.8);
+  --surface-bg-strong: rgba(255, 252, 247, 0.94);
+  --surface-elevated: rgba(255, 255, 255, 0.72);
+  --text-primary: #1b2520;
+  --text-muted: #5d645c;
+  --accent: #a36b28;
+  --accent-soft: rgba(163, 107, 40, 0.12);
+  --accent-focus: rgba(163, 107, 40, 0.18);
+  --accent-strong: #1f4a3b;
+  --success-soft: rgba(31, 74, 59, 0.09);
+  --shadow-color: rgba(76, 58, 31, 0.12);
+}
+
+.app-shell[data-season='autumn'] {
+  --page-bg-start: #f2e4d8;
+  --page-bg-end: #dbd5c8;
+  --ambient-1: rgba(171, 93, 54, 0.28);
+  --ambient-2: rgba(139, 126, 79, 0.24);
+  --ambient-3: rgba(247, 237, 220, 0.55);
+  --calm-light: rgba(255, 251, 247, 0.78);
+  --calm-strong: rgba(255, 249, 244, 0.9);
+  --calm-edge: rgba(255, 255, 255, 0.33);
+  --calm-shadow: rgba(92, 59, 38, 0.09);
+  --glass-light: rgba(254, 250, 245, 0.42);
+  --glass-strong: rgba(255, 251, 247, 0.58);
+  --glass-edge: rgba(255, 255, 255, 0.4);
+  --glass-shadow: rgba(92, 59, 38, 0.12);
+  --floating-light: rgba(255, 251, 247, 0.5);
+  --floating-strong: rgba(255, 251, 247, 0.68);
+  --floating-edge: rgba(255, 255, 255, 0.48);
+  --floating-shadow: rgba(92, 59, 38, 0.14);
+  --surface-bg: rgba(254, 250, 245, 0.82);
+  --surface-bg-strong: rgba(255, 252, 248, 0.95);
+  --surface-elevated: rgba(255, 255, 255, 0.76);
+  --text-primary: #2b211c;
+  --text-muted: #6c625a;
+  --accent: #9d5c32;
+  --accent-soft: rgba(157, 92, 50, 0.12);
+  --accent-focus: rgba(157, 92, 50, 0.18);
+  --accent-strong: #463627;
+  --success-soft: rgba(70, 54, 39, 0.1);
+  --shadow-color: rgba(92, 59, 38, 0.14);
+}
+
+.app-shell[data-season='winter'] {
+  --page-bg-start: #eef4f7;
+  --page-bg-end: #dae8ef;
+  --ambient-1: rgba(186, 215, 229, 0.46);
+  --ambient-2: rgba(255, 255, 255, 0.48);
+  --ambient-3: rgba(223, 238, 246, 0.62);
+  --calm-light: rgba(251, 254, 255, 0.78);
+  --calm-strong: rgba(248, 252, 255, 0.9);
+  --calm-edge: rgba(255, 255, 255, 0.38);
+  --calm-shadow: rgba(54, 82, 100, 0.08);
+  --glass-light: rgba(248, 252, 255, 0.42);
+  --glass-strong: rgba(250, 254, 255, 0.6);
+  --glass-edge: rgba(255, 255, 255, 0.5);
+  --glass-shadow: rgba(54, 82, 100, 0.11);
+  --floating-light: rgba(250, 254, 255, 0.54);
+  --floating-strong: rgba(250, 254, 255, 0.72);
+  --floating-edge: rgba(255, 255, 255, 0.56);
+  --floating-shadow: rgba(54, 82, 100, 0.13);
+  --surface-bg: rgba(250, 253, 255, 0.78);
+  --surface-bg-strong: rgba(252, 254, 255, 0.92);
+  --surface-elevated: rgba(255, 255, 255, 0.78);
+  --text-primary: #1b2830;
+  --text-muted: #5a6974;
+  --accent: #63869a;
+  --accent-soft: rgba(99, 134, 154, 0.13);
+  --accent-focus: rgba(99, 134, 154, 0.2);
+  --accent-strong: #274a5f;
+  --success-soft: rgba(39, 74, 95, 0.1);
+  --shadow-color: rgba(54, 82, 100, 0.13);
+}

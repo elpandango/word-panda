@@ -7,7 +7,9 @@ useSeoMeta({
 
 <template>
   <main class="page-shell page-stack">
-    <section class="hero-card">
+    <NuxtLink class="back-link" to="/">← На главную</NuxtLink>
+
+    <section class="hero-card surface-calm">
       <p class="eyebrow">Тренировка</p>
       <h1>Здесь появится тренировочный режим.</h1>
       <p class="hero-copy">
@@ -16,7 +18,7 @@ useSeoMeta({
       </p>
     </section>
 
-    <section class="info-card page-stack-sm">
+    <section class="info-card page-stack-sm surface-calm">
       <h2>Что можно заложить дальше</h2>
       <ul>
         <li>случайная подборка глаголов на 5, 10 или 20 карточек;</li>

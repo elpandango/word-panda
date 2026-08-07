@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/season-theme.css', '~/assets/css/main.css'],
   modules: ['@pinia/nuxt', '@vite-pwa/nuxt', '@nuxt/eslint'],
   nitro: {
     preset: 'netlify'

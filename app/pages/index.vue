@@ -147,7 +147,7 @@ useSeoMeta({
 <template>
   <main class="page-shell home-layout">
     <div class="page-stack">
-      <section class="hero-card page-stack-sm">
+      <section class="hero-card page-stack-sm surface-calm">
         <div class="section-row">
           <h2>Поиск</h2>
           <AppButton size="sm" @click="openCreateBaseForm">Добавить слово</AppButton>
@@ -159,14 +159,14 @@ useSeoMeta({
           <span class="search-label">Поиск по слову</span>
           <input
             v-model="searchQuery"
-            class="search-input"
+            class="search-input surface-field"
             type="search"
             placeholder="stellen, einstellen, spüren, aufspüren..."
           />
         </label>
       </section>
 
-      <section class="info-card page-stack-sm">
+      <section class="info-card page-stack-sm surface-calm">
         <div class="section-row">
           <h2>Результаты</h2>
           <span v-if="hasQuery && pending" class="muted-text">Ищем...</span>
@@ -184,7 +184,7 @@ useSeoMeta({
 
         <ul v-else class="result-list">
           <li v-for="item in items" :key="item._id">
-            <NuxtLink class="result-card" :to="`/family/${item.familyId}`">
+            <NuxtLink class="result-card surface-glass" :to="`/family/${item.familyId}`">
               <div>
                 <p class="result-kind">{{ formatEntryMeta(item) }}</p>
                 <strong class="result-word">{{ item.word }}</strong>
@@ -204,7 +204,7 @@ useSeoMeta({
     </div>
 
     <aside class="home-sidebar page-stack-sm">
-      <section class="info-card page-stack-sm">
+      <section class="info-card page-stack-sm surface-calm">
         <div class="section-row">
           <h2>Последние добавленные</h2>
           <AppButton
@@ -228,7 +228,10 @@ useSeoMeta({
 
         <ul v-else class="result-list compact-list">
           <li v-for="item in recentItems" :key="item._id">
-            <NuxtLink class="result-card result-card--compact" :to="`/family/${item.familyId}`">
+            <NuxtLink
+              class="result-card result-card--compact surface-glass"
+              :to="`/family/${item.familyId}`"
+            >
               <div>
                 <p class="result-kind">{{ formatEntryMeta(item) }}</p>
                 <strong class="result-word">{{ item.word }}</strong>
