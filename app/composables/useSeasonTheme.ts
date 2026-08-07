@@ -1,11 +1,7 @@
 type SeasonName = 'spring' | 'summer' | 'autumn' | 'winter';
 type SeasonOverride = 'auto' | SeasonName;
 type SeasonAccent =
-  | 'none'
-  | 'spring-blossom'
-  | 'summer-bamboo'
-  | 'autumn-leaves'
-  | 'winter-holiday';
+  'none' | 'spring-blossom' | 'summer-bamboo' | 'autumn-leaves' | 'winter-holiday';
 
 interface SeasonThemeOption {
   key: SeasonOverride;
@@ -112,11 +108,13 @@ export function useSeasonTheme() {
     return 'none';
   });
   const activeOption = computed<SeasonThemeOption>(() => {
-    return seasonThemeOptions.find((option) => option.key === seasonOverride.value) ?? {
-      key: 'auto',
-      label: 'Авто',
-      note: 'По текущей дате'
-    };
+    return (
+      seasonThemeOptions.find((option) => option.key === seasonOverride.value) ?? {
+        key: 'auto',
+        label: 'Авто',
+        note: 'По текущей дате'
+      }
+    );
   });
 
   function setSeasonOverride(nextValue: SeasonOverride): void {

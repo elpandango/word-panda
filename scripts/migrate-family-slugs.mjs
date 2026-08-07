@@ -29,9 +29,11 @@ const verbEntrySchema = new mongoose.Schema(
 );
 
 const VerbFamilyModel =
-  mongoose.models.VerbFamilySlugMigration || mongoose.model('VerbFamilySlugMigration', verbFamilySchema);
+  mongoose.models.VerbFamilySlugMigration ||
+  mongoose.model('VerbFamilySlugMigration', verbFamilySchema);
 const VerbEntryModel =
-  mongoose.models.VerbEntrySlugMigration || mongoose.model('VerbEntrySlugMigration', verbEntrySchema);
+  mongoose.models.VerbEntrySlugMigration ||
+  mongoose.model('VerbEntrySlugMigration', verbEntrySchema);
 
 async function main() {
   await mongoose.connect(uri);
@@ -49,13 +51,17 @@ async function main() {
     const slug = slugifyFamilyWord(baseEntry.word);
 
     if (!slug) {
-      throw new Error(`Could not build slug for family ${family._id} from word "${baseEntry.word}"`);
+      throw new Error(
+        `Could not build slug for family ${family._id} from word "${baseEntry.word}"`
+      );
     }
 
     const existingFamilyId = slugsInUse.get(slug);
 
     if (existingFamilyId && existingFamilyId !== family._id) {
-      throw new Error(`Slug collision: "${slug}" for families ${existingFamilyId} and ${family._id}`);
+      throw new Error(
+        `Slug collision: "${slug}" for families ${existingFamilyId} and ${family._id}`
+      );
     }
 
     slugsInUse.set(slug, family._id);

@@ -30,52 +30,51 @@ function isActive(path: string): boolean {
   <header class="site-header surface-floating">
     <div class="site-header__inner">
       <div class="site-header__brand-group">
-        <NuxtLink class="brand" to="/">WordPanda</NuxtLink>
-        <p class="site-header__tagline">
-          Личная база немецких глаголов и их приставочных семейств.
-        </p>
-      </div>
+        <div class="site-header__brand-line">
+          <div
+            v-if="activeAccent !== 'none'"
+            class="site-header__accent"
+            :data-accent="activeAccent"
+            aria-hidden="true"
+          >
+            <template v-if="activeAccent === 'spring-blossom'">
+              <span class="accent-leaf accent-leaf--spring-main" />
+              <span class="accent-leaf accent-leaf--spring-soft" />
+              <span class="accent-bud accent-bud--one" />
+              <span class="accent-bud accent-bud--two" />
+              <span class="accent-stem accent-stem--spring" />
+            </template>
 
-      <div
-        v-if="activeAccent !== 'none'"
-        class="site-header__accent"
-        :data-accent="activeAccent"
-        aria-hidden="true"
-      >
-        <template v-if="activeAccent === 'spring-blossom'">
-          <span class="accent-leaf accent-leaf--spring-main" />
-          <span class="accent-leaf accent-leaf--spring-soft" />
-          <span class="accent-bud accent-bud--one" />
-          <span class="accent-bud accent-bud--two" />
-          <span class="accent-stem accent-stem--spring" />
-        </template>
+            <template v-else-if="activeAccent === 'summer-bamboo'">
+              <span class="accent-leaf accent-leaf--summer-main" />
+              <span class="accent-leaf accent-leaf--summer-soft" />
+              <span class="accent-bud accent-bud--summer-one" />
+              <span class="accent-bud accent-bud--summer-two" />
+              <span class="accent-stem accent-stem--summer" />
+            </template>
 
-        <template v-else-if="activeAccent === 'summer-bamboo'">
-          <span class="accent-leaf accent-leaf--summer-main" />
-          <span class="accent-leaf accent-leaf--summer-soft" />
-          <span class="accent-bud accent-bud--summer-one" />
-          <span class="accent-bud accent-bud--summer-two" />
-          <span class="accent-stem accent-stem--summer" />
-        </template>
+            <template v-else-if="activeAccent === 'autumn-leaves'">
+              <span class="accent-leaf accent-leaf--rust" />
+              <span class="accent-leaf accent-leaf--gold" />
+              <span class="accent-stem accent-stem--autumn" />
+            </template>
 
-        <template v-else-if="activeAccent === 'autumn-leaves'">
-          <span class="accent-leaf accent-leaf--rust" />
-          <span class="accent-leaf accent-leaf--gold" />
-          <span class="accent-stem accent-stem--autumn" />
-        </template>
+            <template v-else>
+              <span class="accent-tree">
+                <span class="accent-tree__tier accent-tree__tier--top" />
+                <span class="accent-tree__tier accent-tree__tier--middle" />
+                <span class="accent-tree__tier accent-tree__tier--bottom" />
+                <span class="accent-tree__trunk" />
+                <span class="accent-tree__ornament accent-tree__ornament--red" />
+                <span class="accent-tree__ornament accent-tree__ornament--gold" />
+                <span class="accent-tree__ornament accent-tree__ornament--blue" />
+                <span class="accent-tree__star" />
+              </span>
+            </template>
+          </div>
 
-        <template v-else>
-          <span class="accent-tree">
-            <span class="accent-tree__tier accent-tree__tier--top" />
-            <span class="accent-tree__tier accent-tree__tier--middle" />
-            <span class="accent-tree__tier accent-tree__tier--bottom" />
-            <span class="accent-tree__trunk" />
-            <span class="accent-tree__ornament accent-tree__ornament--red" />
-            <span class="accent-tree__ornament accent-tree__ornament--gold" />
-            <span class="accent-tree__ornament accent-tree__ornament--blue" />
-            <span class="accent-tree__star" />
-          </span>
-        </template>
+          <NuxtLink class="brand" to="/">WordPanda</NuxtLink>
+        </div>
       </div>
 
       <nav class="site-nav" aria-label="Основная навигация">
@@ -109,13 +108,20 @@ function isActive(path: string): boolean {
   gap: 16px;
   align-items: center;
   padding: 16px 0;
+  position: relative;
 }
 
 .site-header__brand-group {
   display: grid;
-  gap: 4px;
   position: relative;
   z-index: 1;
+}
+
+.site-header__brand-line {
+  position: relative;
+  display: block;
+  padding-right: 76px;
+  min-height: 28px;
 }
 
 .brand {
@@ -123,12 +129,6 @@ function isActive(path: string): boolean {
   text-decoration: none;
   font-size: 20px;
   font-weight: 800;
-}
-
-.site-header__tagline {
-  margin-bottom: 0;
-  color: var(--text-muted);
-  font-size: 16px;
 }
 
 .site-nav {
@@ -165,8 +165,8 @@ function isActive(path: string): boolean {
 
 .site-header__accent {
   position: absolute;
-  top: 10px;
-  right: 16px;
+  top: -8px;
+  right: 0;
   width: 76px;
   height: 52px;
   pointer-events: none;
@@ -423,15 +423,15 @@ function isActive(path: string): boolean {
   .site-header__inner {
     flex-direction: column;
     align-items: start;
-    position: relative;
   }
 
-  .site-header__tagline {
-    display: none;
+  .site-header__brand-group,
+  .site-header__brand-line {
+    width: 100%;
   }
 
   .site-header__accent {
-    top: 8px;
+    top: -4px;
     right: 0;
     width: 72px;
     height: 48px;
@@ -439,13 +439,26 @@ function isActive(path: string): boolean {
 }
 
 @media (min-width: 801px) {
+  .site-header__brand-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 0;
+    min-height: 44px;
+  }
+
   .site-nav {
     display: flex;
   }
 
   .site-header__accent {
-    top: 14px;
-    right: 190px;
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 56px;
+    height: 44px;
+    transform: scale(0.82);
+    transform-origin: center right;
   }
 }
 </style>

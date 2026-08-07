@@ -8,10 +8,7 @@ interface ApiErrorLike {
   statusMessage?: string;
 }
 
-export function getApiErrorMessage(
-  error: unknown,
-  fallbackMessage: string
-): string {
+export function getApiErrorMessage(error: unknown, fallbackMessage: string): string {
   const candidate = error as ApiErrorLike | null;
 
   if (candidate?.data?.message) {

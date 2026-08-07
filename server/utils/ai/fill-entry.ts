@@ -47,7 +47,9 @@ export async function generateFillEntryDraft(
   return normalizeDraft(parseDraftPayload(content));
 }
 
-function buildMessages(input: FillEntryDraftInput): Array<{ role: 'system' | 'user'; content: string }> {
+function buildMessages(
+  input: FillEntryDraftInput
+): Array<{ role: 'system' | 'user'; content: string }> {
   const contextLine =
     input.mode === 'variant' && input.contextWord
       ? `contextWord: "${input.contextWord.trim()}"\n`

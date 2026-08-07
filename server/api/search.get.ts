@@ -2,7 +2,9 @@ import { VerbEntryModel } from '../models/VerbEntry';
 import { VerbFamilyModel } from '../models/VerbFamily';
 
 function normalizeSearchText(value: string): string {
-  return String(value || '').trim().toLocaleLowerCase('de');
+  return String(value || '')
+    .trim()
+    .toLocaleLowerCase('de');
 }
 
 function getSearchRank(word: string, query: string): number {
@@ -54,9 +56,7 @@ export default defineEventHandler(async (event) => {
       return [String(family._id), baseEntry?.word || null];
     })
   );
-  const familySlugById = new Map(
-    families.map((family) => [String(family._id), family.slug])
-  );
+  const familySlugById = new Map(families.map((family) => [String(family._id), family.slug]));
   const rankedItems = [...items].sort((left, right) => {
     const rankDiff = getSearchRank(left.word, q) - getSearchRank(right.word, q);
 

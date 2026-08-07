@@ -17,7 +17,8 @@ export const seedFamiliesDraft = [
         prefix: 'um',
         isSeparable: true,
         translationRu: 'повернуть обратно, развернуться; перевернуть',
-        explanationRu: 'В одном entry объединены более частое непереходное и более редкое переходное значение.',
+        explanationRu:
+          'В одном entry объединены более частое непереходное и более редкое переходное значение.',
         examples: [
           {
             textDe: 'Wir müssen umkehren.',
@@ -117,7 +118,8 @@ export const seedFamiliesDraft = [
         prefix: 'vor',
         isSeparable: false,
         translationRu: 'предчувствовать заранее, предвидеть',
-        explanationRu: 'Оставлено как редкий, но допустимый вариант; формы vorhergeahnt и vorausgeahnt лучше хранить как словоформы, а не как отдельные леммы.',
+        explanationRu:
+          'Оставлено как редкий, но допустимый вариант; формы vorhergeahnt и vorausgeahnt лучше хранить как словоформы, а не как отдельные леммы.',
         examples: [
           {
             textDe: 'Er vorahnte, dass etwas Schlimmes passieren würde.',
@@ -419,8 +421,7 @@ export const seedFamiliesDraft = [
         ]
       }
     ]
-  }
-,
+  },
   {
     base: {
       word: 'hängen',
@@ -1193,7 +1194,8 @@ export const seedFamiliesDraft = [
         examples: [
           {
             textDe: 'Das Brotmehl war zu grob, also musste man es nachmahlen.',
-            translationRu: 'Мука для хлеба была слишком грубой, поэтому её пришлось перемолоть заново.'
+            translationRu:
+              'Мука для хлеба была слишком грубой, поэтому её пришлось перемолоть заново.'
           }
         ]
       },
@@ -1214,7 +1216,8 @@ export const seedFamiliesDraft = [
         prefix: 'ver',
         isSeparable: false,
         translationRu: 'смолоть в муку',
-        explanationRu: 'Архаическое значение «быть женатым» в сид не включал как основной учебный фокус.',
+        explanationRu:
+          'Архаическое значение «быть женатым» в сид не включал как основной учебный фокус.',
         examples: [
           {
             textDe: 'Der Müller vermahlt den Weizen zu Mehl.',
@@ -1235,8 +1238,7 @@ export const seedFamiliesDraft = [
         ]
       }
     ]
-  }
-,
+  },
   {
     base: {
       word: 'üben',
@@ -2027,13 +2029,13 @@ export const seedFamiliesDraft = [
         ]
       }
     ]
-  }
-,
+  },
   {
     base: {
       word: 'bewältigen',
       translationRu: 'справляться, преодолевать',
-      explanationRu: 'Употребляется, когда нужно справиться с трудной задачей, кризисом, стрессом или другой нагрузкой.',
+      explanationRu:
+        'Употребляется, когда нужно справиться с трудной задачей, кризисом, стрессом или другой нагрузкой.',
       examples: [
         {
           textDe: 'Viele Menschen können Stress nur schwer bewältigen.',
@@ -2047,7 +2049,8 @@ export const seedFamiliesDraft = [
         prefix: 'über',
         isSeparable: false,
         translationRu: 'одолеть; переполнить эмоциями; поразить',
-        explanationRu: 'Может означать как физическое подавление, так и сильное эмоциональное воздействие.',
+        explanationRu:
+          'Может означать как физическое подавление, так и сильное эмоциональное воздействие.',
         examples: [
           {
             textDe: 'Die Polizei konnte den Täter überwältigen.',
@@ -2773,13 +2776,13 @@ export const seedFamiliesDraft = [
         ]
       }
     ]
-  }
-,
+  },
   {
     base: {
       word: 'bereuen',
       translationRu: 'раскаиваться',
-      explanationRu: 'Обычно о собственном поступке, за который человек чувствует вину или ответственность.',
+      explanationRu:
+        'Обычно о собственном поступке, за который человек чувствует вину или ответственность.',
       examples: [
         {
           textDe: 'Ich bereue meine Entscheidung.',
@@ -2793,7 +2796,8 @@ export const seedFamiliesDraft = [
         prefix: 'be',
         isSeparable: false,
         translationRu: 'сожалеть',
-        explanationRu: 'Чаще про факт, ситуацию или чужой поступок; часто используется и в формальном стиле.',
+        explanationRu:
+          'Чаще про факт, ситуацию или чужой поступок; часто используется и в формальном стиле.',
         examples: [
           {
             textDe: 'Wir bedauern die Verzögerung.',
@@ -3136,13 +3140,13 @@ export const seedFamiliesDraft = [
         ]
       }
     ]
-  }
-,
+  },
   {
     base: {
       word: 'eingreifen',
       translationRu: 'вмешиваться',
-      explanationRu: 'Более нейтральное и широкое по употреблению вмешательство, чем einschreiten; часто про помощь, коррекцию или влияние на процесс.',
+      explanationRu:
+        'Более нейтральное и широкое по употреблению вмешательство, чем einschreiten; часто про помощь, коррекцию или влияние на процесс.',
       examples: [
         {
           textDe: 'Der Arzt griff rechtzeitig ein.',

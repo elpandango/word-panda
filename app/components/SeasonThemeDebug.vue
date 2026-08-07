@@ -2,8 +2,14 @@
 const isVisible = import.meta.dev;
 const isExpanded = useState<boolean>('season-theme-debug-expanded', () => false);
 
-const { activeOption, activeSeason, autoSeason, seasonOverride, seasonThemeOptions, setSeasonOverride } =
-  useSeasonTheme();
+const {
+  activeOption,
+  activeSeason,
+  autoSeason,
+  seasonOverride,
+  seasonThemeOptions,
+  setSeasonOverride
+} = useSeasonTheme();
 
 const seasonLabelMap = {
   spring: 'Весна',
@@ -43,9 +49,7 @@ function toggleExpanded(): void {
           <strong class="season-debug__title">Сезонная атмосфера</strong>
         </div>
         <div class="season-debug__header-actions">
-          <span class="season-debug__status">
-            Сейчас: {{ activeSeasonLabel }}
-          </span>
+          <span class="season-debug__status"> Сейчас: {{ activeSeasonLabel }} </span>
           <button class="season-debug__close" type="button" @click="toggleExpanded">
             Свернуть
           </button>
@@ -53,8 +57,8 @@ function toggleExpanded(): void {
       </div>
 
       <p class="season-debug__copy">
-        Авто сейчас выберет <strong>{{ autoSeasonLabel }}</strong
-        > и акцент <strong>{{ autoAccentLabel }}</strong
+        Авто сейчас выберет <strong>{{ autoSeasonLabel }}</strong> и акцент
+        <strong>{{ autoAccentLabel }}</strong
         >. Можно вручную переключить и посмотреть палитры.
       </p>
 
@@ -75,7 +79,8 @@ function toggleExpanded(): void {
       </div>
 
       <p class="season-debug__hint">
-        Режим: {{ activeOption.label }}, акцент: {{ activeAccentLabel }}. Этот блок виден только в dev.
+        Режим: {{ activeOption.label }}, акцент: {{ activeAccentLabel }}. Этот блок виден только в
+        dev.
       </p>
     </aside>
 
@@ -194,8 +199,11 @@ function toggleExpanded(): void {
   padding: 10px 12px;
   border: 1px solid var(--surface-border);
   border-radius: 16px;
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--calm-strong) 82%, white 18%) 0%, color-mix(in srgb, var(--calm-light) 92%, transparent) 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--calm-strong) 82%, white 18%) 0%,
+    color-mix(in srgb, var(--calm-light) 92%, transparent) 100%
+  );
   color: var(--text-primary);
   text-align: left;
   box-shadow:

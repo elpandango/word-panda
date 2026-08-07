@@ -323,7 +323,6 @@ ul {
   margin: 0 auto;
 }
 
-.site-header__tagline,
 .hero-copy {
   color: var(--text-muted);
   margin-bottom: 0;

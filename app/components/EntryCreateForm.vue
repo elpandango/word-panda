@@ -78,18 +78,20 @@ const fieldErrors = reactive({
 });
 const isPrefixTouched = ref(false);
 const activeSubmitMode = ref<EntrySubmitMode | null>(null);
+const hasAttemptedAiFill = ref(false);
 const isAiFilling = ref(false);
 const serverWordErrorMessage = ref('');
 const aiErrorMessage = ref('');
 const trimmedContextWord = computed(() => props.contextWord.trim());
 const isBusy = computed(() => props.loading || props.deleting);
 const isAiFillEnabled = computed(() => runtimeConfig.public.aiFillEnabled === true);
-const isWordInvalid = computed(() => fieldErrors.word.length > 0 || serverWordErrorMessage.value.length > 0);
+const isAiFillMissingWord = computed(() => form.word.trim().length === 0);
+const isWordInvalid = computed(
+  () => fieldErrors.word.length > 0 || serverWordErrorMessage.value.length > 0
+);
 const isTranslationInvalid = computed(() => fieldErrors.translationRu.length > 0);
 const wordErrorMessage = computed(() => fieldErrors.word || serverWordErrorMessage.value);
-const canUseAiFill = computed(() => {
-  return isAiFillEnabled.value && form.word.trim().length > 0 && !isBusy.value && !isAiFilling.value;
-});
+const isAiFillTemporarilyUnavailable = computed(() => isBusy.value || isAiFilling.value);
 const generalErrorMessage = computed(() => {
   return serverWordErrorMessage.value ? '' : props.errorMessage;
 });
@@ -130,6 +132,7 @@ function resetForm(): void {
   aiErrorMessage.value = '';
   isPrefixTouched.value = false;
   activeSubmitMode.value = null;
+  hasAttemptedAiFill.value = false;
 }
 
 watch(
@@ -183,6 +186,10 @@ watch(
 
     if (aiErrorMessage.value) {
       aiErrorMessage.value = '';
+    }
+
+    if (hasAttemptedAiFill.value) {
+      hasAttemptedAiFill.value = false;
     }
   }
 );
@@ -304,7 +311,15 @@ function handleCancel(): void {
 }
 
 async function handleAiFill(): Promise<void> {
-  if (!canUseAiFill.value) {
+  hasAttemptedAiFill.value = true;
+
+  if (isAiFillTemporarilyUnavailable.value || !isAiFillEnabled.value) {
+    return;
+  }
+
+  if (isAiFillMissingWord.value) {
+    fieldErrors.word = 'Сначала укажи слово, чтобы AI смог заполнить остальные поля.';
+    aiErrorMessage.value = 'AI-подсказка появится после того, как ты введёшь слово.';
     return;
   }
 
@@ -383,11 +398,15 @@ async function handleAiFill(): Promise<void> {
           </p>
 
           <AppButton
+            class="form-ai-assist__button"
+            :class="{
+              'form-ai-assist__button--pending': hasAttemptedAiFill && isAiFillMissingWord
+            }"
             type="button"
             variant="ghost"
             size="sm"
             :loading="isAiFilling"
-            :disabled="!canUseAiFill"
+            :disabled="isAiFillTemporarilyUnavailable"
             @click="handleAiFill"
           >
             Заполнить с помощью ИИ
@@ -560,6 +579,16 @@ async function handleAiFill(): Promise<void> {
 
 .form-ai-assist__error {
   margin: 0;
+}
+
+.form-ai-assist__button--pending:deep(.app-button) {
+  border-color: rgba(163, 60, 45, 0.28);
+  color: #8f3329;
+  background: rgba(163, 60, 45, 0.08);
+}
+
+.form-ai-assist__button--pending:deep(.app-button:hover:enabled) {
+  background: rgba(163, 60, 45, 0.12);
 }
 
 .form-label {

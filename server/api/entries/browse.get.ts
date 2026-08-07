@@ -18,7 +18,9 @@ function buildLetterPattern(letter: string): RegExp {
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-  const rawLetter = String(query.letter ?? 'A').trim().toUpperCase();
+  const rawLetter = String(query.letter ?? 'A')
+    .trim()
+    .toUpperCase();
   const selectedLetter = alphabet.includes(rawLetter) ? rawLetter : 'A';
   const pattern = buildLetterPattern(selectedLetter);
 
@@ -34,9 +36,7 @@ export default defineEventHandler(async (event) => {
   const families = familyIds.length
     ? await VerbFamilyModel.find({ _id: { $in: familyIds } }).lean()
     : [];
-  const familySlugById = new Map(
-    families.map((family) => [String(family._id), family.slug])
-  );
+  const familySlugById = new Map(families.map((family) => [String(family._id), family.slug]));
 
   return {
     letter: selectedLetter,

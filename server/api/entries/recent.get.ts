@@ -13,9 +13,7 @@ export default defineEventHandler(async (event) => {
   const families = familyIds.length
     ? await VerbFamilyModel.find({ _id: { $in: familyIds } }).lean()
     : [];
-  const familySlugById = new Map(
-    families.map((family) => [String(family._id), family.slug])
-  );
+  const familySlugById = new Map(families.map((family) => [String(family._id), family.slug]));
 
   return {
     limit,

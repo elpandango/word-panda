@@ -14,7 +14,9 @@ interface BrowseResponse {
 
 const route = useRoute();
 const selectedLetter = computed(() => {
-  const value = String(route.query.letter ?? 'A').trim().toUpperCase();
+  const value = String(route.query.letter ?? 'A')
+    .trim()
+    .toUpperCase();
 
   return /^[A-Z]$/.test(value) ? value : 'A';
 });
