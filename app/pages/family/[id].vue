@@ -40,6 +40,11 @@ const route = useRoute();
 const router = useRouter();
 const lastCollectionRoute = useLastCollectionRoute();
 const familySlug = computed(() => String(route.params.id));
+const targetEntryAnchor = computed(() => {
+  const hash = route.hash?.trim();
+
+  return hash?.startsWith('#entry-') ? hash.slice(1) : '';
+});
 const familyData = ref<FamilyResponse>({
   familyId: null,
   found: false,
@@ -134,6 +139,36 @@ function getExamples(entryId?: string): VerbExample[] {
 
 function getPrimaryExample(entryId?: string): VerbExample | null {
   return getExamples(entryId)[0] ?? null;
+}
+
+async function scrollToTargetEntry(): Promise<void> {
+  if (
+    !targetEntryAnchor.value ||
+    isPageLoading.value ||
+    typeof document === 'undefined' ||
+    typeof window === 'undefined'
+  ) {
+    return;
+  }
+
+  await nextTick();
+
+  const element = document.getElementById(targetEntryAnchor.value);
+
+  if (!element) {
+    return;
+  }
+
+  const header = document.querySelector('.site-header');
+  const headerHeight = header instanceof HTMLElement ? header.offsetHeight : 0;
+  const viewportOffset = window.innerWidth >= 801 ? 20 : 12;
+  const targetTop =
+    window.scrollY + element.getBoundingClientRect().top - headerHeight - viewportOffset;
+
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: 'smooth'
+  });
 }
 
 async function handleBackNavigation(): Promise<void> {
@@ -351,6 +386,13 @@ watch(familySlug, () => {
   hasLoadedFamily.value = false;
   void fetchFamily();
 });
+
+watch(
+  () => [targetEntryAnchor.value, isPageLoading.value, derivedEntries.value.length, collocations.value.length] as const,
+  () => {
+    void scrollToTargetEntry();
+  }
+);
 </script>
 
 <template>

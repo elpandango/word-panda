@@ -46,7 +46,7 @@ function handleEdit(): void {
 </script>
 
 <template>
-  <article class="family-entry-card surface-calm">
+  <article :id="entry._id ? `entry-${entry._id}` : undefined" class="family-entry-card surface-calm">
     <div class="family-entry-card__main">
       <div v-if="entryKind === 'derived'" class="section-row family-entry-card__header">
         <p class="result-word family-entry-card__variant-word">
@@ -64,8 +64,8 @@ function handleEdit(): void {
             {{ entry.word }}
           </template>
         </p>
-        <span v-if="entry.isSeparable === true" class="entry-note">отделяемая</span>
-        <span v-else-if="entry.isSeparable === false" class="entry-note">неотделяемая</span>
+        <span v-if="entry.isSeparable === true" class="entry-note">отделяемая приставка</span>
+        <span v-else-if="entry.isSeparable === false" class="entry-note">неотделяемая приставка</span>
       </div>
 
       <p v-else class="result-word">{{ entry.word }}</p>
@@ -108,6 +108,10 @@ function handleEdit(): void {
   padding: 16px 18px;
 }
 
+.family-entry-card__main .result-word {
+  font-weight: 700;
+}
+
 .family-entry-card__header {
   align-items: flex-start;
 }
@@ -129,10 +133,11 @@ function handleEdit(): void {
 
 .family-entry-card__separator {
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .family-entry-card__stem--separable {
+  font-weight: 800;
   font-style: italic;
 }
 

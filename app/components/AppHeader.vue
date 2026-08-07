@@ -83,7 +83,8 @@ function isActive(path: string): boolean {
 
 .site-header__brand-line {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
   padding-right: 76px;
   min-height: 28px;
 }
@@ -154,8 +155,6 @@ function isActive(path: string): boolean {
 
 @media (min-width: 801px) {
   .site-header__brand-line {
-    display: flex;
-    align-items: center;
     gap: 12px;
     padding-right: 0;
     min-height: 44px;

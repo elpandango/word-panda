@@ -19,7 +19,10 @@ const props = withDefaults(
 
 const entryKind = computed(() => resolveVerbEntryKind(props.entry));
 const familyWord = computed(() => props.entry.familyBaseWord || props.entry.word);
-const cardLink = computed(() => `/family/${props.entry.familySlug}`);
+const cardLink = computed(() => ({
+  path: `/family/${props.entry.familySlug}`,
+  hash: props.entry._id ? `#entry-${props.entry._id}` : ''
+}));
 const headerLabel = computed(() => {
   if (entryKind.value === 'base') {
     return 'Базовый глагол';
@@ -95,7 +98,7 @@ const headerLabel = computed(() => {
 }
 
 .entry-result-card__family {
-  margin-left: 6px;
+  margin-left: 2px;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
