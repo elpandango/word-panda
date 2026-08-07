@@ -1,6 +1,14 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
+      ]
+    }
+  },
   css: ['~/assets/css/main.css'],
   modules: ['@pinia/nuxt', '@vite-pwa/nuxt', '@nuxt/eslint'],
   nitro: {
@@ -23,7 +31,19 @@ export default defineNuxtConfig({
       description: 'Личная база немецких глаголов и их приставочных вариантов.',
       theme_color: '#f3efe6',
       background_color: '#f3efe6',
-      display: 'standalone'
+      display: 'standalone',
+      icons: [
+        {
+          src: '/icons/icon-192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: '/icons/icon-512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
+      ]
     },
     devOptions: {
       enabled: false
