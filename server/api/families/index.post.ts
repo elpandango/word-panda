@@ -69,7 +69,7 @@ export default defineEventHandler(async (event) => {
   await VerbEntryModel.create({
     _id: entryId,
     familyId,
-    role: 'base',
+    kind: 'base',
     word,
     translationRu,
     explanationRu: normalizeOptionalText(body.explanationRu),

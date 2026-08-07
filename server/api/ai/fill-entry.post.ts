@@ -2,7 +2,7 @@ import { generateFillEntryDraft } from '../../utils/ai/fill-entry';
 
 interface FillEntryRequestBody {
   word?: string;
-  mode?: 'base' | 'variant';
+  mode?: 'base' | 'derived' | 'collocation';
   contextWord?: string;
 }
 
@@ -53,7 +53,8 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody<FillEntryRequestBody>(event);
   const word = body.word?.trim() || '';
-  const mode = body.mode === 'variant' ? 'variant' : 'base';
+  const mode =
+    body.mode === 'collocation' ? 'collocation' : body.mode === 'derived' ? 'derived' : 'base';
   const contextWord = body.contextWord?.trim();
 
   if (!word) {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { VerbEntry } from '../../shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
+import { resolveVerbEntryKind } from '../../shared/utils/verb-entry-kind';
 
 interface SearchItem extends VerbEntry {
   familyBaseWord?: string;
@@ -82,7 +83,17 @@ const recentItems = computed(() => recentData.value?.items ?? []);
 const hasQuery = computed(() => searchQuery.value.trim().length > 0);
 
 function formatEntryMeta(entry: VerbEntry): string {
-  return entry.role === 'base' ? 'Базовый глагол' : 'Вариант';
+  const kind = resolveVerbEntryKind(entry);
+
+  if (kind === 'base') {
+    return 'Базовый глагол';
+  }
+
+  if (kind === 'derived') {
+    return 'Глагол семейства';
+  }
+
+  return 'Сочетание';
 }
 
 function openCreateBaseForm(): void {
@@ -142,7 +153,7 @@ async function handleCreateBaseEntry(
 
 useSeoMeta({
   title: 'WordPanda',
-  description: 'Личная база немецких глаголов и их приставочных вариантов.'
+  description: 'Личная база немецких глаголов, их семейства и типовых сочетаний.'
 });
 </script>
 
@@ -195,7 +206,7 @@ useSeoMeta({
               <div class="result-meta">
                 <p v-if="item.translationRu">{{ item.translationRu }}</p>
                 <p v-else class="muted-text">Перевод пока не добавлен</p>
-                <p v-if="item.role === 'variant'" class="muted-text">
+                <p v-if="resolveVerbEntryKind(item) !== 'base'" class="muted-text">
                   Семейство: {{ item.familyBaseWord || item.word }}
                 </p>
               </div>

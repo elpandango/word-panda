@@ -1,5 +1,6 @@
 import { VerbEntryModel } from '../models/VerbEntry';
 import { VerbFamilyModel } from '../models/VerbFamily';
+import { resolveVerbEntryKind } from '../../shared/utils/verb-entry-kind';
 
 function normalizeSearchText(value: string): string {
   return String(value || '')
@@ -64,9 +65,10 @@ export default defineEventHandler(async (event) => {
       return rankDiff;
     }
 
-    const leftIsBase = left.role === 'base' ? 0 : 1;
-    const rightIsBase = right.role === 'base' ? 0 : 1;
-    const roleDiff = leftIsBase - rightIsBase;
+    const kindOrder = { base: 0, derived: 1, collocation: 2 } as const;
+    const leftKindOrder = kindOrder[resolveVerbEntryKind(left)];
+    const rightKindOrder = kindOrder[resolveVerbEntryKind(right)];
+    const roleDiff = leftKindOrder - rightKindOrder;
 
     if (roleDiff !== 0) {
       return roleDiff;
@@ -85,6 +87,7 @@ export default defineEventHandler(async (event) => {
     query: q,
     items: rankedItems.map((item) => ({
       ...item,
+      kind: resolveVerbEntryKind(item),
       familyBaseWord: familyBaseWordById.get(item.familyId) || item.word,
       familySlug: familySlugById.get(item.familyId) || null
     }))

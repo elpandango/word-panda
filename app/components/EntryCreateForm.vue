@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, reactive, watch } from 'vue';
-import type { VerbEntry, VerbExample } from '../../shared/types/verbs';
+import type { VerbEntry, VerbEntryKind, VerbExample } from '../../shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
+import { isDerivedEntryKind } from '../../shared/utils/verb-entry-kind';
 
 interface EntryCreatePayload {
+  kind?: VerbEntryKind;
   word: string;
   translationRu?: string;
   explanationRu?: string;
@@ -20,7 +22,7 @@ interface AiFillResponse {
   exampleTranslationRu?: string;
 }
 
-type EntryCreateMode = 'base' | 'variant';
+type EntryCreateMode = 'base' | 'derived' | 'collocation';
 type EntrySubmitMode = 'close' | 'continue';
 
 const runtimeConfig = useRuntimeConfig();
@@ -85,6 +87,7 @@ const aiErrorMessage = ref('');
 const trimmedContextWord = computed(() => props.contextWord.trim());
 const isBusy = computed(() => props.loading || props.deleting);
 const isAiFillEnabled = computed(() => runtimeConfig.public.aiFillEnabled === true);
+const isDerivedMode = computed(() => isDerivedEntryKind(props.mode));
 const isAiFillMissingWord = computed(() => form.word.trim().length === 0);
 const isWordInvalid = computed(
   () => fieldErrors.word.length > 0 || serverWordErrorMessage.value.length > 0
@@ -214,7 +217,7 @@ watch(
 watch(
   () => [props.mode, form.word, trimmedContextWord.value, props.initialEntry?.word || ''] as const,
   ([mode, word, contextWord, initialWord]) => {
-    if (mode !== 'variant' || isPrefixTouched.value || initialWord) {
+    if (!isDerivedEntryKind(mode) || isPrefixTouched.value || initialWord) {
       return;
     }
 
@@ -272,7 +275,11 @@ function buildPayload(): EntryCreatePayload {
     exampleTranslationRu: form.exampleTranslationRu.trim() || undefined
   };
 
-  if (props.mode === 'variant') {
+  if (props.mode !== 'base') {
+    payload.kind = props.mode;
+  }
+
+  if (isDerivedMode.value) {
     payload.prefix = form.prefix.trim() || null;
     payload.isSeparable = parseNullableBoolean(form.isSeparable);
   }
@@ -364,7 +371,7 @@ async function handleAiFill(): Promise<void> {
 
 <template>
   <section class="entry-create-form page-stack-sm">
-    <div v-if="mode === 'variant' && contextWord" class="form-context">
+    <div v-if="mode !== 'base' && contextWord" class="form-context">
       <span class="form-context__label">Семейство:</span>
       <strong class="form-context__value">{{ contextWord }}</strong>
     </div>
@@ -373,7 +380,9 @@ async function handleAiFill(): Promise<void> {
       {{
         mode === 'base'
           ? 'Сохраняй слово вместе с переводом. Один пример можно добавить сразу или позже при редактировании.'
-          : 'Добавь вариант в текущее семейство. Для сохранения нужны слово и перевод, а пример можно заполнить сразу.'
+          : mode === 'derived'
+            ? 'Добавь глагол в текущее семейство. Для сохранения нужны слово и перевод, а пример можно заполнить сразу.'
+            : 'Добавь типовое сочетание для текущего семейства. Для сохранения нужны слово и перевод, а пример можно заполнить сразу.'
       }}
     </p>
 
@@ -431,7 +440,7 @@ async function handleAiFill(): Promise<void> {
         }}</span>
       </label>
 
-      <label v-if="mode === 'variant'" class="form-field">
+      <label v-if="isDerivedMode" class="form-field">
         <span class="form-label">Приставка</span>
         <input
           :value="form.prefix"
@@ -442,7 +451,7 @@ async function handleAiFill(): Promise<void> {
         />
       </label>
 
-      <label v-if="mode === 'variant'" class="form-field">
+      <label v-if="isDerivedMode" class="form-field">
         <span class="form-label">Отделяемость</span>
         <select v-model="form.isSeparable" class="search-input surface-field">
           <option value="">Не указано</option>

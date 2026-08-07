@@ -6,7 +6,8 @@ const verbEntrySchema = new mongoose.Schema<VerbEntry>(
   {
     _id: { type: String, required: true },
     familyId: { type: String, required: true, index: true },
-    role: { type: String, required: true },
+    kind: { type: String, required: true },
+    role: { type: String },
     word: { type: String, required: true, index: true },
     translationRu: { type: String },
     meaningDe: { type: String },

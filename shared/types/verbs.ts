@@ -1,4 +1,5 @@
-export type VerbEntryRole = 'base' | 'variant';
+export type LegacyVerbEntryRole = 'base' | 'variant';
+export type VerbEntryKind = 'base' | 'derived' | 'collocation';
 export type VerbEntrySource = 'manual' | 'ai_draft' | 'external_suggestion';
 export type VerbEntryStatus = 'draft' | 'reviewed' | 'verified';
 
@@ -13,7 +14,8 @@ export interface VerbFamily {
 export interface VerbEntry {
   _id?: string;
   familyId: string;
-  role: VerbEntryRole;
+  kind: VerbEntryKind;
+  role?: LegacyVerbEntryRole;
   word: string;
   translationRu?: string;
   meaningDe?: string;

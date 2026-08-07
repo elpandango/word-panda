@@ -1,6 +1,6 @@
 export interface FillEntryDraftInput {
   word: string;
-  mode: 'base' | 'variant';
+  mode: 'base' | 'derived' | 'collocation';
   contextWord?: string;
 }
 
@@ -51,7 +51,7 @@ function buildMessages(
   input: FillEntryDraftInput
 ): Array<{ role: 'system' | 'user'; content: string }> {
   const contextLine =
-    input.mode === 'variant' && input.contextWord
+    input.mode !== 'base' && input.contextWord
       ? `contextWord: "${input.contextWord.trim()}"\n`
       : '';
 

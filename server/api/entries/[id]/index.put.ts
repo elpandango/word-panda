@@ -6,8 +6,11 @@ import {
   createDuplicateVerbEntryError,
   findDuplicateVerbEntry
 } from '../../../utils/verb-entry-duplicates';
+import { resolveVerbEntryKind } from '../../../../shared/utils/verb-entry-kind';
+import type { VerbEntryKind } from '../../../../shared/types/verbs';
 
 interface UpdateEntryBody {
+  kind?: VerbEntryKind;
   word?: string;
   translationRu?: string;
   explanationRu?: string;
@@ -47,6 +50,14 @@ function normalizeNullableBoolean(value: unknown): boolean | null {
   }
 
   return null;
+}
+
+function normalizeEditableKind(bodyKind: unknown, currentKind: VerbEntryKind): VerbEntryKind {
+  if (currentKind === 'base') {
+    return 'base';
+  }
+
+  return bodyKind === 'collocation' ? 'collocation' : 'derived';
 }
 
 export default defineEventHandler(async (event) => {
@@ -94,16 +105,18 @@ export default defineEventHandler(async (event) => {
   }
 
   const updatedAt = new Date().toISOString();
+  const currentKind = resolveVerbEntryKind(existingEntry);
+  const nextKind = normalizeEditableKind(body.kind, currentKind);
 
   await VerbEntryModel.updateOne(
     { _id: entryId },
     {
+      kind: nextKind,
       word,
       translationRu,
       explanationRu: normalizeOptionalText(body.explanationRu),
-      prefix: existingEntry.role === 'variant' ? normalizeOptionalPrefix(body.prefix) : null,
-      isSeparable:
-        existingEntry.role === 'variant' ? normalizeNullableBoolean(body.isSeparable) : null,
+      prefix: nextKind === 'derived' ? normalizeOptionalPrefix(body.prefix) : null,
+      isSeparable: nextKind === 'derived' ? normalizeNullableBoolean(body.isSeparable) : null,
       updatedAt
     }
   );
@@ -139,6 +152,7 @@ export default defineEventHandler(async (event) => {
   return {
     ok: true,
     familyId: existingEntry.familyId,
-    entryId
+    entryId,
+    kind: nextKind
   };
 });

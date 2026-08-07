@@ -6,9 +6,12 @@ import {
   createDuplicateVerbEntryError,
   findDuplicateVerbEntry
 } from '../../utils/verb-entry-duplicates';
+import { resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
+import type { VerbEntryKind } from '../../../shared/types/verbs';
 
 interface CreateEntryBody {
   familyId?: string;
+  kind?: VerbEntryKind;
   word?: string;
   translationRu?: string;
   explanationRu?: string;
@@ -50,9 +53,14 @@ function normalizeNullableBoolean(value: unknown): boolean | null {
   return null;
 }
 
+function normalizeRelatedKind(value: unknown): 'derived' | 'collocation' {
+  return value === 'collocation' ? 'collocation' : 'derived';
+}
+
 export default defineEventHandler(async (event) => {
   const body = await readBody<CreateEntryBody>(event);
   const familyId = normalizeRequiredText(body.familyId);
+  const kind = normalizeRelatedKind(body.kind);
   const word = normalizeRequiredText(body.word);
   const translationRu = normalizeRequiredText(body.translationRu);
   const exampleTextDe = normalizeRequiredText(body.exampleTextDe);
@@ -61,7 +69,7 @@ export default defineEventHandler(async (event) => {
   if (!familyId) {
     throw createError({
       statusCode: 400,
-      message: 'Не найдено семейство для добавления варианта.'
+      message: 'Не найдено семейство для добавления записи.'
     });
   }
 
@@ -100,12 +108,12 @@ export default defineEventHandler(async (event) => {
   await VerbEntryModel.create({
     _id: entryId,
     familyId,
-    role: 'variant',
+    kind,
     word,
     translationRu,
     explanationRu: normalizeOptionalText(body.explanationRu),
-    prefix: normalizeOptionalPrefix(body.prefix),
-    isSeparable: normalizeNullableBoolean(body.isSeparable),
+    prefix: kind === 'derived' ? normalizeOptionalPrefix(body.prefix) : null,
+    isSeparable: kind === 'derived' ? normalizeNullableBoolean(body.isSeparable) : null,
     source: 'manual',
     status: 'draft',
     createdAt,
@@ -128,6 +136,7 @@ export default defineEventHandler(async (event) => {
   return {
     ok: true,
     familyId,
-    entryId
+    entryId,
+    kind: resolveVerbEntryKind({ kind })
   };
 });

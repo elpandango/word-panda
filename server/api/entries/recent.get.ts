@@ -1,5 +1,6 @@
 import { VerbEntryModel } from '../../models/VerbEntry';
 import { VerbFamilyModel } from '../../models/VerbFamily';
+import { resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
@@ -19,6 +20,7 @@ export default defineEventHandler(async (event) => {
     limit,
     items: items.map((item) => ({
       ...item,
+      kind: resolveVerbEntryKind(item),
       familySlug: familySlugById.get(item.familyId) || null
     }))
   };

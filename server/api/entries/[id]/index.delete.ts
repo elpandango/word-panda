@@ -1,6 +1,7 @@
 import { VerbEntryModel } from '../../../models/VerbEntry';
 import { VerbExampleModel } from '../../../models/VerbExample';
 import { VerbFamilyModel } from '../../../models/VerbFamily';
+import { resolveVerbEntryKind } from '../../../../shared/utils/verb-entry-kind';
 
 export default defineEventHandler(async (event) => {
   const entryId = String(getRouterParam(event, 'id') || '').trim();
@@ -21,7 +22,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  if (entry.role === 'base') {
+  if (resolveVerbEntryKind(entry) === 'base') {
     const familyEntries = await VerbEntryModel.find({ familyId: entry.familyId }).lean();
     const entryIds = familyEntries.map((item) => String(item._id));
 

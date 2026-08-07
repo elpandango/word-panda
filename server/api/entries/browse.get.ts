@@ -1,5 +1,6 @@
 import { VerbEntryModel } from '../../models/VerbEntry';
 import { VerbFamilyModel } from '../../models/VerbFamily';
+import { resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -25,7 +26,7 @@ export default defineEventHandler(async (event) => {
   const pattern = buildLetterPattern(selectedLetter);
 
   const items = await VerbEntryModel.find({
-    role: 'base',
+    $or: [{ kind: 'base' }, { role: 'base' }],
     word: { $regex: pattern }
   }).lean();
 
@@ -44,6 +45,7 @@ export default defineEventHandler(async (event) => {
     total: sortedItems.length,
     items: sortedItems.map((item) => ({
       ...item,
+      kind: resolveVerbEntryKind(item),
       familySlug: familySlugById.get(item.familyId) || null
     }))
   };

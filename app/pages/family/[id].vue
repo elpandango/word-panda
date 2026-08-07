@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import type { VerbEntry, VerbExample, VerbFamily } from '../../../shared/types/verbs';
+import type {
+  VerbEntry,
+  VerbEntryKind,
+  VerbExample,
+  VerbFamily
+} from '../../../shared/types/verbs';
 import { getApiErrorMessage } from '../../utils/api-errors';
+import { isBaseEntryKind, resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
 
 interface FamilyResponse {
   familyId: string | null;
   found: boolean;
   family: VerbFamily | null;
   baseEntry: VerbEntry | null;
-  variants: VerbEntry[];
+  derivedEntries: VerbEntry[];
+  collocations: VerbEntry[];
   examplesByEntryId: Record<string, VerbExample[]>;
 }
 
@@ -18,6 +25,7 @@ interface VariantWordParts {
 }
 
 interface EntryFormPayload {
+  kind?: VerbEntryKind;
   word: string;
   translationRu?: string;
   explanationRu?: string;
@@ -35,7 +43,8 @@ interface EntryMutationResponse {
 }
 
 type EntrySubmitMode = 'close' | 'continue';
-type EntryModalMode = 'create-variant' | 'edit-base' | 'edit-variant';
+type EntryModalMode =
+  'create-derived' | 'create-collocation' | 'edit-base' | 'edit-derived' | 'edit-collocation';
 
 const route = useRoute();
 const router = useRouter();
@@ -46,7 +55,7 @@ const isSubmittingEntry = ref(false);
 const isDeletingEntry = ref(false);
 const entryModalErrorMessage = ref('');
 const entryFormResetKey = ref(0);
-const entryModalMode = ref<EntryModalMode>('create-variant');
+const entryModalMode = ref<EntryModalMode>('create-derived');
 const selectedEntry = ref<VerbEntry | null>(null);
 
 const { data, pending, error, refresh } = await useFetch<FamilyResponse>(
@@ -57,7 +66,8 @@ const { data, pending, error, refresh } = await useFetch<FamilyResponse>(
       found: false,
       family: null,
       baseEntry: null,
-      variants: [],
+      derivedEntries: [],
+      collocations: [],
       examplesByEntryId: {}
     }),
     watch: [familySlug]
@@ -67,27 +77,36 @@ const { data, pending, error, refresh } = await useFetch<FamilyResponse>(
 const family = computed(() => data.value?.family ?? null);
 const resolvedFamilyId = computed(() => String(data.value?.familyId || ''));
 const baseEntry = computed(() => data.value?.baseEntry ?? null);
-const variants = computed(() => data.value?.variants ?? []);
+const derivedEntries = computed(() => data.value?.derivedEntries ?? []);
+const collocations = computed(() => data.value?.collocations ?? []);
 const found = computed(() => data.value?.found ?? false);
-const isEditMode = computed(() => entryModalMode.value !== 'create-variant');
+const isEditMode = computed(() => !entryModalMode.value.startsWith('create-'));
 const modalTitle = computed(() => {
   if (entryModalMode.value === 'edit-base') {
     return 'Редактировать базовый глагол';
   }
 
-  if (entryModalMode.value === 'edit-variant') {
-    return 'Редактировать вариант';
+  if (entryModalMode.value === 'edit-derived') {
+    return 'Редактировать глагол семейства';
   }
 
-  return 'Новый вариант';
+  if (entryModalMode.value === 'edit-collocation') {
+    return 'Редактировать сочетание';
+  }
+
+  return entryModalMode.value === 'create-derived' ? 'Новый глагол семейства' : 'Новое сочетание';
 });
 const modalSubmitLabel = computed(() => {
   return 'Сохранить';
 });
 const modalDeleteLabel = computed(() => {
-  return entryModalMode.value === 'edit-base' ? 'Удалить семейство' : 'Удалить вариант';
+  if (entryModalMode.value === 'edit-base') {
+    return 'Удалить семейство';
+  }
+
+  return entryModalMode.value === 'edit-collocation' ? 'Удалить сочетание' : 'Удалить глагол';
 });
-const shouldShowContinueButton = computed(() => entryModalMode.value === 'create-variant');
+const shouldShowContinueButton = computed(() => entryModalMode.value.startsWith('create-'));
 const shouldShowDeleteButton = computed(() => isEditMode.value && !!selectedEntry.value);
 const modalContextWord = computed(() => {
   if (entryModalMode.value === 'edit-base') {
@@ -96,8 +115,19 @@ const modalContextWord = computed(() => {
 
   return baseEntry.value?.word || '';
 });
-const modalMode = computed<'base' | 'variant'>(() => {
-  return entryModalMode.value === 'edit-base' ? 'base' : 'variant';
+const modalMode = computed<'base' | 'derived' | 'collocation'>(() => {
+  if (entryModalMode.value === 'edit-base') {
+    return 'base';
+  }
+
+  if (
+    entryModalMode.value === 'create-collocation' ||
+    entryModalMode.value === 'edit-collocation'
+  ) {
+    return 'collocation';
+  }
+
+  return 'derived';
 });
 const selectedExample = computed<VerbExample | null>(() => {
   if (!selectedEntry.value?._id) {
@@ -154,8 +184,16 @@ async function handleBackNavigation(): Promise<void> {
   await router.push(lastCollectionRoute.value || '/');
 }
 
-function openCreateVariantForm(): void {
-  entryModalMode.value = 'create-variant';
+function openCreateDerivedForm(): void {
+  entryModalMode.value = 'create-derived';
+  selectedEntry.value = null;
+  entryModalErrorMessage.value = '';
+  entryFormResetKey.value += 1;
+  isEntryModalOpen.value = true;
+}
+
+function openCreateCollocationForm(): void {
+  entryModalMode.value = 'create-collocation';
   selectedEntry.value = null;
   entryModalErrorMessage.value = '';
   entryFormResetKey.value += 1;
@@ -174,8 +212,9 @@ function openEditBaseForm(): void {
   isEntryModalOpen.value = true;
 }
 
-function openEditVariantForm(entry: VerbEntry): void {
-  entryModalMode.value = 'edit-variant';
+function openEditRelatedForm(entry: VerbEntry): void {
+  entryModalMode.value =
+    resolveVerbEntryKind(entry) === 'collocation' ? 'edit-collocation' : 'edit-derived';
   selectedEntry.value = entry;
   entryModalErrorMessage.value = '';
   entryFormResetKey.value += 1;
@@ -191,7 +230,7 @@ function closeEntryModal(): void {
   isEntryModalOpen.value = false;
 }
 
-async function handleCreateVariant(
+async function handleCreateRelatedEntry(
   payload: EntryFormPayload,
   submitMode: EntrySubmitMode
 ): Promise<void> {
@@ -240,8 +279,8 @@ async function handleSubmitEntry(
   entryModalErrorMessage.value = '';
 
   try {
-    if (entryModalMode.value === 'create-variant') {
-      await handleCreateVariant(payload, submitMode);
+    if (entryModalMode.value.startsWith('create-')) {
+      await handleCreateRelatedEntry(payload, submitMode);
       return;
     }
 
@@ -258,10 +297,13 @@ async function handleDeleteEntry(): Promise<void> {
     return;
   }
 
-  const isBaseEntry = selectedEntry.value.role === 'base';
+  const selectedKind = resolveVerbEntryKind(selectedEntry.value);
+  const isBaseEntry = isBaseEntryKind(selectedKind);
   const confirmMessage = isBaseEntry
-    ? 'Удалить всё семейство вместе со всеми вариантами и примерами?'
-    : `Удалить вариант ${selectedEntry.value.word}?`;
+    ? 'Удалить всё семейство вместе со всеми записями и примерами?'
+    : selectedKind === 'collocation'
+      ? `Удалить сочетание ${selectedEntry.value.word}?`
+      : `Удалить глагол семейства ${selectedEntry.value.word}?`;
 
   if (typeof window !== 'undefined' && !window.confirm(confirmMessage)) {
     return;
@@ -299,7 +341,9 @@ useSeoMeta({
       ? `${baseEntry.value.word} | WordPanda`
       : `Семейство ${familySlug.value} | WordPanda`,
   description: () =>
-    baseEntry.value ? `Семейство глагола ${baseEntry.value.word}` : 'Страница семейства глагола'
+    baseEntry.value
+      ? `Семейство глагола ${baseEntry.value.word} и связанные сочетания`
+      : 'Страница семейства глагола'
 });
 </script>
 
@@ -327,7 +371,9 @@ useSeoMeta({
       <section class="hero-card surface-calm">
         <p class="eyebrow">Семейство глагола</p>
         <h1>{{ baseEntry.word }}</h1>
-        <p class="hero-copy">Здесь собраны базовый глагол, его варианты и связанные примеры.</p>
+        <p class="hero-copy">
+          Здесь собраны базовый глагол, формы его семейства, сочетания и примеры.
+        </p>
       </section>
 
       <section class="page-stack-sm">
@@ -370,14 +416,20 @@ useSeoMeta({
 
       <section class="page-stack-sm">
         <div class="section-row">
-          <h2 class="section-title">Варианты</h2>
-          <AppButton size="sm" @click="openCreateVariantForm">Добавить вариант</AppButton>
+          <h2 class="section-title">Семейство</h2>
+          <AppButton size="sm" @click="openCreateDerivedForm">Добавить глагол</AppButton>
         </div>
 
-        <p v-if="variants.length === 0" class="muted-text">Варианты пока не добавлены.</p>
+        <p v-if="derivedEntries.length === 0" class="muted-text">
+          Глаголы семейства пока не добавлены.
+        </p>
 
         <div v-else class="entry-grid">
-          <article v-for="variant in variants" :key="variant._id" class="entry-card surface-calm">
+          <article
+            v-for="variant in derivedEntries"
+            :key="variant._id"
+            class="entry-card surface-calm"
+          >
             <div class="entry-card__main">
               <div class="section-row variant-card__header">
                 <p class="result-word variant-word">
@@ -414,7 +466,7 @@ useSeoMeta({
               </p>
 
               <div class="entry-card__actions">
-                <AppButton variant="ghost" size="sm" @click="openEditVariantForm(variant)"
+                <AppButton variant="ghost" size="sm" @click="openEditRelatedForm(variant)"
                   >Редактировать</AppButton
                 >
               </div>
@@ -433,6 +485,59 @@ useSeoMeta({
               <ul class="example-list example-list--inline">
                 <li
                   v-for="example in getExamples(variant._id)"
+                  :key="example._id"
+                  class="example-item"
+                >
+                  <strong>{{ example.textDe }}</strong>
+                  <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-stack-sm">
+        <div class="section-row">
+          <h2 class="section-title">Сочетания</h2>
+          <AppButton size="sm" @click="openCreateCollocationForm">Добавить сочетание</AppButton>
+        </div>
+
+        <p v-if="collocations.length === 0" class="muted-text">Сочетания пока не добавлены.</p>
+
+        <div v-else class="entry-grid">
+          <article
+            v-for="collocation in collocations"
+            :key="collocation._id"
+            class="entry-card surface-calm"
+          >
+            <div class="entry-card__main">
+              <p class="result-word">{{ collocation.word }}</p>
+
+              <p v-if="collocation.translationRu" class="entry-card__translation">
+                {{ collocation.translationRu }}
+              </p>
+
+              <div class="entry-card__actions">
+                <AppButton variant="ghost" size="sm" @click="openEditRelatedForm(collocation)"
+                  >Редактировать</AppButton
+                >
+              </div>
+            </div>
+
+            <div v-if="collocation.explanationRu" class="entry-card__detail-section">
+              <p class="entry-card__detail-title">Пояснение</p>
+              <p class="entry-card__detail-text muted-text">{{ collocation.explanationRu }}</p>
+            </div>
+
+            <div v-if="getExamples(collocation._id).length" class="entry-card__example-section">
+              <p class="entry-card__example-title">
+                {{ getExampleSectionTitle(getExamples(collocation._id)) }}
+              </p>
+
+              <ul class="example-list example-list--inline">
+                <li
+                  v-for="example in getExamples(collocation._id)"
                   :key="example._id"
                   class="example-item"
                 >

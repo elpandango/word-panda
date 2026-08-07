@@ -4,11 +4,13 @@ import { pathToFileURL } from 'node:url';
 import mongoose from 'mongoose';
 
 import { seedFamiliesDraft } from './seed-draft-data.mjs';
+import { slugifyFamilyWord } from '../shared/utils/family-slug.ts';
 
 const verbFamilySchema = new mongoose.Schema(
   {
     _id: { type: String, required: true },
     baseEntryId: { type: String, required: true },
+    slug: { type: String, required: true },
     createdAt: { type: String, required: true },
     updatedAt: { type: String, required: true }
   },
@@ -19,7 +21,8 @@ const verbEntrySchema = new mongoose.Schema(
   {
     _id: { type: String, required: true },
     familyId: { type: String, required: true, index: true },
-    role: { type: String, required: true },
+    kind: { type: String, required: true },
+    role: { type: String },
     word: { type: String, required: true, index: true },
     translationRu: { type: String },
     meaningDe: { type: String },
@@ -61,14 +64,30 @@ function now() {
   return new Date().toISOString();
 }
 
-function buildFamily(seed) {
+function buildUniqueFamilySlug(word, usedSlugs) {
+  const baseSlug = slugifyFamilyWord(word) || `family-${crypto.randomUUID().slice(0, 8)}`;
+  let candidate = baseSlug;
+  let counter = 2;
+
+  while (usedSlugs.has(candidate)) {
+    candidate = `${baseSlug}-${counter}`;
+    counter += 1;
+  }
+
+  usedSlugs.add(candidate);
+  return candidate;
+}
+
+function buildFamily(seed, usedSlugs) {
   const timestamp = now();
   const familyId = makeId('family');
   const baseEntryId = makeId('entry');
+  const slug = buildUniqueFamilySlug(seed.base.word, usedSlugs);
 
   const family = {
     _id: familyId,
     baseEntryId,
+    slug,
     createdAt: timestamp,
     updatedAt: timestamp
   };
@@ -76,7 +95,7 @@ function buildFamily(seed) {
   const baseEntry = {
     _id: baseEntryId,
     familyId,
-    role: 'base',
+    kind: 'base',
     word: seed.base.word,
     translationRu: seed.base.translationRu,
     meaningDe: seed.base.meaningDe,
@@ -89,16 +108,39 @@ function buildFamily(seed) {
     updatedAt: timestamp
   };
 
-  const variants = seed.variants.map((variant) => ({
+  const derivedSeeds =
+    seed.derived ||
+    (seed.variants || []).filter((variant) => variant.prefix || variant.isSeparable !== null);
+  const collocationSeeds =
+    seed.collocations ||
+    (seed.variants || []).filter((variant) => !variant.prefix && variant.isSeparable === null);
+
+  const derivedEntries = derivedSeeds.map((variant) => ({
     _id: makeId('entry'),
     familyId,
-    role: 'variant',
+    kind: 'derived',
     word: variant.word,
     translationRu: variant.translationRu,
     meaningDe: variant.meaningDe,
     explanationRu: variant.explanationRu,
     prefix: variant.prefix,
     isSeparable: variant.isSeparable,
+    source: 'manual',
+    status: 'reviewed',
+    createdAt: timestamp,
+    updatedAt: timestamp
+  }));
+
+  const collocationEntries = collocationSeeds.map((collocation) => ({
+    _id: makeId('entry'),
+    familyId,
+    kind: 'collocation',
+    word: collocation.word,
+    translationRu: collocation.translationRu,
+    meaningDe: collocation.meaningDe,
+    explanationRu: collocation.explanationRu,
+    prefix: null,
+    isSeparable: null,
     source: 'manual',
     status: 'reviewed',
     createdAt: timestamp,
@@ -118,8 +160,8 @@ function buildFamily(seed) {
     });
   }
 
-  for (const variant of variants) {
-    const variantSeed = seed.variants.find((item) => item.word === variant.word);
+  for (const variant of derivedEntries) {
+    const variantSeed = derivedSeeds.find((item) => item.word === variant.word);
     for (const example of variantSeed.examples) {
       examples.push({
         _id: makeId('example'),
@@ -132,7 +174,21 @@ function buildFamily(seed) {
     }
   }
 
-  return { family, entries: [baseEntry, ...variants], examples };
+  for (const collocation of collocationEntries) {
+    const collocationSeed = collocationSeeds.find((item) => item.word === collocation.word);
+    for (const example of collocationSeed.examples) {
+      examples.push({
+        _id: makeId('example'),
+        entryId: collocation._id,
+        textDe: example.textDe,
+        translationRu: example.translationRu,
+        createdAt: timestamp,
+        updatedAt: timestamp
+      });
+    }
+  }
+
+  return { family, entries: [baseEntry, ...derivedEntries, ...collocationEntries], examples };
 }
 
 const seedFamilies = seedFamiliesDraft;
@@ -150,10 +206,11 @@ export const main = async () => {
 
   const createdFamilies = [];
   const skippedFamilies = [];
+  const usedSlugs = new Set();
 
   for (const seedFamily of seedFamilies) {
     const existingBaseEntry = await VerbEntryModel.findOne({
-      role: 'base',
+      $or: [{ kind: 'base' }, { role: 'base' }],
       word: seedFamily.base.word
     }).lean();
 
@@ -165,7 +222,7 @@ export const main = async () => {
       continue;
     }
 
-    const builtFamily = buildFamily(seedFamily);
+    const builtFamily = buildFamily(seedFamily, usedSlugs);
 
     await VerbFamilyModel.create(builtFamily.family);
     await VerbEntryModel.insertMany(builtFamily.entries);
@@ -175,7 +232,7 @@ export const main = async () => {
       familyId: builtFamily.family._id,
       baseEntryId: builtFamily.family.baseEntryId,
       baseWord: builtFamily.entries[0].word,
-      variantWords: builtFamily.entries.slice(1).map((entry) => entry.word)
+      relatedWords: builtFamily.entries.slice(1).map((entry) => entry.word)
     });
   }
 

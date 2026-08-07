@@ -1,6 +1,7 @@
 import { VerbEntryModel } from '../../models/VerbEntry';
 import { VerbExampleModel } from '../../models/VerbExample';
 import { VerbFamilyModel } from '../../models/VerbFamily';
+import { resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
 
 function toPlainObject<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T;
@@ -24,7 +25,8 @@ export default defineEventHandler(async (event) => {
       found: false,
       family: null,
       baseEntry: null,
-      variants: [],
+      derivedEntries: [],
+      collocations: [],
       examplesByEntryId: {}
     };
   }
@@ -34,10 +36,14 @@ export default defineEventHandler(async (event) => {
 
   const entries = await VerbEntryModel.find({ familyId: familyRef }).sort({ createdAt: 1 }).lean();
 
-  const normalizedEntries = entries.map((entry) => toPlainObject(entry));
+  const normalizedEntries = entries.map((entry) => ({
+    ...toPlainObject(entry),
+    kind: resolveVerbEntryKind(entry)
+  }));
   const baseEntry =
     normalizedEntries.find((entry) => String(entry._id) === normalizedFamily.baseEntryId) ?? null;
-  const variants = normalizedEntries.filter((entry) => entry.role === 'variant');
+  const derivedEntries = normalizedEntries.filter((entry) => entry.kind === 'derived');
+  const collocations = normalizedEntries.filter((entry) => entry.kind === 'collocation');
   const entryIds = normalizedEntries.map((entry) => String(entry._id));
 
   const examples = entryIds.length
@@ -66,7 +72,8 @@ export default defineEventHandler(async (event) => {
     found: true,
     family: normalizedFamily,
     baseEntry,
-    variants,
+    derivedEntries,
+    collocations,
     examplesByEntryId
   };
 });
