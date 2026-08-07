@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import type { VerbEntry } from '../../shared/types/verbs';
 
+interface SearchItem extends VerbEntry {
+  familyBaseWord?: string;
+}
+
 interface SearchResponse {
   query: string;
+  items: SearchItem[];
+}
+
+interface RecentEntriesResponse {
+  limit: number;
   items: VerbEntry[];
 }
 
 const searchQuery = ref('');
 const debouncedQuery = ref('');
 const searchDebounceMs = 500;
+const isRefreshingRecentEntries = ref(false);
 
 watch(
   searchQuery,
@@ -32,8 +42,37 @@ const { data, pending, error } = await useFetch<SearchResponse>('/api/search', {
   watch: [debouncedQuery]
 });
 
+const {
+  data: recentData,
+  pending: recentPending,
+  error: recentError,
+  refresh: refreshRecentEntries
+} = await useFetch<RecentEntriesResponse>('/api/entries/recent', {
+  query: { limit: 5 },
+  default: () => ({ limit: 5, items: [] })
+});
+
 const items = computed(() => data.value?.items ?? []);
+const recentItems = computed(() => recentData.value?.items ?? []);
 const hasQuery = computed(() => searchQuery.value.trim().length > 0);
+
+function formatEntryMeta(entry: VerbEntry): string {
+  return entry.role === 'base' ? 'Базовый глагол' : 'Вариант';
+}
+
+async function handleRefreshRecentEntries(): Promise<void> {
+  if (isRefreshingRecentEntries.value) {
+    return;
+  }
+
+  isRefreshingRecentEntries.value = true;
+
+  try {
+    await refreshRecentEntries();
+  } finally {
+    isRefreshingRecentEntries.value = false;
+  }
+}
 
 useSeoMeta({
   title: 'WordPanda',
@@ -42,53 +81,98 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="page-shell page-stack">
-    <section class="hero-card">
-      <p class="eyebrow">Поиск</p>
-      <h1>Находи немецкие глаголы и их приставочные варианты в одном месте.</h1>
-      <p class="hero-copy">
-        Поиск работает по локальной базе приложения и помогает быстро открыть нужное семейство.
-      </p>
+  <main class="page-shell home-layout">
+    <div class="page-stack">
+      <section class="hero-card page-stack-sm">
+        <div class="section-row">
+          <h2>Поиск</h2>
+        </div>
 
-      <label class="search-block">
-        <span class="search-label">Поиск по слову</span>
-        <input
-          v-model="searchQuery"
-          class="search-input"
-          type="search"
-          placeholder="stellen, einstellen, spüren, aufspüren..."
-        />
-      </label>
-    </section>
+        <p class="hero-copy">Быстро найди нужный глагол и открой его семейство.</p>
 
-    <section class="info-card page-stack-sm">
-      <div class="section-row">
-        <h2>Результаты</h2>
-        <span v-if="pending" class="muted-text">Ищем...</span>
-      </div>
+        <label class="search-block">
+          <span class="search-label">Поиск по слову</span>
+          <input
+            v-model="searchQuery"
+            class="search-input"
+            type="search"
+            placeholder="stellen, einstellen, spüren, aufspüren..."
+          />
+        </label>
+      </section>
 
-      <p v-if="error" class="error-text">Не удалось выполнить поиск. Проверь вывод сервера.</p>
+      <section class="info-card page-stack-sm">
+        <div class="section-row">
+          <h2>Результаты</h2>
+          <span v-if="hasQuery && pending" class="muted-text">Ищем...</span>
+        </div>
 
-      <p v-else-if="!hasQuery" class="muted-text">Начни вводить слово, чтобы найти нужный глагол.</p>
+        <p v-if="error" class="error-text">Не удалось выполнить поиск. Проверь вывод сервера.</p>
 
-      <p v-else-if="items.length === 0" class="muted-text">По этому запросу пока ничего не найдено.</p>
+        <p v-else-if="!hasQuery" class="muted-text">Начни вводить слово, чтобы найти нужный глагол.</p>
 
-      <ul v-else class="result-list">
-        <li v-for="item in items" :key="item._id">
-          <NuxtLink class="result-card" :to="`/family/${item.familyId}`">
-            <div>
-              <p class="result-kind">{{ item.role === 'base' ? 'Базовый глагол' : 'Вариант' }}</p>
-              <strong class="result-word">{{ item.word }}</strong>
-            </div>
+        <p v-else-if="items.length === 0" class="muted-text">По этому запросу пока ничего не найдено.</p>
 
-            <div class="result-meta">
-              <p v-if="item.translationRu">{{ item.translationRu }}</p>
-              <p v-else class="muted-text">Перевод пока не добавлен</p>
-              <p class="muted-text">Семейство: {{ item.familyId }}</p>
-            </div>
-          </NuxtLink>
-        </li>
-      </ul>
-    </section>
+        <ul v-else class="result-list">
+          <li v-for="item in items" :key="item._id">
+            <NuxtLink class="result-card" :to="`/family/${item.familyId}`">
+              <div>
+                <p class="result-kind">{{ formatEntryMeta(item) }}</p>
+                <strong class="result-word">{{ item.word }}</strong>
+              </div>
+
+              <div class="result-meta">
+                <p v-if="item.translationRu">{{ item.translationRu }}</p>
+                <p v-else class="muted-text">Перевод пока не добавлен</p>
+                <p v-if="item.role === 'variant'" class="muted-text">
+                  Семейство: {{ item.familyBaseWord || item.word }}
+                </p>
+              </div>
+            </NuxtLink>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <aside class="home-sidebar page-stack-sm">
+      <section class="info-card page-stack-sm">
+        <div class="section-row">
+          <h2>Последние добавленные</h2>
+          <AppButton
+            variant="ghost"
+            size="sm"
+            :loading="isRefreshingRecentEntries"
+            :disabled="recentPending && recentItems.length === 0"
+            @click="handleRefreshRecentEntries"
+          >
+            Обновить
+          </AppButton>
+        </div>
+
+        <p v-if="recentError" class="error-text">Не удалось загрузить последние слова.</p>
+
+        <p v-else-if="recentPending && recentItems.length === 0" class="muted-text">
+          Загружаем последние добавления...
+        </p>
+
+        <p v-else-if="recentItems.length === 0" class="muted-text">Пока нет добавленных слов.</p>
+
+        <ul v-else class="result-list compact-list">
+          <li v-for="item in recentItems" :key="item._id">
+            <NuxtLink class="result-card result-card--compact" :to="`/family/${item.familyId}`">
+              <div>
+                <p class="result-kind">{{ formatEntryMeta(item) }}</p>
+                <strong class="result-word">{{ item.word }}</strong>
+              </div>
+
+              <div class="result-meta result-meta--compact">
+                <p v-if="item.translationRu">{{ item.translationRu }}</p>
+                <p v-else class="muted-text">Без перевода</p>
+              </div>
+            </NuxtLink>
+          </li>
+        </ul>
+      </section>
+    </aside>
   </main>
 </template>

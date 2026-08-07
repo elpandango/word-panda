@@ -10,6 +10,12 @@ interface FamilyResponse {
   examplesByEntryId: Record<string, VerbExample[]>;
 }
 
+interface VariantWordParts {
+  prefix: string | null;
+  stem: string;
+  isSeparable: boolean;
+}
+
 const route = useRoute();
 const familyId = computed(() => String(route.params.id));
 
@@ -39,6 +45,28 @@ function getExamples(entryId?: string): VerbExample[] {
   }
 
   return data.value?.examplesByEntryId?.[entryId] ?? [];
+}
+
+function getExampleSectionTitle(examples: VerbExample[]): string {
+  return examples.length > 1 ? 'Примеры' : 'Пример';
+}
+
+function getVariantWordParts(variant: VerbEntry): VariantWordParts {
+  const prefix = variant.prefix?.trim();
+
+  if (!prefix || !variant.word.startsWith(prefix)) {
+    return {
+      prefix: null,
+      stem: variant.word,
+      isSeparable: false
+    };
+  }
+
+  return {
+    prefix,
+    stem: variant.word.slice(prefix.length),
+    isSeparable: variant.isSeparable === true
+  };
 }
 
 useSeoMeta({
@@ -76,64 +104,81 @@ useSeoMeta({
         <p class="hero-copy">Здесь собраны базовый глагол, его варианты и связанные примеры.</p>
       </section>
 
-      <section class="info-card page-stack-sm">
-        <div class="section-row">
-          <h2>Базовый глагол</h2>
-          <span class="badge">{{ baseEntry.status }}</span>
-        </div>
+      <section class="page-stack-sm">
+        <h2 class="section-title">Базовый глагол</h2>
 
         <article class="entry-card">
-          <p class="result-word">{{ baseEntry.word }}</p>
-          <p v-if="baseEntry.translationRu">{{ baseEntry.translationRu }}</p>
-          <p v-if="baseEntry.meaningDe" class="muted-text">{{ baseEntry.meaningDe }}</p>
-          <p v-if="baseEntry.explanationRu" class="muted-text">{{ baseEntry.explanationRu }}</p>
+          <div class="entry-card__main">
+            <p class="result-word">{{ baseEntry.word }}</p>
+            <p v-if="baseEntry.translationRu" class="entry-card__translation">{{ baseEntry.translationRu }}</p>
+          </div>
 
-          <ul v-if="getExamples(baseEntry._id).length" class="example-list">
-            <li
-              v-for="example in getExamples(baseEntry._id)"
-              :key="example._id"
-              class="example-card"
-            >
-              <strong>{{ example.textDe }}</strong>
-              <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
-            </li>
-          </ul>
+          <div v-if="baseEntry.explanationRu" class="entry-card__detail-section">
+            <p class="entry-card__detail-title">Пояснение</p>
+            <p class="entry-card__detail-text muted-text">{{ baseEntry.explanationRu }}</p>
+          </div>
+
+          <div v-if="getExamples(baseEntry._id).length" class="entry-card__example-section">
+            <p class="entry-card__example-title">{{ getExampleSectionTitle(getExamples(baseEntry._id)) }}</p>
+
+            <ul class="example-list example-list--inline">
+              <li v-for="example in getExamples(baseEntry._id)" :key="example._id" class="example-item">
+                <strong>{{ example.textDe }}</strong>
+                <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
+              </li>
+            </ul>
+          </div>
         </article>
       </section>
 
-      <section class="info-card page-stack-sm">
-        <div class="section-row">
-          <h2>Варианты</h2>
-          <span class="badge">{{ variants.length }}</span>
-        </div>
+      <section class="page-stack-sm">
+        <h2 class="section-title">Варианты</h2>
 
         <p v-if="variants.length === 0" class="muted-text">Варианты пока не добавлены.</p>
 
         <div v-else class="entry-grid">
           <article v-for="variant in variants" :key="variant._id" class="entry-card">
-            <div class="section-row">
-              <p class="result-word">{{ variant.word }}</p>
-              <span class="badge">{{ variant.prefix || 'без приставки' }}</span>
+            <div class="entry-card__main">
+              <div class="section-row">
+                <p class="result-word variant-word">
+                  <template v-if="getVariantWordParts(variant).prefix">
+                    <span class="variant-word__prefix">{{ getVariantWordParts(variant).prefix }}</span>
+                    <span v-if="getVariantWordParts(variant).isSeparable" class="variant-word__separator">·</span>
+                    <span
+                      class="variant-word__stem"
+                      :class="{
+                        'variant-word__stem--separable': getVariantWordParts(variant).isSeparable
+                      }"
+                    >
+                      {{ getVariantWordParts(variant).stem }}
+                    </span>
+                  </template>
+                  <template v-else>
+                    {{ variant.word }}
+                  </template>
+                </p>
+                <span v-if="variant.isSeparable === true" class="entry-note">отделяемая</span>
+                <span v-else-if="variant.isSeparable === false" class="entry-note">неотделяемая</span>
+              </div>
+
+              <p v-if="variant.translationRu" class="entry-card__translation">{{ variant.translationRu }}</p>
             </div>
 
-            <p v-if="variant.translationRu">{{ variant.translationRu }}</p>
-            <p v-if="variant.meaningDe" class="muted-text">{{ variant.meaningDe }}</p>
-            <p v-if="variant.explanationRu" class="muted-text">{{ variant.explanationRu }}</p>
-            <p class="muted-text">
-              Отделяемая приставка:
-              {{ variant.isSeparable === null ? 'не указано' : variant.isSeparable ? 'да' : 'нет' }}
-            </p>
+            <div v-if="variant.explanationRu" class="entry-card__detail-section">
+              <p class="entry-card__detail-title">Пояснение</p>
+              <p class="entry-card__detail-text muted-text">{{ variant.explanationRu }}</p>
+            </div>
 
-            <ul v-if="getExamples(variant._id).length" class="example-list">
-              <li
-                v-for="example in getExamples(variant._id)"
-                :key="example._id"
-                class="example-card"
-              >
-                <strong>{{ example.textDe }}</strong>
-                <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
-              </li>
-            </ul>
+            <div v-if="getExamples(variant._id).length" class="entry-card__example-section">
+              <p class="entry-card__example-title">{{ getExampleSectionTitle(getExamples(variant._id)) }}</p>
+
+              <ul class="example-list example-list--inline">
+                <li v-for="example in getExamples(variant._id)" :key="example._id" class="example-item">
+                  <strong>{{ example.textDe }}</strong>
+                  <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
+                </li>
+              </ul>
+            </div>
           </article>
         </div>
       </section>
