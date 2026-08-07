@@ -15,10 +15,32 @@ interface RecentEntriesResponse {
   items: VerbEntry[];
 }
 
+interface CreateFamilyResponse {
+  ok: boolean;
+  familyId: string;
+  entryId: string;
+}
+
+interface EntryCreatePayload {
+  word: string;
+  translationRu?: string;
+  explanationRu?: string;
+  prefix?: string | null;
+  isSeparable?: boolean | null;
+  exampleTextDe?: string;
+  exampleTranslationRu?: string;
+}
+
+type EntrySubmitMode = 'close' | 'continue';
+
+const router = useRouter();
 const searchQuery = ref('');
 const debouncedQuery = ref('');
 const searchDebounceMs = 500;
 const isRefreshingRecentEntries = ref(false);
+const isCreateBaseFormOpen = ref(false);
+const isCreatingBaseEntry = ref(false);
+const createBaseErrorMessage = ref('');
 
 watch(
   searchQuery,
@@ -60,6 +82,20 @@ function formatEntryMeta(entry: VerbEntry): string {
   return entry.role === 'base' ? 'Базовый глагол' : 'Вариант';
 }
 
+function openCreateBaseForm(): void {
+  createBaseErrorMessage.value = '';
+  isCreateBaseFormOpen.value = true;
+}
+
+function closeCreateBaseForm(): void {
+  if (isCreatingBaseEntry.value) {
+    return;
+  }
+
+  createBaseErrorMessage.value = '';
+  isCreateBaseFormOpen.value = false;
+}
+
 async function handleRefreshRecentEntries(): Promise<void> {
   if (isRefreshingRecentEntries.value) {
     return;
@@ -71,6 +107,34 @@ async function handleRefreshRecentEntries(): Promise<void> {
     await refreshRecentEntries();
   } finally {
     isRefreshingRecentEntries.value = false;
+  }
+}
+
+async function handleCreateBaseEntry(
+  payload: EntryCreatePayload,
+  _submitMode: EntrySubmitMode
+): Promise<void> {
+  if (isCreatingBaseEntry.value) {
+    return;
+  }
+
+  isCreatingBaseEntry.value = true;
+  createBaseErrorMessage.value = '';
+
+  try {
+    const response = await $fetch<CreateFamilyResponse>('/api/families', {
+      method: 'POST',
+      body: payload
+    });
+
+    isCreateBaseFormOpen.value = false;
+    await refreshRecentEntries();
+    await router.push(`/family/${response.familyId}`);
+  } catch (error) {
+    createBaseErrorMessage.value =
+      error instanceof Error ? error.message : 'Не удалось создать слово.';
+  } finally {
+    isCreatingBaseEntry.value = false;
   }
 }
 
@@ -86,6 +150,7 @@ useSeoMeta({
       <section class="hero-card page-stack-sm">
         <div class="section-row">
           <h2>Поиск</h2>
+          <AppButton size="sm" @click="openCreateBaseForm">Добавить слово</AppButton>
         </div>
 
         <p class="hero-copy">Быстро найди нужный глагол и открой его семейство.</p>
@@ -109,9 +174,13 @@ useSeoMeta({
 
         <p v-if="error" class="error-text">Не удалось выполнить поиск. Проверь вывод сервера.</p>
 
-        <p v-else-if="!hasQuery" class="muted-text">Начни вводить слово, чтобы найти нужный глагол.</p>
+        <p v-else-if="!hasQuery" class="muted-text">
+          Начни вводить слово, чтобы найти нужный глагол.
+        </p>
 
-        <p v-else-if="items.length === 0" class="muted-text">По этому запросу пока ничего не найдено.</p>
+        <p v-else-if="items.length === 0" class="muted-text">
+          По этому запросу пока ничего не найдено.
+        </p>
 
         <ul v-else class="result-list">
           <li v-for="item in items" :key="item._id">
@@ -174,5 +243,14 @@ useSeoMeta({
         </ul>
       </section>
     </aside>
+
+    <AppModal :open="isCreateBaseFormOpen" title="Новое базовое слово" @close="closeCreateBaseForm">
+      <EntryCreateForm
+        mode="base"
+        :loading="isCreatingBaseEntry"
+        :error-message="createBaseErrorMessage"
+        @submit="handleCreateBaseEntry"
+      />
+    </AppModal>
   </main>
 </template>

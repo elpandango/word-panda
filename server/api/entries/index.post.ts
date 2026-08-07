@@ -1,0 +1,123 @@
+import { randomUUID } from 'node:crypto';
+import { VerbEntryModel } from '../../models/VerbEntry';
+import { VerbExampleModel } from '../../models/VerbExample';
+import { VerbFamilyModel } from '../../models/VerbFamily';
+
+interface CreateEntryBody {
+  familyId?: string;
+  word?: string;
+  translationRu?: string;
+  explanationRu?: string;
+  prefix?: string;
+  isSeparable?: boolean | null;
+  exampleTextDe?: string;
+  exampleTranslationRu?: string;
+}
+
+function normalizeRequiredText(value?: string): string {
+  return String(value || '').trim();
+}
+
+function normalizeOptionalText(value?: string): string | undefined {
+  const normalized = String(value || '').trim();
+
+  return normalized.length > 0 ? normalized : undefined;
+}
+
+function normalizeOptionalPrefix(value?: string): string | null {
+  const normalized = String(value || '').trim();
+
+  return normalized.length > 0 ? normalized : null;
+}
+
+function normalizeNullableBoolean(value: unknown): boolean | null {
+  if (value === true || value === false) {
+    return value;
+  }
+
+  if (value === 'true') {
+    return true;
+  }
+
+  if (value === 'false') {
+    return false;
+  }
+
+  return null;
+}
+
+export default defineEventHandler(async (event) => {
+  const body = await readBody<CreateEntryBody>(event);
+  const familyId = normalizeRequiredText(body.familyId);
+  const word = normalizeRequiredText(body.word);
+  const translationRu = normalizeRequiredText(body.translationRu);
+  const exampleTextDe = normalizeRequiredText(body.exampleTextDe);
+  const exampleTranslationRu = normalizeOptionalText(body.exampleTranslationRu);
+
+  if (!familyId) {
+    throw createError({
+      statusCode: 400,
+      message: 'Не найдено семейство для добавления варианта.'
+    });
+  }
+
+  if (!word) {
+    throw createError({
+      statusCode: 400,
+      message: 'Укажи слово.'
+    });
+  }
+
+  if (!translationRu) {
+    throw createError({
+      statusCode: 400,
+      message: 'Укажи перевод.'
+    });
+  }
+
+  const family = await VerbFamilyModel.findById(familyId).lean();
+
+  if (!family) {
+    throw createError({
+      statusCode: 404,
+      message: 'Семейство не найдено.'
+    });
+  }
+
+  const createdAt = new Date().toISOString();
+  const entryId = `entry_${randomUUID()}`;
+
+  await VerbEntryModel.create({
+    _id: entryId,
+    familyId,
+    role: 'variant',
+    word,
+    translationRu,
+    explanationRu: normalizeOptionalText(body.explanationRu),
+    prefix: normalizeOptionalPrefix(body.prefix),
+    isSeparable: normalizeNullableBoolean(body.isSeparable),
+    source: 'manual',
+    status: 'draft',
+    createdAt,
+    updatedAt: createdAt
+  });
+
+  if (exampleTextDe) {
+    await VerbExampleModel.create({
+      _id: `example_${randomUUID()}`,
+      entryId,
+      textDe: exampleTextDe,
+      translationRu: exampleTranslationRu,
+      createdAt,
+      updatedAt: createdAt
+    });
+  }
+
+  await VerbFamilyModel.updateOne({ _id: familyId }, { updatedAt: createdAt });
+
+  return {
+    ok: true,
+    familyId,
+    entryId
+  };
+});

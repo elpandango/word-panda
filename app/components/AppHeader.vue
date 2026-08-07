@@ -26,7 +26,9 @@ function isActive(path: string): boolean {
     <div class="site-header__inner">
       <div class="site-header__brand-group">
         <NuxtLink class="brand" to="/">WordPanda</NuxtLink>
-        <p class="site-header__tagline">Личная база немецких глаголов и их приставочных семейств.</p>
+        <p class="site-header__tagline">
+          Личная база немецких глаголов и их приставочных семейств.
+        </p>
       </div>
 
       <nav class="site-nav" aria-label="Основная навигация">

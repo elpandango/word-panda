@@ -7,10 +7,7 @@ export default defineEventHandler(async (event) => {
     ? Math.min(Math.max(Math.trunc(parsedLimit), 1), 20)
     : 5;
 
-  const items = await VerbEntryModel.find()
-    .sort({ createdAt: -1 })
-    .limit(limit)
-    .lean();
+  const items = await VerbEntryModel.find().sort({ createdAt: -1 }).limit(limit).lean();
 
   return {
     limit,
