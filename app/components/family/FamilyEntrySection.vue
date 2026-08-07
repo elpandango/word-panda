@@ -31,4 +31,10 @@ const props = withDefaults(
 .family-entry-section__header {
   align-items: center;
 }
+
+@media (max-width: 800px) {
+  .family-entry-section__header {
+    align-items: flex-start;
+  }
+}
 </style>

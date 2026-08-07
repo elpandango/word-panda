@@ -35,10 +35,23 @@ type EntrySubmitMode = 'close' | 'continue';
 type EntryModalMode =
   'create-derived' | 'create-collocation' | 'edit-base' | 'edit-derived' | 'edit-collocation';
 
+const isClientReady = ref(false);
 const route = useRoute();
 const router = useRouter();
 const lastCollectionRoute = useLastCollectionRoute();
 const familySlug = computed(() => String(route.params.id));
+const familyData = ref<FamilyResponse>({
+  familyId: null,
+  found: false,
+  family: null,
+  baseEntry: null,
+  derivedEntries: [],
+  collocations: [],
+  examplesByEntryId: {}
+});
+const isFamilyPending = ref(false);
+const familyError = ref<unknown>(null);
+const hasLoadedFamily = ref(false);
 const isEntryModalOpen = ref(false);
 const isSubmittingEntry = ref(false);
 const isDeletingEntry = ref(false);
@@ -47,28 +60,13 @@ const entryFormResetKey = ref(0);
 const entryModalMode = ref<EntryModalMode>('create-derived');
 const selectedEntry = ref<VerbEntry | null>(null);
 
-const { data, pending, error, refresh } = await useFetch<FamilyResponse>(
-  () => `/api/families/${familySlug.value}`,
-  {
-    default: () => ({
-      familyId: null,
-      found: false,
-      family: null,
-      baseEntry: null,
-      derivedEntries: [],
-      collocations: [],
-      examplesByEntryId: {}
-    }),
-    watch: [familySlug]
-  }
-);
-
-const family = computed(() => data.value?.family ?? null);
-const resolvedFamilyId = computed(() => String(data.value?.familyId || ''));
-const baseEntry = computed(() => data.value?.baseEntry ?? null);
-const derivedEntries = computed(() => data.value?.derivedEntries ?? []);
-const collocations = computed(() => data.value?.collocations ?? []);
-const found = computed(() => data.value?.found ?? false);
+const family = computed(() => familyData.value.family ?? null);
+const resolvedFamilyId = computed(() => String(familyData.value.familyId || ''));
+const baseEntry = computed(() => familyData.value.baseEntry ?? null);
+const derivedEntries = computed(() => familyData.value.derivedEntries ?? []);
+const collocations = computed(() => familyData.value.collocations ?? []);
+const found = computed(() => familyData.value.found ?? false);
+const isPageLoading = computed(() => !hasLoadedFamily.value || isFamilyPending.value);
 const isEditMode = computed(() => !entryModalMode.value.startsWith('create-'));
 const modalTitle = computed(() => {
   if (entryModalMode.value === 'edit-base') {
@@ -131,7 +129,7 @@ function getExamples(entryId?: string): VerbExample[] {
     return [];
   }
 
-  return data.value?.examplesByEntryId?.[entryId] ?? [];
+  return familyData.value.examplesByEntryId?.[entryId] ?? [];
 }
 
 function getPrimaryExample(entryId?: string): VerbExample | null {
@@ -197,6 +195,33 @@ function closeEntryModal(): void {
   isEntryModalOpen.value = false;
 }
 
+async function fetchFamily(): Promise<void> {
+  if (!isClientReady.value) {
+    return;
+  }
+
+  familyError.value = null;
+  isFamilyPending.value = true;
+
+  try {
+    familyData.value = await $fetch<FamilyResponse>(`/api/families/${familySlug.value}`);
+  } catch (error) {
+    familyError.value = error;
+    familyData.value = {
+      familyId: null,
+      found: false,
+      family: null,
+      baseEntry: null,
+      derivedEntries: [],
+      collocations: [],
+      examplesByEntryId: {}
+    };
+  } finally {
+    isFamilyPending.value = false;
+    hasLoadedFamily.value = true;
+  }
+}
+
 async function handleCreateRelatedEntry(
   payload: EntryFormPayload,
   submitMode: EntrySubmitMode
@@ -209,7 +234,7 @@ async function handleCreateRelatedEntry(
     }
   });
 
-  await refresh();
+  await fetchFamily();
 
   if (submitMode === 'continue') {
     entryModalErrorMessage.value = '';
@@ -230,7 +255,7 @@ async function handleUpdateEntry(payload: EntryFormPayload): Promise<void> {
     body: payload
   });
 
-  await refresh();
+  await fetchFamily();
   isEntryModalOpen.value = false;
 }
 
@@ -292,7 +317,7 @@ async function handleDeleteEntry(): Promise<void> {
       return;
     }
 
-    await refresh();
+    await fetchFamily();
     isEntryModalOpen.value = false;
   } catch (error) {
     entryModalErrorMessage.value =
@@ -312,6 +337,20 @@ useSeoMeta({
       ? `Семейство глагола ${baseEntry.value.word} и связанные сочетания`
       : 'Страница семейства глагола'
 });
+
+onMounted(() => {
+  isClientReady.value = true;
+  void fetchFamily();
+});
+
+watch(familySlug, () => {
+  if (!isClientReady.value) {
+    return;
+  }
+
+  hasLoadedFamily.value = false;
+  void fetchFamily();
+});
 </script>
 
 <template>
@@ -320,10 +359,10 @@ useSeoMeta({
       ← Назад
     </button>
 
-    <PageStateCard v-if="pending" message="Загружаем данные семейства..." />
+    <PageStateCard v-if="isPageLoading" message="Загружаем данные семейства..." loading />
 
     <PageStateCard
-      v-else-if="error"
+      v-else-if="familyError"
       title="Не удалось загрузить семейство"
       message="Проверь вывод сервера, чтобы увидеть точную ошибку."
       tone="error"

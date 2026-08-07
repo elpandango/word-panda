@@ -12,6 +12,16 @@ interface BrowseResponse {
   items: BrowseItem[];
 }
 
+const isClientReady = ref(false);
+const browseData = ref<BrowseResponse>({
+  letter: 'A',
+  alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
+  total: 0,
+  items: []
+});
+const isBrowsePending = ref(false);
+const browseError = ref<unknown>(null);
+const hasLoadedBrowse = ref(false);
 const route = useRoute();
 const selectedLetter = computed(() => {
   const value = String(route.query.letter ?? 'A')
@@ -21,20 +31,44 @@ const selectedLetter = computed(() => {
   return /^[A-Z]$/.test(value) ? value : 'A';
 });
 
-const { data, pending, error } = await useFetch<BrowseResponse>('/api/entries/browse', {
-  query: computed(() => ({ letter: selectedLetter.value })),
-  default: () => ({
-    letter: 'A',
-    alphabet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
-    total: 0,
-    items: []
-  }),
-  watch: [selectedLetter]
+const alphabet = computed(() => browseData.value.alphabet ?? []);
+const items = computed(() => browseData.value.items ?? []);
+const total = computed(() => browseData.value.total ?? 0);
+const isPageLoading = computed(() => !hasLoadedBrowse.value || isBrowsePending.value);
+
+async function fetchBrowseEntries(): Promise<void> {
+  if (!isClientReady.value) {
+    return;
+  }
+
+  browseError.value = null;
+  isBrowsePending.value = true;
+
+  try {
+    browseData.value = await $fetch<BrowseResponse>('/api/entries/browse', {
+      query: { letter: selectedLetter.value }
+    });
+  } catch (error) {
+    browseError.value = error;
+  } finally {
+    isBrowsePending.value = false;
+    hasLoadedBrowse.value = true;
+  }
+}
+
+watch(selectedLetter, () => {
+  if (!isClientReady.value) {
+    return;
+  }
+
+  hasLoadedBrowse.value = false;
+  void fetchBrowseEntries();
 });
 
-const alphabet = computed(() => data.value?.alphabet ?? []);
-const items = computed(() => data.value?.items ?? []);
-const total = computed(() => data.value?.total ?? 0);
+onMounted(() => {
+  isClientReady.value = true;
+  void fetchBrowseEntries();
+});
 
 useSeoMeta({
   title: 'Слова | WordPanda',
@@ -66,13 +100,15 @@ useSeoMeta({
     <section class="info-card page-stack-sm surface-calm">
       <div class="section-row">
         <h2>Слова на {{ selectedLetter }}</h2>
-        <span v-if="pending" class="muted-text">Загружаем...</span>
+        <AppSpinner v-if="isPageLoading" />
         <span v-else class="muted-text">{{ total }} шт.</span>
       </div>
 
-      <p v-if="error" class="error-text">Не удалось загрузить слова по букве.</p>
+      <p v-if="browseError" class="error-text">Не удалось загрузить слова по букве.</p>
 
-      <p v-else-if="!pending && items.length === 0" class="muted-text">
+      <p v-else-if="isPageLoading" class="muted-text">Подгружаем список слов для выбранной буквы.</p>
+
+      <p v-else-if="items.length === 0" class="muted-text">
         На эту букву базовых слов пока нет.
       </p>
 
