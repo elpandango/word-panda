@@ -1,7 +1,10 @@
 <template>
-  <div>
+  <div class="app-shell">
     <NuxtRouteAnnouncer />
     <AppHeader />
-    <NuxtPage />
+    <div class="app-shell__content">
+      <NuxtPage />
+    </div>
+    <AppBottomNav />
   </div>
 </template>
