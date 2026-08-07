@@ -19,8 +19,13 @@ export default defineNuxtConfig({
     authSecret: '',
     adminEmail: '',
     adminPasswordHash: '',
+    aiEnabled: process.env.AI_ENABLED || 'false',
+    aiProvider: process.env.AI_PROVIDER || 'ollama',
+    ollamaApiKey: process.env.OLLAMA_API_KEY || '',
+    ollamaModel: process.env.OLLAMA_MODEL || 'gpt-oss:20b',
     public: {
-      appName: 'WordPanda'
+      appName: 'WordPanda',
+      aiFillEnabled: process.env.AI_ENABLED === 'true'
     }
   },
   pwa: {

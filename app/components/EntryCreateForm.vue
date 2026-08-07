@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, reactive, watch } from 'vue';
 import type { VerbEntry, VerbExample } from '../../shared/types/verbs';
+import { getApiErrorMessage } from '../utils/api-errors';
 
 interface EntryCreatePayload {
   word: string;
@@ -12,9 +13,17 @@ interface EntryCreatePayload {
   exampleTranslationRu?: string;
 }
 
+interface AiFillResponse {
+  translationRu?: string;
+  explanationRu?: string;
+  exampleTextDe?: string;
+  exampleTranslationRu?: string;
+}
+
 type EntryCreateMode = 'base' | 'variant';
 type EntrySubmitMode = 'close' | 'continue';
 
+const runtimeConfig = useRuntimeConfig();
 const props = withDefaults(
   defineProps<{
     mode?: EntryCreateMode;
@@ -50,8 +59,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   (event: 'submit', payload: EntryCreatePayload, mode: EntrySubmitMode): void;
-  (event: 'delete'): void;
-  (event: 'cancel'): void;
+  (event: 'delete' | 'cancel'): void;
 }>();
 
 const form = reactive({
@@ -70,12 +78,18 @@ const fieldErrors = reactive({
 });
 const isPrefixTouched = ref(false);
 const activeSubmitMode = ref<EntrySubmitMode | null>(null);
+const isAiFilling = ref(false);
 const serverWordErrorMessage = ref('');
+const aiErrorMessage = ref('');
 const trimmedContextWord = computed(() => props.contextWord.trim());
 const isBusy = computed(() => props.loading || props.deleting);
+const isAiFillEnabled = computed(() => runtimeConfig.public.aiFillEnabled === true);
 const isWordInvalid = computed(() => fieldErrors.word.length > 0 || serverWordErrorMessage.value.length > 0);
 const isTranslationInvalid = computed(() => fieldErrors.translationRu.length > 0);
 const wordErrorMessage = computed(() => fieldErrors.word || serverWordErrorMessage.value);
+const canUseAiFill = computed(() => {
+  return isAiFillEnabled.value && form.word.trim().length > 0 && !isBusy.value && !isAiFilling.value;
+});
 const generalErrorMessage = computed(() => {
   return serverWordErrorMessage.value ? '' : props.errorMessage;
 });
@@ -113,6 +127,7 @@ function resetForm(): void {
   fieldErrors.word = '';
   fieldErrors.translationRu = '';
   serverWordErrorMessage.value = '';
+  aiErrorMessage.value = '';
   isPrefixTouched.value = false;
   activeSubmitMode.value = null;
 }
@@ -164,6 +179,10 @@ watch(
 
     if (serverWordErrorMessage.value) {
       serverWordErrorMessage.value = '';
+    }
+
+    if (aiErrorMessage.value) {
+      aiErrorMessage.value = '';
     }
   }
 );
@@ -283,6 +302,49 @@ function handleCancel(): void {
 
   emit('cancel');
 }
+
+async function handleAiFill(): Promise<void> {
+  if (!canUseAiFill.value) {
+    return;
+  }
+
+  isAiFilling.value = true;
+  aiErrorMessage.value = '';
+
+  try {
+    const response = await $fetch<AiFillResponse>('/api/ai/fill-entry', {
+      method: 'POST',
+      body: {
+        word: form.word.trim(),
+        mode: props.mode,
+        contextWord: trimmedContextWord.value || undefined
+      }
+    });
+
+    if (!form.translationRu.trim() && response.translationRu) {
+      form.translationRu = response.translationRu;
+    }
+
+    if (!form.explanationRu.trim() && response.explanationRu) {
+      form.explanationRu = response.explanationRu;
+    }
+
+    if (!form.exampleTextDe.trim() && response.exampleTextDe) {
+      form.exampleTextDe = response.exampleTextDe;
+    }
+
+    if (!form.exampleTranslationRu.trim() && response.exampleTranslationRu) {
+      form.exampleTranslationRu = response.exampleTranslationRu;
+    }
+  } catch (error) {
+    aiErrorMessage.value = getApiErrorMessage(
+      error,
+      'AI-подсказка временно недоступна. Попробуй позже.'
+    );
+  } finally {
+    isAiFilling.value = false;
+  }
+}
 </script>
 
 <template>
@@ -313,6 +375,27 @@ function handleCancel(): void {
         />
         <span v-if="wordErrorMessage" class="form-field-error">{{ wordErrorMessage }}</span>
       </label>
+
+      <div v-if="isAiFillEnabled" class="form-ai-assist">
+        <div class="form-ai-assist__row">
+          <p class="form-ai-assist__copy">
+            Введи слово, и AI попробует заполнить перевод, пояснение и пример.
+          </p>
+
+          <AppButton
+            type="button"
+            variant="ghost"
+            size="sm"
+            :loading="isAiFilling"
+            :disabled="!canUseAiFill"
+            @click="handleAiFill"
+          >
+            Заполнить с помощью ИИ
+          </AppButton>
+        </div>
+
+        <p v-if="aiErrorMessage" class="error-text form-ai-assist__error">{{ aiErrorMessage }}</p>
+      </div>
 
       <label class="form-field">
         <span class="form-label">Перевод</span>
@@ -450,6 +533,35 @@ function handleCancel(): void {
   gap: 8px;
 }
 
+.form-ai-assist {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--surface-border) 100%, white 12%);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-elevated) 88%, white 12%);
+}
+
+.form-ai-assist__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.form-ai-assist__copy {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.form-ai-assist__error {
+  margin: 0;
+}
+
 .form-label {
   font-family: var(--font-family-heading);
   font-size: 14px;
@@ -563,6 +675,14 @@ function handleCancel(): void {
 }
 
 @media (max-width: 640px) {
+  .form-ai-assist__row {
+    align-items: stretch;
+  }
+
+  .form-ai-assist :deep(.app-button) {
+    width: 100%;
+  }
+
   .form-actions--stacked {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
