@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { VerbEntry } from '../../shared/types/verbs';
+import { getApiErrorMessage } from '../utils/api-errors';
 
 interface SearchItem extends VerbEntry {
   familyBaseWord?: string;
+  familySlug?: string | null;
 }
 
 interface SearchResponse {
@@ -12,13 +14,14 @@ interface SearchResponse {
 
 interface RecentEntriesResponse {
   limit: number;
-  items: VerbEntry[];
+  items: (VerbEntry & { familySlug?: string | null })[];
 }
 
 interface CreateFamilyResponse {
   ok: boolean;
   familyId: string;
   entryId: string;
+  slug: string;
 }
 
 interface EntryCreatePayload {
@@ -129,10 +132,9 @@ async function handleCreateBaseEntry(
 
     isCreateBaseFormOpen.value = false;
     await refreshRecentEntries();
-    await router.push(`/family/${response.familyId}`);
+    await router.push(`/family/${response.slug}`);
   } catch (error) {
-    createBaseErrorMessage.value =
-      error instanceof Error ? error.message : 'Не удалось создать слово.';
+    createBaseErrorMessage.value = getApiErrorMessage(error, 'Не удалось создать слово.');
   } finally {
     isCreatingBaseEntry.value = false;
   }
@@ -184,7 +186,7 @@ useSeoMeta({
 
         <ul v-else class="result-list">
           <li v-for="item in items" :key="item._id">
-            <NuxtLink class="result-card surface-glass" :to="`/family/${item.familyId}`">
+            <NuxtLink class="result-card surface-glass" :to="`/family/${item.familySlug}`">
               <div>
                 <p class="result-kind">{{ formatEntryMeta(item) }}</p>
                 <strong class="result-word">{{ item.word }}</strong>
@@ -230,7 +232,7 @@ useSeoMeta({
           <li v-for="item in recentItems" :key="item._id">
             <NuxtLink
               class="result-card result-card--compact surface-glass"
-              :to="`/family/${item.familyId}`"
+              :to="`/family/${item.familySlug}`"
             >
               <div>
                 <p class="result-kind">{{ formatEntryMeta(item) }}</p>
@@ -252,6 +254,8 @@ useSeoMeta({
         mode="base"
         :loading="isCreatingBaseEntry"
         :error-message="createBaseErrorMessage"
+        :show-cancel-button="true"
+        @cancel="closeCreateBaseForm"
         @submit="handleCreateBaseEntry"
       />
     </AppModal>

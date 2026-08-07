@@ -33,6 +33,7 @@
   --modal-backdrop: rgba(16, 24, 20, 0.48);
 }
 
+body[data-season='spring'],
 .app-shell[data-season='spring'] {
   --page-bg-start: #f5f1e7;
   --page-bg-end: #dbead6;
@@ -64,6 +65,7 @@
   --shadow-color: rgba(70, 88, 56, 0.12);
 }
 
+body[data-season='summer'],
 .app-shell[data-season='summer'] {
   --page-bg-start: #f7eddc;
   --page-bg-end: #d6e6dd;
@@ -95,6 +97,7 @@
   --shadow-color: rgba(76, 58, 31, 0.12);
 }
 
+body[data-season='autumn'],
 .app-shell[data-season='autumn'] {
   --page-bg-start: #f2e4d8;
   --page-bg-end: #dbd5c8;
@@ -126,6 +129,7 @@
   --shadow-color: rgba(92, 59, 38, 0.14);
 }
 
+body[data-season='winter'],
 .app-shell[data-season='winter'] {
   --page-bg-start: #eef4f7;
   --page-bg-end: #dae8ef;

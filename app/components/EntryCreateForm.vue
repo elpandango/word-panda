@@ -28,6 +28,7 @@ const props = withDefaults(
     submitLabel?: string;
     showContinueButton?: boolean;
     showDeleteButton?: boolean;
+    showCancelButton?: boolean;
     deleteLabel?: string;
   }>(),
   {
@@ -42,6 +43,7 @@ const props = withDefaults(
     submitLabel: '',
     showContinueButton: false,
     showDeleteButton: false,
+    showCancelButton: false,
     deleteLabel: 'Удалить'
   }
 );
@@ -49,6 +51,7 @@ const props = withDefaults(
 const emit = defineEmits<{
   (event: 'submit', payload: EntryCreatePayload, mode: EntrySubmitMode): void;
   (event: 'delete'): void;
+  (event: 'cancel'): void;
 }>();
 
 const form = reactive({
@@ -67,10 +70,18 @@ const fieldErrors = reactive({
 });
 const isPrefixTouched = ref(false);
 const activeSubmitMode = ref<EntrySubmitMode | null>(null);
+const serverWordErrorMessage = ref('');
 const trimmedContextWord = computed(() => props.contextWord.trim());
 const isBusy = computed(() => props.loading || props.deleting);
-const isWordInvalid = computed(() => fieldErrors.word.length > 0);
+const isWordInvalid = computed(() => fieldErrors.word.length > 0 || serverWordErrorMessage.value.length > 0);
 const isTranslationInvalid = computed(() => fieldErrors.translationRu.length > 0);
+const wordErrorMessage = computed(() => fieldErrors.word || serverWordErrorMessage.value);
+const generalErrorMessage = computed(() => {
+  return serverWordErrorMessage.value ? '' : props.errorMessage;
+});
+const shouldStackActions = computed(() => {
+  return props.showCancelButton;
+});
 const resolvedSubmitLabel = computed(() => {
   if (props.submitLabel) {
     return props.submitLabel;
@@ -101,6 +112,7 @@ function resetForm(): void {
   form.exampleTranslationRu = props.initialExample?.translationRu || '';
   fieldErrors.word = '';
   fieldErrors.translationRu = '';
+  serverWordErrorMessage.value = '';
   isPrefixTouched.value = false;
   activeSubmitMode.value = null;
 }
@@ -149,6 +161,10 @@ watch(
     if (value.trim()) {
       fieldErrors.word = '';
     }
+
+    if (serverWordErrorMessage.value) {
+      serverWordErrorMessage.value = '';
+    }
   }
 );
 
@@ -159,6 +175,14 @@ watch(
       fieldErrors.translationRu = '';
     }
   }
+);
+
+watch(
+  () => props.errorMessage,
+  (message) => {
+    serverWordErrorMessage.value = message.includes('уже есть в базе') ? message : '';
+  },
+  { immediate: true }
 );
 
 watch(
@@ -251,6 +275,14 @@ function handleDelete(): void {
 
   emit('delete');
 }
+
+function handleCancel(): void {
+  if (isBusy.value) {
+    return;
+  }
+
+  emit('cancel');
+}
 </script>
 
 <template>
@@ -279,7 +311,7 @@ function handleDelete(): void {
           placeholder="например, stellen"
           :aria-invalid="isWordInvalid ? 'true' : 'false'"
         />
-        <span v-if="fieldErrors.word" class="form-field-error">{{ fieldErrors.word }}</span>
+        <span v-if="wordErrorMessage" class="form-field-error">{{ wordErrorMessage }}</span>
       </label>
 
       <label class="form-field">
@@ -351,25 +383,37 @@ function handleDelete(): void {
         </label>
       </div>
 
-      <p v-if="errorMessage" class="error-text form-error">{{ errorMessage }}</p>
+      <p v-if="generalErrorMessage" class="error-text form-error">{{ generalErrorMessage }}</p>
 
       <div
         class="form-actions"
-        :class="{ 'form-actions--stacked': showContinueButton || showDeleteButton }"
+        :class="{
+          'form-actions--stacked': shouldStackActions
+        }"
       >
         <AppButton
-          v-if="showDeleteButton"
+          v-if="showCancelButton"
           type="button"
           variant="ghost"
-          :loading="deleting"
           :disabled="isBusy"
-          @click="handleDelete"
+          @click="handleCancel"
         >
-          {{ deleteLabel }}
+          Отмена
         </AppButton>
 
         <AppButton
-          v-if="showContinueButton"
+          type="submit"
+          :loading="loading && activeSubmitMode !== 'continue'"
+          :disabled="isBusy"
+          :block="!showCancelButton"
+        >
+          {{ resolvedSubmitLabel }}
+        </AppButton>
+      </div>
+
+      <div v-if="showContinueButton" class="form-actions form-actions--single">
+        <AppButton
+          class="form-actions__single-button"
           type="button"
           variant="ghost"
           :loading="loading && activeSubmitMode === 'continue'"
@@ -378,14 +422,18 @@ function handleDelete(): void {
         >
           Сохранить и добавить ещё
         </AppButton>
+      </div>
 
+      <div v-if="showDeleteButton" class="form-actions form-actions--single">
         <AppButton
-          type="submit"
-          :loading="loading && activeSubmitMode !== 'continue'"
+          class="form-actions__single-button form-actions__danger-button"
+          type="button"
+          variant="ghost"
+          :loading="deleting"
           :disabled="isBusy"
-          :block="!showContinueButton && !showDeleteButton"
+          @click="handleDelete"
         >
-          {{ resolvedSubmitLabel }}
+          {{ deleteLabel }}
         </AppButton>
       </div>
     </form>
@@ -420,6 +468,25 @@ function handleDelete(): void {
 
 .form-actions {
   padding-top: 4px;
+}
+
+.form-actions--single {
+  display: block;
+}
+
+.form-actions__single-button {
+  width: 100%;
+}
+
+.form-actions__danger-button {
+  background: rgba(163, 60, 45, 0.1);
+  color: #8f3329;
+  border-color: rgba(163, 60, 45, 0.22);
+}
+
+.form-actions__danger-button:hover:enabled {
+  background: rgba(163, 60, 45, 0.16);
+  border-color: rgba(163, 60, 45, 0.3);
 }
 
 .form-actions--stacked {
@@ -490,6 +557,12 @@ function handleDelete(): void {
 }
 
 @media (min-width: 641px) {
+  .form-actions--stacked {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
   .form-actions--stacked {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

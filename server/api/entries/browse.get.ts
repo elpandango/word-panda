@@ -1,4 +1,5 @@
 import { VerbEntryModel } from '../../models/VerbEntry';
+import { VerbFamilyModel } from '../../models/VerbFamily';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -29,11 +30,21 @@ export default defineEventHandler(async (event) => {
   const sortedItems = items.sort((left, right) =>
     left.word.localeCompare(right.word, 'de', { sensitivity: 'base' })
   );
+  const familyIds = [...new Set(sortedItems.map((item) => item.familyId))];
+  const families = familyIds.length
+    ? await VerbFamilyModel.find({ _id: { $in: familyIds } }).lean()
+    : [];
+  const familySlugById = new Map(
+    families.map((family) => [String(family._id), family.slug])
+  );
 
   return {
     letter: selectedLetter,
     alphabet,
     total: sortedItems.length,
-    items: sortedItems
+    items: sortedItems.map((item) => ({
+      ...item,
+      familySlug: familySlugById.get(item.familyId) || null
+    }))
   };
 });

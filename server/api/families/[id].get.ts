@@ -7,20 +7,20 @@ function toPlainObject<T>(value: T): T {
 }
 
 export default defineEventHandler(async (event) => {
-  const familyId = getRouterParam(event, 'id');
+  const familySlug = String(getRouterParam(event, 'id') || '').trim();
 
-  if (!familyId) {
+  if (!familySlug) {
     throw createError({
       statusCode: 400,
-      message: 'Family id is required.'
+      message: 'Family slug is required.'
     });
   }
 
-  const family = await VerbFamilyModel.findById(familyId).lean();
+  const family = await VerbFamilyModel.findOne({ slug: familySlug }).lean();
 
   if (!family) {
     return {
-      familyId,
+      familyId: null,
       found: false,
       family: null,
       baseEntry: null,
@@ -62,7 +62,7 @@ export default defineEventHandler(async (event) => {
   );
 
   return {
-    familyId,
+    familyId: familyRef,
     found: true,
     family: normalizedFamily,
     baseEntry,

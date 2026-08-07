@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { VerbEntryModel } from '../../../models/VerbEntry';
 import { VerbExampleModel } from '../../../models/VerbExample';
 import { VerbFamilyModel } from '../../../models/VerbFamily';
+import { createDuplicateVerbEntryError, findDuplicateVerbEntry } from '../../../utils/verb-entry-duplicates';
 
 interface UpdateEntryBody {
   word?: string;
@@ -81,6 +82,12 @@ export default defineEventHandler(async (event) => {
       statusCode: 404,
       message: 'Слово не найдено.'
     });
+  }
+
+  const duplicateEntry = await findDuplicateVerbEntry(word, entryId);
+
+  if (duplicateEntry) {
+    throw createDuplicateVerbEntryError(word);
   }
 
   const updatedAt = new Date().toISOString();

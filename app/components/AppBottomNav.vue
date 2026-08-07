@@ -131,7 +131,7 @@ function isActive(path: string): boolean {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
+  gap: 6px;
   padding: 8px 8px calc(env(safe-area-inset-bottom, 0px) + 8px);
   border-top: 1px solid var(--surface-border);
   border-radius: 0;
@@ -141,8 +141,8 @@ function isActive(path: string): boolean {
 .bottom-nav__item {
   display: grid;
   justify-items: center;
-  gap: 4px;
-  padding: 10px 12px;
+  gap: 3px;
+  padding: 9px 8px;
   border-radius: 16px;
   color: var(--text-muted);
   text-decoration: none;
@@ -162,8 +162,8 @@ function isActive(path: string): boolean {
 }
 
 .bottom-nav__icon {
-  width: 23px;
-  height: 23px;
+  width: 21px;
+  height: 21px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -176,7 +176,7 @@ function isActive(path: string): boolean {
 
 .bottom-nav__label {
   font-family: var(--font-family-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
 }

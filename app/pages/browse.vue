@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import type { VerbEntry } from '../../shared/types/verbs';
 
+interface BrowseItem extends VerbEntry {
+  familySlug?: string | null;
+}
+
 interface BrowseResponse {
   letter: string;
   alphabet: string[];
   total: number;
-  items: VerbEntry[];
+  items: BrowseItem[];
 }
 
 const route = useRoute();
@@ -82,7 +86,7 @@ useSeoMeta({
 
       <ul v-else class="result-list">
         <li v-for="item in items" :key="item._id">
-          <NuxtLink class="result-card surface-glass" :to="`/family/${item.familyId}`">
+          <NuxtLink class="result-card surface-glass" :to="`/family/${item.familySlug}`">
             <div>
               <p class="result-kind">Базовый глагол</p>
               <strong class="result-word">{{ item.word }}</strong>

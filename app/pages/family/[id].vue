@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { VerbEntry, VerbExample, VerbFamily } from '../../../shared/types/verbs';
+import { getApiErrorMessage } from '../../utils/api-errors';
 
 interface FamilyResponse {
-  familyId: string;
+  familyId: string | null;
   found: boolean;
   family: VerbFamily | null;
   baseEntry: VerbEntry | null;
@@ -39,7 +40,7 @@ type EntryModalMode = 'create-variant' | 'edit-base' | 'edit-variant';
 const route = useRoute();
 const router = useRouter();
 const lastCollectionRoute = useLastCollectionRoute();
-const familyId = computed(() => String(route.params.id));
+const familySlug = computed(() => String(route.params.id));
 const isEntryModalOpen = ref(false);
 const isSubmittingEntry = ref(false);
 const isDeletingEntry = ref(false);
@@ -49,21 +50,22 @@ const entryModalMode = ref<EntryModalMode>('create-variant');
 const selectedEntry = ref<VerbEntry | null>(null);
 
 const { data, pending, error, refresh } = await useFetch<FamilyResponse>(
-  () => `/api/families/${familyId.value}`,
+  () => `/api/families/${familySlug.value}`,
   {
     default: () => ({
-      familyId: familyId.value,
+      familyId: null,
       found: false,
       family: null,
       baseEntry: null,
       variants: [],
       examplesByEntryId: {}
     }),
-    watch: [familyId]
+    watch: [familySlug]
   }
 );
 
 const family = computed(() => data.value?.family ?? null);
+const resolvedFamilyId = computed(() => String(data.value?.familyId || ''));
 const baseEntry = computed(() => data.value?.baseEntry ?? null);
 const variants = computed(() => data.value?.variants ?? []);
 const found = computed(() => data.value?.found ?? false);
@@ -80,7 +82,7 @@ const modalTitle = computed(() => {
   return 'Новый вариант';
 });
 const modalSubmitLabel = computed(() => {
-  return isEditMode.value ? 'Сохранить изменения' : 'Сохранить';
+  return 'Сохранить';
 });
 const modalDeleteLabel = computed(() => {
   return entryModalMode.value === 'edit-base' ? 'Удалить семейство' : 'Удалить вариант';
@@ -196,7 +198,7 @@ async function handleCreateVariant(
   await $fetch<EntryMutationResponse>('/api/entries', {
     method: 'POST',
     body: {
-      familyId: familyId.value,
+      familyId: resolvedFamilyId.value,
       ...payload
     }
   });
@@ -245,8 +247,7 @@ async function handleSubmitEntry(
 
     await handleUpdateEntry(payload);
   } catch (error) {
-    entryModalErrorMessage.value =
-      error instanceof Error ? error.message : 'Не удалось сохранить изменения.';
+    entryModalErrorMessage.value = getApiErrorMessage(error, 'Не удалось сохранить изменения.');
   } finally {
     isSubmittingEntry.value = false;
   }
@@ -296,7 +297,7 @@ useSeoMeta({
   title: () =>
     baseEntry.value
       ? `${baseEntry.value.word} | WordPanda`
-      : `Семейство ${familyId.value} | WordPanda`,
+      : `Семейство ${familySlug.value} | WordPanda`,
   description: () =>
     baseEntry.value ? `Семейство глагола ${baseEntry.value.word}` : 'Страница семейства глагола'
 });
@@ -319,7 +320,7 @@ useSeoMeta({
 
     <section v-else-if="!found || !family || !baseEntry" class="info-card surface-calm">
       <h1>Семейство не найдено</h1>
-      <p class="muted-text">API не нашёл семейство с id `{{ familyId }}`.</p>
+      <p class="muted-text">API не нашёл семейство со slug `{{ familySlug }}`.</p>
     </section>
 
     <template v-else>
@@ -378,7 +379,7 @@ useSeoMeta({
         <div v-else class="entry-grid">
           <article v-for="variant in variants" :key="variant._id" class="entry-card surface-calm">
             <div class="entry-card__main">
-              <div class="section-row">
+              <div class="section-row variant-card__header">
                 <p class="result-word variant-word">
                   <template v-if="getVariantWordParts(variant).prefix">
                     <span class="variant-word__prefix">{{
@@ -457,8 +458,10 @@ useSeoMeta({
         :initial-example="selectedExample"
         :submit-label="modalSubmitLabel"
         :show-continue-button="shouldShowContinueButton"
+        :show-cancel-button="true"
         :show-delete-button="shouldShowDeleteButton"
         :delete-label="modalDeleteLabel"
+        @cancel="closeEntryModal"
         @delete="handleDeleteEntry"
         @submit="handleSubmitEntry"
       />

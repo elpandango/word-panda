@@ -2,6 +2,8 @@ import { randomUUID } from 'node:crypto';
 import { VerbEntryModel } from '../../models/VerbEntry';
 import { VerbExampleModel } from '../../models/VerbExample';
 import { VerbFamilyModel } from '../../models/VerbFamily';
+import { createDuplicateVerbEntryError, findDuplicateVerbEntry } from '../../utils/verb-entry-duplicates';
+import { buildFamilySlug, ensureFamilySlugAvailable } from '../../utils/family-slug';
 
 interface CreateFamilyBody {
   word?: string;
@@ -42,6 +44,13 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  const duplicateEntry = await findDuplicateVerbEntry(word);
+
+  if (duplicateEntry) {
+    throw createDuplicateVerbEntryError(word);
+  }
+
+  const slug = await ensureFamilySlugAvailable(buildFamilySlug(word));
   const createdAt = new Date().toISOString();
   const familyId = `family_${randomUUID()}`;
   const entryId = `entry_${randomUUID()}`;
@@ -49,6 +58,7 @@ export default defineEventHandler(async (event) => {
   await VerbFamilyModel.create({
     _id: familyId,
     baseEntryId: entryId,
+    slug,
     createdAt,
     updatedAt: createdAt
   });
@@ -82,6 +92,7 @@ export default defineEventHandler(async (event) => {
   return {
     ok: true,
     familyId,
-    entryId
+    entryId,
+    slug
   };
 });

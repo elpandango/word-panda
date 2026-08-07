@@ -5,6 +5,7 @@ export type VerbEntryStatus = 'draft' | 'reviewed' | 'verified';
 export interface VerbFamily {
   _id?: string;
   baseEntryId: string;
+  slug: string;
   createdAt: string;
   updatedAt: string;
 }

@@ -961,9 +961,9 @@ export const seedFamiliesDraft = [
       {
         word: 'unterstellen',
         prefix: 'unter',
-        isSeparable: true,
-        translationRu: 'ставить под; приписывать; подчинять',
-        explanationRu: 'Добавлено как частотный вариант.',
+        isSeparable: false,
+        translationRu: 'приписывать; подчинять; предполагать',
+        explanationRu: 'Неотделяемый вариант: приписывать, подчинять, предполагать.',
         examples: [
           {
             textDe: 'Man unterstellte ihm schlechte Absichten.',

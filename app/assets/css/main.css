@@ -119,22 +119,21 @@ body {
 }
 
 .app-shell::before {
-  background:
-    radial-gradient(circle at 10% 12%, var(--ambient-1), transparent 30%),
-    radial-gradient(circle at 82% 18%, var(--ambient-2), transparent 34%),
-    radial-gradient(circle at 50% 100%, var(--ambient-3), transparent 40%),
-    linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-end) 100%);
+  background: radial-gradient(circle at 10% 12%, var(--ambient-1), transparent 30%),
+  radial-gradient(circle at 82% 18%, var(--ambient-2), transparent 34%),
+  radial-gradient(circle at 50% 100%, var(--ambient-3), transparent 40%),
+  linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-end) 100%);
   animation: ambient-drift 24s ease-in-out infinite alternate;
 }
 
 .app-shell::after {
   z-index: -1;
   opacity: 0.42;
-  background:
-    linear-gradient(135deg, transparent 0%, var(--grain-color) 50%, transparent 100%),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.28) 0%, transparent 58%);
+  background: linear-gradient(135deg, transparent 0%, var(--grain-color) 50%, transparent 100%),
+  radial-gradient(circle at center, rgba(255, 255, 255, 0.28) 0%, transparent 58%);
   mix-blend-mode: soft-light;
 }
+
 .app-shell__content {
   padding-bottom: 104px;
 }
@@ -329,7 +328,7 @@ ul {
 }
 
 .page-shell {
-  padding: 32px 0 48px;
+  padding: 32px 0 24px;
 }
 
 .hero-card,
@@ -614,11 +613,10 @@ ul {
   font-size: 16px;
   font-weight: 800;
   line-height: 1.2;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+  transition: background-color 0.2s ease,
+  color 0.2s ease,
+  border-color 0.2s ease,
+  transform 0.2s ease;
 }
 
 .alphabet-grid__item:hover {
@@ -692,36 +690,37 @@ ul {
   padding-top: 12px;
 }
 
+@media (min-width: 801px) {
+  .variant-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
 .surface-calm {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--calm-strong) 82%, white 18%) 0%, color-mix(in srgb, var(--calm-light) 92%, transparent) 100%);
-  box-shadow:
-    inset 0 1px 0 var(--calm-edge),
-    0 12px 28px var(--calm-shadow);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--calm-strong) 82%, white 18%) 0%, color-mix(in srgb, var(--calm-light) 92%, transparent) 100%);
+  box-shadow: inset 0 1px 0 var(--calm-edge),
+  0 12px 28px var(--calm-shadow);
   backdrop-filter: blur(12px) saturate(115%);
 }
 
 .surface-glass {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--glass-strong) 74%, white 26%) 0%, color-mix(in srgb, var(--glass-light) 90%, transparent) 100%);
-  box-shadow:
-    inset 0 1px 0 var(--glass-edge),
-    0 18px 44px var(--glass-shadow);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--glass-strong) 74%, white 26%) 0%, color-mix(in srgb, var(--glass-light) 90%, transparent) 100%);
+  box-shadow: inset 0 1px 0 var(--glass-edge),
+  0 18px 44px var(--glass-shadow);
   backdrop-filter: blur(22px) saturate(135%);
 }
 
 .surface-floating {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--floating-strong) 84%, white 16%) 0%, color-mix(in srgb, var(--floating-light) 92%, transparent) 100%);
-  box-shadow:
-    inset 0 1px 0 var(--floating-edge),
-    0 12px 30px var(--floating-shadow);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--floating-strong) 84%, white 16%) 0%, color-mix(in srgb, var(--floating-light) 92%, transparent) 100%);
+  box-shadow: inset 0 1px 0 var(--floating-edge),
+  0 12px 30px var(--floating-shadow);
   backdrop-filter: blur(20px) saturate(135%);
 }
 
 .surface-field {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--calm-strong) 76%, white 24%) 0%, color-mix(in srgb, var(--calm-light) 96%, transparent) 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--calm-strong) 76%, white 24%) 0%, color-mix(in srgb, var(--calm-light) 96%, transparent) 100%);
   box-shadow: inset 0 1px 0 var(--calm-edge);
 }
 

@@ -3,6 +3,12 @@ const route = useRoute();
 const { activeSeason } = useSeasonTheme();
 const lastCollectionRoute = useLastCollectionRoute();
 
+useHead({
+  bodyAttrs: {
+    'data-season': activeSeason
+  }
+});
+
 watch(
   () => route.fullPath,
   (fullPath) => {
