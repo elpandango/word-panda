@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import type {
-  VerbEntry,
-  VerbEntryKind,
-  VerbExample,
-  VerbFamily
-} from '~~/shared/types/verbs';
+import type { VerbEntry, VerbEntryKind, VerbExample, VerbFamily } from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../../utils/api-errors';
 import { isBaseEntryKind, resolveVerbEntryKind } from '~~/shared/utils/verb-entry-kind';
 
@@ -325,19 +320,20 @@ useSeoMeta({
       ← Назад
     </button>
 
-    <section v-if="pending" class="info-card surface-calm">
-      <p class="muted-text">Загружаем данные семейства...</p>
-    </section>
+    <PageStateCard v-if="pending" message="Загружаем данные семейства..." />
 
-    <section v-else-if="error" class="info-card surface-calm">
-      <h1>Не удалось загрузить семейство</h1>
-      <p class="error-text">Проверь вывод сервера, чтобы увидеть точную ошибку.</p>
-    </section>
+    <PageStateCard
+      v-else-if="error"
+      title="Не удалось загрузить семейство"
+      message="Проверь вывод сервера, чтобы увидеть точную ошибку."
+      tone="error"
+    />
 
-    <section v-else-if="!found || !family || !baseEntry" class="info-card surface-calm">
-      <h1>Семейство не найдено</h1>
-      <p class="muted-text">API не нашёл семейство со slug `{{ familySlug }}`.</p>
-    </section>
+    <PageStateCard
+      v-else-if="!found || !family || !baseEntry"
+      title="Семейство не найдено"
+      :message="`API не нашёл семейство со slug ${familySlug}.`"
+    />
 
     <template v-else>
       <section class="hero-card surface-calm">
@@ -348,31 +344,27 @@ useSeoMeta({
         </p>
       </section>
 
-      <section class="page-stack-sm">
-        <div class="section-row section-row--actions">
-          <h2 class="section-title">Базовый глагол</h2>
+      <FamilyEntrySection title="Базовый глагол">
+        <template #action>
           <AppButton variant="ghost" size="sm" @click="openEditBaseForm">Редактировать</AppButton>
-        </div>
-
+        </template>
         <FamilyEntryCard
           :entry="baseEntry"
           :examples="getExamples(baseEntry._id)"
           show-edit-button
           @edit="openEditBaseForm"
         />
-      </section>
+      </FamilyEntrySection>
 
-      <section class="page-stack-sm">
-        <div class="section-row">
-          <h2 class="section-title">Семейство</h2>
+      <FamilyEntrySection
+        title="Семейство"
+        :is-empty="derivedEntries.length === 0"
+        empty-text="Глаголы семейства пока не добавлены."
+      >
+        <template #action>
           <AppButton size="sm" @click="openCreateDerivedForm">Добавить глагол</AppButton>
-        </div>
-
-        <p v-if="derivedEntries.length === 0" class="muted-text">
-          Глаголы семейства пока не добавлены.
-        </p>
-
-        <div v-else class="entry-grid">
+        </template>
+        <div class="entry-grid">
           <FamilyEntryCard
             v-for="variant in derivedEntries"
             :key="variant._id"
@@ -382,17 +374,17 @@ useSeoMeta({
             @edit="openEditRelatedForm"
           />
         </div>
-      </section>
+      </FamilyEntrySection>
 
-      <section class="page-stack-sm">
-        <div class="section-row">
-          <h2 class="section-title">Сочетания</h2>
+      <FamilyEntrySection
+        title="Сочетания"
+        :is-empty="collocations.length === 0"
+        empty-text="Сочетания пока не добавлены."
+      >
+        <template #action>
           <AppButton size="sm" @click="openCreateCollocationForm">Добавить сочетание</AppButton>
-        </div>
-
-        <p v-if="collocations.length === 0" class="muted-text">Сочетания пока не добавлены.</p>
-
-        <div v-else class="entry-grid">
+        </template>
+        <div class="entry-grid">
           <FamilyEntryCard
             v-for="collocation in collocations"
             :key="collocation._id"
@@ -402,7 +394,7 @@ useSeoMeta({
             @edit="openEditRelatedForm"
           />
         </div>
-      </section>
+      </FamilyEntrySection>
     </template>
 
     <AppModal :open="isEntryModalOpen" :title="modalTitle" @close="closeEntryModal">

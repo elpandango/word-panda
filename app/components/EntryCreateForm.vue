@@ -3,6 +3,10 @@ import { computed, nextTick, reactive, useTemplateRef, watch } from 'vue';
 import type { VerbEntry, VerbEntryKind, VerbExample } from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
 import { isDerivedEntryKind } from '~~/shared/utils/verb-entry-kind';
+import EntryFormAiAssist from './entry-form/EntryFormAiAssist.vue';
+import EntryDerivedFields from './entry-form/EntryDerivedFields.vue';
+import EntryFormExampleFields from './entry-form/EntryFormExampleFields.vue';
+import EntryFormActions from './entry-form/EntryFormActions.vue';
 
 interface EntryCreatePayload {
   kind?: VerbEntryKind;
@@ -100,9 +104,6 @@ const wordErrorMessage = computed(() => fieldErrors.word || serverWordErrorMessa
 const isAiFillTemporarilyUnavailable = computed(() => isBusy.value || isAiFilling.value);
 const generalErrorMessage = computed(() => {
   return serverWordErrorMessage.value ? '' : props.errorMessage;
-});
-const shouldStackActions = computed(() => {
-  return props.showCancelButton;
 });
 const resolvedSubmitLabel = computed(() => {
   if (props.submitLabel) {
@@ -429,30 +430,14 @@ async function handleAiFill(): Promise<void> {
         <span v-if="wordErrorMessage" class="form-field-error">{{ wordErrorMessage }}</span>
       </label>
 
-      <div v-if="isAiFillEnabled" class="form-ai-assist">
-        <div class="form-ai-assist__row">
-          <p class="form-ai-assist__copy">
-            Введи слово, и AI попробует заполнить перевод, пояснение и пример.
-          </p>
-
-          <AppButton
-            class="form-ai-assist__button"
-            :class="{
-              'form-ai-assist__button--pending': hasAttemptedAiFill && isAiFillMissingWord
-            }"
-            type="button"
-            variant="ghost"
-            size="sm"
-            :loading="isAiFilling"
-            :disabled="isAiFillTemporarilyUnavailable"
-            @click="handleAiFill"
-          >
-            Заполнить с помощью ИИ
-          </AppButton>
-        </div>
-
-        <p v-if="aiErrorMessage" class="error-text form-ai-assist__error">{{ aiErrorMessage }}</p>
-      </div>
+      <EntryFormAiAssist
+        v-if="isAiFillEnabled"
+        :loading="isAiFilling"
+        :disabled="isAiFillTemporarilyUnavailable"
+        :is-pending="hasAttemptedAiFill && isAiFillMissingWord"
+        :error-message="aiErrorMessage"
+        @trigger="handleAiFill"
+      />
 
       <label class="form-field">
         <span class="form-label">Перевод</span>
@@ -469,25 +454,13 @@ async function handleAiFill(): Promise<void> {
         }}</span>
       </label>
 
-      <label v-if="isDerivedMode" class="form-field">
-        <span class="form-label">Приставка</span>
-        <input
-          :value="form.prefix"
-          class="search-input surface-field"
-          type="text"
-          placeholder="например, ein"
-          @input="handlePrefixInput"
-        />
-      </label>
-
-      <label v-if="isDerivedMode" class="form-field">
-        <span class="form-label">Отделяемость</span>
-        <select v-model="form.isSeparable" class="search-input surface-field">
-          <option value="">Не указано</option>
-          <option value="true">Отделяемая</option>
-          <option value="false">Неотделяемая</option>
-        </select>
-      </label>
+      <EntryDerivedFields
+        v-if="isDerivedMode"
+        :prefix="form.prefix"
+        :is-separable="form.isSeparable"
+        @prefix-input="handlePrefixInput"
+        @update:is-separable="form.isSeparable = $event"
+      />
 
       <label class="form-field">
         <span class="form-label">Пояснение</span>
@@ -499,83 +472,30 @@ async function handleAiFill(): Promise<void> {
         />
       </label>
 
-      <div class="form-example-block page-stack-sm">
-        <p class="form-example-title">Пример</p>
-
-        <label class="form-field">
-          <span class="form-label">Немецкое предложение</span>
-          <textarea
-            v-model="form.exampleTextDe"
-            class="search-input surface-field form-textarea form-textarea--example"
-            placeholder="например, Ich stelle den Stuhl an die Wand."
-            rows="3"
-          />
-        </label>
-
-        <label class="form-field">
-          <span class="form-label">Перевод примера</span>
-          <textarea
-            v-model="form.exampleTranslationRu"
-            class="search-input surface-field form-textarea form-textarea--example"
-            placeholder="например, Я ставлю стул к стене."
-            rows="3"
-          />
-        </label>
-      </div>
+      <EntryFormExampleFields
+        :example-text-de="form.exampleTextDe"
+        :example-translation-ru="form.exampleTranslationRu"
+        @update:example-text-de="form.exampleTextDe = $event"
+        @update:example-translation-ru="form.exampleTranslationRu = $event"
+      />
 
       <p v-if="generalErrorMessage" class="error-text form-error">{{ generalErrorMessage }}</p>
 
-      <div
-        class="form-actions"
-        :class="{
-          'form-actions--stacked': shouldStackActions
-        }"
-      >
-        <AppButton
-          v-if="showCancelButton"
-          type="button"
-          variant="ghost"
-          :disabled="isBusy"
-          @click="handleCancel"
-        >
-          Отмена
-        </AppButton>
-
-        <AppButton
-          type="submit"
-          :loading="loading && activeSubmitMode !== 'continue'"
-          :disabled="isBusy"
-          :block="!showCancelButton"
-        >
-          {{ resolvedSubmitLabel }}
-        </AppButton>
-      </div>
-
-      <div v-if="showContinueButton" class="form-actions form-actions--single">
-        <AppButton
-          class="form-actions__single-button"
-          type="button"
-          variant="ghost"
-          :loading="loading && activeSubmitMode === 'continue'"
-          :disabled="isBusy"
-          @click="handleSubmit('continue')"
-        >
-          Сохранить и добавить ещё
-        </AppButton>
-      </div>
-
-      <div v-if="showDeleteButton" class="form-actions form-actions--single">
-        <AppButton
-          class="form-actions__single-button form-actions__danger-button"
-          type="button"
-          variant="ghost"
-          :loading="deleting"
-          :disabled="isBusy"
-          @click="handleDelete"
-        >
-          {{ deleteLabel }}
-        </AppButton>
-      </div>
+      <EntryFormActions
+        :loading="loading"
+        :deleting="deleting"
+        :disabled="isBusy"
+        :show-cancel-button="showCancelButton"
+        :show-continue-button="showContinueButton"
+        :show-delete-button="showDeleteButton"
+        :submit-label="resolvedSubmitLabel"
+        :delete-label="deleteLabel"
+        :active-submit-mode="activeSubmitMode"
+        @cancel="handleCancel"
+        @submit-close="handleSubmit('close')"
+        @submit-continue="handleSubmit('continue')"
+        @delete="handleDelete"
+      />
     </form>
   </section>
 </template>
@@ -588,45 +508,6 @@ async function handleAiFill(): Promise<void> {
 .form-field {
   display: grid;
   gap: 8px;
-}
-
-.form-ai-assist {
-  display: grid;
-  gap: 10px;
-  padding: 12px 14px;
-  border: 1px solid color-mix(in srgb, var(--surface-border) 100%, white 12%);
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--surface-elevated) 88%, white 12%);
-}
-
-.form-ai-assist__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.form-ai-assist__copy {
-  margin: 0;
-  color: var(--text-muted);
-  font-family: var(--font-family-body);
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.form-ai-assist__error {
-  margin: 0;
-}
-
-.form-ai-assist__button--pending:deep(.app-button) {
-  border-color: rgba(163, 60, 45, 0.28);
-  color: #8f3329;
-  background: rgba(163, 60, 45, 0.08);
-}
-
-.form-ai-assist__button--pending:deep(.app-button:hover:enabled) {
-  background: rgba(163, 60, 45, 0.12);
 }
 
 .form-label {
@@ -645,35 +526,6 @@ async function handleAiFill(): Promise<void> {
   margin-bottom: 0;
 }
 
-.form-actions {
-  padding-top: 4px;
-}
-
-.form-actions--single {
-  display: block;
-}
-
-.form-actions__single-button {
-  width: 100%;
-}
-
-.form-actions__danger-button {
-  background: rgba(163, 60, 45, 0.1);
-  color: #8f3329;
-  border-color: rgba(163, 60, 45, 0.22);
-}
-
-.form-actions__danger-button:hover:enabled {
-  background: rgba(163, 60, 45, 0.16);
-  border-color: rgba(163, 60, 45, 0.3);
-}
-
-.form-actions--stacked {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 12px;
-}
-
 .search-input--error {
   border-color: #a33c2d;
   box-shadow: 0 0 0 4px rgba(163, 60, 45, 0.12);
@@ -690,23 +542,6 @@ async function handleAiFill(): Promise<void> {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
-}
-
-.form-example-block {
-  padding-top: 4px;
-}
-
-.form-example-title {
-  margin: 0;
-  color: var(--accent);
-  font-family: var(--font-family-heading);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.form-textarea--example {
-  min-height: 96px;
 }
 
 .form-context {
@@ -733,25 +568,5 @@ async function handleAiFill(): Promise<void> {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.2;
-}
-
-@media (min-width: 641px) {
-  .form-actions--stacked {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .form-ai-assist__row {
-    align-items: stretch;
-  }
-
-  .form-ai-assist :deep(.app-button) {
-    width: 100%;
-  }
-
-  .form-actions--stacked {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 </style>
