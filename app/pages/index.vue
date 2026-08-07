@@ -14,7 +14,7 @@ interface SearchResponse {
 
 interface RecentEntriesResponse {
   limit: number;
-  items: (VerbEntry & { familySlug?: string | null })[];
+  items: (VerbEntry & { familyBaseWord?: string; familySlug?: string | null })[];
 }
 
 interface CreateFamilyResponse {

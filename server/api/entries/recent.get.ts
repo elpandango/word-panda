@@ -14,6 +14,17 @@ export default defineEventHandler(async (event) => {
   const families = familyIds.length
     ? await VerbFamilyModel.find({ _id: { $in: familyIds } }).lean()
     : [];
+  const baseEntryIds = families.map((family) => family.baseEntryId);
+  const baseEntries = baseEntryIds.length
+    ? await VerbEntryModel.find({ _id: { $in: baseEntryIds } }).lean()
+    : [];
+  const familyBaseWordById = new Map(
+    families.map((family) => {
+      const baseEntry = baseEntries.find((entry) => String(entry._id) === family.baseEntryId);
+
+      return [String(family._id), baseEntry?.word || null];
+    })
+  );
   const familySlugById = new Map(families.map((family) => [String(family._id), family.slug]));
 
   return {
@@ -21,6 +32,7 @@ export default defineEventHandler(async (event) => {
     items: items.map((item) => ({
       ...item,
       kind: resolveVerbEntryKind(item),
+      familyBaseWord: familyBaseWordById.get(item.familyId) || item.word,
       familySlug: familySlugById.get(item.familyId) || null
     }))
   };
