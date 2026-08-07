@@ -88,19 +88,55 @@ useSeoMeta({
 
       <ul v-else class="result-list">
         <li v-for="item in items" :key="item._id">
-          <NuxtLink class="result-card surface-glass" :to="`/family/${item.familySlug}`">
-            <div>
-              <p class="result-kind">Базовый глагол</p>
-              <strong class="result-word">{{ item.word }}</strong>
-            </div>
-
-            <div class="result-meta">
-              <p v-if="item.translationRu">{{ item.translationRu }}</p>
-              <p v-else class="muted-text">Перевод пока не добавлен</p>
-            </div>
-          </NuxtLink>
+          <EntryResultCard :entry="item" />
         </li>
       </ul>
     </section>
   </main>
 </template>
+
+<style scoped>
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.alphabet-grid__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  background: var(--surface-elevated);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-family-heading);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.2;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.alphabet-grid__item:hover {
+  color: var(--accent-strong);
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--surface-border));
+}
+
+.alphabet-grid__item--active {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--surface-border));
+  color: var(--accent-strong);
+}
+
+@media (max-width: 800px) {
+  .alphabet-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+</style>
