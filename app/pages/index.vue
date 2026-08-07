@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { VerbEntry } from '../../shared/types/verbs';
+import type { VerbEntry } from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
-import { resolveVerbEntryKind } from '../../shared/utils/verb-entry-kind';
+import { resolveVerbEntryKind } from '~~/shared/utils/verb-entry-kind';
 
 interface SearchItem extends VerbEntry {
   familyBaseWord?: string;

@@ -4,9 +4,9 @@ import type {
   VerbEntryKind,
   VerbExample,
   VerbFamily
-} from '../../../shared/types/verbs';
+} from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../../utils/api-errors';
-import { isBaseEntryKind, resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
+import { isBaseEntryKind, resolveVerbEntryKind } from '~~/shared/utils/verb-entry-kind';
 
 interface FamilyResponse {
   familyId: string | null;

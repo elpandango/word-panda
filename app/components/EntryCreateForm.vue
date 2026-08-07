@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, reactive, useTemplateRef, watch } from 'vue';
-import type { VerbEntry, VerbEntryKind, VerbExample } from '../../shared/types/verbs';
+import type { VerbEntry, VerbEntryKind, VerbExample } from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
-import { isDerivedEntryKind } from '../../shared/utils/verb-entry-kind';
+import { isDerivedEntryKind } from '~~/shared/utils/verb-entry-kind';
 
 interface EntryCreatePayload {
   kind?: VerbEntryKind;

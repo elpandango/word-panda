@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { VerbEntry } from '../../shared/types/verbs';
+import type { VerbEntry } from '~~/shared/types/verbs';
 
 interface BrowseItem extends VerbEntry {
   familySlug?: string | null;
