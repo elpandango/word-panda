@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, watch } from 'vue';
+import { computed, nextTick, reactive, useTemplateRef, watch } from 'vue';
 import type { VerbEntry, VerbEntryKind, VerbExample } from '../../shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
 import { isDerivedEntryKind } from '../../shared/utils/verb-entry-kind';
@@ -20,6 +20,8 @@ interface AiFillResponse {
   explanationRu?: string;
   exampleTextDe?: string;
   exampleTranslationRu?: string;
+  prefix?: string | null;
+  isSeparable?: boolean | null;
 }
 
 type EntryCreateMode = 'base' | 'derived' | 'collocation';
@@ -63,6 +65,7 @@ const emit = defineEmits<{
   (event: 'submit', payload: EntryCreatePayload, mode: EntrySubmitMode): void;
   (event: 'delete' | 'cancel'): void;
 }>();
+const wordInputRef = useTemplateRef<HTMLInputElement>('wordInput');
 
 const form = reactive({
   word: '',
@@ -108,6 +111,9 @@ const resolvedSubmitLabel = computed(() => {
 
   return props.mode === 'base' ? 'Создать слово' : 'Сохранить';
 });
+const shouldAutofocusWord = computed(() => {
+  return !props.initialEntry?.word;
+});
 
 function toSelectValue(value: boolean | null | undefined): string {
   if (value === true) {
@@ -119,6 +125,15 @@ function toSelectValue(value: boolean | null | undefined): string {
   }
 
   return '';
+}
+
+async function focusWordInput(): Promise<void> {
+  if (!shouldAutofocusWord.value) {
+    return;
+  }
+
+  await nextTick();
+  wordInputRef.value?.focus();
 }
 
 function resetForm(): void {
@@ -142,6 +157,7 @@ watch(
   () => props.mode,
   () => {
     resetForm();
+    void focusWordInput();
   },
   { immediate: true }
 );
@@ -150,6 +166,7 @@ watch(
   () => props.resetKey,
   () => {
     resetForm();
+    void focusWordInput();
   }
 );
 
@@ -157,6 +174,7 @@ watch(
   () => props.initialEntry,
   () => {
     resetForm();
+    void focusWordInput();
   }
 );
 
@@ -358,6 +376,16 @@ async function handleAiFill(): Promise<void> {
     if (!form.exampleTranslationRu.trim() && response.exampleTranslationRu) {
       form.exampleTranslationRu = response.exampleTranslationRu;
     }
+
+    if (isDerivedMode.value) {
+      if (!isPrefixTouched.value && !form.prefix.trim() && typeof response.prefix === 'string') {
+        form.prefix = response.prefix;
+      }
+
+      if (!form.isSeparable && (response.isSeparable === true || response.isSeparable === false)) {
+        form.isSeparable = toSelectValue(response.isSeparable);
+      }
+    }
   } catch (error) {
     aiErrorMessage.value = getApiErrorMessage(
       error,
@@ -390,6 +418,7 @@ async function handleAiFill(): Promise<void> {
       <label class="form-field">
         <span class="form-label">Слово</span>
         <input
+          ref="wordInput"
           v-model="form.word"
           class="search-input surface-field"
           :class="{ 'search-input--error': isWordInvalid }"

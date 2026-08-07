@@ -9,6 +9,8 @@ export interface FillEntryDraftResult {
   explanationRu?: string;
   exampleTextDe?: string;
   exampleTranslationRu?: string;
+  prefix?: string | null;
+  isSeparable?: boolean | null;
 }
 
 interface OllamaChatResponse {
@@ -61,10 +63,14 @@ function buildMessages(
       content: [
         'Ты помогаешь заполнять карточки немецких глаголов для учебного приложения.',
         'Отвечай только валидным JSON без markdown и без пояснений.',
-        'Заполняй только поля translationRu, explanationRu, exampleTextDe, exampleTranslationRu.',
+        input.mode === 'derived'
+          ? 'Заполняй только поля translationRu, explanationRu, exampleTextDe, exampleTranslationRu, prefix, isSeparable.'
+          : 'Заполняй только поля translationRu, explanationRu, exampleTextDe, exampleTranslationRu.',
         'Выбирай самое нейтральное и частотное значение.',
         'Немецкий пример должен быть коротким, естественным и грамматически корректным.',
         'Русский перевод примера должен точно соответствовать немецкому предложению.',
+        'Для derived-глагола определи отделяемость приставки.',
+        'Если не уверен в prefix или isSeparable, верни для них null.',
         'Если не уверен, не выдумывай редкие значения.'
       ].join(' ')
     },
@@ -77,12 +83,7 @@ function buildMessages(
         `mode: "${input.mode}"`,
         contextLine,
         'Формат ответа:',
-        '{',
-        '  "translationRu": string,',
-        '  "explanationRu": string,',
-        '  "exampleTextDe": string,',
-        '  "exampleTranslationRu": string',
-        '}'
+        ...buildResponseShape(input.mode)
       ]
         .filter(Boolean)
         .join('\n')
@@ -114,7 +115,9 @@ function normalizeDraft(payload: unknown): FillEntryDraftResult {
     translationRu: toCleanString(source.translationRu),
     explanationRu: toCleanString(source.explanationRu),
     exampleTextDe: toCleanString(source.exampleTextDe),
-    exampleTranslationRu: toCleanString(source.exampleTranslationRu)
+    exampleTranslationRu: toCleanString(source.exampleTranslationRu),
+    prefix: toCleanNullableString(source.prefix),
+    isSeparable: toNullableBoolean(source.isSeparable)
   };
 }
 
@@ -126,4 +129,62 @@ function toCleanString(value: unknown): string | undefined {
   const trimmed = value.trim();
 
   return trimmed || undefined;
+}
+
+function toCleanNullableString(value: unknown): string | null | undefined {
+  if (value === null) {
+    return null;
+  }
+
+  if (typeof value !== 'string') {
+    return undefined;
+  }
+
+  const trimmed = value.trim();
+
+  return trimmed || null;
+}
+
+function toNullableBoolean(value: unknown): boolean | null | undefined {
+  if (value === null) {
+    return null;
+  }
+
+  if (value === true || value === false) {
+    return value;
+  }
+
+  if (value === 'true') {
+    return true;
+  }
+
+  if (value === 'false') {
+    return false;
+  }
+
+  return undefined;
+}
+
+function buildResponseShape(mode: FillEntryDraftInput['mode']): string[] {
+  if (mode === 'derived') {
+    return [
+      '{',
+      '  "translationRu": string,',
+      '  "explanationRu": string,',
+      '  "exampleTextDe": string,',
+      '  "exampleTranslationRu": string,',
+      '  "prefix": string | null,',
+      '  "isSeparable": boolean | null',
+      '}'
+    ];
+  }
+
+  return [
+    '{',
+    '  "translationRu": string,',
+    '  "explanationRu": string,',
+    '  "exampleTextDe": string,',
+    '  "exampleTranslationRu": string',
+    '}'
+  ];
 }
