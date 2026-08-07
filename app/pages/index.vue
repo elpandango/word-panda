@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { VerbEntry } from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
-import { resolveVerbEntryKind } from '~~/shared/utils/verb-entry-kind';
 
 interface SearchItem extends VerbEntry {
   familyBaseWord?: string;
@@ -81,20 +80,6 @@ const {
 const items = computed(() => data.value?.items ?? []);
 const recentItems = computed(() => recentData.value?.items ?? []);
 const hasQuery = computed(() => searchQuery.value.trim().length > 0);
-
-function formatEntryMeta(entry: VerbEntry): string {
-  const kind = resolveVerbEntryKind(entry);
-
-  if (kind === 'base') {
-    return 'Базовый глагол';
-  }
-
-  if (kind === 'derived') {
-    return 'Глагол семейства';
-  }
-
-  return 'Сочетание';
-}
 
 function openCreateBaseForm(): void {
   createBaseErrorMessage.value = '';
@@ -197,20 +182,7 @@ useSeoMeta({
 
         <ul v-else class="result-list">
           <li v-for="item in items" :key="item._id">
-            <NuxtLink class="result-card surface-glass" :to="`/family/${item.familySlug}`">
-              <div>
-                <p class="result-kind">{{ formatEntryMeta(item) }}</p>
-                <strong class="result-word">{{ item.word }}</strong>
-              </div>
-
-              <div class="result-meta">
-                <p v-if="item.translationRu">{{ item.translationRu }}</p>
-                <p v-else class="muted-text">Перевод пока не добавлен</p>
-                <p v-if="resolveVerbEntryKind(item) !== 'base'" class="muted-text">
-                  Семейство: {{ item.familyBaseWord || item.word }}
-                </p>
-              </div>
-            </NuxtLink>
+            <EntryResultCard :entry="item" />
           </li>
         </ul>
       </section>
@@ -241,20 +213,7 @@ useSeoMeta({
 
         <ul v-else class="result-list compact-list">
           <li v-for="item in recentItems" :key="item._id">
-            <NuxtLink
-              class="result-card result-card--compact surface-glass"
-              :to="`/family/${item.familySlug}`"
-            >
-              <div>
-                <p class="result-kind">{{ formatEntryMeta(item) }}</p>
-                <strong class="result-word">{{ item.word }}</strong>
-              </div>
-
-              <div class="result-meta result-meta--compact">
-                <p v-if="item.translationRu">{{ item.translationRu }}</p>
-                <p v-else class="muted-text">Без перевода</p>
-              </div>
-            </NuxtLink>
+            <EntryResultCard :entry="item" compact empty-translation-text="Без перевода" />
           </li>
         </ul>
       </section>

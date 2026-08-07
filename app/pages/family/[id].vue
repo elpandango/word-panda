@@ -18,12 +18,6 @@ interface FamilyResponse {
   examplesByEntryId: Record<string, VerbExample[]>;
 }
 
-interface VariantWordParts {
-  prefix: string | null;
-  stem: string;
-  isSeparable: boolean;
-}
-
 interface EntryFormPayload {
   kind?: VerbEntryKind;
   word: string;
@@ -147,28 +141,6 @@ function getExamples(entryId?: string): VerbExample[] {
 
 function getPrimaryExample(entryId?: string): VerbExample | null {
   return getExamples(entryId)[0] ?? null;
-}
-
-function getExampleSectionTitle(examples: VerbExample[]): string {
-  return examples.length > 1 ? 'Примеры' : 'Пример';
-}
-
-function getVariantWordParts(variant: VerbEntry): VariantWordParts {
-  const prefix = variant.prefix?.trim();
-
-  if (!prefix || !variant.word.startsWith(prefix)) {
-    return {
-      prefix: null,
-      stem: variant.word,
-      isSeparable: false
-    };
-  }
-
-  return {
-    prefix,
-    stem: variant.word.slice(prefix.length),
-    isSeparable: variant.isSeparable === true
-  };
 }
 
 async function handleBackNavigation(): Promise<void> {
@@ -382,36 +354,12 @@ useSeoMeta({
           <AppButton variant="ghost" size="sm" @click="openEditBaseForm">Редактировать</AppButton>
         </div>
 
-        <article class="entry-card surface-calm">
-          <div class="entry-card__main">
-            <p class="result-word">{{ baseEntry.word }}</p>
-            <p v-if="baseEntry.translationRu" class="entry-card__translation">
-              {{ baseEntry.translationRu }}
-            </p>
-          </div>
-
-          <div v-if="baseEntry.explanationRu" class="entry-card__detail-section">
-            <p class="entry-card__detail-title">Пояснение</p>
-            <p class="entry-card__detail-text muted-text">{{ baseEntry.explanationRu }}</p>
-          </div>
-
-          <div v-if="getExamples(baseEntry._id).length" class="entry-card__example-section">
-            <p class="entry-card__example-title">
-              {{ getExampleSectionTitle(getExamples(baseEntry._id)) }}
-            </p>
-
-            <ul class="example-list example-list--inline">
-              <li
-                v-for="example in getExamples(baseEntry._id)"
-                :key="example._id"
-                class="example-item"
-              >
-                <strong>{{ example.textDe }}</strong>
-                <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
-              </li>
-            </ul>
-          </div>
-        </article>
+        <FamilyEntryCard
+          :entry="baseEntry"
+          :examples="getExamples(baseEntry._id)"
+          show-edit-button
+          @edit="openEditBaseForm"
+        />
       </section>
 
       <section class="page-stack-sm">
@@ -425,75 +373,14 @@ useSeoMeta({
         </p>
 
         <div v-else class="entry-grid">
-          <article
+          <FamilyEntryCard
             v-for="variant in derivedEntries"
             :key="variant._id"
-            class="entry-card surface-calm"
-          >
-            <div class="entry-card__main">
-              <div class="section-row variant-card__header">
-                <p class="result-word variant-word">
-                  <template v-if="getVariantWordParts(variant).prefix">
-                    <span class="variant-word__prefix">{{
-                      getVariantWordParts(variant).prefix
-                    }}</span>
-                    <span
-                      v-if="getVariantWordParts(variant).isSeparable"
-                      class="variant-word__separator"
-                      >·</span
-                    >
-                    <span
-                      class="variant-word__stem"
-                      :class="{
-                        'variant-word__stem--separable': getVariantWordParts(variant).isSeparable
-                      }"
-                    >
-                      {{ getVariantWordParts(variant).stem }}
-                    </span>
-                  </template>
-                  <template v-else>
-                    {{ variant.word }}
-                  </template>
-                </p>
-                <span v-if="variant.isSeparable === true" class="entry-note">отделяемая</span>
-                <span v-else-if="variant.isSeparable === false" class="entry-note"
-                  >неотделяемая</span
-                >
-              </div>
-
-              <p v-if="variant.translationRu" class="entry-card__translation">
-                {{ variant.translationRu }}
-              </p>
-
-              <div class="entry-card__actions">
-                <AppButton variant="ghost" size="sm" @click="openEditRelatedForm(variant)"
-                  >Редактировать</AppButton
-                >
-              </div>
-            </div>
-
-            <div v-if="variant.explanationRu" class="entry-card__detail-section">
-              <p class="entry-card__detail-title">Пояснение</p>
-              <p class="entry-card__detail-text muted-text">{{ variant.explanationRu }}</p>
-            </div>
-
-            <div v-if="getExamples(variant._id).length" class="entry-card__example-section">
-              <p class="entry-card__example-title">
-                {{ getExampleSectionTitle(getExamples(variant._id)) }}
-              </p>
-
-              <ul class="example-list example-list--inline">
-                <li
-                  v-for="example in getExamples(variant._id)"
-                  :key="example._id"
-                  class="example-item"
-                >
-                  <strong>{{ example.textDe }}</strong>
-                  <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
-                </li>
-              </ul>
-            </div>
-          </article>
+            :entry="variant"
+            :examples="getExamples(variant._id)"
+            show-edit-button
+            @edit="openEditRelatedForm"
+          />
         </div>
       </section>
 
@@ -506,47 +393,14 @@ useSeoMeta({
         <p v-if="collocations.length === 0" class="muted-text">Сочетания пока не добавлены.</p>
 
         <div v-else class="entry-grid">
-          <article
+          <FamilyEntryCard
             v-for="collocation in collocations"
             :key="collocation._id"
-            class="entry-card surface-calm"
-          >
-            <div class="entry-card__main">
-              <p class="result-word">{{ collocation.word }}</p>
-
-              <p v-if="collocation.translationRu" class="entry-card__translation">
-                {{ collocation.translationRu }}
-              </p>
-
-              <div class="entry-card__actions">
-                <AppButton variant="ghost" size="sm" @click="openEditRelatedForm(collocation)"
-                  >Редактировать</AppButton
-                >
-              </div>
-            </div>
-
-            <div v-if="collocation.explanationRu" class="entry-card__detail-section">
-              <p class="entry-card__detail-title">Пояснение</p>
-              <p class="entry-card__detail-text muted-text">{{ collocation.explanationRu }}</p>
-            </div>
-
-            <div v-if="getExamples(collocation._id).length" class="entry-card__example-section">
-              <p class="entry-card__example-title">
-                {{ getExampleSectionTitle(getExamples(collocation._id)) }}
-              </p>
-
-              <ul class="example-list example-list--inline">
-                <li
-                  v-for="example in getExamples(collocation._id)"
-                  :key="example._id"
-                  class="example-item"
-                >
-                  <strong>{{ example.textDe }}</strong>
-                  <p v-if="example.translationRu" class="muted-text">{{ example.translationRu }}</p>
-                </li>
-              </ul>
-            </div>
-          </article>
+            :entry="collocation"
+            :examples="getExamples(collocation._id)"
+            show-edit-button
+            @edit="openEditRelatedForm"
+          />
         </div>
       </section>
     </template>
