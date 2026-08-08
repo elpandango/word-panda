@@ -10,8 +10,28 @@ const emit = defineEmits<{
   (event: 'toggle'): void;
 }>();
 
+function splitExampleText(example?: string): string[] {
+  if (!example) {
+    return [];
+  }
+
+  return example
+    .split(/\n+/)
+    .flatMap((part) => part.match(/[^.!?]+[.!?]?/g) ?? [])
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
 const levelThemeClass = computed(() => {
   return `flashcard-study-card--${props.card.level.toLowerCase()}`;
+});
+
+const frontExampleLines = computed(() => {
+  return splitExampleText(props.card.front.exampleDe);
+});
+
+const backExampleLines = computed(() => {
+  return splitExampleText(props.card.back.exampleTranslation);
 });
 </script>
 
@@ -40,8 +60,14 @@ const levelThemeClass = computed(() => {
           >
             {{ line }}
           </span>
-          <span v-if="props.card.front.exampleDe" class="flashcard-study-card__example">
-            {{ props.card.front.exampleDe }}
+          <span v-if="frontExampleLines.length" class="flashcard-study-card__example">
+            <span
+              v-for="line in frontExampleLines"
+              :key="`${props.card.id}-front-example-${line}`"
+              class="flashcard-study-card__example-line"
+            >
+              {{ line }}
+            </span>
           </span>
         </span>
       </span>
@@ -60,8 +86,14 @@ const levelThemeClass = computed(() => {
           >
             {{ line }}
           </span>
-          <span v-if="props.card.back.exampleTranslation" class="flashcard-study-card__example">
-            {{ props.card.back.exampleTranslation }}
+          <span v-if="backExampleLines.length" class="flashcard-study-card__example">
+            <span
+              v-for="line in backExampleLines"
+              :key="`${props.card.id}-back-example-${line}`"
+              class="flashcard-study-card__example-line"
+            >
+              {{ line }}
+            </span>
           </span>
         </span>
       </span>
@@ -178,10 +210,16 @@ const levelThemeClass = computed(() => {
 }
 
 .flashcard-study-card__example {
+  display: grid;
+  gap: 8px;
   margin-top: 6px;
   color: var(--text-primary);
   font-size: 22px;
   line-height: 1.22;
+}
+
+.flashcard-study-card__example-line {
+  display: block;
 }
 
 @media (max-width: 800px) {
