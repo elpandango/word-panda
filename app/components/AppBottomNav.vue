@@ -3,9 +3,14 @@ const route = useRoute();
 
 const navigationItems = [
   {
-    label: 'Словарь',
+    label: 'Главная',
     to: '/',
     icon: 'home'
+  },
+  {
+    label: 'Словарь',
+    to: '/dictionary',
+    icon: 'book'
   },
   {
     label: 'Слова',
@@ -20,11 +25,11 @@ const navigationItems = [
 ] as const;
 
 function isActive(path: string): boolean {
-  if (path === '/') {
-    return route.path === '/' || route.path.startsWith('/family/');
+  if (path === '/dictionary') {
+    return route.path === '/dictionary' || route.path.startsWith('/family/');
   }
 
-  return route.path.startsWith(path);
+  return path === '/' ? route.path === '/' : route.path.startsWith(path);
 }
 </script>
 
@@ -42,6 +47,36 @@ function isActive(path: string): boolean {
           <svg v-if="item.icon === 'home'" viewBox="0 0 24 24" fill="none">
             <path
               d="M4 10.5L12 4L20 10.5V20H14.5V14H9.5V20H4V10.5Z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+          </svg>
+          <svg v-else-if="item.icon === 'book'" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M5 6.5C5 5.67157 5.67157 5 6.5 5H18C19.1046 5 20 5.89543 20 7V18.5C20 19.3284 19.3284 20 18.5 20H7.5C6.11929 20 5 18.8807 5 17.5V6.5Z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+            <path
+              d="M8 8.5H16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+            <path
+              d="M8 12H16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.8"
+            />
+            <path
+              d="M5 17.5C5 16.1193 6.11929 15 7.5 15H20"
               stroke="currentColor"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -130,7 +165,7 @@ function isActive(path: string): boolean {
   width: 100%;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
   padding: 8px 8px calc(env(safe-area-inset-bottom, 0px) + 8px);
   border-top: 1px solid var(--surface-border);

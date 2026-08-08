@@ -181,7 +181,7 @@ async function handleBackNavigation(): Promise<void> {
     }
   }
 
-  await router.push(lastCollectionRoute.value || '/');
+  await router.push(lastCollectionRoute.value || '/dictionary');
 }
 
 function openCreateDerivedForm(): void {
@@ -348,7 +348,7 @@ async function handleDeleteEntry(): Promise<void> {
     );
 
     if (response.deleted === 'family') {
-      await router.push('/');
+      await router.push('/dictionary');
       return;
     }
 

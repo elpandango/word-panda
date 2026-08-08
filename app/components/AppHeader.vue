@@ -4,8 +4,12 @@ const { activeAccent } = useSeasonTheme();
 
 const navigationItems = [
   {
-    label: 'Словарь',
+    label: 'Главная',
     to: '/'
+  },
+  {
+    label: 'Словарь',
+    to: '/dictionary'
   },
   {
     label: 'Слова',
@@ -18,11 +22,11 @@ const navigationItems = [
 ] as const;
 
 function isActive(path: string): boolean {
-  if (path === '/') {
-    return route.path === '/' || route.path.startsWith('/family/');
+  if (path === '/dictionary') {
+    return route.path === '/dictionary' || route.path.startsWith('/family/');
   }
 
-  return route.path.startsWith(path);
+  return path === '/' ? route.path === '/' : route.path.startsWith(path);
 }
 </script>
 
