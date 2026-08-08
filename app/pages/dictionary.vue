@@ -188,6 +188,8 @@ useSeoMeta({
 <template>
   <main class="page-shell home-layout">
     <div class="page-stack">
+      <NuxtLink class="back-link" to="/">← На главную</NuxtLink>
+
       <section class="hero-card page-stack-sm surface-calm">
         <div class="section-row">
           <h2>Поиск</h2>

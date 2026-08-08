@@ -92,23 +92,34 @@ useSeoMeta({
       </div>
 
       <div class="hub-grid">
-        <component
+        <template
           v-for="item in section.items"
           :key="item.title"
-          :is="item.disabled ? 'div' : 'NuxtLink'"
-          :to="item.disabled ? undefined : item.to"
-          class="hub-card surface-glass"
-          :class="{ 'hub-card--disabled': item.disabled }"
         >
-          <div class="hub-card__topline">
-            <strong class="hub-card__title">{{ item.title }}</strong>
-            <span class="hub-card__state">
-              {{ item.disabled ? 'Скоро' : 'Открыть' }}
-            </span>
-          </div>
+          <NuxtLink
+            v-if="!item.disabled"
+            :to="item.to!"
+            class="hub-card surface-glass"
+          >
+            <div class="hub-card__topline">
+              <strong class="hub-card__title">{{ item.title }}</strong>
+            </div>
 
-          <p class="hub-card__copy">{{ item.description }}</p>
-        </component>
+            <p class="hub-card__copy">{{ item.description }}</p>
+          </NuxtLink>
+
+          <div
+            v-else
+            class="hub-card hub-card--disabled surface-glass"
+          >
+            <div class="hub-card__topline">
+              <strong class="hub-card__title">{{ item.title }}</strong>
+              <span class="hub-card__state">Скоро</span>
+            </div>
+
+            <p class="hub-card__copy">{{ item.description }}</p>
+          </div>
+        </template>
       </div>
     </section>
   </main>

@@ -167,7 +167,11 @@ function isActive(path: string): boolean {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
-  padding: 8px 8px calc(env(safe-area-inset-bottom, 0px) + 8px);
+  padding:
+    8px
+    max(14px, env(safe-area-inset-right, 0px))
+    calc(env(safe-area-inset-bottom, 0px) + 8px)
+    max(14px, env(safe-area-inset-left, 0px));
   border-top: 1px solid var(--surface-border);
   border-radius: 0;
   pointer-events: auto;
