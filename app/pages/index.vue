@@ -19,7 +19,7 @@ const sections: HubSection[] = [
     title: 'Слова',
     description: 'Переход к поиску по словарю и просмотру слов по буквам.',
     mascotAlt: 'Панда читает книгу',
-    mascotSrc: '/mascot/panda-reading-book.png',
+    mascotSrc: '/mascot/panda-reading-book.jpg',
     items: [
       {
         title: 'Словарь',
@@ -37,7 +37,7 @@ const sections: HubSection[] = [
     title: 'Тренировка',
     description: 'Отсюда можно запускать уже готовые режимы и видеть, что появится дальше.',
     mascotAlt: 'Панда тренируется с гантелями',
-    mascotSrc: '/mascot/panda-training.png',
+    mascotSrc: '/mascot/panda-training.jpg',
     items: [
       {
         title: 'Карточки',

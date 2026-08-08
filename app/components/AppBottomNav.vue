@@ -169,9 +169,9 @@ function isActive(path: string): boolean {
   gap: 6px;
   padding:
     8px
-    max(14px, env(safe-area-inset-right, 0px))
+    max(20px, env(safe-area-inset-right, 0px))
     calc(env(safe-area-inset-bottom, 0px) + 8px)
-    max(14px, env(safe-area-inset-left, 0px));
+    max(20px, env(safe-area-inset-left, 0px));
   border-top: 1px solid var(--surface-border);
   border-radius: 0;
   pointer-events: auto;
