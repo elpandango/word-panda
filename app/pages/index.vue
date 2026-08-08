@@ -9,6 +9,8 @@ interface HubLinkItem {
 interface HubSection {
   title: string;
   description: string;
+  mascotAlt: string;
+  mascotSrc: string;
   items: HubLinkItem[];
 }
 
@@ -16,6 +18,8 @@ const sections: HubSection[] = [
   {
     title: 'Слова',
     description: 'Переход к поиску по словарю и просмотру слов по буквам.',
+    mascotAlt: 'Панда читает книгу',
+    mascotSrc: '/mascot/panda-reading-book.png',
     items: [
       {
         title: 'Словарь',
@@ -32,6 +36,8 @@ const sections: HubSection[] = [
   {
     title: 'Тренировка',
     description: 'Отсюда можно запускать уже готовые режимы и видеть, что появится дальше.',
+    mascotAlt: 'Панда тренируется с гантелями',
+    mascotSrc: '/mascot/panda-training.png',
     items: [
       {
         title: 'Карточки',
@@ -55,11 +61,10 @@ useSeoMeta({
 
 <template>
   <main class="page-shell page-stack">
-    <section class="hero-card page-stack-sm surface-calm">
-      <p class="eyebrow">Главная</p>
-      <h1>Выбери, куда перейти дальше</h1>
+    <section class="hero-card page-stack-sm surface-calm home-intro">
+      <h1 class="home-intro__title">WordPanda</h1>
       <p class="hero-copy">
-        Здесь будет быстрый вход в словарь, карточки и следующие учебные режимы без лишних переходов.
+        Небольшой учебный хаб для словаря, карточек и будущих тренировок по немецкому языку.
       </p>
     </section>
 
@@ -68,12 +73,22 @@ useSeoMeta({
       :key="section.title"
       class="info-card page-stack-sm surface-calm"
     >
-      <div class="page-stack-xs">
-        <div class="section-row">
-          <h2>{{ section.title }}</h2>
+      <div class="section-intro">
+        <div class="page-stack-xs section-intro__copy">
+          <div class="section-row">
+            <h2>{{ section.title }}</h2>
+          </div>
+
+          <p class="muted-text">{{ section.description }}</p>
         </div>
 
-        <p class="muted-text">{{ section.description }}</p>
+        <div class="section-intro__mascot">
+          <img
+            class="section-intro__mascot-image"
+            :src="section.mascotSrc"
+            :alt="section.mascotAlt"
+          />
+        </div>
       </div>
 
       <div class="hub-grid">
@@ -100,6 +115,42 @@ useSeoMeta({
 </template>
 
 <style scoped>
+.home-intro {
+  padding-block: 18px;
+}
+
+.home-intro__title {
+  margin-bottom: 0;
+}
+
+.home-intro .hero-copy {
+  max-width: 52ch;
+  margin-bottom: 0;
+}
+
+.section-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.section-intro__copy {
+  min-width: 0;
+}
+
+.section-intro__mascot {
+  flex-shrink: 0;
+}
+
+.section-intro__mascot-image {
+  display: block;
+  width: 104px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .hub-grid {
   display: grid;
   gap: 14px;
@@ -172,6 +223,16 @@ useSeoMeta({
 }
 
 @media (max-width: 640px) {
+  .section-intro {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .section-intro__mascot-image {
+    width: 84px;
+  }
+
   .hub-grid {
     grid-template-columns: 1fr;
   }
