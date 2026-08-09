@@ -167,8 +167,7 @@ useSeoMeta({
       </p>
 
       <p v-if="currentCard" class="muted-text">
-        Тема: {{ currentCard.topic }}. Источник: {{ currentCard.source }}. Клик по карточке
-        переворачивает её.
+        Тема: {{ currentCard.topic }}. Клик по карточке переворачивает её.
       </p>
 
       <p v-if="!isLoading && !loadError && !currentCard" class="muted-text">

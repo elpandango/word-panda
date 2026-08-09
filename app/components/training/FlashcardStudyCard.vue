@@ -105,6 +105,8 @@ const backExampleLines = computed(() => {
 .flashcard-study-card {
   display: block;
   width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
   padding: 0;
   border: 0;
   background: transparent;
@@ -115,7 +117,7 @@ const backExampleLines = computed(() => {
 .flashcard-study-card__inner {
   position: relative;
   display: block;
-  min-height: 430px;
+  min-height: 280px;
   transform-style: preserve-3d;
   transition: transform 0.7s ease;
 }
@@ -145,8 +147,8 @@ const backExampleLines = computed(() => {
   justify-content: space-between;
   gap: 12px;
   align-items: center;
-  min-height: 34px;
-  padding: 8px 16px;
+  min-height: 30px;
+  padding: 7px 14px;
   color: rgba(255, 255, 255, 0.92);
   font-size: 12px;
   font-weight: 700;
@@ -164,8 +166,8 @@ const backExampleLines = computed(() => {
 .flashcard-study-card__body {
   display: grid;
   align-content: start;
-  gap: 10px;
-  padding: 16px;
+  gap: 8px;
+  padding: 14px;
 }
 
 .flashcard-study-card--a1 .flashcard-study-card__topbar {
@@ -190,7 +192,7 @@ const backExampleLines = computed(() => {
 
 .flashcard-study-card__title {
   font-family: var(--font-family-heading);
-  font-size: 34px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.05;
   color: var(--text-primary);
@@ -198,12 +200,12 @@ const backExampleLines = computed(() => {
 
 .flashcard-study-card__subtitle {
   color: var(--text-muted);
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.35;
 }
 
 .flashcard-study-card__line {
-  font-size: 24px;
+  font-size: 17px;
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-primary);
@@ -214,7 +216,7 @@ const backExampleLines = computed(() => {
   gap: 8px;
   margin-top: 6px;
   color: var(--text-primary);
-  font-size: 22px;
+  font-size: 17px;
   line-height: 1.22;
 }
 
@@ -223,8 +225,12 @@ const backExampleLines = computed(() => {
 }
 
 @media (max-width: 800px) {
+  .flashcard-study-card {
+    max-width: none;
+  }
+
   .flashcard-study-card__inner {
-    min-height: 380px;
+    min-height: 300px;
   }
 
   .flashcard-study-card__title {
