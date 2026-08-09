@@ -4,6 +4,7 @@ import { pathToFileURL } from 'node:url';
 import mongoose from 'mongoose';
 
 import { seedFamiliesDraft } from './seed-draft-data.mjs';
+import { seedFlashcards } from './seed-flashcards.mjs';
 import { slugifyFamilyWord } from '../shared/utils/family-slug.ts';
 
 const verbFamilySchema = new mongoose.Schema(
@@ -243,7 +244,8 @@ export const main = async () => {
         database: mongoose.connection.name,
         createdFamilies,
         skippedFamilies,
-        totalSeedFamilies: seedFamilies.length
+        totalSeedFamilies: seedFamilies.length,
+        flashcards: await seedFlashcards()
       },
       null,
       2

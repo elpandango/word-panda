@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FlashcardItem } from '../../data/flashcards';
+import type { FlashcardItem } from '../../../shared/types/flashcards';
 
 const props = defineProps<{
   card: FlashcardItem;

@@ -1,14 +1,20 @@
 <script setup lang="ts">
 import FlashcardStudyCard from '../../components/training/FlashcardStudyCard.vue';
-import { type FlashcardItem, type FlashcardLevel, flashcardLevels, flashcards } from '../../data/flashcards';
+import type {
+  FlashcardItem,
+  FlashcardLevel,
+  FlashcardsListResponse
+} from '../../../shared/types/flashcards';
 
-const selectedLevel = ref<FlashcardLevel>(flashcardLevels[0] ?? 'C1');
+const selectedLevel = ref<FlashcardLevel>('C1');
+const availableLevels = ref<FlashcardLevel[]>([]);
+const levelCards = ref<FlashcardItem[]>([]);
 const currentCardId = ref('');
 const isFlipped = ref(false);
+const isLoading = ref(true);
+const loadError = ref('');
 
-const levelCards = computed(() => {
-  return flashcards.filter((card) => card.level === selectedLevel.value);
-});
+let loadRequestId = 0;
 
 const currentCard = computed<FlashcardItem | null>(() => {
   return levelCards.value.find((card) => card.id === currentCardId.value) ?? levelCards.value[0] ?? null;
@@ -36,13 +42,70 @@ function pickRandomCard(): void {
   isFlipped.value = false;
 }
 
-watch(
-  selectedLevel,
-  () => {
-    pickRandomCard();
-  },
-  { immediate: true }
-);
+function syncCurrentCard(): void {
+  const cards = levelCards.value;
+
+  if (!cards.length) {
+    currentCardId.value = '';
+    isFlipped.value = false;
+    return;
+  }
+
+  const hasCurrentCard = cards.some((card) => card.id === currentCardId.value);
+
+  if (!hasCurrentCard) {
+    currentCardId.value = cards[0]?.id ?? '';
+    isFlipped.value = false;
+  }
+}
+
+async function loadCardsForLevel(level: FlashcardLevel): Promise<void> {
+  const requestId = ++loadRequestId;
+
+  isLoading.value = true;
+  loadError.value = '';
+
+  try {
+    const response = await $fetch<FlashcardsListResponse>('/api/flashcards', {
+      query: { level }
+    });
+
+    if (requestId !== loadRequestId) {
+      return;
+    }
+
+    availableLevels.value = response.levels;
+    levelCards.value = response.items;
+
+    if (response.level && response.level !== selectedLevel.value) {
+      selectedLevel.value = response.level;
+      return;
+    }
+
+    syncCurrentCard();
+  } catch (error) {
+    if (requestId !== loadRequestId) {
+      return;
+    }
+
+    levelCards.value = [];
+    currentCardId.value = '';
+    loadError.value =
+      error instanceof Error ? error.message : 'Не удалось загрузить карточки. Попробуй еще раз.';
+  } finally {
+    if (requestId === loadRequestId) {
+      isLoading.value = false;
+    }
+  }
+}
+
+watch(selectedLevel, () => {
+  void loadCardsForLevel(selectedLevel.value);
+});
+
+onMounted(() => {
+  void loadCardsForLevel(selectedLevel.value);
+});
 
 function toggleCard(): void {
   isFlipped.value = !isFlipped.value;
@@ -73,11 +136,12 @@ useSeoMeta({
           <span class="cards-toolbar__label">Уровень</span>
           <div class="cards-toolbar__chips">
             <button
-              v-for="level in flashcardLevels"
+              v-for="level in availableLevels"
               :key="level"
               type="button"
               class="cards-toolbar__chip"
               :class="{ 'cards-toolbar__chip--active': level === selectedLevel }"
+              :disabled="isLoading"
               @click="selectedLevel = level"
             >
               {{ level }}
@@ -87,20 +151,32 @@ useSeoMeta({
 
         <div class="cards-toolbar__actions">
           <span class="muted-text">{{ levelCards.length }} карточек</span>
-          <AppButton size="sm" @click="pickRandomCard">Случайная карточка</AppButton>
+          <AppButton size="sm" :disabled="isLoading || !levelCards.length" @click="pickRandomCard">
+            Случайная карточка
+          </AppButton>
         </div>
       </div>
 
-      <p v-if="currentCard" class="muted-text">
-        Тема: {{ currentCard.topic }}. Источник: tutor photo. Клик по карточке переворачивает её.
+      <div v-if="isLoading" class="cards-state">
+        <AppSpinner size="md" />
+        <span class="muted-text">Загружаем карточки...</span>
+      </div>
+
+      <p v-else-if="loadError" class="cards-error">
+        {{ loadError }}
       </p>
 
-      <p v-if="!currentCard" class="muted-text">
+      <p v-if="currentCard" class="muted-text">
+        Тема: {{ currentCard.topic }}. Источник: {{ currentCard.source }}. Клик по карточке
+        переворачивает её.
+      </p>
+
+      <p v-if="!isLoading && !loadError && !currentCard" class="muted-text">
         Для этого уровня карточек пока нет.
       </p>
 
       <FlashcardStudyCard
-        v-else
+        v-if="!isLoading && !loadError && currentCard"
         :card="currentCard"
         :flipped="isFlipped"
         @toggle="toggleCard"
@@ -154,10 +230,26 @@ useSeoMeta({
     color 0.2s ease;
 }
 
+.cards-toolbar__chip:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
 .cards-toolbar__chip--active {
   background: var(--accent-soft);
   border-color: color-mix(in srgb, var(--accent) 65%, var(--surface-border));
   color: var(--accent-strong);
+}
+
+.cards-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cards-error {
+  margin-bottom: 0;
+  color: #9f4538;
 }
 
 @media (max-width: 800px) {
