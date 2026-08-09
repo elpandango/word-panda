@@ -11,6 +11,7 @@ const availableLevels = ref<FlashcardLevel[]>([]);
 const levelCards = ref<FlashcardItem[]>([]);
 const currentCardId = ref('');
 const isFlipped = ref(false);
+const cardRenderKey = ref(0);
 const isLoading = ref(true);
 const loadError = ref('');
 
@@ -31,6 +32,7 @@ function pickRandomCard(): void {
   if (cards.length === 1) {
     currentCardId.value = cards[0]?.id ?? '';
     isFlipped.value = false;
+    cardRenderKey.value += 1;
     return;
   }
 
@@ -40,6 +42,7 @@ function pickRandomCard(): void {
 
   currentCardId.value = randomCard?.id ?? cards[0]?.id ?? '';
   isFlipped.value = false;
+  cardRenderKey.value += 1;
 }
 
 function syncCurrentCard(): void {
@@ -48,6 +51,7 @@ function syncCurrentCard(): void {
   if (!cards.length) {
     currentCardId.value = '';
     isFlipped.value = false;
+    cardRenderKey.value += 1;
     return;
   }
 
@@ -56,6 +60,7 @@ function syncCurrentCard(): void {
   if (!hasCurrentCard) {
     currentCardId.value = cards[0]?.id ?? '';
     isFlipped.value = false;
+    cardRenderKey.value += 1;
   }
 }
 
@@ -176,6 +181,7 @@ useSeoMeta({
 
       <FlashcardStudyCard
         v-if="!isLoading && !loadError && currentCard"
+        :key="cardRenderKey"
         :card="currentCard"
         :flipped="isFlipped"
         @toggle="toggleCard"

@@ -10,6 +10,8 @@ const emit = defineEmits<{
   (event: 'toggle'): void;
 }>();
 
+const isMountedVisible = ref(false);
+
 function splitExampleText(example?: string): string[] {
   if (!example) {
     return [];
@@ -33,13 +35,25 @@ const frontExampleLines = computed(() => {
 const backExampleLines = computed(() => {
   return splitExampleText(props.card.back.exampleTranslation);
 });
+
+onMounted(() => {
+  requestAnimationFrame(() => {
+    isMountedVisible.value = true;
+  });
+});
 </script>
 
 <template>
   <button
     type="button"
     class="flashcard-study-card"
-    :class="[levelThemeClass, { 'flashcard-study-card--flipped': props.flipped }]"
+    :class="[
+      levelThemeClass,
+      {
+        'flashcard-study-card--flipped': props.flipped,
+        'flashcard-study-card--visible': isMountedVisible
+      }
+    ]"
     @click="emit('toggle')"
   >
     <span class="flashcard-study-card__inner">
@@ -112,6 +126,16 @@ const backExampleLines = computed(() => {
   background: transparent;
   perspective: 1400px;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.flashcard-study-card--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .flashcard-study-card__inner {
