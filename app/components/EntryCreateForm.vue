@@ -131,7 +131,7 @@ const selectablePartOfSpeechOptions = computed(() =>
   }))
 );
 const shouldAutofocusWord = computed(() => {
-  return !props.initialEntry?.word;
+  return props.mode !== 'base' && !props.initialEntry?.word;
 });
 
 function toSelectValue(value: boolean | null | undefined): string {
