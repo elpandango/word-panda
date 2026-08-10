@@ -20,7 +20,15 @@ const emit = defineEmits<{
 }>();
 
 const canUseDom = typeof document !== 'undefined';
-const previousBodyOverflow = ref('');
+const previousBodyStyles = reactive({
+  overflow: '',
+  position: '',
+  top: '',
+  left: '',
+  right: '',
+  width: ''
+});
+const lockedScrollY = ref(0);
 
 function close(): void {
   emit('close');
@@ -40,12 +48,31 @@ function syncBodyScrollLock(isOpen: boolean): void {
   }
 
   if (isOpen) {
-    previousBodyOverflow.value = document.body.style.overflow;
+    lockedScrollY.value = window.scrollY;
+    previousBodyStyles.overflow = document.body.style.overflow;
+    previousBodyStyles.position = document.body.style.position;
+    previousBodyStyles.top = document.body.style.top;
+    previousBodyStyles.left = document.body.style.left;
+    previousBodyStyles.right = document.body.style.right;
+    previousBodyStyles.width = document.body.style.width;
+
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${lockedScrollY.value}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
     return;
   }
 
-  document.body.style.overflow = previousBodyOverflow.value;
+  document.body.style.overflow = previousBodyStyles.overflow;
+  document.body.style.position = previousBodyStyles.position;
+  document.body.style.top = previousBodyStyles.top;
+  document.body.style.left = previousBodyStyles.left;
+  document.body.style.right = previousBodyStyles.right;
+  document.body.style.width = previousBodyStyles.width;
+
+  window.scrollTo({ top: lockedScrollY.value, left: 0, behavior: 'auto' });
 }
 
 watch(
