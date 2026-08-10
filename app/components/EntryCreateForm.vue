@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { computed, nextTick, reactive, useTemplateRef, watch } from 'vue';
-import type { VerbEntry, VerbEntryKind, VerbExample } from '~~/shared/types/verbs';
+import {
+  type PartOfSpeech,
+  type VerbEntry,
+  type VerbEntryKind,
+  type VerbExample,
+  partOfSpeechOptions
+} from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
 import { isDerivedEntryKind } from '~~/shared/utils/verb-entry-kind';
+import { getPartOfSpeechLabel } from '~~/shared/utils/part-of-speech';
+import AppDropdown from './AppDropdown.vue';
 import EntryFormAiAssist from './entry-form/EntryFormAiAssist.vue';
 import EntryDerivedFields from './entry-form/EntryDerivedFields.vue';
 import EntryFormExampleFields from './entry-form/EntryFormExampleFields.vue';
@@ -10,6 +18,7 @@ import EntryFormActions from './entry-form/EntryFormActions.vue';
 
 interface EntryCreatePayload {
   kind?: VerbEntryKind;
+  partOfSpeech?: PartOfSpeech;
   word: string;
   translationRu?: string;
   explanationRu?: string;
@@ -20,6 +29,7 @@ interface EntryCreatePayload {
 }
 
 interface AiFillResponse {
+  partOfSpeech?: PartOfSpeech;
   translationRu?: string;
   explanationRu?: string;
   exampleTextDe?: string;
@@ -72,6 +82,7 @@ const emit = defineEmits<{
 const wordInputRef = useTemplateRef<HTMLInputElement>('wordInput');
 
 const form = reactive({
+  partOfSpeech: '',
   word: '',
   translationRu: '',
   explanationRu: '',
@@ -95,6 +106,7 @@ const trimmedContextWord = computed(() => props.contextWord.trim());
 const isBusy = computed(() => props.loading || props.deleting);
 const isAiFillEnabled = computed(() => runtimeConfig.public.aiFillEnabled === true);
 const isDerivedMode = computed(() => isDerivedEntryKind(props.mode));
+const isBaseMode = computed(() => props.mode === 'base');
 const isAiFillMissingWord = computed(() => form.word.trim().length === 0);
 const isWordInvalid = computed(
   () => fieldErrors.word.length > 0 || serverWordErrorMessage.value.length > 0
@@ -112,6 +124,12 @@ const resolvedSubmitLabel = computed(() => {
 
   return props.mode === 'base' ? 'Создать слово' : 'Сохранить';
 });
+const selectablePartOfSpeechOptions = computed(() =>
+  partOfSpeechOptions.map((partOfSpeech) => ({
+    value: partOfSpeech,
+    label: getPartOfSpeechLabel(partOfSpeech)
+  }))
+);
 const shouldAutofocusWord = computed(() => {
   return !props.initialEntry?.word;
 });
@@ -138,6 +156,7 @@ async function focusWordInput(): Promise<void> {
 }
 
 function resetForm(): void {
+  form.partOfSpeech = props.initialEntry?.partOfSpeech || '';
   form.word = props.initialEntry?.word || '';
   form.translationRu = props.initialEntry?.translationRu || '';
   form.explanationRu = props.initialEntry?.explanationRu || '';
@@ -298,6 +317,10 @@ function buildPayload(): EntryCreatePayload {
     payload.kind = props.mode;
   }
 
+  if (isBaseMode.value && form.partOfSpeech) {
+    payload.partOfSpeech = form.partOfSpeech as PartOfSpeech;
+  }
+
   if (isDerivedMode.value) {
     payload.prefix = form.prefix.trim() || null;
     payload.isSeparable = parseNullableBoolean(form.isSeparable);
@@ -358,9 +381,14 @@ async function handleAiFill(): Promise<void> {
       body: {
         word: form.word.trim(),
         mode: props.mode,
-        contextWord: trimmedContextWord.value || undefined
+        contextWord: trimmedContextWord.value || undefined,
+        partOfSpeech: form.partOfSpeech || undefined
       }
     });
+
+    if (isBaseMode.value && !form.partOfSpeech && response.partOfSpeech) {
+      form.partOfSpeech = response.partOfSpeech;
+    }
 
     if (!form.translationRu.trim() && response.translationRu) {
       form.translationRu = response.translationRu;
@@ -408,7 +436,7 @@ async function handleAiFill(): Promise<void> {
     <p class="muted-text">
       {{
         mode === 'base'
-          ? 'Сохраняй слово вместе с переводом. Один пример можно добавить сразу или позже при редактировании.'
+          ? 'Сохраняй слово вместе с переводом. Тип можно выбрать вручную или оставить AI для автоподсказки.'
           : mode === 'derived'
             ? 'Добавь глагол в текущее семейство. Для сохранения нужны слово и перевод, а пример можно заполнить сразу.'
             : 'Добавь типовое сочетание для текущего семейства. Для сохранения нужны слово и перевод, а пример можно заполнить сразу.'
@@ -416,6 +444,16 @@ async function handleAiFill(): Promise<void> {
     </p>
 
     <form class="entry-form page-stack-sm" novalidate @submit.prevent="handleSubmit('close')">
+      <label v-if="isBaseMode" class="form-field">
+        <span class="form-label">Тип слова</span>
+        <AppDropdown
+          :model-value="form.partOfSpeech"
+          :options="selectablePartOfSpeechOptions"
+          placeholder="Определить автоматически"
+          @update:model-value="form.partOfSpeech = $event"
+        />
+      </label>
+
       <label class="form-field">
         <span class="form-label">Слово</span>
         <input

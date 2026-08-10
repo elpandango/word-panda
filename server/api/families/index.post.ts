@@ -7,9 +7,11 @@ import {
   findDuplicateVerbEntry
 } from '../../utils/verb-entry-duplicates';
 import { buildFamilySlug, ensureFamilySlugAvailable } from '../../utils/family-slug';
+import { resolvePartOfSpeech } from '../../utils/part-of-speech';
 
 interface CreateFamilyBody {
   word?: string;
+  partOfSpeech?: string;
   translationRu?: string;
   explanationRu?: string;
   exampleTextDe?: string;
@@ -57,6 +59,18 @@ export default defineEventHandler(async (event) => {
   const createdAt = new Date().toISOString();
   const familyId = `family_${randomUUID()}`;
   const entryId = `entry_${randomUUID()}`;
+  const config = useRuntimeConfig();
+  const partOfSpeech = await resolvePartOfSpeech({
+    word,
+    kind: 'base',
+    requestedPartOfSpeech: body.partOfSpeech,
+    aiConfig: {
+      enabled: config.aiEnabled === 'true',
+      provider: config.aiProvider,
+      apiKey: config.ollamaApiKey,
+      model: config.ollamaModel
+    }
+  });
 
   await VerbFamilyModel.create({
     _id: familyId,
@@ -70,6 +84,7 @@ export default defineEventHandler(async (event) => {
     _id: entryId,
     familyId,
     kind: 'base',
+    partOfSpeech,
     word,
     translationRu,
     explanationRu: normalizeOptionalText(body.explanationRu),
@@ -96,6 +111,7 @@ export default defineEventHandler(async (event) => {
     ok: true,
     familyId,
     entryId,
-    slug
+    slug,
+    partOfSpeech
   };
 });

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { VerbEntry } from '~~/shared/types/verbs';
+import type { PartOfSpeech, VerbEntry } from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../utils/api-errors';
 
 interface SearchItem extends VerbEntry {
@@ -22,9 +22,11 @@ interface CreateFamilyResponse {
   familyId: string;
   entryId: string;
   slug: string;
+  partOfSpeech: PartOfSpeech;
 }
 
 interface EntryCreatePayload {
+  partOfSpeech?: PartOfSpeech;
   word: string;
   translationRu?: string;
   explanationRu?: string;
@@ -181,7 +183,7 @@ async function handleCreateBaseEntry(
 
 useSeoMeta({
   title: 'Словарь | WordPanda',
-  description: 'Личная база немецких глаголов, их семейства и типовых сочетаний.'
+  description: 'Личная база немецких слов, их сочетаний и связанных форм.'
 });
 </script>
 
@@ -196,7 +198,9 @@ useSeoMeta({
           <AppButton size="sm" @click="openCreateBaseForm">Добавить слово</AppButton>
         </div>
 
-        <p class="hero-copy">Быстро найди нужный глагол и открой его семейство.</p>
+        <p class="hero-copy">
+          Здесь можно хранить не только глаголы, но и существительные, прилагательные и фразы.
+        </p>
 
         <label class="search-block">
           <span class="search-label">Поиск по слову</span>
@@ -204,7 +208,7 @@ useSeoMeta({
             v-model="searchQuery"
             class="search-input surface-field"
             type="search"
-            placeholder="stellen, einstellen, spüren, aufspüren..."
+            placeholder="stellen, der Hund, abwechslungsreich..."
           />
         </label>
       </section>
@@ -218,7 +222,7 @@ useSeoMeta({
         <p v-if="searchError" class="error-text">Не удалось выполнить поиск. Проверь вывод сервера.</p>
 
         <p v-else-if="!hasQuery" class="muted-text">
-          Начни вводить слово, чтобы найти нужный глагол.
+          Начни вводить слово, чтобы найти нужную запись и открыть её страницу.
         </p>
 
         <p v-else-if="items.length === 0" class="muted-text">
@@ -264,7 +268,7 @@ useSeoMeta({
       </section>
     </aside>
 
-    <AppModal :open="isCreateBaseFormOpen" title="Новое базовое слово" @close="closeCreateBaseForm">
+    <AppModal :open="isCreateBaseFormOpen" title="Новое слово" @close="closeCreateBaseForm">
       <EntryCreateForm
         mode="base"
         :loading="isCreatingBaseEntry"

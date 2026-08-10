@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { VerbEntry } from '~~/shared/types/verbs';
 import { resolveVerbEntryKind } from '~~/shared/utils/verb-entry-kind';
+import { getPartOfSpeechLabel } from '~~/shared/utils/part-of-speech';
 
 const props = withDefaults(
   defineProps<{
@@ -25,7 +26,7 @@ const cardLink = computed(() => ({
 }));
 const headerLabel = computed(() => {
   if (entryKind.value === 'base') {
-    return 'Базовый глагол';
+    return getPartOfSpeechLabel(props.entry.partOfSpeech);
   }
 
   if (entryKind.value === 'derived') {

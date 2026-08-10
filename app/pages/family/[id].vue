@@ -2,6 +2,7 @@
 import type { VerbEntry, VerbEntryKind, VerbExample, VerbFamily } from '~~/shared/types/verbs';
 import { getApiErrorMessage } from '../../utils/api-errors';
 import { isBaseEntryKind, resolveVerbEntryKind } from '~~/shared/utils/verb-entry-kind';
+import { getPartOfSpeechLabel } from '~~/shared/utils/part-of-speech';
 
 interface FamilyResponse {
   familyId: string | null;
@@ -70,12 +71,38 @@ const resolvedFamilyId = computed(() => String(familyData.value.familyId || ''))
 const baseEntry = computed(() => familyData.value.baseEntry ?? null);
 const derivedEntries = computed(() => familyData.value.derivedEntries ?? []);
 const collocations = computed(() => familyData.value.collocations ?? []);
+const isVerbBaseEntry = computed(() => baseEntry.value?.partOfSpeech === 'verb');
+const heroEyebrow = computed(() =>
+  isVerbBaseEntry.value ? 'Семейство глагола' : getPartOfSpeechLabel(baseEntry.value?.partOfSpeech || 'other')
+);
+const heroCopy = computed(() => {
+  if (isVerbBaseEntry.value) {
+    return 'Здесь собраны базовый глагол, формы его семейства, сочетания и примеры.';
+  }
+
+  if (baseEntry.value?.partOfSpeech === 'noun') {
+    return 'Здесь хранится существительное, его перевод, примеры и связанные фразы.';
+  }
+
+  if (baseEntry.value?.partOfSpeech === 'adjective') {
+    return 'Здесь хранится прилагательное, его перевод, примеры и связанные фразы.';
+  }
+
+  if (baseEntry.value?.partOfSpeech === 'phrase') {
+    return 'Здесь хранится фраза, её перевод, примеры и связанные записи.';
+  }
+
+  return 'Здесь хранится слово, его перевод, примеры и связанные записи.';
+});
+const baseSectionTitle = computed(() =>
+  isVerbBaseEntry.value ? 'Базовый глагол' : 'Основная запись'
+);
 const found = computed(() => familyData.value.found ?? false);
 const isPageLoading = computed(() => !hasLoadedFamily.value || isFamilyPending.value);
 const isEditMode = computed(() => !entryModalMode.value.startsWith('create-'));
 const modalTitle = computed(() => {
   if (entryModalMode.value === 'edit-base') {
-    return 'Редактировать базовый глагол';
+    return 'Редактировать слово';
   }
 
   if (entryModalMode.value === 'edit-derived') {
@@ -93,7 +120,7 @@ const modalSubmitLabel = computed(() => {
 });
 const modalDeleteLabel = computed(() => {
   if (entryModalMode.value === 'edit-base') {
-    return 'Удалить семейство';
+    return 'Удалить слово';
   }
 
   return entryModalMode.value === 'edit-collocation' ? 'Удалить сочетание' : 'Удалить глагол';
@@ -369,8 +396,8 @@ useSeoMeta({
       : `Семейство ${familySlug.value} | WordPanda`,
   description: () =>
     baseEntry.value
-      ? `Семейство глагола ${baseEntry.value.word} и связанные сочетания`
-      : 'Страница семейства глагола'
+      ? `Страница слова ${baseEntry.value.word} и связанных записей`
+      : 'Страница слова'
 });
 
 onMounted(() => {
@@ -418,14 +445,12 @@ watch(
 
     <template v-else>
       <section class="hero-card surface-calm">
-        <p class="eyebrow">Семейство глагола</p>
+        <p class="eyebrow">{{ heroEyebrow }}</p>
         <h1>{{ baseEntry.word }}</h1>
-        <p class="hero-copy">
-          Здесь собраны базовый глагол, формы его семейства, сочетания и примеры.
-        </p>
+        <p class="hero-copy">{{ heroCopy }}</p>
       </section>
 
-      <FamilyEntrySection title="Базовый глагол">
+      <FamilyEntrySection :title="baseSectionTitle">
         <template #action>
           <AppButton variant="ghost" size="sm" @click="openEditBaseForm">Редактировать</AppButton>
         </template>
@@ -438,6 +463,7 @@ watch(
       </FamilyEntrySection>
 
       <FamilyEntrySection
+        v-if="isVerbBaseEntry"
         title="Семейство"
         :is-empty="derivedEntries.length === 0"
         empty-text="Глаголы семейства пока не добавлены."
@@ -458,12 +484,16 @@ watch(
       </FamilyEntrySection>
 
       <FamilyEntrySection
-        title="Сочетания"
+        :title="isVerbBaseEntry ? 'Сочетания' : 'Связанные фразы'"
         :is-empty="collocations.length === 0"
-        empty-text="Сочетания пока не добавлены."
+        :empty-text="
+          isVerbBaseEntry ? 'Сочетания пока не добавлены.' : 'Связанные фразы пока не добавлены.'
+        "
       >
         <template #action>
-          <AppButton size="sm" @click="openCreateCollocationForm">Добавить сочетание</AppButton>
+          <AppButton size="sm" @click="openCreateCollocationForm">
+            {{ isVerbBaseEntry ? 'Добавить сочетание' : 'Добавить фразу' }}
+          </AppButton>
         </template>
         <div class="entry-grid">
           <FamilyEntryCard

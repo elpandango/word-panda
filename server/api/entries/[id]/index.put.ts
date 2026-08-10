@@ -7,10 +7,12 @@ import {
   findDuplicateVerbEntry
 } from '../../../utils/verb-entry-duplicates';
 import { resolveVerbEntryKind } from '../../../../shared/utils/verb-entry-kind';
-import type { VerbEntryKind } from '../../../../shared/types/verbs';
+import type { PartOfSpeech, VerbEntryKind } from '../../../../shared/types/verbs';
+import { resolvePartOfSpeech } from '../../../utils/part-of-speech';
 
 interface UpdateEntryBody {
   kind?: VerbEntryKind;
+  partOfSpeech?: PartOfSpeech;
   word?: string;
   translationRu?: string;
   explanationRu?: string;
@@ -107,11 +109,24 @@ export default defineEventHandler(async (event) => {
   const updatedAt = new Date().toISOString();
   const currentKind = resolveVerbEntryKind(existingEntry);
   const nextKind = normalizeEditableKind(body.kind, currentKind);
+  const config = useRuntimeConfig();
+  const partOfSpeech = await resolvePartOfSpeech({
+    word,
+    kind: nextKind,
+    requestedPartOfSpeech: currentKind === 'base' ? body.partOfSpeech : existingEntry.partOfSpeech,
+    aiConfig: {
+      enabled: config.aiEnabled === 'true',
+      provider: config.aiProvider,
+      apiKey: config.ollamaApiKey,
+      model: config.ollamaModel
+    }
+  });
 
   await VerbEntryModel.updateOne(
     { _id: entryId },
     {
       kind: nextKind,
+      partOfSpeech,
       word,
       translationRu,
       explanationRu: normalizeOptionalText(body.explanationRu),

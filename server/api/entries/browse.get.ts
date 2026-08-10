@@ -1,6 +1,7 @@
 import { VerbEntryModel } from '../../models/VerbEntry';
 import { VerbFamilyModel } from '../../models/VerbFamily';
 import { resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
+import { getBrowseWord } from '../../../shared/utils/browse-word';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -26,12 +27,13 @@ export default defineEventHandler(async (event) => {
   const pattern = buildLetterPattern(selectedLetter);
 
   const items = await VerbEntryModel.find({
-    $or: [{ kind: 'base' }, { role: 'base' }],
-    word: { $regex: pattern }
+    $or: [{ kind: 'base' }, { role: 'base' }]
   }).lean();
 
-  const sortedItems = items.sort((left, right) =>
-    left.word.localeCompare(right.word, 'de', { sensitivity: 'base' })
+  const filteredItems = items.filter((item) => pattern.test(getBrowseWord(item)));
+
+  const sortedItems = filteredItems.sort((left, right) =>
+    getBrowseWord(left).localeCompare(getBrowseWord(right), 'de', { sensitivity: 'base' })
   );
   const familyIds = [...new Set(sortedItems.map((item) => item.familyId))];
   const families = familyIds.length

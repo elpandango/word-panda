@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { getModel } from '../utils/mongoose';
-import type { VerbEntry } from '../../shared/types/verbs';
+import { type VerbEntry, partOfSpeechOptions } from '../../shared/types/verbs';
 
 const verbEntrySchema = new mongoose.Schema<VerbEntry>(
   {
@@ -8,6 +8,7 @@ const verbEntrySchema = new mongoose.Schema<VerbEntry>(
     familyId: { type: String, required: true, index: true },
     kind: { type: String, required: true },
     role: { type: String },
+    partOfSpeech: { type: String, required: true, enum: [...partOfSpeechOptions], index: true },
     word: { type: String, required: true, index: true },
     translationRu: { type: String },
     meaningDe: { type: String },

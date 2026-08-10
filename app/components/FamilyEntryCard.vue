@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { VerbEntry, VerbExample } from '~~/shared/types/verbs';
 import { resolveVerbEntryKind } from '~~/shared/utils/verb-entry-kind';
+import { getPartOfSpeechLabel } from '~~/shared/utils/part-of-speech';
 
 const props = withDefaults(
   defineProps<{
@@ -21,6 +22,13 @@ const emit = defineEmits<{
 }>();
 
 const entryKind = computed(() => resolveVerbEntryKind(props.entry));
+const entryLabel = computed(() => {
+  if (entryKind.value === 'base') {
+    return getPartOfSpeechLabel(props.entry.partOfSpeech);
+  }
+
+  return entryKind.value === 'derived' ? 'Глагол семейства' : 'Фраза';
+});
 const exampleSectionTitle = computed(() => (props.examples.length > 1 ? 'Примеры' : 'Пример'));
 const wordParts = computed(() => {
   const prefix = props.entry.prefix?.trim();
@@ -48,6 +56,10 @@ function handleEdit(): void {
 <template>
   <article :id="entry._id ? `entry-${entry._id}` : undefined" class="family-entry-card surface-calm">
     <div class="family-entry-card__main">
+      <div class="family-entry-card__meta">
+        <span class="family-entry-card__label">{{ entryLabel }}</span>
+      </div>
+
       <div v-if="entryKind === 'derived'" class="section-row family-entry-card__header">
         <p class="result-word family-entry-card__variant-word">
           <template v-if="wordParts.prefix">
@@ -106,6 +118,25 @@ function handleEdit(): void {
 
 .family-entry-card__main {
   padding: 16px 18px;
+}
+
+.family-entry-card__meta {
+  margin-bottom: 10px;
+}
+
+.family-entry-card__label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--surface-border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-soft) 72%, white 28%);
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
 }
 
 .family-entry-card__main .result-word {

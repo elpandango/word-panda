@@ -4,6 +4,7 @@ interface FillEntryRequestBody {
   word?: string;
   mode?: 'base' | 'derived' | 'collocation';
   contextWord?: string;
+  partOfSpeech?: string;
 }
 
 function getErrorStatusCode(error: unknown): number | null {
@@ -70,7 +71,8 @@ export default defineEventHandler(async (event) => {
       {
         word,
         mode,
-        contextWord
+        contextWord,
+        partOfSpeech: body.partOfSpeech?.trim()
       },
       {
         apiKey: config.ollamaApiKey,

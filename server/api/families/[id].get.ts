@@ -42,7 +42,9 @@ export default defineEventHandler(async (event) => {
   }));
   const baseEntry =
     normalizedEntries.find((entry) => String(entry._id) === normalizedFamily.baseEntryId) ?? null;
-  const derivedEntries = normalizedEntries.filter((entry) => entry.kind === 'derived');
+  const derivedEntries = normalizedEntries.filter(
+    (entry) => entry.kind === 'derived' && entry.partOfSpeech === 'verb'
+  );
   const collocations = normalizedEntries.filter((entry) => entry.kind === 'collocation');
   const entryIds = normalizedEntries.map((entry) => String(entry._id));
 

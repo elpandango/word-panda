@@ -15,6 +15,7 @@
     "format:check": "prettier --check .",
     "seed": "node --env-file=.env scripts/seed.mjs",
     "seed:flashcards": "node --env-file=.env scripts/seed-flashcards.mjs",
+    "migrate:entry-parts-of-speech": "node --env-file=.env scripts/migrate-entry-parts-of-speech.mjs",
     "migrate:family-slugs": "node --env-file=.env scripts/migrate-family-slugs.mjs",
     "fix:unterstellen": "node --env-file=.env scripts/fix-unterstellen.mjs"
   },

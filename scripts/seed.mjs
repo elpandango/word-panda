@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import { seedFamiliesDraft } from './seed-draft-data.mjs';
 import { seedFlashcards } from './seed-flashcards.mjs';
 import { slugifyFamilyWord } from '../shared/utils/family-slug.ts';
+import { partOfSpeechOptions } from '../shared/types/verbs.ts';
 
 const verbFamilySchema = new mongoose.Schema(
   {
@@ -24,6 +25,7 @@ const verbEntrySchema = new mongoose.Schema(
     familyId: { type: String, required: true, index: true },
     kind: { type: String, required: true },
     role: { type: String },
+    partOfSpeech: { type: String, required: true, enum: [...partOfSpeechOptions], index: true },
     word: { type: String, required: true, index: true },
     translationRu: { type: String },
     meaningDe: { type: String },
@@ -97,6 +99,7 @@ function buildFamily(seed, usedSlugs) {
     _id: baseEntryId,
     familyId,
     kind: 'base',
+    partOfSpeech: 'verb',
     word: seed.base.word,
     translationRu: seed.base.translationRu,
     meaningDe: seed.base.meaningDe,
@@ -120,6 +123,7 @@ function buildFamily(seed, usedSlugs) {
     _id: makeId('entry'),
     familyId,
     kind: 'derived',
+    partOfSpeech: 'verb',
     word: variant.word,
     translationRu: variant.translationRu,
     meaningDe: variant.meaningDe,
@@ -136,6 +140,7 @@ function buildFamily(seed, usedSlugs) {
     _id: makeId('entry'),
     familyId,
     kind: 'collocation',
+    partOfSpeech: 'phrase',
     word: collocation.word,
     translationRu: collocation.translationRu,
     meaningDe: collocation.meaningDe,

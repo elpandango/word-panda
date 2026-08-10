@@ -1,8 +1,7 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import process from 'node:process';
 import { pathToFileURL } from 'node:url';
 import mongoose from 'mongoose';
+import seedFlashcardsData from './seed-flashcards-data.json' with { type: 'json' };
 
 const flashcardFaceSchema = new mongoose.Schema(
   {
@@ -61,31 +60,9 @@ function buildFlashcardSlug(card) {
   return parts.join('-');
 }
 
-async function loadFlashcardsFromSource() {
-  const sourcePath = path.resolve(process.cwd(), 'app/data/flashcards.ts');
-  const source = await fs.readFile(sourcePath, 'utf8');
-  const exportMatch = source.match(/export const flashcards(?::[\s\S]*?)?=\s*\[/);
-  const start = exportMatch?.index ?? -1;
-
-  if (start === -1) {
-    throw new Error('Could not find flashcards export in app/data/flashcards.ts');
-  }
-
-  const arrayStart = source.indexOf('[', start);
-  const arrayEnd = source.indexOf('\n];', arrayStart);
-
-  if (arrayEnd === -1) {
-    throw new Error('Could not find flashcards array end in app/data/flashcards.ts');
-  }
-
-  const arrayLiteral = source.slice(arrayStart, arrayEnd + 2).trim();
-
-  return Function(`"use strict"; return (${arrayLiteral});`)();
-}
-
 export async function seedFlashcards() {
   const timestamp = now();
-  const sourceCards = await loadFlashcardsFromSource();
+  const sourceCards = seedFlashcardsData;
   const operations = sourceCards.map((card) => ({
     updateOne: {
       filter: { _id: card.id },
