@@ -4,11 +4,14 @@ import { VerbExampleModel } from '../../../models/VerbExample';
 import { VerbFamilyModel } from '../../../models/VerbFamily';
 import {
   createDuplicateVerbEntryError,
-  findDuplicateVerbEntry
+  findDuplicateVerbEntry,
+  isDuplicateVerbEntryMongoError
 } from '../../../utils/verb-entry-duplicates';
 import { resolveVerbEntryKind } from '../../../../shared/utils/verb-entry-kind';
 import type { PartOfSpeech, VerbEntryKind } from '../../../../shared/types/verbs';
 import { resolvePartOfSpeech } from '../../../utils/part-of-speech';
+import { buildBrowseWordFromParts, normalizeEntryWord } from '../../../../shared/utils/entry-word-normalization';
+import { runInTransaction } from '../../../utils/transactions';
 
 interface UpdateEntryBody {
   kind?: VerbEntryKind;
@@ -122,47 +125,73 @@ export default defineEventHandler(async (event) => {
     }
   });
 
-  await VerbEntryModel.updateOne(
-    { _id: entryId },
-    {
-      kind: nextKind,
-      partOfSpeech,
-      word,
-      translationRu,
-      explanationRu: normalizeOptionalText(body.explanationRu),
-      prefix: nextKind === 'derived' ? normalizeOptionalPrefix(body.prefix) : null,
-      isSeparable: nextKind === 'derived' ? normalizeNullableBoolean(body.isSeparable) : null,
-      updatedAt
-    }
-  );
-
-  const primaryExample = await VerbExampleModel.findOne({ entryId }).sort({ createdAt: 1 }).lean();
-
-  if (exampleTextDe) {
-    if (primaryExample?._id) {
-      await VerbExampleModel.updateOne(
-        { _id: primaryExample._id },
+  try {
+    await runInTransaction(async (session) => {
+      await VerbEntryModel.updateOne(
+        { _id: entryId },
         {
-          textDe: exampleTextDe,
-          translationRu: exampleTranslationRu,
+          kind: nextKind,
+          partOfSpeech,
+          word,
+          normalizedWord: normalizeEntryWord(word),
+          browseWord: buildBrowseWordFromParts(word, partOfSpeech),
+          translationRu,
+          explanationRu: normalizeOptionalText(body.explanationRu),
+          prefix: nextKind === 'derived' ? normalizeOptionalPrefix(body.prefix) : null,
+          isSeparable: nextKind === 'derived' ? normalizeNullableBoolean(body.isSeparable) : null,
           updatedAt
-        }
+        },
+        { session }
       );
-    } else {
-      await VerbExampleModel.create({
-        _id: `example_${randomUUID()}`,
-        entryId,
-        textDe: exampleTextDe,
-        translationRu: exampleTranslationRu,
-        createdAt: updatedAt,
-        updatedAt
-      });
-    }
-  } else if (primaryExample?._id) {
-    await VerbExampleModel.deleteOne({ _id: primaryExample._id });
-  }
 
-  await VerbFamilyModel.updateOne({ _id: existingEntry.familyId }, { updatedAt });
+      const primaryExample = await VerbExampleModel.findOne({ entryId })
+        .sort({ createdAt: 1 })
+        .session(session)
+        .lean();
+
+      if (exampleTextDe) {
+        if (primaryExample?._id) {
+          await VerbExampleModel.updateOne(
+            { _id: primaryExample._id },
+            {
+              textDe: exampleTextDe,
+              translationRu: exampleTranslationRu,
+              updatedAt
+            },
+            { session }
+          );
+        } else {
+          await VerbExampleModel.create(
+            [
+              {
+                _id: `example_${randomUUID()}`,
+                entryId,
+                textDe: exampleTextDe,
+                translationRu: exampleTranslationRu,
+                createdAt: updatedAt,
+                updatedAt
+              }
+            ],
+            { session }
+          );
+        }
+      } else if (primaryExample?._id) {
+        await VerbExampleModel.deleteOne({ _id: primaryExample._id }, { session });
+      }
+
+      await VerbFamilyModel.updateOne(
+        { _id: existingEntry.familyId },
+        { updatedAt },
+        { session }
+      );
+    });
+  } catch (error) {
+    if (isDuplicateVerbEntryMongoError(error)) {
+      throw createDuplicateVerbEntryError(word);
+    }
+
+    throw error;
+  }
 
   return {
     ok: true,

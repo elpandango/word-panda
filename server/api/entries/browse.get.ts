@@ -1,7 +1,6 @@
 import { VerbEntryModel } from '../../models/VerbEntry';
 import { VerbFamilyModel } from '../../models/VerbFamily';
 import { resolveVerbEntryKind } from '../../../shared/utils/verb-entry-kind';
-import { getBrowseWord } from '../../../shared/utils/browse-word';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -27,15 +26,12 @@ export default defineEventHandler(async (event) => {
   const pattern = buildLetterPattern(selectedLetter);
 
   const items = await VerbEntryModel.find({
-    $or: [{ kind: 'base' }, { role: 'base' }]
-  }).lean();
-
-  const filteredItems = items.filter((item) => pattern.test(getBrowseWord(item)));
-
-  const sortedItems = filteredItems.sort((left, right) =>
-    getBrowseWord(left).localeCompare(getBrowseWord(right), 'de', { sensitivity: 'base' })
-  );
-  const familyIds = [...new Set(sortedItems.map((item) => item.familyId))];
+    $or: [{ kind: 'base' }, { role: 'base' }],
+    browseWord: { $regex: pattern }
+  })
+    .sort({ browseWord: 1 })
+    .lean();
+  const familyIds = [...new Set(items.map((item) => item.familyId))];
   const families = familyIds.length
     ? await VerbFamilyModel.find({ _id: { $in: familyIds } }).lean()
     : [];
@@ -44,8 +40,8 @@ export default defineEventHandler(async (event) => {
   return {
     letter: selectedLetter,
     alphabet,
-    total: sortedItems.length,
-    items: sortedItems.map((item) => ({
+    total: items.length,
+    items: items.map((item) => ({
       ...item,
       kind: resolveVerbEntryKind(item),
       familySlug: familySlugById.get(item.familyId) || null

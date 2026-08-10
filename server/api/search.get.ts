@@ -1,6 +1,7 @@
 import { VerbEntryModel } from '../models/VerbEntry';
 import { VerbFamilyModel } from '../models/VerbFamily';
 import { resolveVerbEntryKind } from '../../shared/utils/verb-entry-kind';
+import { normalizeEntryWord } from '../../shared/utils/entry-word-normalization';
 
 function normalizeSearchText(value: string): string {
   return String(value || '')
@@ -39,11 +40,28 @@ export default defineEventHandler(async (event) => {
   }
 
   const escapedQuery = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const items = await VerbEntryModel.find({
-    word: { $regex: escapedQuery, $options: 'i' }
+  const normalizedQuery = normalizeEntryWord(q);
+  const exactItems = await VerbEntryModel.find({ normalizedWord: normalizedQuery })
+    .sort({ updatedAt: -1 })
+    .limit(10)
+    .lean();
+  const exactIds = new Set(exactItems.map((item) => String(item._id)));
+  const prefixItems = await VerbEntryModel.find({
+    normalizedWord: { $regex: `^${escapedQuery.toLocaleLowerCase('de')}` },
+    _id: { $nin: [...exactIds] }
   })
     .sort({ updatedAt: -1 })
+    .limit(25)
     .lean();
+  const seenIds = new Set([...exactIds, ...prefixItems.map((item) => String(item._id))]);
+  const containsItems = await VerbEntryModel.find({
+    normalizedWord: { $regex: escapedQuery.toLocaleLowerCase('de') },
+    _id: { $nin: [...seenIds] }
+  })
+    .sort({ updatedAt: -1 })
+    .limit(25)
+    .lean();
+  const items = [...exactItems, ...prefixItems, ...containsItems];
 
   const familyIds = [...new Set(items.map((item) => item.familyId))];
   const families = await VerbFamilyModel.find({ _id: { $in: familyIds } }).lean();
@@ -59,7 +77,7 @@ export default defineEventHandler(async (event) => {
   );
   const familySlugById = new Map(families.map((family) => [String(family._id), family.slug]));
   const rankedItems = [...items].sort((left, right) => {
-    const rankDiff = getSearchRank(left.word, q) - getSearchRank(right.word, q);
+    const rankDiff = getSearchRank(left.normalizedWord, normalizedQuery) - getSearchRank(right.normalizedWord, normalizedQuery);
 
     if (rankDiff !== 0) {
       return rankDiff;
@@ -74,7 +92,7 @@ export default defineEventHandler(async (event) => {
       return roleDiff;
     }
 
-    const lengthDiff = left.word.length - right.word.length;
+    const lengthDiff = left.normalizedWord.length - right.normalizedWord.length;
 
     if (lengthDiff !== 0) {
       return lengthDiff;

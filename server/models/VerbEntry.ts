@@ -10,6 +10,8 @@ const verbEntrySchema = new mongoose.Schema<VerbEntry>(
     role: { type: String },
     partOfSpeech: { type: String, required: true, enum: [...partOfSpeechOptions], index: true },
     word: { type: String, required: true, index: true },
+    normalizedWord: { type: String, required: true },
+    browseWord: { type: String, required: true, index: true },
     translationRu: { type: String },
     meaningDe: { type: String },
     explanationRu: { type: String },
@@ -22,5 +24,17 @@ const verbEntrySchema = new mongoose.Schema<VerbEntry>(
   },
   { versionKey: false }
 );
+
+verbEntrySchema.index(
+  { normalizedWord: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      normalizedWord: { $type: 'string' }
+    }
+  }
+);
+verbEntrySchema.index({ createdAt: -1 });
+verbEntrySchema.index({ updatedAt: -1 });
 
 export const VerbEntryModel = getModel<VerbEntry>('VerbEntry', verbEntrySchema);

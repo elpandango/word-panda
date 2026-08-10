@@ -4,10 +4,13 @@ import { VerbExampleModel } from '../../models/VerbExample';
 import { VerbFamilyModel } from '../../models/VerbFamily';
 import {
   createDuplicateVerbEntryError,
-  findDuplicateVerbEntry
+  findDuplicateVerbEntry,
+  isDuplicateVerbEntryMongoError
 } from '../../utils/verb-entry-duplicates';
 import { buildFamilySlug, ensureFamilySlugAvailable } from '../../utils/family-slug';
 import { resolvePartOfSpeech } from '../../utils/part-of-speech';
+import { buildBrowseWordFromParts, normalizeEntryWord } from '../../../shared/utils/entry-word-normalization';
+import { runInTransaction } from '../../utils/transactions';
 
 interface CreateFamilyBody {
   word?: string;
@@ -72,39 +75,66 @@ export default defineEventHandler(async (event) => {
     }
   });
 
-  await VerbFamilyModel.create({
-    _id: familyId,
-    baseEntryId: entryId,
-    slug,
-    createdAt,
-    updatedAt: createdAt
-  });
+  try {
+    await runInTransaction(async (session) => {
+      await VerbFamilyModel.create(
+        [
+          {
+            _id: familyId,
+            baseEntryId: entryId,
+            slug,
+            createdAt,
+            updatedAt: createdAt
+          }
+        ],
+        { session }
+      );
 
-  await VerbEntryModel.create({
-    _id: entryId,
-    familyId,
-    kind: 'base',
-    partOfSpeech,
-    word,
-    translationRu,
-    explanationRu: normalizeOptionalText(body.explanationRu),
-    prefix: null,
-    isSeparable: null,
-    source: 'manual',
-    status: 'draft',
-    createdAt,
-    updatedAt: createdAt
-  });
+      await VerbEntryModel.create(
+        [
+          {
+            _id: entryId,
+            familyId,
+            kind: 'base',
+            partOfSpeech,
+            word,
+            normalizedWord: normalizeEntryWord(word),
+            browseWord: buildBrowseWordFromParts(word, partOfSpeech),
+            translationRu,
+            explanationRu: normalizeOptionalText(body.explanationRu),
+            prefix: null,
+            isSeparable: null,
+            source: 'manual',
+            status: 'draft',
+            createdAt,
+            updatedAt: createdAt
+          }
+        ],
+        { session }
+      );
 
-  if (exampleTextDe) {
-    await VerbExampleModel.create({
-      _id: `example_${randomUUID()}`,
-      entryId,
-      textDe: exampleTextDe,
-      translationRu: exampleTranslationRu,
-      createdAt,
-      updatedAt: createdAt
+      if (exampleTextDe) {
+        await VerbExampleModel.create(
+          [
+            {
+              _id: `example_${randomUUID()}`,
+              entryId,
+              textDe: exampleTextDe,
+              translationRu: exampleTranslationRu,
+              createdAt,
+              updatedAt: createdAt
+            }
+          ],
+          { session }
+        );
+      }
     });
+  } catch (error) {
+    if (isDuplicateVerbEntryMongoError(error)) {
+      throw createDuplicateVerbEntryError(word);
+    }
+
+    throw error;
   }
 
   return {

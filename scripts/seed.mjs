@@ -7,6 +7,10 @@ import { seedFamiliesDraft } from './seed-draft-data.mjs';
 import { seedFlashcards } from './seed-flashcards.mjs';
 import { slugifyFamilyWord } from '../shared/utils/family-slug.ts';
 import { partOfSpeechOptions } from '../shared/types/verbs.ts';
+import {
+  buildBrowseWordFromParts,
+  normalizeEntryWord
+} from '../shared/utils/entry-word-normalization.ts';
 
 const verbFamilySchema = new mongoose.Schema(
   {
@@ -27,6 +31,8 @@ const verbEntrySchema = new mongoose.Schema(
     role: { type: String },
     partOfSpeech: { type: String, required: true, enum: [...partOfSpeechOptions], index: true },
     word: { type: String, required: true, index: true },
+    normalizedWord: { type: String, required: true },
+    browseWord: { type: String, required: true },
     translationRu: { type: String },
     meaningDe: { type: String },
     explanationRu: { type: String },
@@ -101,6 +107,8 @@ function buildFamily(seed, usedSlugs) {
     kind: 'base',
     partOfSpeech: 'verb',
     word: seed.base.word,
+    normalizedWord: normalizeEntryWord(seed.base.word),
+    browseWord: buildBrowseWordFromParts(seed.base.word, 'verb'),
     translationRu: seed.base.translationRu,
     meaningDe: seed.base.meaningDe,
     explanationRu: seed.base.explanationRu,
@@ -125,6 +133,8 @@ function buildFamily(seed, usedSlugs) {
     kind: 'derived',
     partOfSpeech: 'verb',
     word: variant.word,
+    normalizedWord: normalizeEntryWord(variant.word),
+    browseWord: buildBrowseWordFromParts(variant.word, 'verb'),
     translationRu: variant.translationRu,
     meaningDe: variant.meaningDe,
     explanationRu: variant.explanationRu,
@@ -142,6 +152,8 @@ function buildFamily(seed, usedSlugs) {
     kind: 'collocation',
     partOfSpeech: 'phrase',
     word: collocation.word,
+    normalizedWord: normalizeEntryWord(collocation.word),
+    browseWord: buildBrowseWordFromParts(collocation.word, 'phrase'),
     translationRu: collocation.translationRu,
     meaningDe: collocation.meaningDe,
     explanationRu: collocation.explanationRu,

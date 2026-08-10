@@ -20,6 +20,8 @@ export interface VerbEntry {
   role?: LegacyVerbEntryRole;
   partOfSpeech: PartOfSpeech;
   word: string;
+  normalizedWord: string;
+  browseWord: string;
   translationRu?: string;
   meaningDe?: string;
   explanationRu?: string;
