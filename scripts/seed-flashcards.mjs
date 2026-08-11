@@ -1,7 +1,8 @@
 import process from 'node:process';
+import { readdir, readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import mongoose from 'mongoose';
-import seedFlashcardsData from './seed-flashcards-data.json' with { type: 'json' };
 
 const flashcardFaceSchema = new mongoose.Schema(
   {
@@ -34,6 +35,8 @@ const flashcardSchema = new mongoose.Schema(
 const FlashcardModel =
   mongoose.models.FlashcardSeed || mongoose.model('FlashcardSeed', flashcardSchema);
 
+const FLASHCARDS_DATA_DIR = join(process.cwd(), 'data', 'flashcards');
+
 function now() {
   return new Date().toISOString();
 }
@@ -60,9 +63,29 @@ function buildFlashcardSlug(card) {
   return parts.join('-');
 }
 
+async function loadFlashcardsSource() {
+  const files = await readdir(FLASHCARDS_DATA_DIR);
+  const jsonFiles = files.filter((file) => file.endsWith('.json')).sort();
+  const cards = [];
+
+  for (const fileName of jsonFiles) {
+    const filePath = join(FLASHCARDS_DATA_DIR, fileName);
+    const fileContent = await readFile(filePath, 'utf8');
+    const parsed = JSON.parse(fileContent);
+
+    if (!Array.isArray(parsed) || !parsed.length) {
+      continue;
+    }
+
+    cards.push(...parsed);
+  }
+
+  return cards;
+}
+
 export async function seedFlashcards() {
   const timestamp = now();
-  const sourceCards = seedFlashcardsData;
+  const sourceCards = await loadFlashcardsSource();
   const operations = sourceCards.map((card) => ({
     updateOne: {
       filter: { _id: card.id },
