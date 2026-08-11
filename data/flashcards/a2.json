@@ -1,1 +1,6577 @@
-[]
+[
+  {
+    "id": "a2-ernaehrung-1-backen",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 1,
+    "source": "physical-card",
+    "front": {
+      "title": "backen",
+      "subtitle": "(bäckt-backte-gebacken)",
+      "lines": [],
+      "exampleDe": "Die Oma bäckt die Torte."
+    },
+    "back": {
+      "title": "печь",
+      "lines": [],
+      "exampleTranslation": "Бабушка печет торт."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-2-bitter",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 2,
+    "source": "physical-card",
+    "front": {
+      "title": "bitter",
+      "subtitle": "",
+      "lines": [
+        "süß"
+      ],
+      "exampleDe": "bittere Schokolade"
+    },
+    "back": {
+      "title": "горький",
+      "lines": [
+        "сладкий"
+      ],
+      "exampleTranslation": "горький шоколад"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-3-braten",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 3,
+    "source": "physical-card",
+    "front": {
+      "title": "braten",
+      "subtitle": "(brät-briet-gebraten)",
+      "lines": [],
+      "exampleDe": "Die Mutter brät Fisch."
+    },
+    "back": {
+      "title": "жарить",
+      "lines": [],
+      "exampleTranslation": "Мама жарит рыбу."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-4-das-cafe",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 4,
+    "source": "physical-card",
+    "front": {
+      "title": "das Café",
+      "subtitle": "die Cafés",
+      "lines": [
+        "im Café"
+      ],
+      "exampleDe": "Sonntags gehe ich ins Café."
+    },
+    "back": {
+      "title": "кафе",
+      "lines": [
+        "мн.",
+        "в кафе"
+      ],
+      "exampleTranslation": "По воскресеньям я хожу в кафе."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-5-das-haehnchen",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 5,
+    "source": "physical-card",
+    "front": {
+      "title": "das Hähnchen",
+      "subtitle": "die Hähnchen",
+      "lines": [],
+      "exampleDe": "Zweimal Brathähnchen mit Gemüse."
+    },
+    "back": {
+      "title": "курица, цыпленок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Две порции жареной курицы с овощами."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-6-das-oel",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 6,
+    "source": "physical-card",
+    "front": {
+      "title": "das Öl",
+      "subtitle": "die Öle",
+      "lines": [
+        "in Öl braten",
+        "das Sonnenblumenöl"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "масло",
+      "lines": [
+        "мн.",
+        "жарить на масле",
+        "подсолнечное масло"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-7-der-honig",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 7,
+    "source": "physical-card",
+    "front": {
+      "title": "der Honig",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Zum Frühstück gibt es Brot, Honig und Milch."
+    },
+    "back": {
+      "title": "мед",
+      "lines": [],
+      "exampleTranslation": "На завтрак у нас хлеб, мед и молоко."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-8-der-joghurt",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 8,
+    "source": "physical-card",
+    "front": {
+      "title": "der Joghurt",
+      "subtitle": "die Joghurts",
+      "lines": [],
+      "exampleDe": "Haben Sie fettarme Joghurts?"
+    },
+    "back": {
+      "title": "йогурт",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У вас есть обезжиренные йогурты?"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-9-der-kaffee",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 9,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kaffee",
+      "subtitle": "",
+      "lines": [
+        "der Eiskaffee"
+      ],
+      "exampleDe": "Ich möchte bitte eine Tasse Kaffee!"
+    },
+    "back": {
+      "title": "кофе",
+      "lines": [
+        "кофе глясе"
+      ],
+      "exampleTranslation": "Я хотел бы чашку кофе!"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-10-der-kakao",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 10,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kakao",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Zum Frühstück trinke ich eine Tasse Kakao."
+    },
+    "back": {
+      "title": "какао",
+      "lines": [],
+      "exampleTranslation": "На завтрак я пью чашку какао."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-11-der-keks",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 11,
+    "source": "physical-card",
+    "front": {
+      "title": "der Keks",
+      "subtitle": "die Kekse",
+      "lines": [
+        "der Schokoladenkeks",
+        "der Butterkeks"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "печенье",
+      "lines": [
+        "мн.",
+        "шоколадное печенье",
+        "песочное печенье"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-12-der-paprika",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 12,
+    "source": "physical-card",
+    "front": {
+      "title": "der Paprika",
+      "subtitle": "die Paprikas",
+      "lines": [],
+      "exampleDe": "süßer Paprika"
+    },
+    "back": {
+      "title": "болгарский перец",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "сладкий перец"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-13-der-pfeffer",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 13,
+    "source": "physical-card",
+    "front": {
+      "title": "der Pfeffer",
+      "subtitle": "",
+      "lines": [
+        "die Pfeffermühle"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "перец",
+      "lines": [
+        "мельница для перца"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-14-der-pilz",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 14,
+    "source": "physical-card",
+    "front": {
+      "title": "der Pilz",
+      "subtitle": "die Pilze",
+      "lines": [],
+      "exampleDe": "Sammelst du gern Pilze?\nIch sammle Pilze nicht gern."
+    },
+    "back": {
+      "title": "гриб",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ты любишь собирать грибы?\nЯ не люблю собирать грибы."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-15-der-quark",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 15,
+    "source": "physical-card",
+    "front": {
+      "title": "der Quark",
+      "subtitle": "",
+      "lines": [
+        "der Quarkkuchen"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "творог",
+      "lines": [
+        "творожный пирог"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-16-der-schinken",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 16,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schinken",
+      "subtitle": "die Schinken",
+      "lines": [],
+      "exampleDe": "Möchtest du ein Brötchen mit Schinken?"
+    },
+    "back": {
+      "title": "ветчина",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Хочешь булочку с ветчиной?"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-17-die-bar",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 17,
+    "source": "physical-card",
+    "front": {
+      "title": "die Bar",
+      "subtitle": "die Bars",
+      "lines": [],
+      "exampleDe": "Im Stadtzentrum gibt es viele Bars.\nEr geht in eine Bar."
+    },
+    "back": {
+      "title": "бар",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "В центре города много баров.\nОн идет в бар."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-18-die-birne",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 18,
+    "source": "physical-card",
+    "front": {
+      "title": "die Birne",
+      "subtitle": "die Birnen",
+      "lines": [],
+      "exampleDe": "Diese Birnen sind so saftig!"
+    },
+    "back": {
+      "title": "груша",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Эти груши такие сочные!"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-19-die-erdbeere",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 19,
+    "source": "physical-card",
+    "front": {
+      "title": "die Erdbeere",
+      "subtitle": "die Erdbeeren",
+      "lines": [
+        "die Erdbeermarmelade"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "клубника",
+      "lines": [
+        "мн.",
+        "клубничный джем"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-20-die-gurke",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 20,
+    "source": "physical-card",
+    "front": {
+      "title": "die Gurke",
+      "subtitle": "die Gurken",
+      "lines": [
+        "saure Gurken",
+        "der Gurkensalat"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "огурец",
+      "lines": [
+        "мн.",
+        "маринованные огурцы",
+        "салат из огурцов"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-21-die-karotte",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 21,
+    "source": "physical-card",
+    "front": {
+      "title": "die Karotte",
+      "subtitle": "die Karotten",
+      "lines": [
+        "der Karottensaft"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "морковь",
+      "lines": [
+        "мн.",
+        "морковный сок"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-22-die-kirsche",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 22,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kirsche",
+      "subtitle": "die Kirschen",
+      "lines": [
+        "die Süßkirsche"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "вишня",
+      "lines": [
+        "мн.",
+        "черешня"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-23-die-nudeln",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 23,
+    "source": "physical-card",
+    "front": {
+      "title": "die Nudeln",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Die Nudeln sind fertig."
+    },
+    "back": {
+      "title": "макароны",
+      "lines": [],
+      "exampleTranslation": "Макароны уже готовы."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-24-die-pflaume",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 24,
+    "source": "physical-card",
+    "front": {
+      "title": "die Pflaume",
+      "subtitle": "die Pflaumen",
+      "lines": [],
+      "exampleDe": "Die Pflaumen sind noch nicht reif."
+    },
+    "back": {
+      "title": "слива",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Сливы еще не созрели."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-25-die-sahne",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 25,
+    "source": "physical-card",
+    "front": {
+      "title": "die Sahne",
+      "subtitle": "",
+      "lines": [
+        "saure Sahne"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "сливки",
+      "lines": [
+        "сметана"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-26-die-zwiebel",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 26,
+    "source": "physical-card",
+    "front": {
+      "title": "die Zwiebel",
+      "subtitle": "die Zwiebeln",
+      "lines": [],
+      "exampleDe": "Schneide Zwiebeln in Würfel!"
+    },
+    "back": {
+      "title": "лук",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Порежь лук кубиками!"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-27-frisch",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 27,
+    "source": "physical-card",
+    "front": {
+      "title": "frisch",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Das Brötchen ist frisch."
+    },
+    "back": {
+      "title": "свежий",
+      "lines": [],
+      "exampleTranslation": "Булочка свежая."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-28-mit",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 28,
+    "source": "physical-card",
+    "front": {
+      "title": "mit",
+      "subtitle": "",
+      "lines": [
+        "ohne"
+      ],
+      "exampleDe": "Tee mit Zitrone."
+    },
+    "back": {
+      "title": "с, вместе с",
+      "lines": [
+        "без"
+      ],
+      "exampleTranslation": "Чай с лимоном."
+    }
+  },
+  {
+    "id": "a2-ernaehrung-29-prima",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 29,
+    "source": "physical-card",
+    "front": {
+      "title": "prima",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Der Kuchen ist prima!"
+    },
+    "back": {
+      "title": "отличный, замечательный",
+      "lines": [],
+      "exampleTranslation": "Пирог отличный!"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-30-salzen",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 30,
+    "source": "physical-card",
+    "front": {
+      "title": "salzen",
+      "subtitle": "",
+      "lines": [
+        "das Salz",
+        "salzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "солить",
+      "lines": [
+        "соль",
+        "соленый"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-ernaehrung-31-schmecken",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 31,
+    "source": "physical-card",
+    "front": {
+      "title": "schmecken",
+      "subtitle": "",
+      "lines": [
+        "schmackhaft"
+      ],
+      "exampleDe": "Schmeckt dir der Fisch?"
+    },
+    "back": {
+      "title": "быть вкусным, нравиться на вкус",
+      "lines": [
+        "вкусный, аппетитный"
+      ],
+      "exampleTranslation": "Тебе нравится рыба?"
+    }
+  },
+  {
+    "id": "a2-ernaehrung-32-schneiden",
+    "level": "A2",
+    "topic": "Ernährung",
+    "cardNumber": 32,
+    "source": "physical-card",
+    "front": {
+      "title": "schneiden",
+      "subtitle": "(schneidet-schnitt-geschnitten)",
+      "lines": [],
+      "exampleDe": "in Scheiben schneiden"
+    },
+    "back": {
+      "title": "резать, нарезать",
+      "lines": [],
+      "exampleTranslation": "нарезать ломтиками"
+    }
+  },
+  {
+    "id": "a2-haus-33-bequem",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 33,
+    "source": "physical-card",
+    "front": {
+      "title": "bequem",
+      "subtitle": "",
+      "lines": [
+        "unbequem"
+      ],
+      "exampleDe": "Machen Sie es sich bequem!"
+    },
+    "back": {
+      "title": "удобный",
+      "lines": [
+        "неудобный"
+      ],
+      "exampleTranslation": "Устраивайтесь поудобнее!"
+    }
+  },
+  {
+    "id": "a2-haus-34-das-arbeitszimmer",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 34,
+    "source": "physical-card",
+    "front": {
+      "title": "das Arbeitszimmer",
+      "subtitle": "die Arbeitszimmer",
+      "lines": [],
+      "exampleDe": "Er ist in seinem Arbeitszimmer."
+    },
+    "back": {
+      "title": "кабинет, рабочая комната",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он в своем кабинете."
+    }
+  },
+  {
+    "id": "a2-haus-35-das-kinderzimmer",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 35,
+    "source": "physical-card",
+    "front": {
+      "title": "das Kinderzimmer",
+      "subtitle": "die Kinderzimmer",
+      "lines": [],
+      "exampleDe": "Alle Spielzeuge liegen im Kinderzimmer."
+    },
+    "back": {
+      "title": "детская комната",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Все игрушки лежат в детской комнате."
+    }
+  },
+  {
+    "id": "a2-haus-36-das-wohnzimmer",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 36,
+    "source": "physical-card",
+    "front": {
+      "title": "das Wohnzimmer",
+      "subtitle": "die Wohnzimmer",
+      "lines": [],
+      "exampleDe": "Wir brauchen einen Teppich für das Wohnzimmer."
+    },
+    "back": {
+      "title": "гостиная",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Нам нужен ковер для гостиной."
+    }
+  },
+  {
+    "id": "a2-haus-37-der-aufzug",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 37,
+    "source": "physical-card",
+    "front": {
+      "title": "der Aufzug",
+      "subtitle": "die Aufzüge",
+      "lines": [],
+      "exampleDe": "Fahrt ihr mit dem Aufzug?"
+    },
+    "back": {
+      "title": "лифт",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Вы едете на лифте?"
+    }
+  },
+  {
+    "id": "a2-haus-38-der-fussboden",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 38,
+    "source": "physical-card",
+    "front": {
+      "title": "der Fußboden",
+      "subtitle": "die Fußböden",
+      "lines": [],
+      "exampleDe": "Was liegt auf dem Fußboden?"
+    },
+    "back": {
+      "title": "пол",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Что лежит на полу?"
+    }
+  },
+  {
+    "id": "a2-haus-39-der-nachbar",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 39,
+    "source": "physical-card",
+    "front": {
+      "title": "der Nachbar",
+      "subtitle": "die Nachbarn",
+      "lines": [],
+      "exampleDe": "Meine Nachbarn sind nett."
+    },
+    "back": {
+      "title": "сосед",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мои соседи милые."
+    }
+  },
+  {
+    "id": "a2-haus-40-der-schluessel",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 40,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schlüssel",
+      "subtitle": "die Schlüssel",
+      "lines": [],
+      "exampleDe": "Die Tür öffnet man mit dem Schlüssel."
+    },
+    "back": {
+      "title": "ключ",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Дверь открывают ключом."
+    }
+  },
+  {
+    "id": "a2-haus-41-die-etage",
+    "level": "A2",
+    "topic": "Haus",
+    "cardNumber": 41,
+    "source": "physical-card",
+    "front": {
+      "title": "die Etage",
+      "subtitle": "die Etagen",
+      "lines": [],
+      "exampleDe": "Ich wohne in der ersten Etage."
+    },
+    "back": {
+      "title": "этаж",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я живу на втором этаже."
+    }
+  },
+  {
+    "id": "a2-alltag-42-sich-waschen",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 42,
+    "source": "physical-card",
+    "front": {
+      "title": "(sich) waschen",
+      "subtitle": "(wäscht-wusch-gewaschen)",
+      "lines": [],
+      "exampleDe": "Ich wasche mir die Hände.\nIch wasche mich täglich."
+    },
+    "back": {
+      "title": "мыть(ся)",
+      "lines": [],
+      "exampleTranslation": "Я мою руки.\nЯ моюсь каждый день."
+    }
+  },
+  {
+    "id": "a2-alltag-43-das-glas",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 43,
+    "source": "physical-card",
+    "front": {
+      "title": "das Glas",
+      "subtitle": "die Gläser",
+      "lines": [
+        "ein Glas Wein",
+        "ein Weinglas"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "стакан, бокал",
+      "lines": [
+        "мн.",
+        "бокал вина",
+        "бокал для вина"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-alltag-44-der-muell",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 44,
+    "source": "physical-card",
+    "front": {
+      "title": "der Müll",
+      "subtitle": "",
+      "lines": [
+        "die Mülltrennung"
+      ],
+      "exampleDe": "Sie wirft die Flasche in den Müll."
+    },
+    "back": {
+      "title": "мусор",
+      "lines": [
+        "сортировка мусора"
+      ],
+      "exampleTranslation": "Она выбрасывает бутылку в мусор."
+    }
+  },
+  {
+    "id": "a2-alltag-45-der-schmutz",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 45,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schmutz",
+      "subtitle": "",
+      "lines": [
+        "schmutzig"
+      ],
+      "exampleDe": "Deine Brille ist schmutzig."
+    },
+    "back": {
+      "title": "грязь",
+      "lines": [
+        "грязный"
+      ],
+      "exampleTranslation": "Твои очки грязные."
+    }
+  },
+  {
+    "id": "a2-alltag-46-der-schwamm",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 46,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schwamm",
+      "subtitle": "die Schwämme",
+      "lines": [],
+      "exampleDe": "Wisch die Tafel mit dem Schwamm ab!"
+    },
+    "back": {
+      "title": "губка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Вытри доску губкой!"
+    }
+  },
+  {
+    "id": "a2-alltag-47-der-topf",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 47,
+    "source": "physical-card",
+    "front": {
+      "title": "der Topf",
+      "subtitle": "die Töpfe",
+      "lines": [
+        "der Blumentopf"
+      ],
+      "exampleDe": "einen Topf aufs Feuer stellen"
+    },
+    "back": {
+      "title": "кастрюля, горшок",
+      "lines": [
+        "мн.",
+        "цветочный горшок"
+      ],
+      "exampleTranslation": "поставить кастрюлю на огонь"
+    }
+  },
+  {
+    "id": "a2-alltag-48-die-creme",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 48,
+    "source": "physical-card",
+    "front": {
+      "title": "die Creme",
+      "subtitle": "die Cremes",
+      "lines": [
+        "die Handcreme",
+        "die Sonnencreme"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "крем",
+      "lines": [
+        "мн.",
+        "крем для рук",
+        "солнцезащитный крем"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-alltag-49-die-maschine",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 49,
+    "source": "physical-card",
+    "front": {
+      "title": "die Maschine",
+      "subtitle": "die Maschinen",
+      "lines": [
+        "die Kaffeemaschine"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "машина, аппарат",
+      "lines": [
+        "мн.",
+        "кофеварка"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-alltag-50-die-ordnung",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 50,
+    "source": "physical-card",
+    "front": {
+      "title": "die Ordnung",
+      "subtitle": "",
+      "lines": [
+        "die Unordnung"
+      ],
+      "exampleDe": "Ordnung muss sein."
+    },
+    "back": {
+      "title": "порядок",
+      "lines": [
+        "беспорядок"
+      ],
+      "exampleTranslation": "Порядок должен быть."
+    }
+  },
+  {
+    "id": "a2-alltag-51-die-pfanne",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 51,
+    "source": "physical-card",
+    "front": {
+      "title": "die Pfanne",
+      "subtitle": "die Pfannen",
+      "lines": [],
+      "exampleDe": "Ich brate den Fisch in der Pfanne."
+    },
+    "back": {
+      "title": "сковорода",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я жарю рыбу на сковороде."
+    }
+  },
+  {
+    "id": "a2-alltag-52-die-sauberkeit",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 52,
+    "source": "physical-card",
+    "front": {
+      "title": "die Sauberkeit",
+      "subtitle": "",
+      "lines": [
+        "sauber"
+      ],
+      "exampleDe": "sauber machen"
+    },
+    "back": {
+      "title": "чистота",
+      "lines": [
+        "чистый"
+      ],
+      "exampleTranslation": "чистить, убирать"
+    }
+  },
+  {
+    "id": "a2-alltag-53-die-seife",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 53,
+    "source": "physical-card",
+    "front": {
+      "title": "die Seife",
+      "subtitle": "",
+      "lines": [
+        "flüssige Seife",
+        "die Seifenblase"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "мыло",
+      "lines": [
+        "жидкое мыло",
+        "мыльный пузырь"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-alltag-54-die-zahnpasta",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 54,
+    "source": "physical-card",
+    "front": {
+      "title": "die Zahnpasta",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Sie kauft eine Tube Zahnpasta."
+    },
+    "back": {
+      "title": "зубная паста",
+      "lines": [],
+      "exampleTranslation": "Она покупает тюбик зубной пасты."
+    }
+  },
+  {
+    "id": "a2-alltag-55-fertig",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 55,
+    "source": "physical-card",
+    "front": {
+      "title": "fertig",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Das Essen ist fertig.\nSind Sie schon fertig?"
+    },
+    "back": {
+      "title": "готовый",
+      "lines": [],
+      "exampleTranslation": "Еда готова.\nВы уже закончили?"
+    }
+  },
+  {
+    "id": "a2-alltag-56-funktionieren",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 56,
+    "source": "physical-card",
+    "front": {
+      "title": "funktionieren",
+      "subtitle": "",
+      "lines": [
+        "die Funktion",
+        "die Funktionen"
+      ],
+      "exampleDe": "Wie funktioniert das?"
+    },
+    "back": {
+      "title": "работать, функционировать",
+      "lines": [
+        "функция",
+        "мн."
+      ],
+      "exampleTranslation": "Как это работает?"
+    }
+  },
+  {
+    "id": "a2-alltag-57-klopfen",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 57,
+    "source": "physical-card",
+    "front": {
+      "title": "klopfen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Jemand klopft an die Tür."
+    },
+    "back": {
+      "title": "стучать",
+      "lines": [],
+      "exampleTranslation": "Кто-то стучит в дверь."
+    }
+  },
+  {
+    "id": "a2-alltag-58-nass",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 58,
+    "source": "physical-card",
+    "front": {
+      "title": "nass",
+      "subtitle": "",
+      "lines": [
+        "trocken"
+      ],
+      "exampleDe": "Der Fußboden im Bad ist nass."
+    },
+    "back": {
+      "title": "мокрый",
+      "lines": [
+        "сухой"
+      ],
+      "exampleTranslation": "Пол в ванной мокрый."
+    }
+  },
+  {
+    "id": "a2-alltag-59-praktisch",
+    "level": "A2",
+    "topic": "Alltag",
+    "cardNumber": 59,
+    "source": "physical-card",
+    "front": {
+      "title": "praktisch",
+      "subtitle": "",
+      "lines": [
+        "unpraktisch"
+      ],
+      "exampleDe": "Diese Schuhe sind sehr praktisch."
+    },
+    "back": {
+      "title": "практичный",
+      "lines": [
+        "непрактичный"
+      ],
+      "exampleTranslation": "Эти ботинки очень практичные."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-60-auf-sein",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 60,
+    "source": "physical-card",
+    "front": {
+      "title": "auf sein",
+      "subtitle": "(ist-war-gewesen)",
+      "lines": [],
+      "exampleDe": "Die Bäckerei ist auf.\nDie Tür ist auf."
+    },
+    "back": {
+      "title": "быть открытым",
+      "lines": [],
+      "exampleTranslation": "Пекарня открыта.\nДверь открыта."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-61-der-einkauf",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 61,
+    "source": "physical-card",
+    "front": {
+      "title": "der Einkauf",
+      "subtitle": "die Einkäufe",
+      "lines": [],
+      "exampleDe": "Mach bitte die Einkäufe!"
+    },
+    "back": {
+      "title": "покупка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Сделай покупки, пожалуйста!"
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-62-der-kiosk",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 62,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kiosk",
+      "subtitle": "die Kioske",
+      "lines": [],
+      "exampleDe": "Die Zeitungen kaufe ich am Kiosk."
+    },
+    "back": {
+      "title": "киоск",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я покупаю газеты в киоске."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-63-der-kunde",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 63,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kunde",
+      "subtitle": "die Kunden",
+      "lines": [
+        "die Kundin",
+        "die Kundinnen"
+      ],
+      "exampleDe": "Hier ist jeder Kunde König."
+    },
+    "back": {
+      "title": "клиент",
+      "lines": [
+        "мн.",
+        "клиентка",
+        "мн."
+      ],
+      "exampleTranslation": "Здесь каждый клиент король."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-64-der-laden",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 64,
+    "source": "physical-card",
+    "front": {
+      "title": "der Laden",
+      "subtitle": "die Läden",
+      "lines": [
+        "der Schuhladen",
+        "der Ladentisch"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "магазин",
+      "lines": [
+        "мн.",
+        "обувной магазин",
+        "прилавок"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-65-der-schuhmacher",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 65,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schuhmacher",
+      "subtitle": "die Schuhmacher",
+      "lines": [],
+      "exampleDe": "Ich bringe meine Schuhe zum Schuhmacher."
+    },
+    "back": {
+      "title": "сапожник",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я отношу свою обувь к сапожнику."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-66-der-uhrmacher",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 66,
+    "source": "physical-card",
+    "front": {
+      "title": "der Uhrmacher",
+      "subtitle": "die Uhrmacher",
+      "lines": [],
+      "exampleDe": "Sein Onkel ist ein fähiger Uhrmacher."
+    },
+    "back": {
+      "title": "часовщик",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Его дядя умелый часовщик."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-67-die-baeckerei",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 67,
+    "source": "physical-card",
+    "front": {
+      "title": "die Bäckerei",
+      "subtitle": "die Bäckereien",
+      "lines": [
+        "der Bäcker",
+        "die Bäcker"
+      ],
+      "exampleDe": "Wie komme ich zur Bäckerei?"
+    },
+    "back": {
+      "title": "пекарня",
+      "lines": [
+        "мн.",
+        "пекарь",
+        "мн."
+      ],
+      "exampleTranslation": "Как добраться до пекарни?"
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-68-die-buchhandlung",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 68,
+    "source": "physical-card",
+    "front": {
+      "title": "die Buchhandlung",
+      "subtitle": "die Buchhandlungen",
+      "lines": [],
+      "exampleDe": "Gibt es hier eine Buchhandlung in der Nähe?"
+    },
+    "back": {
+      "title": "книжный магазин",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Здесь есть поблизости книжный магазин?"
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-69-die-drogerie",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 69,
+    "source": "physical-card",
+    "front": {
+      "title": "die Drogerie",
+      "subtitle": "die Drogerien",
+      "lines": [],
+      "exampleDe": "Ich muss kurz in die Drogerie."
+    },
+    "back": {
+      "title": "дрогери, магазин косметики и бытовой химии",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мне нужно ненадолго зайти в дрогери."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-70-die-kasse",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 70,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kasse",
+      "subtitle": "die Kassen",
+      "lines": [],
+      "exampleDe": "Zahle ich an der Kasse?"
+    },
+    "back": {
+      "title": "касса",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я заплачу на кассе?"
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-71-geben",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 71,
+    "source": "physical-card",
+    "front": {
+      "title": "geben",
+      "subtitle": "(gibt-gab-gegeben)",
+      "lines": [],
+      "exampleDe": "Geben Sie mir bitte drei Brötchen!\nEr gibt mir den Kassenbon."
+    },
+    "back": {
+      "title": "давать",
+      "lines": [],
+      "exampleTranslation": "Дайте мне, пожалуйста, три булочки!\nОн дает мне чек."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-72-gefallen",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 72,
+    "source": "physical-card",
+    "front": {
+      "title": "gefallen",
+      "subtitle": "(gefällt-gefiel-gefallen)",
+      "lines": [],
+      "exampleDe": "Welche Bluse gefällt dir?\nDiese Schuhe gefallen mir."
+    },
+    "back": {
+      "title": "нравиться",
+      "lines": [],
+      "exampleTranslation": "Какая блузка тебе нравится?\nМне нравятся эти туфли."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-73-gut",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 73,
+    "source": "physical-card",
+    "front": {
+      "title": "gut",
+      "subtitle": "",
+      "lines": [
+        "schlecht"
+      ],
+      "exampleDe": "gute Qualität"
+    },
+    "back": {
+      "title": "хороший",
+      "lines": [
+        "плохой"
+      ],
+      "exampleTranslation": "высокое качество"
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-74-schauen",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 74,
+    "source": "physical-card",
+    "front": {
+      "title": "schauen",
+      "subtitle": "",
+      "lines": [
+        "Schau mal!",
+        "das Schaufenster"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "смотреть",
+      "lines": [
+        "Смотри!",
+        "витрина"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-75-welcher",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 75,
+    "source": "physical-card",
+    "front": {
+      "title": "welcher?",
+      "subtitle": "",
+      "lines": [
+        "welche?",
+        "welches?"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "который?",
+      "lines": [
+        "которая?",
+        "которое?"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-76-wollen",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 76,
+    "source": "physical-card",
+    "front": {
+      "title": "wollen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich will nichts kaufen.\nWir wollen Einkäufe machen."
+    },
+    "back": {
+      "title": "хотеть",
+      "lines": [],
+      "exampleTranslation": "Я не хочу ничего покупать.\nМы хотим сделать покупки."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-77-zu-sein",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 77,
+    "source": "physical-card",
+    "front": {
+      "title": "zu sein",
+      "subtitle": "(ist-war-gewesen)",
+      "lines": [],
+      "exampleDe": "Der Laden ist zu.\nDie Tür ist zu."
+    },
+    "back": {
+      "title": "быть закрытым",
+      "lines": [],
+      "exampleTranslation": "Магазин закрыт.\nДверь закрыта."
+    }
+  },
+  {
+    "id": "a2-einkaeufe-und-dienstleistungen-78-zufrieden",
+    "level": "A2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 78,
+    "source": "physical-card",
+    "front": {
+      "title": "zufrieden",
+      "subtitle": "",
+      "lines": [
+        "unzufrieden"
+      ],
+      "exampleDe": "Sind Sie zufrieden?"
+    },
+    "back": {
+      "title": "довольный",
+      "lines": [
+        "недовольный"
+      ],
+      "exampleTranslation": "Вы довольны?"
+    }
+  },
+  {
+    "id": "a2-familie-79-alle",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 79,
+    "source": "physical-card",
+    "front": {
+      "title": "alle",
+      "subtitle": "",
+      "lines": [
+        "alle Männer",
+        "alle Frauen"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "все",
+      "lines": [
+        "все мужчины",
+        "все женщины"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-familie-80-allein",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 80,
+    "source": "physical-card",
+    "front": {
+      "title": "allein",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "allein zu Hause"
+    },
+    "back": {
+      "title": "один, в одиночестве",
+      "lines": [],
+      "exampleTranslation": "один дома"
+    }
+  },
+  {
+    "id": "a2-familie-81-alles-gute",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 81,
+    "source": "physical-card",
+    "front": {
+      "title": "Alles Gute!",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Alles Gute zum Geburtstag!"
+    },
+    "back": {
+      "title": "Всего наилучшего!",
+      "lines": [],
+      "exampleTranslation": "С днем рождения! Всего наилучшего!"
+    }
+  },
+  {
+    "id": "a2-familie-82-bekommen",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 82,
+    "source": "physical-card",
+    "front": {
+      "title": "bekommen",
+      "subtitle": "(bekommt-bekam-bekommen)",
+      "lines": [],
+      "exampleDe": "Zum Geburtstag bekomme ich viele Geschenke."
+    },
+    "back": {
+      "title": "получать",
+      "lines": [],
+      "exampleTranslation": "На день рождения я получаю много подарков."
+    }
+  },
+  {
+    "id": "a2-familie-83-der-andere",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 83,
+    "source": "physical-card",
+    "front": {
+      "title": "der andere",
+      "subtitle": "",
+      "lines": [
+        "die andere",
+        "das andere"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "другой",
+      "lines": [
+        "другая",
+        "другое"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-familie-84-der-enkel",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 84,
+    "source": "physical-card",
+    "front": {
+      "title": "der Enkel",
+      "subtitle": "die Enkel",
+      "lines": [
+        "die Enkelin",
+        "die Enkelinnen",
+        "die Enkelkinder"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "внук",
+      "lines": [
+        "мн.",
+        "внучка",
+        "мн.",
+        "внуки"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-familie-85-der-kindergarten",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 85,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kindergarten",
+      "subtitle": "die Kindergärten",
+      "lines": [],
+      "exampleDe": "Mein Sohn besucht den Kindergarten."
+    },
+    "back": {
+      "title": "детский сад",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мой сын ходит в детский сад."
+    }
+  },
+  {
+    "id": "a2-familie-86-der-mensch",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 86,
+    "source": "physical-card",
+    "front": {
+      "title": "der Mensch",
+      "subtitle": "die Menschen",
+      "lines": [],
+      "exampleDe": "Das weiß kein Mensch."
+    },
+    "back": {
+      "title": "человек",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Этого никто не знает."
+    }
+  },
+  {
+    "id": "a2-familie-87-die-leute",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 87,
+    "source": "physical-card",
+    "front": {
+      "title": "die Leute",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Im Park sind viele Leute."
+    },
+    "back": {
+      "title": "люди",
+      "lines": [],
+      "exampleTranslation": "В парке много людей."
+    }
+  },
+  {
+    "id": "a2-familie-88-die-party",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 88,
+    "source": "physical-card",
+    "front": {
+      "title": "die Party",
+      "subtitle": "die Partys",
+      "lines": [
+        "auf der Party"
+      ],
+      "exampleDe": "Morgen gehen wir auf die Party."
+    },
+    "back": {
+      "title": "вечеринка",
+      "lines": [
+        "мн.",
+        "на вечеринке"
+      ],
+      "exampleTranslation": "Завтра мы идем на вечеринку."
+    }
+  },
+  {
+    "id": "a2-familie-89-die-person",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 89,
+    "source": "physical-card",
+    "front": {
+      "title": "die Person",
+      "subtitle": "die Personen",
+      "lines": [],
+      "exampleDe": "ein Tisch für vier Personen"
+    },
+    "back": {
+      "title": "персона, человек",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "столик на четырех человек"
+    }
+  },
+  {
+    "id": "a2-familie-90-die-tante",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 90,
+    "source": "physical-card",
+    "front": {
+      "title": "die Tante",
+      "subtitle": "die Tanten",
+      "lines": [],
+      "exampleDe": "Er war bei seiner Tante."
+    },
+    "back": {
+      "title": "тетя",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он был у своей тети."
+    }
+  },
+  {
+    "id": "a2-familie-91-die-ueberraschung",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 91,
+    "source": "physical-card",
+    "front": {
+      "title": "die Überraschung",
+      "subtitle": "die Überraschungen",
+      "lines": [
+        "das Überraschungsei"
+      ],
+      "exampleDe": "eine angenehme Überraschung"
+    },
+    "back": {
+      "title": "сюрприз, неожиданность",
+      "lines": [
+        "мн.",
+        "киндер-сюрприз"
+      ],
+      "exampleTranslation": "приятная неожиданность"
+    }
+  },
+  {
+    "id": "a2-familie-92-dieser",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 92,
+    "source": "physical-card",
+    "front": {
+      "title": "dieser",
+      "subtitle": "",
+      "lines": [
+        "diese",
+        "dieses"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "этот",
+      "lines": [
+        "эта",
+        "это"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-familie-93-du",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 93,
+    "source": "physical-card",
+    "front": {
+      "title": "du",
+      "subtitle": "",
+      "lines": [
+        "duzen"
+      ],
+      "exampleDe": "Bist du Deutscher?"
+    },
+    "back": {
+      "title": "ты",
+      "lines": [
+        "обращаться на \"ты\""
+      ],
+      "exampleTranslation": "Ты немец?"
+    }
+  },
+  {
+    "id": "a2-familie-94-einladen",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 94,
+    "source": "physical-card",
+    "front": {
+      "title": "einladen",
+      "subtitle": "(lädt ein-lud ein-eingeladen)",
+      "lines": [
+        "die Einladung",
+        "die Einladungen"
+      ],
+      "exampleDe": "Ich lade dich zur Party ein!"
+    },
+    "back": {
+      "title": "приглашать",
+      "lines": [
+        "приглашение",
+        "мн."
+      ],
+      "exampleTranslation": "Я приглашаю тебя на вечеринку!"
+    }
+  },
+  {
+    "id": "a2-familie-95-fuer",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 95,
+    "source": "physical-card",
+    "front": {
+      "title": "für",
+      "subtitle": "",
+      "lines": [
+        "für immer"
+      ],
+      "exampleDe": "Der Wein ist für dich."
+    },
+    "back": {
+      "title": "для",
+      "lines": [
+        "навсегда"
+      ],
+      "exampleTranslation": "Вино для тебя."
+    }
+  },
+  {
+    "id": "a2-familie-96-geboren-werden",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 96,
+    "source": "physical-card",
+    "front": {
+      "title": "geboren werden",
+      "subtitle": "",
+      "lines": [
+        "die Geburt",
+        "die Geburten"
+      ],
+      "exampleDe": "Ich wurde 1985 geboren."
+    },
+    "back": {
+      "title": "родиться",
+      "lines": [
+        "рождение",
+        "мн."
+      ],
+      "exampleTranslation": "Я родился в 1985 году."
+    }
+  },
+  {
+    "id": "a2-familie-97-jemand",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 97,
+    "source": "physical-card",
+    "front": {
+      "title": "jemand",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ist jemand zu Hause?"
+    },
+    "back": {
+      "title": "кто-то, кто-нибудь",
+      "lines": [],
+      "exampleTranslation": "Есть кто-нибудь дома?"
+    }
+  },
+  {
+    "id": "a2-familie-98-kein",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 98,
+    "source": "physical-card",
+    "front": {
+      "title": "kein",
+      "subtitle": "",
+      "lines": [
+        "keine",
+        "auf keinen Fall"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "никакой, ни один",
+      "lines": [
+        "никакая",
+        "ни в коем случае"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-familie-99-ledig",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 99,
+    "source": "physical-card",
+    "front": {
+      "title": "ledig",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Mein Bruder ist ledig.\nMeine Schwester ist ledig."
+    },
+    "back": {
+      "title": "неженатый, незамужняя",
+      "lines": [],
+      "exampleTranslation": "Мой брат неженат.\nМоя сестра не замужем."
+    }
+  },
+  {
+    "id": "a2-familie-100-niemand",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 100,
+    "source": "physical-card",
+    "front": {
+      "title": "niemand",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Niemand hat Geld.\nNiemand ist zu Hause."
+    },
+    "back": {
+      "title": "никто",
+      "lines": [],
+      "exampleTranslation": "Ни у кого нет денег.\nНикого нет дома."
+    }
+  },
+  {
+    "id": "a2-familie-101-schenken",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 101,
+    "source": "physical-card",
+    "front": {
+      "title": "schenken",
+      "subtitle": "",
+      "lines": [
+        "das Geschenk",
+        "die Geschenke"
+      ],
+      "exampleDe": "Was schenken wir ihr zum Geburtstag?"
+    },
+    "back": {
+      "title": "дарить",
+      "lines": [
+        "подарок",
+        "мн."
+      ],
+      "exampleTranslation": "Что мы подарим ей на день рождения?"
+    }
+  },
+  {
+    "id": "a2-familie-102-sie-formell",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 102,
+    "source": "physical-card",
+    "front": {
+      "title": "Sie",
+      "subtitle": "",
+      "lines": [
+        "Sie",
+        "siezen"
+      ],
+      "exampleDe": "Sind Sie müde?"
+    },
+    "back": {
+      "title": "Вы",
+      "lines": [
+        "мн.",
+        "обращаться на \"Вы\""
+      ],
+      "exampleTranslation": "Вы устали?"
+    }
+  },
+  {
+    "id": "a2-familie-103-sie-plural",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 103,
+    "source": "physical-card",
+    "front": {
+      "title": "sie",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Sie sind Ärzte."
+    },
+    "back": {
+      "title": "они",
+      "lines": [],
+      "exampleTranslation": "Они врачи."
+    }
+  },
+  {
+    "id": "a2-familie-104-sie-singular",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 104,
+    "source": "physical-card",
+    "front": {
+      "title": "sie",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Sie ist nett."
+    },
+    "back": {
+      "title": "она",
+      "lines": [],
+      "exampleTranslation": "Она милая."
+    }
+  },
+  {
+    "id": "a2-familie-105-sterben",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 105,
+    "source": "physical-card",
+    "front": {
+      "title": "sterben",
+      "subtitle": "(stirbt-starb-gestorben)",
+      "lines": [
+        "der Tod"
+      ],
+      "exampleDe": "Er ist 1947 gestorben."
+    },
+    "back": {
+      "title": "умирать",
+      "lines": [
+        "смерть"
+      ],
+      "exampleTranslation": "Он умер в 1947 году."
+    }
+  },
+  {
+    "id": "a2-familie-106-verheiratet",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 106,
+    "source": "physical-card",
+    "front": {
+      "title": "verheiratet",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Mein Bruder ist verheiratet.\nMeine Schwester ist verheiratet."
+    },
+    "back": {
+      "title": "женатый, замужняя",
+      "lines": [],
+      "exampleTranslation": "Мой брат женат.\nМоя сестра замужем."
+    }
+  },
+  {
+    "id": "a2-familie-107-von",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 107,
+    "source": "physical-card",
+    "front": {
+      "title": "von",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Die Blumen sind von mir."
+    },
+    "back": {
+      "title": "от",
+      "lines": [],
+      "exampleTranslation": "Цветы от меня."
+    }
+  },
+  {
+    "id": "a2-familie-108-willkommen",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 108,
+    "source": "physical-card",
+    "front": {
+      "title": "willkommen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Herzlich willkommen!"
+    },
+    "back": {
+      "title": "желанный, добро пожаловать",
+      "lines": [],
+      "exampleTranslation": "Добро пожаловать!"
+    }
+  },
+  {
+    "id": "a2-familie-109-wir",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 109,
+    "source": "physical-card",
+    "front": {
+      "title": "wir",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Wir sind Studenten."
+    },
+    "back": {
+      "title": "мы",
+      "lines": [],
+      "exampleTranslation": "Мы студенты."
+    }
+  },
+  {
+    "id": "a2-familie-110-wuenschen",
+    "level": "A2",
+    "topic": "Familie",
+    "cardNumber": 110,
+    "source": "physical-card",
+    "front": {
+      "title": "wünschen",
+      "subtitle": "",
+      "lines": [
+        "der Wunsch",
+        "die Wünsche"
+      ],
+      "exampleDe": "Was wünschst du?"
+    },
+    "back": {
+      "title": "желать",
+      "lines": [
+        "желание",
+        "мн."
+      ],
+      "exampleTranslation": "Чего ты желаешь?"
+    }
+  },
+  {
+    "id": "a2-aussehen-111-sich-anziehen",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 111,
+    "source": "physical-card",
+    "front": {
+      "title": "(sich) anziehen",
+      "subtitle": "(zieht an-zog an-angezogen)",
+      "lines": [],
+      "exampleDe": "Ich ziehe mich an.\nIch ziehe den Mantel an."
+    },
+    "back": {
+      "title": "одевать(ся)",
+      "lines": [],
+      "exampleTranslation": "Я одеваюсь.\nЯ надеваю пальто."
+    }
+  },
+  {
+    "id": "a2-aussehen-112-sich-ausziehen",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 112,
+    "source": "physical-card",
+    "front": {
+      "title": "(sich) ausziehen",
+      "subtitle": "(zieht aus-zog aus-ausgezogen)",
+      "lines": [],
+      "exampleDe": "Das Kind zieht sich aus.\nDas Kind zieht die Schuhe aus."
+    },
+    "back": {
+      "title": "раздевать(ся), снимать одежду",
+      "lines": [],
+      "exampleTranslation": "Ребенок раздевается.\nРебенок снимает обувь."
+    }
+  },
+  {
+    "id": "a2-aussehen-113-beschreiben",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 113,
+    "source": "physical-card",
+    "front": {
+      "title": "beschreiben",
+      "subtitle": "(beschreibt-beschrieb-beschrieben)",
+      "lines": [
+        "die Beschreibung",
+        "die Beschreibungen"
+      ],
+      "exampleDe": "Beschreib ihn!"
+    },
+    "back": {
+      "title": "описывать",
+      "lines": [
+        "описание",
+        "мн."
+      ],
+      "exampleTranslation": "Опиши его!"
+    }
+  },
+  {
+    "id": "a2-aussehen-114-blond",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 114,
+    "source": "physical-card",
+    "front": {
+      "title": "blond",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich bin blond.\nSie hat blondes Haar."
+    },
+    "back": {
+      "title": "светловолосый, блондин(ка)",
+      "lines": [],
+      "exampleTranslation": "Я блондин.\nУ нее светлые волосы."
+    }
+  },
+  {
+    "id": "a2-aussehen-115-der-hut",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 115,
+    "source": "physical-card",
+    "front": {
+      "title": "der Hut",
+      "subtitle": "die Hüte",
+      "lines": [],
+      "exampleDe": "Der Hut ist zu teuer."
+    },
+    "back": {
+      "title": "шляпа",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Эта шляпа слишком дорогая."
+    }
+  },
+  {
+    "id": "a2-aussehen-116-der-regenschirm",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 116,
+    "source": "physical-card",
+    "front": {
+      "title": "der Regenschirm",
+      "subtitle": "die Regenschirme",
+      "lines": [],
+      "exampleDe": "Nimm den Regenschirm mit!"
+    },
+    "back": {
+      "title": "зонт",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Возьми с собой зонт!"
+    }
+  },
+  {
+    "id": "a2-aussehen-117-der-ring",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 117,
+    "source": "physical-card",
+    "front": {
+      "title": "der Ring",
+      "subtitle": "die Ringe",
+      "lines": [],
+      "exampleDe": "Sie trägt einen silbernen Ring."
+    },
+    "back": {
+      "title": "кольцо",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Она носит серебряное кольцо."
+    }
+  },
+  {
+    "id": "a2-aussehen-118-die-figur",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 118,
+    "source": "physical-card",
+    "front": {
+      "title": "die Figur",
+      "subtitle": "die Figuren",
+      "lines": [],
+      "exampleDe": "Seine Freundin hat eine gute Figur."
+    },
+    "back": {
+      "title": "фигура",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У его подруги хорошая фигура."
+    }
+  },
+  {
+    "id": "a2-aussehen-119-die-frisur",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 119,
+    "source": "physical-card",
+    "front": {
+      "title": "die Frisur",
+      "subtitle": "die Frisuren",
+      "lines": [],
+      "exampleDe": "eine moderne Frisur"
+    },
+    "back": {
+      "title": "прическа",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "современная прическа"
+    }
+  },
+  {
+    "id": "a2-aussehen-120-die-mode",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 120,
+    "source": "physical-card",
+    "front": {
+      "title": "die Mode",
+      "subtitle": "",
+      "lines": [
+        "modisch"
+      ],
+      "exampleDe": "nach der neuesten Mode"
+    },
+    "back": {
+      "title": "мода",
+      "lines": [
+        "модный"
+      ],
+      "exampleTranslation": "по последней моде"
+    }
+  },
+  {
+    "id": "a2-aussehen-121-die-socke",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 121,
+    "source": "physical-card",
+    "front": {
+      "title": "die Socke",
+      "subtitle": "die Socken",
+      "lines": [],
+      "exampleDe": "ein Paar gestrickte Socken"
+    },
+    "back": {
+      "title": "носок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "пара вязаных носков"
+    }
+  },
+  {
+    "id": "a2-aussehen-122-die-tasche",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 122,
+    "source": "physical-card",
+    "front": {
+      "title": "die Tasche",
+      "subtitle": "die Taschen",
+      "lines": [
+        "die Handtasche",
+        "die Brieftasche"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "сумка",
+      "lines": [
+        "мн.",
+        "дамская сумочка",
+        "кошелек"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-aussehen-123-duenn",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 123,
+    "source": "physical-card",
+    "front": {
+      "title": "dünn",
+      "subtitle": "",
+      "lines": [
+        "dick"
+      ],
+      "exampleDe": "Ihre Tante ist dünn."
+    },
+    "back": {
+      "title": "худой",
+      "lines": [
+        "толстый, полный"
+      ],
+      "exampleTranslation": "Их тетя худая."
+    }
+  },
+  {
+    "id": "a2-aussehen-124-eng",
+    "level": "A2",
+    "topic": "Aussehen",
+    "cardNumber": 124,
+    "source": "physical-card",
+    "front": {
+      "title": "eng",
+      "subtitle": "",
+      "lines": [
+        "weit"
+      ],
+      "exampleDe": "Diese Hose ist mir zu weit."
+    },
+    "back": {
+      "title": "узкий, тесный",
+      "lines": [
+        "широкий, свободный"
+      ],
+      "exampleTranslation": "Эти брюки слишком широкие для меня."
+    }
+  },
+  {
+    "id": "a2-gefuehle-125-artig",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 125,
+    "source": "physical-card",
+    "front": {
+      "title": "artig",
+      "subtitle": "",
+      "lines": [
+        "unartig"
+      ],
+      "exampleDe": "Sei artig!"
+    },
+    "back": {
+      "title": "послушный",
+      "lines": [
+        "непослушный"
+      ],
+      "exampleTranslation": "Веди себя хорошо!"
+    }
+  },
+  {
+    "id": "a2-gefuehle-126-der-charakter",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 126,
+    "source": "physical-card",
+    "front": {
+      "title": "der Charakter",
+      "subtitle": "die Charaktere",
+      "lines": [
+        "charakteristisch",
+        "die Charaktereigenschaft"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "характер",
+      "lines": [
+        "мн.",
+        "характерный",
+        "черта характера"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-gefuehle-127-der-witz",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 127,
+    "source": "physical-card",
+    "front": {
+      "title": "der Witz",
+      "subtitle": "die Witze",
+      "lines": [
+        "witzig"
+      ],
+      "exampleDe": "Ich erzähle dir einen Witz."
+    },
+    "back": {
+      "title": "шутка",
+      "lines": [
+        "мн.",
+        "остроумный, забавный"
+      ],
+      "exampleTranslation": "Я расскажу тебе шутку."
+    }
+  },
+  {
+    "id": "a2-gefuehle-128-die-angst",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 128,
+    "source": "physical-card",
+    "front": {
+      "title": "die Angst",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich habe Angst.\nHab keine Angst!"
+    },
+    "back": {
+      "title": "страх",
+      "lines": [],
+      "exampleTranslation": "Я боюсь.\nНе бойся!"
+    }
+  },
+  {
+    "id": "a2-gefuehle-129-die-fantasie",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 129,
+    "source": "physical-card",
+    "front": {
+      "title": "die Fantasie",
+      "subtitle": "",
+      "lines": [
+        "fantastisch"
+      ],
+      "exampleDe": "Deine Fantasie kennt keine Grenzen."
+    },
+    "back": {
+      "title": "фантазия",
+      "lines": [
+        "фантастический"
+      ],
+      "exampleTranslation": "Твоя фантазия не знает границ."
+    }
+  },
+  {
+    "id": "a2-gefuehle-130-froh",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 130,
+    "source": "physical-card",
+    "front": {
+      "title": "froh",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich bin froh."
+    },
+    "back": {
+      "title": "радостный, рад",
+      "lines": [],
+      "exampleTranslation": "Я рад."
+    }
+  },
+  {
+    "id": "a2-gefuehle-131-geduldig",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 131,
+    "source": "physical-card",
+    "front": {
+      "title": "geduldig",
+      "subtitle": "",
+      "lines": [
+        "ungeduldig"
+      ],
+      "exampleDe": "Heute sind alle so ungeduldig!"
+    },
+    "back": {
+      "title": "терпеливый",
+      "lines": [
+        "нетерпеливый"
+      ],
+      "exampleTranslation": "Сегодня все такие нетерпеливые!"
+    }
+  },
+  {
+    "id": "a2-gefuehle-132-hassen",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 132,
+    "source": "physical-card",
+    "front": {
+      "title": "hassen",
+      "subtitle": "",
+      "lines": [
+        "der Hass"
+      ],
+      "exampleDe": "Ich hasse ihn."
+    },
+    "back": {
+      "title": "ненавидеть",
+      "lines": [
+        "ненависть"
+      ],
+      "exampleTranslation": "Я ненавижу его."
+    }
+  },
+  {
+    "id": "a2-gefuehle-133-hoffen",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 133,
+    "source": "physical-card",
+    "front": {
+      "title": "hoffen",
+      "subtitle": "",
+      "lines": [
+        "die Hoffnung",
+        "die Hoffnungen"
+      ],
+      "exampleDe": "Ich hoffe darauf."
+    },
+    "back": {
+      "title": "надеяться",
+      "lines": [
+        "надежда",
+        "мн."
+      ],
+      "exampleTranslation": "Я на это надеюсь."
+    }
+  },
+  {
+    "id": "a2-gefuehle-134-kuessen",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 134,
+    "source": "physical-card",
+    "front": {
+      "title": "küssen",
+      "subtitle": "",
+      "lines": [
+        "der Kuss",
+        "die Küsse"
+      ],
+      "exampleDe": "Küss mich!"
+    },
+    "back": {
+      "title": "целовать(ся)",
+      "lines": [
+        "поцелуй",
+        "мн."
+      ],
+      "exampleTranslation": "Поцелуй меня!"
+    }
+  },
+  {
+    "id": "a2-gefuehle-135-sich-freuen",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 135,
+    "source": "physical-card",
+    "front": {
+      "title": "sich freuen",
+      "subtitle": "",
+      "lines": [
+        "die Freude"
+      ],
+      "exampleDe": "Das bereitet mir Freude."
+    },
+    "back": {
+      "title": "радоваться",
+      "lines": [
+        "радость"
+      ],
+      "exampleTranslation": "Это меня радует."
+    }
+  },
+  {
+    "id": "a2-gefuehle-136-streng",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 136,
+    "source": "physical-card",
+    "front": {
+      "title": "streng",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Mein Deutschlehrer ist streng."
+    },
+    "back": {
+      "title": "строгий",
+      "lines": [],
+      "exampleTranslation": "Мой учитель немецкого строгий."
+    }
+  },
+  {
+    "id": "a2-gefuehle-137-sympathisch",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 137,
+    "source": "physical-card",
+    "front": {
+      "title": "sympathisch",
+      "subtitle": "",
+      "lines": [
+        "unsympathisch"
+      ],
+      "exampleDe": "Sie findet ihn ziemlich sympathisch."
+    },
+    "back": {
+      "title": "симпатичный, приятный",
+      "lines": [
+        "несимпатичный, неприятный"
+      ],
+      "exampleTranslation": "Она считает его довольно приятным."
+    }
+  },
+  {
+    "id": "a2-gefuehle-138-weinen",
+    "level": "A2",
+    "topic": "Gefühle",
+    "cardNumber": 138,
+    "source": "physical-card",
+    "front": {
+      "title": "weinen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Weine nicht!"
+    },
+    "back": {
+      "title": "плакать",
+      "lines": [],
+      "exampleTranslation": "Не плачь!"
+    }
+  },
+  {
+    "id": "a2-gesundheit-139-sich-fuehlen",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 139,
+    "source": "physical-card",
+    "front": {
+      "title": "(sich) fühlen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich fühle mich krank."
+    },
+    "back": {
+      "title": "чувствовать(ся)",
+      "lines": [],
+      "exampleTranslation": "Я чувствую себя больным."
+    }
+  },
+  {
+    "id": "a2-gesundheit-140-das-blut",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 140,
+    "source": "physical-card",
+    "front": {
+      "title": "das Blut",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Hier kann man Blut spenden."
+    },
+    "back": {
+      "title": "кровь",
+      "lines": [],
+      "exampleTranslation": "Здесь можно сдать кровь."
+    }
+  },
+  {
+    "id": "a2-gesundheit-141-das-fieber",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 141,
+    "source": "physical-card",
+    "front": {
+      "title": "das Fieber",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich habe Fieber.\nHast du schon das Fieber gemessen?"
+    },
+    "back": {
+      "title": "температура, жар",
+      "lines": [],
+      "exampleTranslation": "У меня температура.\nТы уже померил температуру?"
+    }
+  },
+  {
+    "id": "a2-gesundheit-142-das-herz",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 142,
+    "source": "physical-card",
+    "front": {
+      "title": "das Herz",
+      "subtitle": "die Herzen",
+      "lines": [
+        "von ganzem Herzen"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "сердце",
+      "lines": [
+        "мн.",
+        "от всего сердца"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-gesundheit-143-das-medikament",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 143,
+    "source": "physical-card",
+    "front": {
+      "title": "das Medikament",
+      "subtitle": "die Medikamente",
+      "lines": [],
+      "exampleDe": "ein Medikament gegen Kopfschmerzen"
+    },
+    "back": {
+      "title": "лекарство",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "лекарство от головной боли"
+    }
+  },
+  {
+    "id": "a2-gesundheit-144-das-thermometer",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 144,
+    "source": "physical-card",
+    "front": {
+      "title": "das Thermometer",
+      "subtitle": "die Thermometer",
+      "lines": [],
+      "exampleDe": "Das Thermometer zeigt 39 Grad an."
+    },
+    "back": {
+      "title": "термометр",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Термометр показывает 39 градусов."
+    }
+  },
+  {
+    "id": "a2-gesundheit-145-der-bauch",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 145,
+    "source": "physical-card",
+    "front": {
+      "title": "der Bauch",
+      "subtitle": "die Bäuche",
+      "lines": [],
+      "exampleDe": "Mein Bauch tut mir weh."
+    },
+    "back": {
+      "title": "живот",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У меня болит живот."
+    }
+  },
+  {
+    "id": "a2-gesundheit-146-der-ellenbogen",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 146,
+    "source": "physical-card",
+    "front": {
+      "title": "der Ellenbogen",
+      "subtitle": "die Ellenbogen",
+      "lines": [],
+      "exampleDe": "Stütze dich auf die Ellenbogen!"
+    },
+    "back": {
+      "title": "локоть",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Опрись на локти!"
+    }
+  },
+  {
+    "id": "a2-gesundheit-147-der-finger",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 147,
+    "source": "physical-card",
+    "front": {
+      "title": "der Finger",
+      "subtitle": "die Finger",
+      "lines": [],
+      "exampleDe": "Ich habe zehn Finger."
+    },
+    "back": {
+      "title": "палец",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У меня 10 пальцев."
+    }
+  },
+  {
+    "id": "a2-gesundheit-148-der-hals",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 148,
+    "source": "physical-card",
+    "front": {
+      "title": "der Hals",
+      "subtitle": "die Hälse",
+      "lines": [
+        "der Hals-Nasen-Ohren-Arzt"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "шея, горло",
+      "lines": [
+        "мн.",
+        "отоларинголог"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-gesundheit-149-der-schmerz",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 149,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schmerz",
+      "subtitle": "die Schmerzen",
+      "lines": [
+        "die Kopfschmerzen",
+        "die Halsschmerzen"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "боль",
+      "lines": [
+        "мн.",
+        "головная боль",
+        "боль в горле"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-gesundheit-150-die-angina",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 150,
+    "source": "physical-card",
+    "front": {
+      "title": "die Angina",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Sie haben alle Symptome von Angina."
+    },
+    "back": {
+      "title": "ангина",
+      "lines": [],
+      "exampleTranslation": "У вас все симптомы ангины."
+    }
+  },
+  {
+    "id": "a2-gesundheit-151-die-apotheke",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 151,
+    "source": "physical-card",
+    "front": {
+      "title": "die Apotheke",
+      "subtitle": "die Apotheken",
+      "lines": [
+        "der Apotheker",
+        "die Apotheker"
+      ],
+      "exampleDe": "Ich muss in die Apotheke gehen."
+    },
+    "back": {
+      "title": "аптека",
+      "lines": [
+        "мн.",
+        "аптекарь, фармацевт",
+        "мн."
+      ],
+      "exampleTranslation": "Мне нужно идти в аптеку."
+    }
+  },
+  {
+    "id": "a2-gesundheit-152-die-brust",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 152,
+    "source": "physical-card",
+    "front": {
+      "title": "die Brust",
+      "subtitle": "die Brüste",
+      "lines": [
+        "brustschwimmen"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "грудь",
+      "lines": [
+        "мн.",
+        "плавать брассом"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-gesundheit-153-die-gesundheit",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 153,
+    "source": "physical-card",
+    "front": {
+      "title": "die Gesundheit",
+      "subtitle": "",
+      "lines": [
+        "gesund"
+      ],
+      "exampleDe": "Wie steht’s mit der Gesundheit?"
+    },
+    "back": {
+      "title": "здоровье",
+      "lines": [
+        "здоровый"
+      ],
+      "exampleTranslation": "Как здоровье?"
+    }
+  },
+  {
+    "id": "a2-gesundheit-154-die-grippe",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 154,
+    "source": "physical-card",
+    "front": {
+      "title": "die Grippe",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich habe Grippe."
+    },
+    "back": {
+      "title": "грипп",
+      "lines": [],
+      "exampleTranslation": "У меня грипп."
+    }
+  },
+  {
+    "id": "a2-gesundheit-155-die-haut",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 155,
+    "source": "physical-card",
+    "front": {
+      "title": "die Haut",
+      "subtitle": "",
+      "lines": [
+        "die Hautpflege",
+        "der Hautarzt"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "кожа",
+      "lines": [
+        "уход за кожей",
+        "дерматолог"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-gesundheit-156-die-krankenschwester",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 156,
+    "source": "physical-card",
+    "front": {
+      "title": "die Krankenschwester",
+      "subtitle": "die Krankenschwestern",
+      "lines": [],
+      "exampleDe": "Meine Mutter arbeitet als Krankenschwester."
+    },
+    "back": {
+      "title": "медсестра",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Моя мама работает медсестрой."
+    }
+  },
+  {
+    "id": "a2-gesundheit-157-die-krankheit",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 157,
+    "source": "physical-card",
+    "front": {
+      "title": "die Krankheit",
+      "subtitle": "die Krankheiten",
+      "lines": [
+        "krank"
+      ],
+      "exampleDe": "Klaus ist krank."
+    },
+    "back": {
+      "title": "болезнь",
+      "lines": [
+        "мн.",
+        "больной"
+      ],
+      "exampleTranslation": "Клаус болен."
+    }
+  },
+  {
+    "id": "a2-gesundheit-158-die-tablette",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 158,
+    "source": "physical-card",
+    "front": {
+      "title": "die Tablette",
+      "subtitle": "die Tabletten",
+      "lines": [
+        "die Schmerztablette"
+      ],
+      "exampleDe": "Nehmen Sie bitte diese Tabletten ein!"
+    },
+    "back": {
+      "title": "таблетка",
+      "lines": [
+        "мн.",
+        "обезболивающая таблетка"
+      ],
+      "exampleTranslation": "Примите, пожалуйста, эти таблетки!"
+    }
+  },
+  {
+    "id": "a2-gesundheit-159-die-zigarette",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 159,
+    "source": "physical-card",
+    "front": {
+      "title": "die Zigarette",
+      "subtitle": "die Zigaretten",
+      "lines": [],
+      "exampleDe": "Er bot mir eine Zigarette an."
+    },
+    "back": {
+      "title": "сигарета",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он предложил мне сигарету."
+    }
+  },
+  {
+    "id": "a2-gesundheit-160-die-zunge",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 160,
+    "source": "physical-card",
+    "front": {
+      "title": "die Zunge",
+      "subtitle": "die Zungen",
+      "lines": [],
+      "exampleDe": "Zeigen Sie bitte Ihre Zunge!"
+    },
+    "back": {
+      "title": "язык",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Покажите, пожалуйста, свой язык!"
+    }
+  },
+  {
+    "id": "a2-gesundheit-161-rauchen",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 161,
+    "source": "physical-card",
+    "front": {
+      "title": "rauchen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Sie dürfen nicht rauchen."
+    },
+    "back": {
+      "title": "курить",
+      "lines": [],
+      "exampleTranslation": "Вам нельзя курить."
+    }
+  },
+  {
+    "id": "a2-gesundheit-162-rufen",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 162,
+    "source": "physical-card",
+    "front": {
+      "title": "rufen",
+      "subtitle": "(ruft-rief-gerufen)",
+      "lines": [],
+      "exampleDe": "Ruf den Arzt!"
+    },
+    "back": {
+      "title": "звать, вызывать",
+      "lines": [],
+      "exampleTranslation": "Позови врача!"
+    }
+  },
+  {
+    "id": "a2-gesundheit-163-schaden",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 163,
+    "source": "physical-card",
+    "front": {
+      "title": "schaden",
+      "subtitle": "",
+      "lines": [
+        "schädlich"
+      ],
+      "exampleDe": "Rauchen schadet der Gesundheit."
+    },
+    "back": {
+      "title": "вредить, наносить вред",
+      "lines": [
+        "вредный"
+      ],
+      "exampleTranslation": "Курение вредит здоровью."
+    }
+  },
+  {
+    "id": "a2-gesundheit-164-sollen",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 164,
+    "source": "physical-card",
+    "front": {
+      "title": "sollen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Du sollst zum Arzt gehen.\nMan soll viel Obst essen."
+    },
+    "back": {
+      "title": "долженствовать, следует",
+      "lines": [],
+      "exampleTranslation": "Ты должен пойти к врачу.\nНужно есть много фруктов."
+    }
+  },
+  {
+    "id": "a2-gesundheit-165-untersuchen",
+    "level": "A2",
+    "topic": "Gesundheit",
+    "cardNumber": 165,
+    "source": "physical-card",
+    "front": {
+      "title": "untersuchen",
+      "subtitle": "",
+      "lines": [
+        "die Untersuchung",
+        "die Untersuchungen"
+      ],
+      "exampleDe": "Ich untersuche Sie gleich."
+    },
+    "back": {
+      "title": "обследовать, осматривать",
+      "lines": [
+        "обследование, осмотр",
+        "мн."
+      ],
+      "exampleTranslation": "Я сейчас вас осмотрю."
+    }
+  },
+  {
+    "id": "a2-wetter-166-der-grad",
+    "level": "A2",
+    "topic": "Wetter",
+    "cardNumber": 166,
+    "source": "physical-card",
+    "front": {
+      "title": "der Grad",
+      "subtitle": "die Grade",
+      "lines": [],
+      "exampleDe": "Es sind fünf Grad über Null.\nEs sind zwei Grad unter Null."
+    },
+    "back": {
+      "title": "градус",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Пять градусов выше нуля.\nДва градуса ниже нуля."
+    }
+  },
+  {
+    "id": "a2-wetter-167-die-temperatur",
+    "level": "A2",
+    "topic": "Wetter",
+    "cardNumber": 167,
+    "source": "physical-card",
+    "front": {
+      "title": "die Temperatur",
+      "subtitle": "die Temperaturen",
+      "lines": [],
+      "exampleDe": "Die Temperatur steigt.\nDie Temperatur sinkt."
+    },
+    "back": {
+      "title": "температура",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Температура повышается.\nТемпература понижается."
+    }
+  },
+  {
+    "id": "a2-wetter-168-scheinen",
+    "level": "A2",
+    "topic": "Wetter",
+    "cardNumber": 168,
+    "source": "physical-card",
+    "front": {
+      "title": "scheinen",
+      "subtitle": "(scheint-schien-geschienen)",
+      "lines": [
+        "hell scheinen"
+      ],
+      "exampleDe": "Die Sonne scheint."
+    },
+    "back": {
+      "title": "светить",
+      "lines": [
+        "ярко светить"
+      ],
+      "exampleTranslation": "Светит солнце."
+    }
+  },
+  {
+    "id": "a2-wetter-169-schneien",
+    "level": "A2",
+    "topic": "Wetter",
+    "cardNumber": 169,
+    "source": "physical-card",
+    "front": {
+      "title": "schneien",
+      "subtitle": "",
+      "lines": [
+        "der Schnee"
+      ],
+      "exampleDe": "Es schneit."
+    },
+    "back": {
+      "title": "идти о снеге, снежить",
+      "lines": [
+        "снег"
+      ],
+      "exampleTranslation": "Падает снег."
+    }
+  },
+  {
+    "id": "a2-natur-170-das-krokodil",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 170,
+    "source": "physical-card",
+    "front": {
+      "title": "das Krokodil",
+      "subtitle": "die Krokodile",
+      "lines": [
+        "das Krokodilleder"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "крокодил",
+      "lines": [
+        "мн.",
+        "крокодиловая кожа"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-natur-171-das-pferd",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 171,
+    "source": "physical-card",
+    "front": {
+      "title": "das Pferd",
+      "subtitle": "die Pferde",
+      "lines": [],
+      "exampleDe": "auf das Pferd steigen"
+    },
+    "back": {
+      "title": "лошадь",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "садиться на лошадь"
+    }
+  },
+  {
+    "id": "a2-natur-172-das-schaf",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 172,
+    "source": "physical-card",
+    "front": {
+      "title": "das Schaf",
+      "subtitle": "die Schafe",
+      "lines": [
+        "der Schafskäse"
+      ],
+      "exampleDe": "sanft wie ein Schaf"
+    },
+    "back": {
+      "title": "овца",
+      "lines": [
+        "мн.",
+        "брынза, овечий сыр"
+      ],
+      "exampleTranslation": "кроткий, как ягненок"
+    }
+  },
+  {
+    "id": "a2-natur-173-das-schwein",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 173,
+    "source": "physical-card",
+    "front": {
+      "title": "das Schwein",
+      "subtitle": "die Schweine",
+      "lines": [
+        "wildes Schwein"
+      ],
+      "exampleDe": "Er hat Schwein gehabt."
+    },
+    "back": {
+      "title": "свинья",
+      "lines": [
+        "мн.",
+        "кабан, дикая свинья"
+      ],
+      "exampleTranslation": "Ему повезло."
+    }
+  },
+  {
+    "id": "a2-natur-174-der-adler",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 174,
+    "source": "physical-card",
+    "front": {
+      "title": "der Adler",
+      "subtitle": "die Adler",
+      "lines": [
+        "die Adlernase",
+        "der Adlerblick"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "орел",
+      "lines": [
+        "мн.",
+        "орлиный нос",
+        "орлиный взгляд"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-natur-175-der-affe",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 175,
+    "source": "physical-card",
+    "front": {
+      "title": "der Affe",
+      "subtitle": "die Affen",
+      "lines": [],
+      "exampleDe": "Im Zoo kann man die Affen füttern."
+    },
+    "back": {
+      "title": "обезьяна",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "В зоопарке можно покормить обезьян."
+    }
+  },
+  {
+    "id": "a2-natur-176-der-baer",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 176,
+    "source": "physical-card",
+    "front": {
+      "title": "der Bär",
+      "subtitle": "die Bären",
+      "lines": [],
+      "exampleDe": "Ich bin hungrig wie ein Bär!"
+    },
+    "back": {
+      "title": "медведь",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я голоден как медведь!"
+    }
+  },
+  {
+    "id": "a2-natur-177-der-elefant",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 177,
+    "source": "physical-card",
+    "front": {
+      "title": "der Elefant",
+      "subtitle": "die Elefanten",
+      "lines": [],
+      "exampleDe": "Du machst aus einer Mücke einen Elefanten!"
+    },
+    "back": {
+      "title": "слон",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ты делаешь из мухи слона!"
+    }
+  },
+  {
+    "id": "a2-natur-178-der-frosch",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 178,
+    "source": "physical-card",
+    "front": {
+      "title": "der Frosch",
+      "subtitle": "die Frösche",
+      "lines": [],
+      "exampleDe": "Sei kein Frosch!\nDieser Frosch ist grün."
+    },
+    "back": {
+      "title": "лягушка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Не трусь!\nЭта лягушка зеленая."
+    }
+  },
+  {
+    "id": "a2-natur-179-der-fuchs",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 179,
+    "source": "physical-card",
+    "front": {
+      "title": "der Fuchs",
+      "subtitle": "die Füchse",
+      "lines": [],
+      "exampleDe": "Er ist ein schlauer Fuchs."
+    },
+    "back": {
+      "title": "лис",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он хитрый лис."
+    }
+  },
+  {
+    "id": "a2-natur-180-der-hase",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 180,
+    "source": "physical-card",
+    "front": {
+      "title": "der Hase",
+      "subtitle": "die Hasen",
+      "lines": [],
+      "exampleDe": "junger Hase"
+    },
+    "back": {
+      "title": "заяц",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "зайчонок"
+    }
+  },
+  {
+    "id": "a2-natur-181-der-loewe",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 181,
+    "source": "physical-card",
+    "front": {
+      "title": "der Löwe",
+      "subtitle": "die Löwen",
+      "lines": [],
+      "exampleDe": "Dieser Löwe ist sehr hungrig."
+    },
+    "back": {
+      "title": "лев",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Этот лев очень голодный."
+    }
+  },
+  {
+    "id": "a2-natur-182-der-ozean",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 182,
+    "source": "physical-card",
+    "front": {
+      "title": "der Ozean",
+      "subtitle": "die Ozeane",
+      "lines": [
+        "der Atlantische Ozean"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "океан",
+      "lines": [
+        "мн.",
+        "Атлантический океан"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-natur-183-der-papagei",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 183,
+    "source": "physical-card",
+    "front": {
+      "title": "der Papagei",
+      "subtitle": "die Papageien",
+      "lines": [],
+      "exampleDe": "Der Papagei sitzt im Käfig."
+    },
+    "back": {
+      "title": "попугай",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Попугай сидит в клетке."
+    }
+  },
+  {
+    "id": "a2-natur-184-der-sand",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 184,
+    "source": "physical-card",
+    "front": {
+      "title": "der Sand",
+      "subtitle": "",
+      "lines": [
+        "sandig"
+      ],
+      "exampleDe": "Der Strand ist sandig."
+    },
+    "back": {
+      "title": "песок",
+      "lines": [
+        "песчаный"
+      ],
+      "exampleTranslation": "Этот пляж песчаный."
+    }
+  },
+  {
+    "id": "a2-natur-185-der-stein",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 185,
+    "source": "physical-card",
+    "front": {
+      "title": "der Stein",
+      "subtitle": "die Steine",
+      "lines": [
+        "steinig"
+      ],
+      "exampleDe": "Auf dem Weg liegen viele Steine."
+    },
+    "back": {
+      "title": "камень",
+      "lines": [
+        "мн.",
+        "каменистый"
+      ],
+      "exampleTranslation": "На дороге лежит много камней."
+    }
+  },
+  {
+    "id": "a2-natur-186-der-stern",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 186,
+    "source": "physical-card",
+    "front": {
+      "title": "der Stern",
+      "subtitle": "die Sterne",
+      "lines": [
+        "das Sternzeichen",
+        "die Sterne am Himmel"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "звезда",
+      "lines": [
+        "мн.",
+        "знак зодиака",
+        "звезды на небе"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-natur-187-der-tiger",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 187,
+    "source": "physical-card",
+    "front": {
+      "title": "der Tiger",
+      "subtitle": "die Tiger",
+      "lines": [],
+      "exampleDe": "kleiner Tiger"
+    },
+    "back": {
+      "title": "тигр",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "тигренок"
+    }
+  },
+  {
+    "id": "a2-natur-188-der-wolf",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 188,
+    "source": "physical-card",
+    "front": {
+      "title": "der Wolf",
+      "subtitle": "die Wölfe",
+      "lines": [],
+      "exampleDe": "Wenn man vom Wolfe spricht, guckt er über die Hecke."
+    },
+    "back": {
+      "title": "волк",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Про волка промолвка!"
+    }
+  },
+  {
+    "id": "a2-natur-189-die-biene",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 189,
+    "source": "physical-card",
+    "front": {
+      "title": "die Biene",
+      "subtitle": "die Bienen",
+      "lines": [
+        "der Bienenhonig"
+      ],
+      "exampleDe": "Sie ist fleißig wie eine Biene."
+    },
+    "back": {
+      "title": "пчела",
+      "lines": [
+        "мн.",
+        "пчелиный мед"
+      ],
+      "exampleTranslation": "Она трудолюбива, как пчела."
+    }
+  },
+  {
+    "id": "a2-natur-190-die-kuh",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 190,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kuh",
+      "subtitle": "die Kühe",
+      "lines": [],
+      "exampleDe": "Die Kuh gibt viel Milch."
+    },
+    "back": {
+      "title": "корова",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Корова дает много молока."
+    }
+  },
+  {
+    "id": "a2-natur-191-die-luft",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 191,
+    "source": "physical-card",
+    "front": {
+      "title": "die Luft",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Die Luft ist frisch.\nMan soll viel an die Luft gehen."
+    },
+    "back": {
+      "title": "воздух",
+      "lines": [],
+      "exampleTranslation": "Воздух свежий.\nНужно часто выходить на прогулку."
+    }
+  },
+  {
+    "id": "a2-natur-192-die-maus",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 192,
+    "source": "physical-card",
+    "front": {
+      "title": "die Maus",
+      "subtitle": "die Mäuse",
+      "lines": [],
+      "exampleDe": "Die Katze jagt die Maus."
+    },
+    "back": {
+      "title": "мышь",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Кошка охотится на мышь."
+    }
+  },
+  {
+    "id": "a2-natur-193-die-natur",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 193,
+    "source": "physical-card",
+    "front": {
+      "title": "die Natur",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich mag Natur.\ndie wunderschöne Natur"
+    },
+    "back": {
+      "title": "природа",
+      "lines": [],
+      "exampleTranslation": "Я люблю природу.\nпрекрасная природа"
+    }
+  },
+  {
+    "id": "a2-natur-194-die-schlange",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 194,
+    "source": "physical-card",
+    "front": {
+      "title": "die Schlange",
+      "subtitle": "die Schlangen",
+      "lines": [],
+      "exampleDe": "Diese Schlange ist lang.\nSchlange stehen"
+    },
+    "back": {
+      "title": "змея, очередь",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Эта змея длинная.\nстоять в очереди"
+    }
+  },
+  {
+    "id": "a2-natur-195-die-umwelt",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 195,
+    "source": "physical-card",
+    "front": {
+      "title": "die Umwelt",
+      "subtitle": "",
+      "lines": [
+        "die Umweltverschmutzung"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "окружающая среда",
+      "lines": [
+        "загрязнение окружающей среды"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-natur-196-die-welt",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 196,
+    "source": "physical-card",
+    "front": {
+      "title": "die Welt",
+      "subtitle": "",
+      "lines": [
+        "auf der Welt",
+        "die Weltreise"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "мир",
+      "lines": [
+        "в мире",
+        "кругосветное путешествие"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-natur-197-schuetzen",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 197,
+    "source": "physical-card",
+    "front": {
+      "title": "schützen",
+      "subtitle": "",
+      "lines": [
+        "der Schutz",
+        "der Umweltschutz"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "охранять, защищать",
+      "lines": [
+        "защита, охрана",
+        "охрана окружающей среды"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-natur-198-wild",
+    "level": "A2",
+    "topic": "Natur",
+    "cardNumber": 198,
+    "source": "physical-card",
+    "front": {
+      "title": "wild",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Der Löwe ist ein wildes Tier."
+    },
+    "back": {
+      "title": "дикий",
+      "lines": [],
+      "exampleTranslation": "Лев — дикое животное."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-199-achtzehn",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 199,
+    "source": "physical-card",
+    "front": {
+      "title": "achtzehn",
+      "subtitle": "",
+      "lines": [
+        "achtzig",
+        "achtundachtzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "восемнадцать",
+      "lines": [
+        "восемьдесят",
+        "восемьдесят восемь"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-200-besprechen",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 200,
+    "source": "physical-card",
+    "front": {
+      "title": "besprechen",
+      "subtitle": "(bespricht-besprach-besprochen)",
+      "lines": [
+        "die Besprechung",
+        "die Besprechungen"
+      ],
+      "exampleDe": "Ich will diese Frage besprechen."
+    },
+    "back": {
+      "title": "обсуждать",
+      "lines": [
+        "обсуждение",
+        "мн."
+      ],
+      "exampleTranslation": "Я хочу обсудить этот вопрос."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-201-besuchen",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 201,
+    "source": "physical-card",
+    "front": {
+      "title": "besuchen",
+      "subtitle": "",
+      "lines": [
+        "der Besuch",
+        "die Besuche"
+      ],
+      "exampleDe": "Besucht Ihr Sohn die Schule?"
+    },
+    "back": {
+      "title": "посещать",
+      "lines": [
+        "визит, посещение",
+        "мн."
+      ],
+      "exampleTranslation": "Ваш сын ходит в школу?"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-202-das-fach",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 202,
+    "source": "physical-card",
+    "front": {
+      "title": "das Fach",
+      "subtitle": "die Fächer",
+      "lines": [],
+      "exampleDe": "Mein Lieblingsfach ist Deutsch."
+    },
+    "back": {
+      "title": "предмет",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мой любимый предмет — немецкий."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-203-das-thema",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 203,
+    "source": "physical-card",
+    "front": {
+      "title": "das Thema",
+      "subtitle": "die Themen",
+      "lines": [
+        "zu diesem Thema",
+        "das Thema wechseln"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "тема",
+      "lines": [
+        "на эту тему",
+        "сменить тему"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-204-der-fehler",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 204,
+    "source": "physical-card",
+    "front": {
+      "title": "der Fehler",
+      "subtitle": "die Fehler",
+      "lines": [],
+      "exampleDe": "Du machst viele Fehler."
+    },
+    "back": {
+      "title": "ошибка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ты делаешь много ошибок."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-205-der-lehrer",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 205,
+    "source": "physical-card",
+    "front": {
+      "title": "der Lehrer",
+      "subtitle": "die Lehrer",
+      "lines": [],
+      "exampleDe": "Lehrer für Deutsch"
+    },
+    "back": {
+      "title": "учитель",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "учитель немецкого языка"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-206-der-schueler",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 206,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schüler",
+      "subtitle": "die Schüler",
+      "lines": [],
+      "exampleDe": "Du bist ein guter Schüler."
+    },
+    "back": {
+      "title": "ученик",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ты хороший ученик."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-207-die-biologie",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 207,
+    "source": "physical-card",
+    "front": {
+      "title": "die Biologie",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "eine Sechs in Biologie"
+    },
+    "back": {
+      "title": "биология",
+      "lines": [],
+      "exampleTranslation": "шестерка по биологии"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-208-die-chemie",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 208,
+    "source": "physical-card",
+    "front": {
+      "title": "die Chemie",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "eine Drei in Chemie"
+    },
+    "back": {
+      "title": "химия",
+      "lines": [],
+      "exampleTranslation": "тройка по химии"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-209-die-erdkunde",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 209,
+    "source": "physical-card",
+    "front": {
+      "title": "die Erdkunde",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "eine Zwei in Erdkunde"
+    },
+    "back": {
+      "title": "география",
+      "lines": [],
+      "exampleTranslation": "двойка по географии"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-210-die-geschichte",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 210,
+    "source": "physical-card",
+    "front": {
+      "title": "die Geschichte",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "eine Fünf in Geschichte"
+    },
+    "back": {
+      "title": "история",
+      "lines": [],
+      "exampleTranslation": "пятерка по истории"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-211-die-klasse",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 211,
+    "source": "physical-card",
+    "front": {
+      "title": "die Klasse",
+      "subtitle": "die Klassen",
+      "lines": [
+        "das Klassenzimmer"
+      ],
+      "exampleDe": "Die Klasse hat 20 Schüler."
+    },
+    "back": {
+      "title": "класс",
+      "lines": [
+        "мн.",
+        "классная комната"
+      ],
+      "exampleTranslation": "В классе 20 учеников."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-212-die-klassenarbeit",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 212,
+    "source": "physical-card",
+    "front": {
+      "title": "die Klassenarbeit",
+      "subtitle": "die Klassenarbeiten",
+      "lines": [],
+      "exampleDe": "Wir besprechen die Klassenarbeit."
+    },
+    "back": {
+      "title": "классная работа, контрольная",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мы обсуждаем классную работу."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-213-die-kreide",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 213,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kreide",
+      "subtitle": "die Kreiden",
+      "lines": [],
+      "exampleDe": "Ich schreibe mit der Kreide."
+    },
+    "back": {
+      "title": "мел",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я пишу мелом."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-214-die-lektion",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 214,
+    "source": "physical-card",
+    "front": {
+      "title": "die Lektion",
+      "subtitle": "die Lektionen",
+      "lines": [],
+      "exampleDe": "Wir sind in Englisch bei der vierten Lektion."
+    },
+    "back": {
+      "title": "урок, лекция",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У нас четвертый урок английского."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-215-die-mathematik",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 215,
+    "source": "physical-card",
+    "front": {
+      "title": "die Mathematik",
+      "subtitle": "",
+      "lines": [
+        "die Mathe"
+      ],
+      "exampleDe": "eine Eins in Mathe"
+    },
+    "back": {
+      "title": "математика",
+      "lines": [
+        "сокр."
+      ],
+      "exampleTranslation": "единица по математике"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-216-die-milliarde",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 216,
+    "source": "physical-card",
+    "front": {
+      "title": "die Milliarde",
+      "subtitle": "die Milliarden",
+      "lines": [],
+      "exampleDe": "zwei Milliarden"
+    },
+    "back": {
+      "title": "миллиард",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "два миллиарда"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-217-die-million",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 217,
+    "source": "physical-card",
+    "front": {
+      "title": "die Million",
+      "subtitle": "die Millionen",
+      "lines": [],
+      "exampleDe": "vier Millionen"
+    },
+    "back": {
+      "title": "миллион",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "четыре миллиона"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-218-die-physik",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 218,
+    "source": "physical-card",
+    "front": {
+      "title": "die Physik",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "eine Vier in Physik"
+    },
+    "back": {
+      "title": "физика",
+      "lines": [],
+      "exampleTranslation": "четверка по физике"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-219-die-seite",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 219,
+    "source": "physical-card",
+    "front": {
+      "title": "die Seite",
+      "subtitle": "die Seiten",
+      "lines": [],
+      "exampleDe": "auf Seite 26"
+    },
+    "back": {
+      "title": "страница",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "на 26-й странице"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-220-die-tafel",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 220,
+    "source": "physical-card",
+    "front": {
+      "title": "die Tafel",
+      "subtitle": "die Tafeln",
+      "lines": [],
+      "exampleDe": "Schreib das bitte an die Tafel!"
+    },
+    "back": {
+      "title": "доска",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Напиши это на доске, пожалуйста!"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-221-dreizehn",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 221,
+    "source": "physical-card",
+    "front": {
+      "title": "dreizehn",
+      "subtitle": "",
+      "lines": [
+        "dreißig",
+        "dreiunddreißig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "тринадцать",
+      "lines": [
+        "тридцать",
+        "тридцать три"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-222-dumm",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 222,
+    "source": "physical-card",
+    "front": {
+      "title": "dumm",
+      "subtitle": "",
+      "lines": [
+        "klug"
+      ],
+      "exampleDe": "Er ist ein kluger Mann."
+    },
+    "back": {
+      "title": "глупый",
+      "lines": [
+        "умный"
+      ],
+      "exampleTranslation": "Он умный мужчина."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-223-ein",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 223,
+    "source": "physical-card",
+    "front": {
+      "title": "ein",
+      "subtitle": "",
+      "lines": [
+        "elf",
+        "das Einmaleins"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "один",
+      "lines": [
+        "одиннадцать",
+        "таблица умножения"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-224-einfach",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 224,
+    "source": "physical-card",
+    "front": {
+      "title": "einfach",
+      "subtitle": "",
+      "lines": [
+        "schwierig"
+      ],
+      "exampleDe": "Die Aufgabe ist einfach."
+    },
+    "back": {
+      "title": "простой, легкий",
+      "lines": [
+        "сложный, трудный"
+      ],
+      "exampleTranslation": "Это простое задание."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-225-einhundert",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 225,
+    "source": "physical-card",
+    "front": {
+      "title": "einhundert",
+      "subtitle": "",
+      "lines": [
+        "zweihundert",
+        "dreihundert"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "сто",
+      "lines": [
+        "двести",
+        "триста"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-226-eintausend",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 226,
+    "source": "physical-card",
+    "front": {
+      "title": "eintausend",
+      "subtitle": "",
+      "lines": [
+        "zweitausend",
+        "dreitausend"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "тысяча",
+      "lines": [
+        "две тысячи",
+        "три тысячи"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-227-faul",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 227,
+    "source": "physical-card",
+    "front": {
+      "title": "faul",
+      "subtitle": "",
+      "lines": [
+        "fleißig"
+      ],
+      "exampleDe": "Dieser Schüler ist faul."
+    },
+    "back": {
+      "title": "ленивый",
+      "lines": [
+        "прилежный, старательный"
+      ],
+      "exampleTranslation": "Этот ученик ленивый."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-228-fuenfzehn",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 228,
+    "source": "physical-card",
+    "front": {
+      "title": "fünfzehn",
+      "subtitle": "",
+      "lines": [
+        "fünfzig",
+        "fünfundfünfzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "пятнадцать",
+      "lines": [
+        "пятьдесят",
+        "пятьдесят пять"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-229-muessen",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 229,
+    "source": "physical-card",
+    "front": {
+      "title": "müssen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Du musst lernen.\nMan muss fleißig sein."
+    },
+    "back": {
+      "title": "должен, нужно",
+      "lines": [],
+      "exampleTranslation": "Ты должен учиться.\nНужно быть прилежным."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-230-neunzehn",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 230,
+    "source": "physical-card",
+    "front": {
+      "title": "neunzehn",
+      "subtitle": "",
+      "lines": [
+        "neunzig",
+        "neunundneunzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "девятнадцать",
+      "lines": [
+        "девяносто",
+        "девяносто девять"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-231-sechzehn",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 231,
+    "source": "physical-card",
+    "front": {
+      "title": "sechzehn",
+      "subtitle": "",
+      "lines": [
+        "sechzig",
+        "sechsundsechzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "шестнадцать",
+      "lines": [
+        "шестьдесят",
+        "шестьдесят шесть"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-232-siebzehn",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 232,
+    "source": "physical-card",
+    "front": {
+      "title": "siebzehn",
+      "subtitle": "",
+      "lines": [
+        "siebzig",
+        "siebenundsiebzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "семнадцать",
+      "lines": [
+        "семьдесят",
+        "семьдесят семь"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-233-verstehen",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 233,
+    "source": "physical-card",
+    "front": {
+      "title": "verstehen",
+      "subtitle": "(versteht-verstand-verstanden)",
+      "lines": [],
+      "exampleDe": "Ich verstehe diesen Text nicht."
+    },
+    "back": {
+      "title": "понимать",
+      "lines": [],
+      "exampleTranslation": "Я не понимаю этот текст."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-234-vierzehn",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 234,
+    "source": "physical-card",
+    "front": {
+      "title": "vierzehn",
+      "subtitle": "",
+      "lines": [
+        "vierzig",
+        "vierundvierzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "четырнадцать",
+      "lines": [
+        "сорок",
+        "сорок четыре"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-235-vorbereitet",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 235,
+    "source": "physical-card",
+    "front": {
+      "title": "vorbereitet",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich bin heute nicht vorbereitet."
+    },
+    "back": {
+      "title": "подготовленный, готовый",
+      "lines": [],
+      "exampleTranslation": "Я сегодня не готов."
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-236-zeigen",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 236,
+    "source": "physical-card",
+    "front": {
+      "title": "zeigen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Zeig mal, was du in den Händen hast!"
+    },
+    "back": {
+      "title": "показывать",
+      "lines": [],
+      "exampleTranslation": "Покажи, что у тебя в руках!"
+    }
+  },
+  {
+    "id": "a2-wissenschaft-und-bildung-237-zwoelf",
+    "level": "A2",
+    "topic": "Wissenschaft und Bildung",
+    "cardNumber": 237,
+    "source": "physical-card",
+    "front": {
+      "title": "zwölf",
+      "subtitle": "",
+      "lines": [
+        "zwanzig",
+        "zweiundzwanzig"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "двенадцать",
+      "lines": [
+        "двадцать",
+        "двадцать два"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-238-das-maerchen",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 238,
+    "source": "physical-card",
+    "front": {
+      "title": "das Märchen",
+      "subtitle": "die Märchen",
+      "lines": [],
+      "exampleDe": "Die Oma liest ein Märchen vor."
+    },
+    "back": {
+      "title": "сказка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Бабушка читает сказку вслух."
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-239-das-plakat",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 239,
+    "source": "physical-card",
+    "front": {
+      "title": "das Plakat",
+      "subtitle": "die Plakate",
+      "lines": [
+        "das Filmplakat"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "плакат, афиша",
+      "lines": [
+        "мн.",
+        "киноафиша"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-240-der-autor",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 240,
+    "source": "physical-card",
+    "front": {
+      "title": "der Autor",
+      "subtitle": "die Autoren",
+      "lines": [],
+      "exampleDe": "Kennst du den Autor?"
+    },
+    "back": {
+      "title": "автор",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ты знаешь автора?"
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-241-der-titel",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 241,
+    "source": "physical-card",
+    "front": {
+      "title": "der Titel",
+      "subtitle": "die Titel",
+      "lines": [],
+      "exampleDe": "Das Buch hat den Titel «Sommer»."
+    },
+    "back": {
+      "title": "название, заголовок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Книга называется «Лето»."
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-242-die-kultur",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 242,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kultur",
+      "subtitle": "",
+      "lines": [
+        "kulturell"
+      ],
+      "exampleDe": "Das kulturelle Leben in Krakau ist reich."
+    },
+    "back": {
+      "title": "культура",
+      "lines": [
+        "культурный"
+      ],
+      "exampleTranslation": "В Кракове очень насыщенная культурная жизнь."
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-243-klassisch",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 243,
+    "source": "physical-card",
+    "front": {
+      "title": "klassisch",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Meine Mutter hört klassische Musik."
+    },
+    "back": {
+      "title": "классический",
+      "lines": [],
+      "exampleTranslation": "Моя мама слушает классическую музыку."
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-244-laut",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 244,
+    "source": "physical-card",
+    "front": {
+      "title": "laut",
+      "subtitle": "",
+      "lines": [
+        "leise"
+      ],
+      "exampleDe": "Hier muss man leise sprechen."
+    },
+    "back": {
+      "title": "громкий, шумный",
+      "lines": [
+        "тихий"
+      ],
+      "exampleTranslation": "Здесь нужно говорить тихо."
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-245-zeichnen",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 245,
+    "source": "physical-card",
+    "front": {
+      "title": "zeichnen",
+      "subtitle": "",
+      "lines": [
+        "die Zeichnung",
+        "die Zeichnungen"
+      ],
+      "exampleDe": "Sie zeichnet die Natur."
+    },
+    "back": {
+      "title": "рисовать",
+      "lines": [
+        "рисунок",
+        "мн."
+      ],
+      "exampleTranslation": "Она рисует природу."
+    }
+  },
+  {
+    "id": "a2-kultur-und-kunst-246-anzuenden",
+    "level": "A2",
+    "topic": "Kultur und Kunst",
+    "cardNumber": 246,
+    "source": "physical-card",
+    "front": {
+      "title": "anzünden",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich zünde die Kerzen an."
+    },
+    "back": {
+      "title": "зажигать",
+      "lines": [],
+      "exampleTranslation": "Я зажгу свечи."
+    }
+  },
+  {
+    "id": "a2-religion-247-das-kreuz",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 247,
+    "source": "physical-card",
+    "front": {
+      "title": "das Kreuz",
+      "subtitle": "die Kreuze",
+      "lines": [],
+      "exampleDe": "Sie schlug ein Kreuz."
+    },
+    "back": {
+      "title": "крест",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Она перекрестилась."
+    }
+  },
+  {
+    "id": "a2-religion-248-das-wunder",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 248,
+    "source": "physical-card",
+    "front": {
+      "title": "das Wunder",
+      "subtitle": "die Wunder",
+      "lines": [
+        "wunderbar"
+      ],
+      "exampleDe": "Ich glaube nicht an Wunder."
+    },
+    "back": {
+      "title": "чудо",
+      "lines": [
+        "мн.",
+        "чудесный"
+      ],
+      "exampleTranslation": "Я не верю в чудеса."
+    }
+  },
+  {
+    "id": "a2-religion-249-der-engel",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 249,
+    "source": "physical-card",
+    "front": {
+      "title": "der Engel",
+      "subtitle": "die Engel",
+      "lines": [
+        "der Schutzengel"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "ангел",
+      "lines": [
+        "мн.",
+        "ангел-хранитель"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-religion-250-der-kranz",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 250,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kranz",
+      "subtitle": "die Kränze",
+      "lines": [
+        "der Blumenkranz"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "венок",
+      "lines": [
+        "мн.",
+        "венок из цветов"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-religion-251-der-nikolaus",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 251,
+    "source": "physical-card",
+    "front": {
+      "title": "der Nikolaus",
+      "subtitle": "",
+      "lines": [
+        "der Nikolaustag"
+      ],
+      "exampleDe": "Morgen kommt der Nikolaus."
+    },
+    "back": {
+      "title": "Святой Николай",
+      "lines": [
+        "День Святого Николая"
+      ],
+      "exampleTranslation": "Завтра придет Святой Николай."
+    }
+  },
+  {
+    "id": "a2-religion-252-der-priester",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 252,
+    "source": "physical-card",
+    "front": {
+      "title": "der Priester",
+      "subtitle": "die Priester",
+      "lines": [],
+      "exampleDe": "Der Priester hält die heilige Messe."
+    },
+    "back": {
+      "title": "священник",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Священник проводит службу Божью."
+    }
+  },
+  {
+    "id": "a2-religion-253-der-teufel",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 253,
+    "source": "physical-card",
+    "front": {
+      "title": "der Teufel",
+      "subtitle": "die Teufel",
+      "lines": [],
+      "exampleDe": "Mal nicht den Teufel an die Wand!"
+    },
+    "back": {
+      "title": "дьявол",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Не накликай беду!"
+    }
+  },
+  {
+    "id": "a2-religion-254-die-kerze",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 254,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kerze",
+      "subtitle": "die Kerzen",
+      "lines": [
+        "das Kerzenlicht"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "свеча",
+      "lines": [
+        "мн.",
+        "свет свечи"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-religion-255-die-religion",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 255,
+    "source": "physical-card",
+    "front": {
+      "title": "die Religion",
+      "subtitle": "die Religionen",
+      "lines": [
+        "religiös"
+      ],
+      "exampleDe": "Welcher Religion gehörst du an?"
+    },
+    "back": {
+      "title": "религия",
+      "lines": [
+        "мн.",
+        "религиозный"
+      ],
+      "exampleTranslation": "Какую религию ты исповедуешь?"
+    }
+  },
+  {
+    "id": "a2-religion-256-glauben",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 256,
+    "source": "physical-card",
+    "front": {
+      "title": "glauben",
+      "subtitle": "",
+      "lines": [
+        "der Glaube"
+      ],
+      "exampleDe": "Ich glaube an Gott."
+    },
+    "back": {
+      "title": "верить",
+      "lines": [
+        "вера"
+      ],
+      "exampleTranslation": "Я верю в Бога."
+    }
+  },
+  {
+    "id": "a2-religion-257-schmuecken",
+    "level": "A2",
+    "topic": "Religion",
+    "cardNumber": 257,
+    "source": "physical-card",
+    "front": {
+      "title": "schmücken",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Die Kinder schmücken den Weihnachtsbaum."
+    },
+    "back": {
+      "title": "украшать, наряжать",
+      "lines": [],
+      "exampleTranslation": "Дети украшают елку."
+    }
+  },
+  {
+    "id": "a2-zeit-258-beginnen",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 258,
+    "source": "physical-card",
+    "front": {
+      "title": "beginnen",
+      "subtitle": "(beginnt-begann-begonnen)",
+      "lines": [
+        "der Beginn"
+      ],
+      "exampleDe": "Um wie viel Uhr beginnt der Deutschunterricht?"
+    },
+    "back": {
+      "title": "начинаться",
+      "lines": [
+        "начало"
+      ],
+      "exampleTranslation": "Во сколько начинается занятие по немецкому?"
+    }
+  },
+  {
+    "id": "a2-zeit-259-der-kalender",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 259,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kalender",
+      "subtitle": "die Kalender",
+      "lines": [
+        "der Terminkalender"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "календарь",
+      "lines": [
+        "мн.",
+        "ежедневник"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-260-der-moment",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 260,
+    "source": "physical-card",
+    "front": {
+      "title": "der Moment",
+      "subtitle": "die Momente",
+      "lines": [
+        "momentan"
+      ],
+      "exampleDe": "Warte einen Moment!"
+    },
+    "back": {
+      "title": "момент",
+      "lines": [
+        "мн.",
+        "сейчас, в этот момент"
+      ],
+      "exampleTranslation": "Подожди минуту!"
+    }
+  },
+  {
+    "id": "a2-zeit-261-der-nachmittag",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 261,
+    "source": "physical-card",
+    "front": {
+      "title": "der Nachmittag",
+      "subtitle": "die Nachmittage",
+      "lines": [
+        "am Nachmittag",
+        "nachmittags"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "послеобеденное время, день",
+      "lines": [
+        "мн.",
+        "днем, после обеда",
+        "по дням, после обеда"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-262-der-sommer",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 262,
+    "source": "physical-card",
+    "front": {
+      "title": "der Sommer",
+      "subtitle": "die Sommer",
+      "lines": [
+        "im Sommer"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "лето",
+      "lines": [
+        "мн.",
+        "летом"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-263-der-vormittag",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 263,
+    "source": "physical-card",
+    "front": {
+      "title": "der Vormittag",
+      "subtitle": "die Vormittage",
+      "lines": [
+        "am Vormittag",
+        "vormittags"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "первая половина дня, утро",
+      "lines": [
+        "мн.",
+        "до обеда",
+        "по утрам, до обеда"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-264-die-jahreszeit",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 264,
+    "source": "physical-card",
+    "front": {
+      "title": "die Jahreszeit",
+      "subtitle": "die Jahreszeiten",
+      "lines": [],
+      "exampleDe": "Welche Jahreszeit gefällt dir am besten?"
+    },
+    "back": {
+      "title": "время года",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Какое время года тебе нравится больше всего?"
+    }
+  },
+  {
+    "id": "a2-zeit-265-die-minute",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 265,
+    "source": "physical-card",
+    "front": {
+      "title": "die Minute",
+      "subtitle": "die Minuten",
+      "lines": [
+        "alle fünf Minuten"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "минута",
+      "lines": [
+        "мн.",
+        "каждые пять минут"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-266-die-mitternacht",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 266,
+    "source": "physical-card",
+    "front": {
+      "title": "die Mitternacht",
+      "subtitle": "",
+      "lines": [
+        "um Mitternacht"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "полночь",
+      "lines": [
+        "в полночь"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-267-die-sekunde",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 267,
+    "source": "physical-card",
+    "front": {
+      "title": "die Sekunde",
+      "subtitle": "die Sekunden",
+      "lines": [],
+      "exampleDe": "Ich bin in einer Sekunde wieder da."
+    },
+    "back": {
+      "title": "секунда, миг",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я сейчас же вернусь."
+    }
+  },
+  {
+    "id": "a2-zeit-268-enden",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 268,
+    "source": "physical-card",
+    "front": {
+      "title": "enden",
+      "subtitle": "",
+      "lines": [
+        "das Ende",
+        "die Enden"
+      ],
+      "exampleDe": "Der Unterricht endet um eins."
+    },
+    "back": {
+      "title": "заканчиваться",
+      "lines": [
+        "конец",
+        "мн."
+      ],
+      "exampleTranslation": "Занятия заканчиваются в 13:00."
+    }
+  },
+  {
+    "id": "a2-zeit-269-gegen",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 269,
+    "source": "physical-card",
+    "front": {
+      "title": "gegen",
+      "subtitle": "",
+      "lines": [
+        "gegen neun"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "около, приблизительно",
+      "lines": [
+        "около девяти"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-270-gerade",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 270,
+    "source": "physical-card",
+    "front": {
+      "title": "gerade",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Er frühstückt gerade."
+    },
+    "back": {
+      "title": "как раз, именно сейчас",
+      "lines": [],
+      "exampleTranslation": "Он сейчас завтракает."
+    }
+  },
+  {
+    "id": "a2-zeit-271-gleich",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 271,
+    "source": "physical-card",
+    "front": {
+      "title": "gleich",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich komme gleich."
+    },
+    "back": {
+      "title": "сейчас, скоро",
+      "lines": [],
+      "exampleTranslation": "Сейчас приду."
+    }
+  },
+  {
+    "id": "a2-zeit-272-halb",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 272,
+    "source": "physical-card",
+    "front": {
+      "title": "halb",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Es ist halb fünf.\nIch warte eine halbe Stunde."
+    },
+    "back": {
+      "title": "половина, пол-",
+      "lines": [],
+      "exampleTranslation": "Сейчас половина пятого.\nЯ жду полчаса."
+    }
+  },
+  {
+    "id": "a2-zeit-273-lange",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 273,
+    "source": "physical-card",
+    "front": {
+      "title": "lange",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Wie lange?"
+    },
+    "back": {
+      "title": "долго",
+      "lines": [],
+      "exampleTranslation": "Как долго?"
+    }
+  },
+  {
+    "id": "a2-zeit-274-manchmal",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 274,
+    "source": "physical-card",
+    "front": {
+      "title": "manchmal",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Manchmal gehe ich ins Theater."
+    },
+    "back": {
+      "title": "иногда",
+      "lines": [],
+      "exampleTranslation": "Я иногда хожу в театр."
+    }
+  },
+  {
+    "id": "a2-zeit-275-das-neujahr",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 275,
+    "source": "physical-card",
+    "front": {
+      "title": "das Neujahr / Neues Jahr",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ein glückliches Neues Jahr!"
+    },
+    "back": {
+      "title": "Новый год",
+      "lines": [],
+      "exampleTranslation": "Счастливого Нового года!"
+    }
+  },
+  {
+    "id": "a2-zeit-276-nie",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 276,
+    "source": "physical-card",
+    "front": {
+      "title": "nie",
+      "subtitle": "",
+      "lines": [
+        "nie wieder"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "никогда",
+      "lines": [
+        "никогда больше"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "a2-zeit-277-noch",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 277,
+    "source": "physical-card",
+    "front": {
+      "title": "noch",
+      "subtitle": "",
+      "lines": [
+        "schon"
+      ],
+      "exampleDe": "Bist du schon fertig?"
+    },
+    "back": {
+      "title": "еще",
+      "lines": [
+        "уже"
+      ],
+      "exampleTranslation": "Ты уже готов?"
+    }
+  },
+  {
+    "id": "a2-zeit-278-oft",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 278,
+    "source": "physical-card",
+    "front": {
+      "title": "oft",
+      "subtitle": "",
+      "lines": [
+        "selten"
+      ],
+      "exampleDe": "Ich habe selten Kopfschmerzen."
+    },
+    "back": {
+      "title": "часто",
+      "lines": [
+        "редко"
+      ],
+      "exampleTranslation": "У меня редко болит голова."
+    }
+  },
+  {
+    "id": "a2-zeit-279-sofort",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 279,
+    "source": "physical-card",
+    "front": {
+      "title": "sofort",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ruf sofort die Polizei!"
+    },
+    "back": {
+      "title": "немедленно",
+      "lines": [],
+      "exampleTranslation": "Немедленно вызови полицию!"
+    }
+  },
+  {
+    "id": "a2-zeit-280-taeglich",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 280,
+    "source": "physical-card",
+    "front": {
+      "title": "täglich",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Was machst du täglich?"
+    },
+    "back": {
+      "title": "ежедневно",
+      "lines": [],
+      "exampleTranslation": "Что ты делаешь ежедневно?"
+    }
+  },
+  {
+    "id": "a2-zeit-281-vor",
+    "level": "A2",
+    "topic": "Zeit",
+    "cardNumber": 281,
+    "source": "physical-card",
+    "front": {
+      "title": "vor",
+      "subtitle": "",
+      "lines": [
+        "nach"
+      ],
+      "exampleDe": "Es ist fünf nach elf."
+    },
+    "back": {
+      "title": "до, перед",
+      "lines": [
+        "после"
+      ],
+      "exampleTranslation": "Уже пять минут двенадцатого."
+    }
+  },
+  {
+    "id": "a2-groessen-282-alles",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 282,
+    "source": "physical-card",
+    "front": {
+      "title": "alles",
+      "subtitle": "",
+      "lines": [
+        "nichts"
+      ],
+      "exampleDe": "Alles ist bei mir."
+    },
+    "back": {
+      "title": "всё",
+      "lines": [
+        "ничего"
+      ],
+      "exampleTranslation": "У меня всё с собой."
+    }
+  },
+  {
+    "id": "a2-groessen-283-breit",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 283,
+    "source": "physical-card",
+    "front": {
+      "title": "breit",
+      "subtitle": "",
+      "lines": [
+        "schmal"
+      ],
+      "exampleDe": "Die Straße ist breit."
+    },
+    "back": {
+      "title": "широкий",
+      "lines": [
+        "узкий"
+      ],
+      "exampleTranslation": "Эта улица широкая."
+    }
+  },
+  {
+    "id": "a2-groessen-284-das-gramm",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 284,
+    "source": "physical-card",
+    "front": {
+      "title": "das Gramm",
+      "subtitle": "die Gramme",
+      "lines": [],
+      "exampleDe": "zwei Gramm Salz"
+    },
+    "back": {
+      "title": "грамм",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "два грамма соли"
+    }
+  },
+  {
+    "id": "a2-groessen-285-das-quadrat",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 285,
+    "source": "physical-card",
+    "front": {
+      "title": "das Quadrat",
+      "subtitle": "die Quadrate",
+      "lines": [
+        "quadratisch"
+      ],
+      "exampleDe": "Das Zimmer ist quadratisch."
+    },
+    "back": {
+      "title": "квадрат",
+      "lines": [
+        "мн.",
+        "квадратный"
+      ],
+      "exampleTranslation": "Комната квадратной формы."
+    }
+  },
+  {
+    "id": "a2-groessen-286-der-kreis",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 286,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kreis",
+      "subtitle": "die Kreise",
+      "lines": [],
+      "exampleDe": "Wir stehen im Kreis."
+    },
+    "back": {
+      "title": "круг",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мы стоим в кругу."
+    }
+  },
+  {
+    "id": "a2-groessen-287-die-form",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 287,
+    "source": "physical-card",
+    "front": {
+      "title": "die Form",
+      "subtitle": "die Formen",
+      "lines": [],
+      "exampleDe": "Der Gegenstand hat eine ovale Form."
+    },
+    "back": {
+      "title": "форма",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Этот предмет овальной формы."
+    }
+  },
+  {
+    "id": "a2-groessen-288-die-tonne",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 288,
+    "source": "physical-card",
+    "front": {
+      "title": "die Tonne",
+      "subtitle": "die Tonnen",
+      "lines": [],
+      "exampleDe": "drei Tonnen Kartoffeln"
+    },
+    "back": {
+      "title": "тонна",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "три тонны картофеля"
+    }
+  },
+  {
+    "id": "a2-groessen-289-etwas",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 289,
+    "source": "physical-card",
+    "front": {
+      "title": "etwas",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "etwas zum Essen\nSag etwas!"
+    },
+    "back": {
+      "title": "что-то",
+      "lines": [],
+      "exampleTranslation": "что-то поесть\nСкажи что-нибудь!"
+    }
+  },
+  {
+    "id": "a2-groessen-290-flach",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 290,
+    "source": "physical-card",
+    "front": {
+      "title": "flach",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Dieses Land ist flach."
+    },
+    "back": {
+      "title": "ровный, плоский",
+      "lines": [],
+      "exampleTranslation": "Эта страна равнинная."
+    }
+  },
+  {
+    "id": "a2-groessen-291-ganz",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 291,
+    "source": "physical-card",
+    "front": {
+      "title": "ganz",
+      "subtitle": "",
+      "lines": [
+        "ganz gut"
+      ],
+      "exampleDe": "Die ganze Familie ist hier."
+    },
+    "back": {
+      "title": "целый, вполне",
+      "lines": [
+        "вполне хорошо"
+      ],
+      "exampleTranslation": "Вся семья здесь."
+    }
+  },
+  {
+    "id": "a2-groessen-292-genau",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 292,
+    "source": "physical-card",
+    "front": {
+      "title": "genau",
+      "subtitle": "",
+      "lines": [
+        "ungenau"
+      ],
+      "exampleDe": "genau zwei Kilo"
+    },
+    "back": {
+      "title": "точный",
+      "lines": [
+        "неточный"
+      ],
+      "exampleTranslation": "ровно два килограмма"
+    }
+  },
+  {
+    "id": "a2-groessen-293-gerade",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 293,
+    "source": "physical-card",
+    "front": {
+      "title": "gerade",
+      "subtitle": "",
+      "lines": [
+        "krumm"
+      ],
+      "exampleDe": "Diese Straße ist gerade."
+    },
+    "back": {
+      "title": "прямой",
+      "lines": [
+        "кривой"
+      ],
+      "exampleTranslation": "Эта улица прямая."
+    }
+  },
+  {
+    "id": "a2-groessen-294-lang",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 294,
+    "source": "physical-card",
+    "front": {
+      "title": "lang",
+      "subtitle": "",
+      "lines": [
+        "kurz"
+      ],
+      "exampleDe": "Der Rock ist zu lang."
+    },
+    "back": {
+      "title": "длинный",
+      "lines": [
+        "короткий"
+      ],
+      "exampleTranslation": "Юбка слишком длинная."
+    }
+  },
+  {
+    "id": "a2-groessen-295-leer",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 295,
+    "source": "physical-card",
+    "front": {
+      "title": "leer",
+      "subtitle": "",
+      "lines": [
+        "voll"
+      ],
+      "exampleDe": "Die Dose ist leer."
+    },
+    "back": {
+      "title": "пустой",
+      "lines": [
+        "полный"
+      ],
+      "exampleTranslation": "Банка пуста."
+    }
+  },
+  {
+    "id": "a2-groessen-296-nur",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 296,
+    "source": "physical-card",
+    "front": {
+      "title": "nur",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich habe nur eine Woche Urlaub."
+    },
+    "back": {
+      "title": "только",
+      "lines": [],
+      "exampleTranslation": "У меня только неделя отпуска."
+    }
+  },
+  {
+    "id": "a2-groessen-297-rund",
+    "level": "A2",
+    "topic": "Größen",
+    "cardNumber": 297,
+    "source": "physical-card",
+    "front": {
+      "title": "rund",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ihr Gesicht ist rund."
+    },
+    "back": {
+      "title": "круглый",
+      "lines": [],
+      "exampleTranslation": "У нее круглое лицо."
+    }
+  },
+  {
+    "id": "a2-gegenstaende-298-bringen",
+    "level": "A2",
+    "topic": "Gegenstände",
+    "cardNumber": 298,
+    "source": "physical-card",
+    "front": {
+      "title": "bringen",
+      "subtitle": "(bringt-brachte-gebracht)",
+      "lines": [],
+      "exampleDe": "Morgen bringe ich das Essen mit."
+    },
+    "back": {
+      "title": "приносить",
+      "lines": [],
+      "exampleTranslation": "Я завтра принесу еду с собой."
+    }
+  },
+  {
+    "id": "a2-gegenstaende-299-das-federmaeppchen",
+    "level": "A2",
+    "topic": "Gegenstände",
+    "cardNumber": 299,
+    "source": "physical-card",
+    "front": {
+      "title": "das Federmäppchen",
+      "subtitle": "die Federmäppchen",
+      "lines": [],
+      "exampleDe": "Ich vergesse immer das Federmäppchen."
+    },
+    "back": {
+      "title": "пенал",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я постоянно забываю пенал."
+    }
+  },
+  {
+    "id": "a2-gegenstaende-300-das-lineal",
+    "level": "A2",
+    "topic": "Gegenstände",
+    "cardNumber": 300,
+    "source": "physical-card",
+    "front": {
+      "title": "das Lineal",
+      "subtitle": "die Lineale",
+      "lines": [],
+      "exampleDe": "Er zeichnet mit dem Lineal ein Quadrat."
+    },
+    "back": {
+      "title": "линейка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он рисует квадрат по линейке."
+    }
+  },
+  {
+    "id": "a2-gegenstaende-301-gehoeren",
+    "level": "A2",
+    "topic": "Gegenstände",
+    "cardNumber": 301,
+    "source": "physical-card",
+    "front": {
+      "title": "gehören",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Wem gehört das?\nDas gehört mir."
+    },
+    "back": {
+      "title": "принадлежать",
+      "lines": [],
+      "exampleTranslation": "Чьё это?\nЭто принадлежит мне."
+    }
+  },
+  {
+    "id": "a2-gegenstaende-302-holen",
+    "level": "A2",
+    "topic": "Gegenstände",
+    "cardNumber": 302,
+    "source": "physical-card",
+    "front": {
+      "title": "holen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich hole es gleich."
+    },
+    "back": {
+      "title": "принести, сходить за чем-то",
+      "lines": [],
+      "exampleTranslation": "Я сейчас это принесу."
+    }
+  },
+  {
+    "id": "a2-gegenstaende-303-lassen",
+    "level": "A2",
+    "topic": "Gegenstände",
+    "cardNumber": 303,
+    "source": "physical-card",
+    "front": {
+      "title": "lassen",
+      "subtitle": "(lässt-lies-gelassen)",
+      "lines": [],
+      "exampleDe": "Lass es hier!\nSie lässt das Auto auf dem Parkplatz."
+    },
+    "back": {
+      "title": "оставлять",
+      "lines": [],
+      "exampleTranslation": "Оставь это здесь!\nОна оставляет машину на парковке."
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-304-bestehen",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 304,
+    "source": "physical-card",
+    "front": {
+      "title": "bestehen",
+      "subtitle": "(besteht-bestand-bestanden)",
+      "lines": [],
+      "exampleDe": "Die Familie besteht aus drei Personen.\nDer Tisch besteht aus Holz."
+    },
+    "back": {
+      "title": "состоять, быть сделанным из",
+      "lines": [],
+      "exampleTranslation": "Семья состоит из трёх человек.\nСтол сделан из дерева."
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-305-das-gold",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 305,
+    "source": "physical-card",
+    "front": {
+      "title": "das Gold",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "der Goldring\neine Kette aus Gold"
+    },
+    "back": {
+      "title": "золото",
+      "lines": [],
+      "exampleTranslation": "золотое кольцо\nцепочка из золота"
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-306-das-holz",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 306,
+    "source": "physical-card",
+    "front": {
+      "title": "das Holz",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "der Holztisch\nDie Tür ist aus Holz."
+    },
+    "back": {
+      "title": "дерево",
+      "lines": [],
+      "exampleTranslation": "деревянный стол\nДверь из дерева."
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-307-das-leder",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 307,
+    "source": "physical-card",
+    "front": {
+      "title": "das Leder",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "die Lederjacke\nweiches Leder"
+    },
+    "back": {
+      "title": "кожа",
+      "lines": [],
+      "exampleTranslation": "кожаная куртка\nмягкая кожа"
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-308-das-silber",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 308,
+    "source": "physical-card",
+    "front": {
+      "title": "das Silber",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "der Silberlöffel\nDer Becher ist aus Silber."
+    },
+    "back": {
+      "title": "серебро",
+      "lines": [],
+      "exampleTranslation": "серебряная ложка\nКубок из серебра."
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-309-die-baumwolle",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 309,
+    "source": "physical-card",
+    "front": {
+      "title": "die Baumwolle",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "das Baumwollhemd\nein Pullover aus 100% Baumwolle"
+    },
+    "back": {
+      "title": "хлопок",
+      "lines": [],
+      "exampleTranslation": "хлопковая рубашка\nсвитер из 100% хлопка"
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-310-die-wolle",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 310,
+    "source": "physical-card",
+    "front": {
+      "title": "die Wolle",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "der Wollmantel\nreine Wolle"
+    },
+    "back": {
+      "title": "шерсть",
+      "lines": [],
+      "exampleTranslation": "шерстяное пальто\nчистая шерсть"
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-311-grau",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 311,
+    "source": "physical-card",
+    "front": {
+      "title": "grau",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Sie hat graue Augen."
+    },
+    "back": {
+      "title": "серый",
+      "lines": [],
+      "exampleTranslation": "У неё серые глаза."
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-312-hart",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 312,
+    "source": "physical-card",
+    "front": {
+      "title": "hart",
+      "subtitle": "",
+      "lines": [
+        "weich"
+      ],
+      "exampleDe": "hart wie Stein"
+    },
+    "back": {
+      "title": "твёрдый",
+      "lines": [
+        "мягкий"
+      ],
+      "exampleTranslation": "твёрдый, как камень"
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-313-hell",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 313,
+    "source": "physical-card",
+    "front": {
+      "title": "hell",
+      "subtitle": "",
+      "lines": [
+        "dunkel"
+      ],
+      "exampleDe": "Es ist hell."
+    },
+    "back": {
+      "title": "светлый",
+      "lines": [
+        "тёмный"
+      ],
+      "exampleTranslation": "Светло."
+    }
+  },
+  {
+    "id": "a2-stoffe-und-materialien-314-orange",
+    "level": "A2",
+    "topic": "Stoffe und Materialien",
+    "cardNumber": 314,
+    "source": "physical-card",
+    "front": {
+      "title": "orange",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "ein orange Kleid"
+    },
+    "back": {
+      "title": "оранжевый",
+      "lines": [],
+      "exampleTranslation": "оранжевое платье"
+    }
+  },
+  {
+    "id": "a2-sport-und-freizeit-315-das-schach",
+    "level": "A2",
+    "topic": "Sport und Freizeit",
+    "cardNumber": 315,
+    "source": "physical-card",
+    "front": {
+      "title": "das Schach",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich spiele oft Schach mit meinem Vater."
+    },
+    "back": {
+      "title": "шахматы",
+      "lines": [],
+      "exampleTranslation": "Я часто играю в шахматы с папой."
+    }
+  }
+]

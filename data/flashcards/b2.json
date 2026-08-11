@@ -1,1 +1,1865 @@
-[]
+[
+  {
+    "id": "b2-ernaehrung-1-das-kraut",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 1,
+    "source": "physical-card",
+    "front": {
+      "title": "das Kraut",
+      "subtitle": "die Kräuter",
+      "lines": [
+        "Kräutertee"
+      ],
+      "exampleDe": "Für diese Soße braucht man Kräuter."
+    },
+    "back": {
+      "title": "трава, пряные травы",
+      "lines": [
+        "мн.",
+        "травяной чай"
+      ],
+      "exampleTranslation": "Для этого соуса нужны пряные травы."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-2-das-leckermaul",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 2,
+    "source": "physical-card",
+    "front": {
+      "title": "das Leckermaul",
+      "subtitle": "die Leckermäuler",
+      "lines": [],
+      "exampleDe": "Sie ist ein richtiges Leckermaul."
+    },
+    "back": {
+      "title": "лакомка, сладкоежка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Она настоящая лакомка."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-3-das-lorbeerblatt",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 3,
+    "source": "physical-card",
+    "front": {
+      "title": "das Lorbeerblatt",
+      "subtitle": "die Lorbeerblätter",
+      "lines": [],
+      "exampleDe": "Ich habe ein Lorbeerblatt in der Suppe gefunden."
+    },
+    "back": {
+      "title": "лавровый лист",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я нашёл в супе лавровый лист."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-4-das-milchprodukt",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 4,
+    "source": "physical-card",
+    "front": {
+      "title": "das Milchprodukt",
+      "subtitle": "die Milchprodukte",
+      "lines": [],
+      "exampleDe": "Ich bin allergisch gegen Milchprodukte."
+    },
+    "back": {
+      "title": "молочный продукт",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У меня аллергия на молочные продукты."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-5-das-vitamin",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 5,
+    "source": "physical-card",
+    "front": {
+      "title": "das Vitamin",
+      "subtitle": "die Vitamine",
+      "lines": [
+        "vitaminreich",
+        "vitaminarm"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "витамин",
+      "lines": [
+        "мн.",
+        "богатый витаминами",
+        "бедный витаминами"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-ernaehrung-6-der-kruemel",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 6,
+    "source": "physical-card",
+    "front": {
+      "title": "der Krümel",
+      "subtitle": "die Krümel",
+      "lines": [],
+      "exampleDe": "Kein Krümel Brot ist mehr im Haus.\nDa sind nur noch Krümel auf dem Teller."
+    },
+    "back": {
+      "title": "крошка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "В доме не осталось ни крошки хлеба.\nНа тарелке остались только крошки."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-7-der-pfirsich",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 7,
+    "source": "physical-card",
+    "front": {
+      "title": "der Pfirsich",
+      "subtitle": "die Pfirsiche",
+      "lines": [
+        "saftige Pfirsiche",
+        "das Pfirsicheis"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "персик",
+      "lines": [
+        "мн.",
+        "сочные персики",
+        "персиковое мороженое"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-ernaehrung-8-der-stoffwechsel",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 8,
+    "source": "physical-card",
+    "front": {
+      "title": "der Stoffwechsel",
+      "subtitle": "die Stoffwechsel",
+      "lines": [],
+      "exampleDe": "Er hat einen aktiven Stoffwechsel."
+    },
+    "back": {
+      "title": "обмен веществ",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У него активный обмен веществ."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-9-der-zimt",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 9,
+    "source": "physical-card",
+    "front": {
+      "title": "der Zimt",
+      "subtitle": "",
+      "lines": [
+        "die Zimtstange"
+      ],
+      "exampleDe": "Ich trinke meinen Kaffee mit Zimt."
+    },
+    "back": {
+      "title": "корица",
+      "lines": [
+        "палочка корицы"
+      ],
+      "exampleTranslation": "Я пью кофе с корицей."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-10-die-hefe",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 10,
+    "source": "physical-card",
+    "front": {
+      "title": "die Hefe",
+      "subtitle": "die Hefen",
+      "lines": [],
+      "exampleDe": "Haben Sie Hefe zum Backen?"
+    },
+    "back": {
+      "title": "дрожжи",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У вас есть дрожжи для выпечки?"
+    }
+  },
+  {
+    "id": "b2-ernaehrung-11-die-kalorie",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 11,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kalorie",
+      "subtitle": "die Kalorien",
+      "lines": [],
+      "exampleDe": "Schokolade hat viele Kalorien.\nAchtest du auf die Kalorien?"
+    },
+    "back": {
+      "title": "калория",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "В шоколаде много калорий.\nТы следишь за калориями?"
+    }
+  },
+  {
+    "id": "b2-ernaehrung-12-die-weintraube",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 12,
+    "source": "physical-card",
+    "front": {
+      "title": "die Weintraube",
+      "subtitle": "die Weintrauben",
+      "lines": [
+        "blaue Weintrauben",
+        "der Weintraubensaft"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "виноград",
+      "lines": [
+        "мн.",
+        "синий виноград",
+        "виноградный сок"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-ernaehrung-13-duensten",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 13,
+    "source": "physical-card",
+    "front": {
+      "title": "dünsten",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Heute haben wir gedünstetes Fleisch zum Abendessen."
+    },
+    "back": {
+      "title": "тушить",
+      "lines": [],
+      "exampleTranslation": "Сегодня у нас на ужин тушёное мясо."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-14-faulig",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 14,
+    "source": "physical-card",
+    "front": {
+      "title": "faulig",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Die Milch riecht faulig.\nDas Obst sieht faulig aus."
+    },
+    "back": {
+      "title": "гнилой, испорченный",
+      "lines": [],
+      "exampleTranslation": "Молоко пахнет скисшим.\nФрукты выглядят испорченными."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-15-knusprig",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 15,
+    "source": "physical-card",
+    "front": {
+      "title": "knusprig",
+      "subtitle": "",
+      "lines": [
+        "knusprige Pommes"
+      ],
+      "exampleDe": "Die Brötchen sind so knusprig."
+    },
+    "back": {
+      "title": "хрустящий",
+      "lines": [
+        "хрустящий картофель фри"
+      ],
+      "exampleTranslation": "Булочки такие хрустящие."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-16-koestlich",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 16,
+    "source": "physical-card",
+    "front": {
+      "title": "köstlich",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Der Wein ist köstlich!\nDas Essen hat köstlich geschmeckt."
+    },
+    "back": {
+      "title": "восхитительный, невероятно вкусный",
+      "lines": [],
+      "exampleTranslation": "Вино восхитительное!\nЕда была невероятно вкусной."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-17-naschen",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 17,
+    "source": "physical-card",
+    "front": {
+      "title": "naschen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Kinder naschen gern Schokolade."
+    },
+    "back": {
+      "title": "лакомиться",
+      "lines": [],
+      "exampleTranslation": "Дети любят лакомиться шоколадом."
+    }
+  },
+  {
+    "id": "b2-ernaehrung-18-ueppig",
+    "level": "B2",
+    "topic": "Ernährung",
+    "cardNumber": 18,
+    "source": "physical-card",
+    "front": {
+      "title": "üppig",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich hatte heute ein üppiges Frühstück."
+    },
+    "back": {
+      "title": "обильный, роскошный",
+      "lines": [],
+      "exampleTranslation": "Сегодня у меня был роскошный завтрак."
+    }
+  },
+  {
+    "id": "b2-haus-19-das-dach",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 19,
+    "source": "physical-card",
+    "front": {
+      "title": "das Dach",
+      "subtitle": "die Dächer",
+      "lines": [],
+      "exampleDe": "ein Dach über dem Kopf haben"
+    },
+    "back": {
+      "title": "крыша",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "иметь крышу над головой"
+    }
+  },
+  {
+    "id": "b2-haus-20-das-tor",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 20,
+    "source": "physical-card",
+    "front": {
+      "title": "das Tor",
+      "subtitle": "die Tore",
+      "lines": [],
+      "exampleDe": "Das Tor ist rund um die Uhr geöffnet."
+    },
+    "back": {
+      "title": "ворота, брама",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ворота открыты круглые сутки."
+    }
+  },
+  {
+    "id": "b2-haus-21-der-kamin",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 21,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kamin",
+      "subtitle": "die Kamine",
+      "lines": [],
+      "exampleDe": "Im Winter sitzen wir abends gern vor dem Kamin."
+    },
+    "back": {
+      "title": "камин",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Зимой мы любим сидеть вечером у камина."
+    }
+  },
+  {
+    "id": "b2-haus-22-die-angel",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 22,
+    "source": "physical-card",
+    "front": {
+      "title": "die Angel",
+      "subtitle": "die Angeln",
+      "lines": [],
+      "exampleDe": "Die Tür quietscht in den Angeln."
+    },
+    "back": {
+      "title": "дверная петля",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Дверь скрипит на петлях."
+    }
+  },
+  {
+    "id": "b2-haus-23-die-aussicht",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 23,
+    "source": "physical-card",
+    "front": {
+      "title": "die Aussicht",
+      "subtitle": "die Aussichten",
+      "lines": [],
+      "exampleDe": "Dieses Zimmer hat eine herrliche Aussicht auf die Berge."
+    },
+    "back": {
+      "title": "вид",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Из этой комнаты открывается чудесный вид на горы."
+    }
+  },
+  {
+    "id": "b2-haus-24-die-eingangstuer",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 24,
+    "source": "physical-card",
+    "front": {
+      "title": "die Eingangstür",
+      "subtitle": "die Eingangstüren",
+      "lines": [],
+      "exampleDe": "Jemand klopfte an die Eingangstür."
+    },
+    "back": {
+      "title": "входная дверь",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Кто-то постучал во входную дверь."
+    }
+  },
+  {
+    "id": "b2-haus-25-die-fliese",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 25,
+    "source": "physical-card",
+    "front": {
+      "title": "die Fliese",
+      "subtitle": "die Fliesen",
+      "lines": [],
+      "exampleDe": "Hast du schon Fliesen für die Küche ausgewählt?"
+    },
+    "back": {
+      "title": "плитка, кафель",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ты уже выбрал плитку для кухни?"
+    }
+  },
+  {
+    "id": "b2-haus-26-die-kakerlake",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 26,
+    "source": "physical-card",
+    "front": {
+      "title": "die Kakerlake",
+      "subtitle": "die Kakerlaken",
+      "lines": [],
+      "exampleDe": "Wie bekämpfst du Kakerlaken?"
+    },
+    "back": {
+      "title": "таракан",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Как ты борешься с тараканами?"
+    }
+  },
+  {
+    "id": "b2-haus-27-die-matte",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 27,
+    "source": "physical-card",
+    "front": {
+      "title": "die Matte",
+      "subtitle": "die Matten",
+      "lines": [
+        "der Fußmatte",
+        "der Badematte"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "коврик",
+      "lines": [
+        "мн.",
+        "коврик у двери",
+        "коврик для ванной"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-haus-28-die-stufe",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 28,
+    "source": "physical-card",
+    "front": {
+      "title": "die Stufe",
+      "subtitle": "die Stufen",
+      "lines": [],
+      "exampleDe": "Er stand auf der obersten Stufe.\nIch nehme immer zwei Stufen auf einmal."
+    },
+    "back": {
+      "title": "ступенька",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он стоял на верхней ступеньке.\nЯ всегда перешагиваю через одну ступеньку."
+    }
+  },
+  {
+    "id": "b2-haus-29-die-tapete",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 29,
+    "source": "physical-card",
+    "front": {
+      "title": "die Tapete",
+      "subtitle": "die Tapeten",
+      "lines": [
+        "tapezieren"
+      ],
+      "exampleDe": "Ich habe dieses Zimmer selbst tapeziert."
+    },
+    "back": {
+      "title": "обои",
+      "lines": [
+        "мн.",
+        "клеить обои"
+      ],
+      "exampleTranslation": "Я сам поклеил обои в этой комнате."
+    }
+  },
+  {
+    "id": "b2-haus-30-einrichten",
+    "level": "B2",
+    "topic": "Haus",
+    "cardNumber": 30,
+    "source": "physical-card",
+    "front": {
+      "title": "einrichten",
+      "subtitle": "",
+      "lines": [
+        "die Einrichtung"
+      ],
+      "exampleDe": "Ich möchte meine Wohnung neu einrichten."
+    },
+    "back": {
+      "title": "обставлять, меблировать",
+      "lines": [
+        "обстановка, меблировка"
+      ],
+      "exampleTranslation": "Я хочу по-новому обставить квартиру."
+    }
+  },
+  {
+    "id": "b2-alltag-31-ausschlafen",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 31,
+    "source": "physical-card",
+    "front": {
+      "title": "ausschlafen",
+      "subtitle": "(schläft aus-schlief aus-ausgeschlafen)",
+      "lines": [],
+      "exampleDe": "Ich bin heute nicht ausgeschlafen.\nIm Urlaub will man gründlich ausschlafen."
+    },
+    "back": {
+      "title": "выспаться",
+      "lines": [],
+      "exampleTranslation": "Сегодня я не выспался.\nВ отпуске хочется хорошо выспаться."
+    }
+  },
+  {
+    "id": "b2-alltag-32-das-tagebuch",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 32,
+    "source": "physical-card",
+    "front": {
+      "title": "das Tagebuch",
+      "subtitle": "die Tagebücher",
+      "lines": [],
+      "exampleDe": "Ich habe noch nie ein Tagebuch geführt."
+    },
+    "back": {
+      "title": "дневник",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я никогда не вёл дневник."
+    }
+  },
+  {
+    "id": "b2-alltag-33-der-mobilfunkanbieter",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 33,
+    "source": "physical-card",
+    "front": {
+      "title": "der Mobilfunkanbieter",
+      "subtitle": "die Mobilfunkanbieter",
+      "lines": [],
+      "exampleDe": "Welchen Mobilfunkanbieter hast du?"
+    },
+    "back": {
+      "title": "оператор мобильной связи",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Какой у тебя оператор?"
+    }
+  },
+  {
+    "id": "b2-alltag-34-der-morgenmensch",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 34,
+    "source": "physical-card",
+    "front": {
+      "title": "der Morgenmensch",
+      "subtitle": "die Morgenmenschen",
+      "lines": [],
+      "exampleDe": "Ich bin kein Morgenmensch."
+    },
+    "back": {
+      "title": "жаворонок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я не жаворонок."
+    }
+  },
+  {
+    "id": "b2-alltag-35-der-schaum",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 35,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schaum",
+      "subtitle": "",
+      "lines": [
+        "der Rasierschaum"
+      ],
+      "exampleDe": "Glaub ihm nicht, er schlägt nur Schaum!"
+    },
+    "back": {
+      "title": "пена",
+      "lines": [
+        "пена для бритья"
+      ],
+      "exampleTranslation": "Не верь ему, он просто пускает пыль в глаза."
+    }
+  },
+  {
+    "id": "b2-alltag-36-die-eile",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 36,
+    "source": "physical-card",
+    "front": {
+      "title": "die Eile",
+      "subtitle": "",
+      "lines": [
+        "eilig"
+      ],
+      "exampleDe": "Ich habe es eilig!"
+    },
+    "back": {
+      "title": "спешка",
+      "lines": [
+        "срочный, спешный"
+      ],
+      "exampleTranslation": "Я спешу!"
+    }
+  },
+  {
+    "id": "b2-alltag-37-die-gewohnheit",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 37,
+    "source": "physical-card",
+    "front": {
+      "title": "die Gewohnheit",
+      "subtitle": "die Gewohnheiten",
+      "lines": [
+        "gewöhnlich",
+        "außergewöhnlich"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "привычка",
+      "lines": [
+        "мн.",
+        "обычный",
+        "необычный"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-alltag-38-die-hektik",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 38,
+    "source": "physical-card",
+    "front": {
+      "title": "die Hektik",
+      "subtitle": "",
+      "lines": [
+        "hektisch"
+      ],
+      "exampleDe": "Ich habe das in der Hektik total vergessen!"
+    },
+    "back": {
+      "title": "суета, спешка",
+      "lines": [
+        "суетливый, поспешный"
+      ],
+      "exampleTranslation": "Я совсем забыл об этом в спешке!"
+    }
+  },
+  {
+    "id": "b2-alltag-39-die-langeweile",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 39,
+    "source": "physical-card",
+    "front": {
+      "title": "die Langeweile",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Wie vertreibst du dir die Langeweile?"
+    },
+    "back": {
+      "title": "скука",
+      "lines": [],
+      "exampleTranslation": "Что ты делаешь, чтобы не было скучно?"
+    }
+  },
+  {
+    "id": "b2-alltag-40-die-nachteule",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 40,
+    "source": "physical-card",
+    "front": {
+      "title": "die Nachteule",
+      "subtitle": "die Nachteulen",
+      "lines": [],
+      "exampleDe": "Er scheint mir eine Nachteule zu sein."
+    },
+    "back": {
+      "title": "сова",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мне кажется, он сова."
+    }
+  },
+  {
+    "id": "b2-alltag-41-die-naht",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 41,
+    "source": "physical-card",
+    "front": {
+      "title": "die Naht",
+      "subtitle": "die Nähte",
+      "lines": [
+        "nähen"
+      ],
+      "exampleDe": "Die Hose muss genäht werden."
+    },
+    "back": {
+      "title": "шов",
+      "lines": [
+        "мн.",
+        "шить, зашивать"
+      ],
+      "exampleTranslation": "Штаны нужно зашить."
+    }
+  },
+  {
+    "id": "b2-alltag-42-die-neuigkeit",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 42,
+    "source": "physical-card",
+    "front": {
+      "title": "die Neuigkeit",
+      "subtitle": "die Neuigkeiten",
+      "lines": [],
+      "exampleDe": "Woher hast du diese Neuigkeit?"
+    },
+    "back": {
+      "title": "новость",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Откуда у тебя эта новость?"
+    }
+  },
+  {
+    "id": "b2-alltag-43-die-spontaneitaet",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 43,
+    "source": "physical-card",
+    "front": {
+      "title": "die Spontaneität",
+      "subtitle": "",
+      "lines": [
+        "spontan"
+      ],
+      "exampleDe": "Ich mag seine Spontaneität."
+    },
+    "back": {
+      "title": "спонтанность",
+      "lines": [
+        "спонтанный"
+      ],
+      "exampleTranslation": "Мне нравится его спонтанность."
+    }
+  },
+  {
+    "id": "b2-alltag-44-die-zahnpastatube",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 44,
+    "source": "physical-card",
+    "front": {
+      "title": "die Zahnpastatube",
+      "subtitle": "die Zahnpastatuben",
+      "lines": [],
+      "exampleDe": "Das ist die letzte Zahnpastatube."
+    },
+    "back": {
+      "title": "тюбик пасты",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Это последний тюбик пасты."
+    }
+  },
+  {
+    "id": "b2-alltag-45-doesen",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 45,
+    "source": "physical-card",
+    "front": {
+      "title": "dösen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ich habe nur ein wenig gedöst."
+    },
+    "back": {
+      "title": "дремать",
+      "lines": [],
+      "exampleTranslation": "Я лишь немного подремал."
+    }
+  },
+  {
+    "id": "b2-alltag-46-meckern",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 46,
+    "source": "physical-card",
+    "front": {
+      "title": "meckern",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Er hat immer etwas zu meckern."
+    },
+    "back": {
+      "title": "бурчать, ворчать, жаловаться",
+      "lines": [],
+      "exampleTranslation": "Он всегда чем-то недоволен."
+    }
+  },
+  {
+    "id": "b2-alltag-47-sich-einleben",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 47,
+    "source": "physical-card",
+    "front": {
+      "title": "sich einleben",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Sie hat sich schon ganz in Köln eingelebt."
+    },
+    "back": {
+      "title": "освоиться, привыкнуть",
+      "lines": [],
+      "exampleTranslation": "Она уже совсем освоилась в Кёльне."
+    }
+  },
+  {
+    "id": "b2-alltag-48-zusammenkommen",
+    "level": "B2",
+    "topic": "Alltag",
+    "cardNumber": 48,
+    "source": "physical-card",
+    "front": {
+      "title": "zusammenkommen",
+      "subtitle": "(kommt zusammen-kam zusammen-zusammengekommen)",
+      "lines": [],
+      "exampleDe": "Wir sind lange nicht zusammengekommen."
+    },
+    "back": {
+      "title": "встречаться, собираться",
+      "lines": [],
+      "exampleTranslation": "Мы давно не встречались."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-49-ausverkauft",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 49,
+    "source": "physical-card",
+    "front": {
+      "title": "ausverkauft",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Die Ware ist ausverkauft."
+    },
+    "back": {
+      "title": "распродан",
+      "lines": [],
+      "exampleTranslation": "Товар распродан."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-50-das-benutzerkonto",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 50,
+    "source": "physical-card",
+    "front": {
+      "title": "das Benutzerkonto",
+      "subtitle": "die Benutzerkonten",
+      "lines": [],
+      "exampleDe": "Ich habe mein Benutzerkonto gelöscht."
+    },
+    "back": {
+      "title": "учётная запись",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Я удалил свою учётную запись."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-52-das-schnaeppchen",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 52,
+    "source": "physical-card",
+    "front": {
+      "title": "das Schnäppchen",
+      "subtitle": "die Schnäppchen",
+      "lines": [],
+      "exampleDe": "Der Hut war ein echtes Schnäppchen."
+    },
+    "back": {
+      "title": "выгодная покупка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Шляпа оказалась действительно выгодной покупкой."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-53-der-einkaufswagen",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 53,
+    "source": "physical-card",
+    "front": {
+      "title": "der Einkaufswagen",
+      "subtitle": "die Einkaufswagen",
+      "lines": [],
+      "exampleDe": "Mein Einkaufswagen ist schon voll."
+    },
+    "back": {
+      "title": "тележка для покупок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Моя тележка уже полная."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-54-der-impulskauf",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 54,
+    "source": "physical-card",
+    "front": {
+      "title": "der Impulskauf",
+      "subtitle": "die Impulskäufe",
+      "lines": [],
+      "exampleDe": "Machst du häufig Impulskäufe?"
+    },
+    "back": {
+      "title": "импульсивная покупка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Ты часто делаешь импульсивные покупки?"
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-55-der-schlussverkauf",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 55,
+    "source": "physical-card",
+    "front": {
+      "title": "der Schlussverkauf",
+      "subtitle": "die Schlussverkäufe",
+      "lines": [],
+      "exampleDe": "Im Schlussverkauf kann man das viel billiger kaufen."
+    },
+    "back": {
+      "title": "финальная распродажа",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "На финальной распродаже это можно купить гораздо дешевле."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-56-die-backwaren",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 56,
+    "source": "physical-card",
+    "front": {
+      "title": "die Backwaren",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Duft von frischen Backwaren."
+    },
+    "back": {
+      "title": "выпечка",
+      "lines": [],
+      "exampleTranslation": "аромат свежей выпечки"
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-57-die-bewertung",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 57,
+    "source": "physical-card",
+    "front": {
+      "title": "die Bewertung",
+      "subtitle": "die Bewertungen",
+      "lines": [
+        "bewerten",
+        "die Qualität bewerten"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "оценка",
+      "lines": [
+        "мн.",
+        "оценивать",
+        "оценивать качество"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-58-die-leistung",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 58,
+    "source": "physical-card",
+    "front": {
+      "title": "die Leistung",
+      "subtitle": "die Leistungen",
+      "lines": [
+        "das Preis-Leistungsverhältnis"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "производительность, результат",
+      "lines": [
+        "мн.",
+        "соотношение цены и качества"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-59-einwickeln",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 59,
+    "source": "physical-card",
+    "front": {
+      "title": "einwickeln",
+      "subtitle": "",
+      "lines": [
+        "das Einwickelpapier",
+        "die Einwickelpapiere"
+      ],
+      "exampleDe": "Könnten Sie die Blumen in Papier einwickeln?"
+    },
+    "back": {
+      "title": "заворачивать",
+      "lines": [
+        "обёрточная бумага",
+        "мн."
+      ],
+      "exampleTranslation": "Вы могли бы завернуть цветы в бумагу?"
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-60-gefragt-sein",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 60,
+    "source": "physical-card",
+    "front": {
+      "title": "gefragt sein",
+      "subtitle": "",
+      "lines": [
+        "die Nachfrage"
+      ],
+      "exampleDe": "Es besteht eine große Nachfrage nach diesem Produkt."
+    },
+    "back": {
+      "title": "пользоваться спросом",
+      "lines": [
+        "спрос"
+      ],
+      "exampleTranslation": "Этот продукт пользуется большим спросом."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-61-lassen",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 61,
+    "source": "physical-card",
+    "front": {
+      "title": "lassen",
+      "subtitle": "",
+      "lines": [
+        "reparieren lassen"
+      ],
+      "exampleDe": "Ich habe mein Auto reparieren lassen."
+    },
+    "back": {
+      "title": "давать сделать, поручать",
+      "lines": [
+        "отремонтировать"
+      ],
+      "exampleTranslation": "Я отдал машину в ремонт."
+    }
+  },
+  {
+    "id": "b2-einkaeufe-und-dienstleistungen-62-preisen",
+    "level": "B2",
+    "topic": "Einkäufe und Dienstleistungen",
+    "cardNumber": 62,
+    "source": "physical-card",
+    "front": {
+      "title": "preisen",
+      "subtitle": "(preist-pries-gepriesen)",
+      "lines": [],
+      "exampleDe": "Geschäfte preisen ihre Produkte."
+    },
+    "back": {
+      "title": "расхваливать",
+      "lines": [],
+      "exampleTranslation": "Магазины расхваливают свои продукты."
+    }
+  },
+  {
+    "id": "b2-familie-63-auskommen",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 63,
+    "source": "physical-card",
+    "front": {
+      "title": "auskommen",
+      "subtitle": "(kommt aus-kam aus-ausgekommen)",
+      "lines": [
+        "das Auskommen"
+      ],
+      "exampleDe": "Wir kommen gut miteinander aus."
+    },
+    "back": {
+      "title": "ладить, находить общий язык",
+      "lines": [
+        "согласие, мир"
+      ],
+      "exampleTranslation": "Мы хорошо ладим."
+    }
+  },
+  {
+    "id": "b2-familie-64-das-einzelkind",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 64,
+    "source": "physical-card",
+    "front": {
+      "title": "das Einzelkind",
+      "subtitle": "die Einzelkinder",
+      "lines": [],
+      "exampleDe": "Er ist als Einzelkind aufgewachsen."
+    },
+    "back": {
+      "title": "единственный ребёнок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он вырос единственным ребёнком в семье."
+    }
+  },
+  {
+    "id": "b2-familie-65-der-kosename",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 65,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kosename",
+      "subtitle": "die Kosenamen",
+      "lines": [],
+      "exampleDe": "Alle nennen sie nur bei ihrem Kosenamen."
+    },
+    "back": {
+      "title": "ласкательная форма имени",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Все обращаются к ней только по ласковому имени."
+    }
+  },
+  {
+    "id": "b2-familie-66-der-nachkomme",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 66,
+    "source": "physical-card",
+    "front": {
+      "title": "der Nachkomme",
+      "subtitle": "die Nachkommen",
+      "lines": [],
+      "exampleDe": "Er starb ohne Nachkommen."
+    },
+    "back": {
+      "title": "потомок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он умер, не оставив потомков."
+    }
+  },
+  {
+    "id": "b2-familie-67-der-polterabend",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 67,
+    "source": "physical-card",
+    "front": {
+      "title": "der Polterabend",
+      "subtitle": "die Polterabende",
+      "lines": [],
+      "exampleDe": "Zum Polterabend kamen alle Freunde."
+    },
+    "back": {
+      "title": "вечеринка накануне свадьбы",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "На вечеринку пришли все друзья!"
+    }
+  },
+  {
+    "id": "b2-familie-68-der-saeugling",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 68,
+    "source": "physical-card",
+    "front": {
+      "title": "der Säugling",
+      "subtitle": "die Säuglinge",
+      "lines": [
+        "die Säuglingsnahrung"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "младенец",
+      "lines": [
+        "мн.",
+        "питание для младенцев"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-familie-69-der-single",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 69,
+    "source": "physical-card",
+    "front": {
+      "title": "der Single",
+      "subtitle": "die Singles",
+      "lines": [],
+      "exampleDe": "Sie hat sich von ihrem Freund getrennt und lebt als Single."
+    },
+    "back": {
+      "title": "холостяк, холостячка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Она разошлась с парнем и живёт одна."
+    }
+  },
+  {
+    "id": "b2-familie-70-der-umgang",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 70,
+    "source": "physical-card",
+    "front": {
+      "title": "der Umgang",
+      "subtitle": "",
+      "lines": [
+        "umgehen",
+        "(geht um-ging um-umgegangen)"
+      ],
+      "exampleDe": "Sie gehen miteinander freundlich um."
+    },
+    "back": {
+      "title": "обхождение, поведение",
+      "lines": [
+        "обходиться, вести себя"
+      ],
+      "exampleTranslation": "Они дружелюбно обходятся друг с другом."
+    }
+  },
+  {
+    "id": "b2-familie-71-der-unterhalt",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 71,
+    "source": "physical-card",
+    "front": {
+      "title": "der Unterhalt",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Unterhalt zahlen"
+    },
+    "back": {
+      "title": "алименты, содержание семьи",
+      "lines": [],
+      "exampleTranslation": "платить алименты"
+    }
+  },
+  {
+    "id": "b2-familie-72-der-vorfahr",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 72,
+    "source": "physical-card",
+    "front": {
+      "title": "der Vorfahr",
+      "subtitle": "die Vorfahren",
+      "lines": [],
+      "exampleDe": "Viele seiner Vorfahren waren Maler."
+    },
+    "back": {
+      "title": "предок",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Многие его предки были художниками."
+    }
+  },
+  {
+    "id": "b2-familie-73-der-wert",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 73,
+    "source": "physical-card",
+    "front": {
+      "title": "der Wert",
+      "subtitle": "die Werte",
+      "lines": [
+        "wertvoll",
+        "geistige Werte"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "ценность",
+      "lines": [
+        "мн.",
+        "ценный",
+        "духовные ценности"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-familie-74-der-zwilling",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 74,
+    "source": "physical-card",
+    "front": {
+      "title": "der Zwilling",
+      "subtitle": "die Zwillinge",
+      "lines": [
+        "die Drillinge"
+      ],
+      "exampleDe": "Die beiden sind Zwillinge."
+    },
+    "back": {
+      "title": "близнец",
+      "lines": [
+        "мн.",
+        "тройня"
+      ],
+      "exampleTranslation": "Они близнецы."
+    }
+  },
+  {
+    "id": "b2-familie-75-der-die-waise",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 75,
+    "source": "physical-card",
+    "front": {
+      "title": "der/die Waise",
+      "subtitle": "die Waisen",
+      "lines": [
+        "das Waisenhaus"
+      ],
+      "exampleDe": "Er ist seit früher Kindheit Waise."
+    },
+    "back": {
+      "title": "сирота",
+      "lines": [
+        "мн.",
+        "приют для сирот"
+      ],
+      "exampleTranslation": "Он с раннего детства сирота."
+    }
+  },
+  {
+    "id": "b2-familie-76-die-braut",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 76,
+    "source": "physical-card",
+    "front": {
+      "title": "die Braut",
+      "subtitle": "die Bräute",
+      "lines": [
+        "der Bräutigam",
+        "die Bräutigame"
+      ],
+      "exampleDe": "Braut und Bräutigam strahlten glücklich."
+    },
+    "back": {
+      "title": "невеста",
+      "lines": [
+        "мн.",
+        "жених",
+        "мн."
+      ],
+      "exampleTranslation": "Невеста и жених сияли от счастья."
+    }
+  },
+  {
+    "id": "b2-familie-77-kinderreich",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 77,
+    "source": "physical-card",
+    "front": {
+      "title": "kinderreich",
+      "subtitle": "",
+      "lines": [
+        "kinderlos"
+      ],
+      "exampleDe": "Sie stammt aus einer kinderreichen Familie."
+    },
+    "back": {
+      "title": "многодетный",
+      "lines": [
+        "бездетный"
+      ],
+      "exampleTranslation": "Она из многодетной семьи."
+    }
+  },
+  {
+    "id": "b2-familie-78-verwoehnen",
+    "level": "B2",
+    "topic": "Familie",
+    "cardNumber": 78,
+    "source": "physical-card",
+    "front": {
+      "title": "verwöhnen",
+      "subtitle": "",
+      "lines": [],
+      "exampleDe": "Ihre Kinder sind maßlos verwöhnt."
+    },
+    "back": {
+      "title": "баловать, изнеживать",
+      "lines": [],
+      "exampleTranslation": "Их дети слишком избалованы."
+    }
+  },
+  {
+    "id": "b2-aussehen-79-der-daumen",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 79,
+    "source": "physical-card",
+    "front": {
+      "title": "der Daumen",
+      "subtitle": "die Daumen",
+      "lines": [],
+      "exampleDe": "Kinder lutschen gern am Daumen."
+    },
+    "back": {
+      "title": "большой палец",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Дети любят сосать большой палец."
+    }
+  },
+  {
+    "id": "b2-aussehen-80-der-dreitagebart",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 80,
+    "source": "physical-card",
+    "front": {
+      "title": "der Dreitagebart",
+      "subtitle": "die Dreitagebärte",
+      "lines": [],
+      "exampleDe": "Er hat einen Dreitagebart."
+    },
+    "back": {
+      "title": "трёхдневная щетина",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У него трёхдневная щетина."
+    }
+  },
+  {
+    "id": "b2-aussehen-81-der-kamm",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 81,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kamm",
+      "subtitle": "die Kämme",
+      "lines": [],
+      "exampleDe": "Alles über einen Kamm scheren."
+    },
+    "back": {
+      "title": "гребень",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Стричь всех под одну гребёнку."
+    }
+  },
+  {
+    "id": "b2-aussehen-82-der-kiefer",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 82,
+    "source": "physical-card",
+    "front": {
+      "title": "der Kiefer",
+      "subtitle": "die Kiefer",
+      "lines": [],
+      "exampleDe": "Er biss die Kiefer zusammen."
+    },
+    "back": {
+      "title": "челюсть",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он стиснул челюсти."
+    }
+  },
+  {
+    "id": "b2-aussehen-83-der-zeigefinger",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 83,
+    "source": "physical-card",
+    "front": {
+      "title": "der Zeigefinger",
+      "subtitle": "die Zeigefinger",
+      "lines": [],
+      "exampleDe": "Sie trägt einen goldenen Ring am Zeigefinger."
+    },
+    "back": {
+      "title": "указательный палец",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Она носит золотое кольцо на указательном пальце."
+    }
+  },
+  {
+    "id": "b2-aussehen-84-die-faust",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 84,
+    "source": "physical-card",
+    "front": {
+      "title": "die Faust",
+      "subtitle": "die Fäuste",
+      "lines": [],
+      "exampleDe": "Er ballte die Fäuste vor Wut."
+    },
+    "back": {
+      "title": "кулак",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Он стиснул кулаки от злости."
+    }
+  },
+  {
+    "id": "b2-aussehen-85-die-glatze",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 85,
+    "source": "physical-card",
+    "front": {
+      "title": "die Glatze",
+      "subtitle": "die Glatzen",
+      "lines": [],
+      "exampleDe": "Unser Opa bekommt eine Glatze.\nGlatze mit Vorgarten."
+    },
+    "back": {
+      "title": "лысина",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У нашего дедушки появляется лысина.\nлысина, окружённая волосами"
+    }
+  },
+  {
+    "id": "b2-aussehen-86-die-haarspange",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 86,
+    "source": "physical-card",
+    "front": {
+      "title": "die Haarspange",
+      "subtitle": "die Haarspangen",
+      "lines": [],
+      "exampleDe": "Sie hat eine rote Haarspange im Haar."
+    },
+    "back": {
+      "title": "заколка",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "У неё в волосах красная заколка."
+    }
+  },
+  {
+    "id": "b2-aussehen-87-die-hautcreme",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 87,
+    "source": "physical-card",
+    "front": {
+      "title": "die Hautcreme",
+      "subtitle": "die Hautcremes",
+      "lines": [],
+      "exampleDe": "Sie hat sich die Hände mit Hautcreme eingerieben."
+    },
+    "back": {
+      "title": "крем для кожи",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Она намазала руки кремом."
+    }
+  },
+  {
+    "id": "b2-aussehen-88-die-lippe",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 88,
+    "source": "physical-card",
+    "front": {
+      "title": "die Lippe",
+      "subtitle": "die Lippen",
+      "lines": [],
+      "exampleDe": "Sie schminkte sich die Lippen.\nEr biss sich auf die Lippen."
+    },
+    "back": {
+      "title": "губа",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Она накрасила губы.\nОн кусал себе губы."
+    }
+  },
+  {
+    "id": "b2-aussehen-89-die-narbe",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 89,
+    "source": "physical-card",
+    "front": {
+      "title": "die Narbe",
+      "subtitle": "die Narben",
+      "lines": [],
+      "exampleDe": "Sein Arm ist mit Narben bedeckt."
+    },
+    "back": {
+      "title": "шрам",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Его рука покрыта шрамами."
+    }
+  },
+  {
+    "id": "b2-aussehen-90-die-tasche",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 90,
+    "source": "physical-card",
+    "front": {
+      "title": "die Tasche",
+      "subtitle": "die Taschen",
+      "lines": [
+        "das Taschenmesser",
+        "eine lederne Tasche"
+      ],
+      "exampleDe": ""
+    },
+    "back": {
+      "title": "карман, сумка",
+      "lines": [
+        "мн.",
+        "карманный нож",
+        "кожаная сумка"
+      ],
+      "exampleTranslation": ""
+    }
+  },
+  {
+    "id": "b2-aussehen-91-die-wimper",
+    "level": "B2",
+    "topic": "Aussehen",
+    "cardNumber": 91,
+    "source": "physical-card",
+    "front": {
+      "title": "die Wimper",
+      "subtitle": "die Wimpern",
+      "lines": [],
+      "exampleDe": "Mir ist eine Wimper ins Auge geraten."
+    },
+    "back": {
+      "title": "ресница",
+      "lines": [
+        "мн."
+      ],
+      "exampleTranslation": "Мне в глаз попала ресница."
+    }
+  }
+]

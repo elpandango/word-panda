@@ -6,7 +6,7 @@ import type {
   FlashcardsListResponse
 } from '../../../shared/types/flashcards';
 
-const selectedLevel = ref<FlashcardLevel>('C1');
+const selectedLevel = ref<FlashcardLevel>('A1');
 const availableLevels = ref<FlashcardLevel[]>([]);
 const levelCards = ref<FlashcardItem[]>([]);
 const currentCardId = ref('');
@@ -210,6 +210,13 @@ useSeoMeta({
   flex-wrap: wrap;
 }
 
+.cards-toolbar__group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
 .cards-toolbar__actions {
   align-items: center;
 }
@@ -222,7 +229,7 @@ useSeoMeta({
 }
 
 .cards-toolbar__dropdown {
-  width: min(100%, 160px);
+  width: 100%;
 }
 
 .cards-state {
