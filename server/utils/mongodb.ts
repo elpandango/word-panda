@@ -15,8 +15,9 @@ mongoose.set('bufferCommands', false);
 
 export async function ensureMongoConnection(): Promise<typeof mongoose> {
   const config = useRuntimeConfig();
+  const mongodbUri = config.mongodbUri || process.env.MONGODB_URI;
 
-  if (!config.mongodbUri) {
+  if (!mongodbUri) {
     throw new Error('MONGODB_URI is not configured.');
   }
 
@@ -25,7 +26,7 @@ export async function ensureMongoConnection(): Promise<typeof mongoose> {
   }
 
   if (!connectionPromise) {
-    connectionPromise = mongoose.connect(config.mongodbUri, connectionOptions).catch((error: unknown) => {
+    connectionPromise = mongoose.connect(mongodbUri, connectionOptions).catch((error: unknown) => {
       connectionPromise = null;
       throw error;
     });
