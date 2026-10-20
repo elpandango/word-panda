@@ -45,9 +45,9 @@ const sections: HubSection[] = [
         to: '/training/cards'
       },
       {
-        title: 'Тренировка',
-        description: 'Будущий режим. Пока оставим как задел под следующий этап.',
-        disabled: true
+        title: 'Verben mit Präpositionen',
+        description: 'Пять глаголов с предлогами на день: готовые наборы для B1 и B2.',
+        to: '/training/prepositions'
       }
     ]
   }

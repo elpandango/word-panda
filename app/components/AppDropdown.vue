@@ -211,7 +211,7 @@ onBeforeUnmount(() => {
     <div
       v-if="isOpen"
       ref="menuRef"
-      class="app-dropdown__menu surface-glass"
+      class="app-dropdown__menu"
       :class="{
         'app-dropdown__menu--up': openDirection === 'up',
         'app-dropdown__menu--down': openDirection === 'down'
@@ -300,6 +300,7 @@ onBeforeUnmount(() => {
   padding: 8px;
   border: 1px solid var(--surface-border);
   border-radius: 16px;
+  background: #fff;
   box-shadow: 0 18px 44px var(--glass-shadow);
   overflow-y: auto;
 }

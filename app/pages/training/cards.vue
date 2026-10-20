@@ -213,7 +213,8 @@ useSeoMeta({
 .cards-toolbar__group {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: flex-start;
+  width: min(100%, 260px);
   gap: 8px;
 }
 
@@ -259,7 +260,7 @@ useSeoMeta({
 
 @media (max-width: 800px) {
   .cards-toolbar__group {
-    align-items: flex-start;
+    width: 100%;
   }
 }
 </style>

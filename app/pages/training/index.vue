@@ -36,6 +36,13 @@ useSeoMeta({
           Первый MVP с flip-анимацией, выбором уровня и случайной карточкой.
         </p>
       </NuxtLink>
+
+      <NuxtLink class="training-link-card surface-glass" to="/training/prepositions">
+        <strong class="training-link-card__title">Verben mit Präpositionen</strong>
+        <p class="training-link-card__copy">
+          Пять глаголов с предлогами на день: выбор уровня B1 или B2 и навигация по дням.
+        </p>
+      </NuxtLink>
     </section>
 
     <section class="info-card page-stack-sm surface-calm">
