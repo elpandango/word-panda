@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     ollamaModel: process.env.OLLAMA_MODEL || 'gpt-oss:20b',
     public: {
       appName: 'WordPanda',
+      siteUrl: 'https://word-panda.netlify.app',
       aiFillEnabled: process.env.AI_ENABLED === 'true'
     }
   },

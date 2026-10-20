@@ -178,7 +178,7 @@ useSeoMeta({
     border-color 0.2s ease;
 }
 
-.day-picker__button:hover {
+.day-picker__button:not(.day-picker__button--active):hover {
   color: var(--accent-strong);
   border-color: color-mix(in srgb, var(--accent) 45%, var(--surface-border));
 }
