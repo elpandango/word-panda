@@ -18,7 +18,7 @@ const navigationItems = [
     icon: 'list'
   },
   {
-    label: 'Тренировка',
+    label: 'Практика',
     to: '/training',
     icon: 'spark'
   }
