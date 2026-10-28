@@ -5,6 +5,7 @@ import { type PrepositionVerbLevel, prepositionVerbLevels } from '../../types/pr
 
 const selectedLevel = ref<PrepositionVerbLevel>('B1');
 const selectedDay = ref(1);
+const cardsSection = ref<HTMLElement | null>(null);
 
 const levelOptions = prepositionVerbLevels.map((level) => ({
   value: level,
@@ -30,6 +31,29 @@ const cardsForDay = computed(() => {
 watch(selectedLevel, () => {
   selectedDay.value = 1;
 });
+
+async function changeDay(direction: -1 | 1): Promise<void> {
+  const day = selectedDay.value + direction;
+
+  if (day < 1 || day > dayCount.value) {
+    return;
+  }
+
+  selectedDay.value = day;
+  await nextTick();
+
+  if (!cardsSection.value) {
+    return;
+  }
+
+  const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0;
+  const top = cardsSection.value.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+  });
+}
 
 useSeoMeta({
   title: 'Verben mit Präpositionen | WordPanda',
@@ -92,7 +116,11 @@ useSeoMeta({
       </div>
     </section>
 
-    <section class="preposition-cards" :aria-label="`Карточки: день ${selectedDay}`">
+    <section
+      ref="cardsSection"
+      class="preposition-cards"
+      :aria-label="`Карточки: день ${selectedDay}`"
+    >
       <div class="preposition-cards__heading">
         <p class="eyebrow">{{ selectedLevel }}</p>
         <h2>День {{ selectedDay }}</h2>
@@ -107,6 +135,24 @@ useSeoMeta({
           :level="selectedLevel"
         />
       </div>
+
+      <nav class="day-navigation" aria-label="Переход между днями">
+        <AppButton
+          v-if="selectedDay > 1"
+          variant="ghost"
+          class="day-navigation__button"
+          @click="changeDay(-1)"
+        >
+          ← Предыдущий день
+        </AppButton>
+        <AppButton
+          v-if="selectedDay < dayCount"
+          class="day-navigation__button"
+          @click="changeDay(1)"
+        >
+          Следующий день →
+        </AppButton>
+      </nav>
     </section>
   </main>
 </template>
@@ -214,6 +260,16 @@ useSeoMeta({
 .preposition-cards__list {
   display: grid;
   gap: 14px;
+}
+
+.day-navigation {
+  display: flex;
+  gap: 12px;
+}
+
+.day-navigation__button {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 @media (max-width: 800px) {
